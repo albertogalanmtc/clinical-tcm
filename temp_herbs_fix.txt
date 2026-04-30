@@ -1,0 +1,20 @@
+      </Dialog.Root>
+
+      {/* Display Settings Modal */}
+      <HerbsDisplaySettingsModal
+        isOpen={showDisplaySettings}
+        onClose={() => setShowDisplaySettings(false)}
+        displayColumns={displayColumns}
+        onToggleColumn={(column) => {
+          setDisplayColumns(prev => ({
+            ...prev,
+            [column]: !prev[column]
+          }));
+        }}
+        onReorderColumn={(newOrder) => {
+          setDisplayColumns(prev => ({
+            ...prev,
+            order: newOrder
+          }));
+        }}
+      />

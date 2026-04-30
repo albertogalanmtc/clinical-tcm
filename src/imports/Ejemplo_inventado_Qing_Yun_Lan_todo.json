@@ -1,0 +1,124 @@
+{
+  "herb_id": "h9_010_QYL",
+  "pinyin_name": "Qīng Yún Lán",
+  "hanzi_name": "青云兰",
+  "pharmaceutical_name": "Radix Orchidalis Caelestis",
+  "english_name": "azure cloud orchid root",
+
+  "category": "Heat-Clearing",
+  "subcategory": "Heat-Clearing and Damp-Drying",
+
+  "nature": "Cool",
+  "flavor": ["Bitter", "Sweet"],
+  "channels": ["LV", "GB"],
+
+  "toxicology": ["Toxic when used in high doses", "Mild hepatotoxic potential"],
+  "dose": "6~12g",
+
+  "banned_countries": ["USA", "Canada"],
+
+  "actions": [
+    {
+      "title": "Clears damp heat from the liver and gallbladder",
+      "branches": [
+        {
+          "pattern": "Damp heat in the liver channel",
+          "sub_pattern": "Hypochondriac pain and bitter taste in the mouth",
+          "combination": ["Long Dan Cao", "Huang Qin"],
+          "formula_example": "Qing Yun San"
+        },
+        {
+          "pattern": "Damp heat obstructing the gallbladder",
+          "sub_pattern": "Jaundice with dark urine",
+          "combination": ["Yin Chen Hao", "Zhi Zi"],
+          "formula_example": "Yun Lan Tang"
+        }
+      ]
+    },
+    {
+      "title": "Invigorates blood and relieves pain",
+      "branches": [
+        {
+          "pattern": "Blood stasis in the chest",
+          "sub_pattern": "Stabbing chest pain",
+          "combination": ["Dan Shen", "Chuan Xiong"],
+          "formula_example": "Lan Xiong Tang"
+        },
+        {
+          "pattern": "Blood stasis in the lower abdomen",
+          "sub_pattern": "Irregular menstruation with clots",
+          "combination": ["Yi Mu Cao", "Chi Shao"],
+          "formula_example": "Yun Hua Wan"
+        }
+      ]
+    }
+  ],
+
+  "indications": [
+    "Hypochondriac pain due to liver heat",
+    "Jaundice with damp heat",
+    "Menstrual pain due to blood stasis",
+    "Chest pain from qi and blood stagnation"
+  ],
+
+  "cautions": [
+    "Use with caution during pregnancy",
+    "Use with caution in patients with weak spleen qi"
+  ],
+
+  "contraindications": [
+    "Severe liver deficiency",
+    "Cold deficiency in the spleen and stomach"
+  ],
+
+  "antagonisms": ["Wu Ling Zhi", "Hai Zao"],
+  "incompatibilities": ["Gan Sui", "Da Ji"],
+
+  "pharmacological_effects": [
+    "Anti-inflammatory",
+    "Hepatoprotective",
+    "Antioxidant",
+    "Choleretic"
+  ],
+
+  "biological_mechanisms": [
+    {
+      "system": "Hepatic",
+      "target_action": "Reduces inflammatory cytokine production in hepatocytes"
+    },
+    {
+      "system": "Cardiovascular",
+      "target_action": "Improves microcirculation by inhibiting platelet aggregation"
+    }
+  ],
+
+  "clinical_studies_and_research": [
+    "Animal study showing hepatoprotective activity",
+    "Pilot clinical study on jaundice symptoms"
+  ],
+
+  "herb_drug_interactions": [
+    "May potentiate anticoagulant drugs",
+    "May interact with hepatotoxic medications"
+  ],
+
+  "herb_herb_interactions": [
+    "Synergistic with Yin Chen Hao",
+    "Enhances effects of Dan Shen"
+  ],
+
+  "allergens": [
+    "Possible allergic reaction in orchid-sensitive individuals",
+    "Rare contact dermatitis reported"
+  ],
+
+  "notes": [
+    "Traditionally harvested in high mountain regions",
+    "Often processed by drying in shade"
+  ],
+
+  "references": [
+    "Traditional Materia Medica Compendium",
+    "Journal of Herbal Pharmacology 2022"
+  ]
+}

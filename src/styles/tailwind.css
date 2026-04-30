@@ -1,0 +1,19 @@
+@import 'tailwindcss' source(none);
+@source '../**/*.{js,ts,jsx,tsx}';
+
+@import 'tw-animate-css';
+
+/* Explicitly define aspect ratio utilities to ensure they're always available */
+@layer utilities {
+  .aspect-\[4\/3\] {
+    aspect-ratio: 4 / 3;
+  }
+  
+  .aspect-\[16\/9\] {
+    aspect-ratio: 16 / 9;
+  }
+  
+  .aspect-\[21\/9\] {
+    aspect-ratio: 21 / 9;
+  }
+}

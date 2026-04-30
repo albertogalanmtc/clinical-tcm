@@ -1,0 +1,166 @@
+ Running frontend commit 107bbd51e86fce9a104f472597b3e63a6aa8ffa6
+ Statsig is not ready to log exposures, will retry in 1 seconds
+(anonymous) @ vendor-core-ade2edec…4781c7.min.js.br:54
+(anonymous) @ 4239-c4c06d09094e9c07.min.js.br:1280
+u @ vendor-core-ade2edec…4781c7.min.js.br:54
+ [bootstrap_waiting_on_user_state] You appear to be logging a relative timestamp and not an epoch timestamp. Try adding performance.timeOrigin to the timestamp.
+(anonymous) @ vendor-core-ade2edec…4781c7.min.js.br:54
+logVital @ 4239-c4c06d09094e9c07.min.js.br:1619
+K @ 4239-c4c06d09094e9c07.min.js.br:188
+(anonymous) @ 4239-c4c06d09094e9c07.min.js.br:188
+time @ 4239-c4c06d09094e9c07.min.js.br:386
+(anonymous) @ 4239-c4c06d09094e9c07.min.js.br:188
+ [import] git: 640e7c0c7a50f673af49d46032d102e256b5e667, stamp: 8E3CE7D760547CC6
+(index):1  Failed to load resource: net::ERR_FAILED
+ Autosave Changes not available or already claimed by another tab undefined
+ Loaded 0 scripts (0b), 0 from cache (0b)
+ [Fullscreen] Booting... (emscripten version 4.0.21)
+ [GPU] graphicsAPI:"WebGPU", vendor:"Google Inc. (Apple)" renderer:"ANGLE (Apple, ANGLE Metal Renderer: Apple M3, Unspecified Version)" deviceArchitecture:"metal-3" deviceDescription:"" webGPUDevice:"" webGPUVendor:"apple" bindings:"emdawnwebgpu"
+ [Fullscreen] Ready in 2608.1ms
+ [FullscreenApp] calling setEditorTheme and setting preference light
+ [MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/nGLQhEX8xwQMW7qxwAurZz?role=editor&tracking_session_id=V9RcdHpeAgRV5Sk2&version=151&recentReload=0&file-load-streaming-compression&user-id=1600306619663633139&client_release=107bbd51e86fce9a104f472597b3e63a6aa8ffa6
+ [FullscreenApp] calling setEditorTheme and setting preference light
+ [MultiplayerSession] Joining file version 106 (initial load)
+ Migration succeeded: context: fullscreen_migrate_SceneGraphManager, version: 106, duration: 0ms.
+ [Fullscreen] loadtime=16.57s maxmem=301498648
+ Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently
+S @ figma_app-726b2563eb8cdce8.min.js.br:41
+T @ figma_app-726b2563eb8cdce8.min.js.br:41
+ [devtools] Initialized LS
+/api/make/fetch_ds_code_gen_status:1  Failed to load resource: the server responded with a status of 400 ()
+ [devtools] Initialized LS
+ ════════════════════════════════════════════════════════
+ 🔍 HeroCarousel - Loading Content
+ ════════════════════════════════════════════════════════
+ 📍 User Country: null
+ 📨 All Welcome Messages from localStorage: Array(0)
+ 🖼️  All Hero Slides from localStorage: Array(0)
+ ✅ Active Slides after filtering: 0 Array(0)
+ ⚙️  Carousel Settings: Object
+ ✅ Visible Welcome Messages after filtering: 0 Array(0)
+ ════════════════════════════════════════════════════════
+utils.js:1  Failed to load resource: net::ERR_FILE_NOT_FOUND
+extensionState.js:1  Failed to load resource: net::ERR_FILE_NOT_FOUND
+heuristicsRedefinitions.js:1  Failed to load resource: net::ERR_FILE_NOT_FOUND
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+completion_list.html?username=&colorScheme=&screenX=0&screenY=33&effectiveWindowWidth=1470&isDark=f…:1 Error in event handler: TypeError: Cannot read properties of undefined (reading 'length')
+    at showChoices (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/completion_list.js:1:10099)
+    at populateCompletionListWithCachedContentIfReady (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/completion_list.js:1:11449)
+    at gotOneTimeCodeChoices (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/completion_list.js:1:11756)
+    at chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/completion_list.js:1:21972
+ 📝 updateFormulasList called with: Object
+ 🔄 updateSection called for section: builder
+ 🔄 Update: Object
+ 🔄 Current settings[section]: Object
+ 🔄 New section value: Object
+ 🔄 Final newSettings: Object
+ 📝 updatePrescriptionBuilder called with: Object
+ 🔄 updateSection called for section: builder
+ 🔄 Update: Object
+ 🔄 Current settings[section]: Object
+ 🔄 New section value: Object
+ 🔄 Final newSettings: Object
+ 📝 updatePrescriptionBuilder called with: Object
+ 🔄 updateSection called for section: builder
+ 🔄 Update: Object
+ 🔄 Current settings[section]: Object
+ 🔄 New section value: Object
+ 🔄 Final newSettings: Object
+ 📝 updatePrescriptionBuilder called with: Object
+ 🔄 updateSection called for section: builder
+ 🔄 Update: Object
+ 🔄 Current settings[section]: Object
+ 🔄 New section value: Object
+ 🔄 Final newSettings: Object
+ 📝 updatePrescriptionBuilder called with: Object
+ 🔄 updateSection called for section: builder
+ 🔄 Update: Object
+ 🔄 Current settings[section]: Object
+ 🔄 New section value: Object
+ 🔄 Final newSettings: Object
+ 📝 updatePrescriptionBuilder called with: Object
+ 🔄 updateSection called for section: builder
+ 🔄 Update: Object
+ 🔄 Current settings[section]: Object
+ 🔄 New section value: Object
+ 🔄 Final newSettings: Object
+ 📝 updatePrescriptionBuilder called with: Object
+ 🔄 updateSection called for section: builder
+ 🔄 Update: Object
+ 🔄 Current settings[section]: Object
+ 🔄 New section value: Object
+ 🔄 Final newSettings: Object
+ 📝 updatePrescriptionBuilder called with: Object
+ 🔄 updateSection called for section: builder
+ 🔄 Update: Object
+ 🔄 Current settings[section]: Object
+ 🔄 New section value: Object
+ 🔄 Final newSettings: Object
+ 📝 updatePrescriptionBuilder called with: Object
+ 🔄 updateSection called for section: builder
+ 🔄 Update: Object
+ 🔄 Current settings[section]: Object
+ 🔄 New section value: Object
+ 🔄 Final newSettings: Object
+ 📝 updatePrescriptionBuilder called with: Object
+ 🔄 updateSection called for section: builder
+ 🔄 Update: Object
+ 🔄 Current settings[section]: Object
+ 🔄 New section value: Object
+ 🔄 Final newSettings: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 📝 updatePrescriptionBuilder called with: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 updateSection called for section: builder
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Update: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Current settings[section]: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 New section value: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Final newSettings: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 📝 updatePrescriptionBuilder called with: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 updateSection called for section: builder
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Update: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Current settings[section]: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 New section value: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Final newSettings: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 📝 updatePrescriptionBuilder called with: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 updateSection called for section: builder
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Update: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Current settings[section]: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 New section value: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Final newSettings: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 📝 updatePrescriptionBuilder called with: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 updateSection called for section: builder
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Update: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Current settings[section]: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 New section value: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Final newSettings: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 📝 updatePreview called with: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 updateSection called for section: builder
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Update: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Current settings[section]: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 New section value: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Final newSettings: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 📝 updatePreview called with: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 updateSection called for section: builder
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Update: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Current settings[section]: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 New section value: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Final newSettings: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 📝 updatePreview called with: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 updateSection called for section: builder
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Update: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Current settings[section]: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 New section value: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Final newSettings: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 📝 updatePrescriptionBuilder called with: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 updateSection called for section: builder
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Update: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Current settings[section]: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 New section value: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Final newSettings: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 📝 updatePrescriptionBuilder called with: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 updateSection called for section: builder
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Update: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Current settings[section]: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 New section value: Object
+code_components_preview_iframe-f4fd20809e153e7b.min.js.br:90 🔄 Final newSettings: Object

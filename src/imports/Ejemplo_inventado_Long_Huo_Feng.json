@@ -1,0 +1,169 @@
+[
+  {
+    "herb_id": "h9_001_LHF",
+    "pinyin_name": "Lóng Huǒ Fēng",
+    "hanzi_name": "龙火风",
+    "pharmaceutical_name": "Folium Dracoignis",
+    "english_name": "dragon fire leaf",
+
+    "category": "Heat-Clearing",
+    "subcategory": "Fire-Purging",
+
+    "nature": "Cold",
+    "flavor": ["Bitter", "Acrid"],
+    "channels": ["HT", "LV"],
+
+    "toxicology": [],
+    "dose": "3~9g",
+
+    "banned_countries": [],
+
+    "actions": [
+      {
+        "title": "Clears blazing heart fire",
+        "branches": [
+          {
+            "pattern": "Heart fire blazing",
+            "sub_pattern": "Restlessness and mouth ulcers",
+            "combination": ["Qīng Lián Gēn"],
+            "formula_example": "Lóng Huǒ Tāng"
+          }
+        ]
+      }
+    ],
+
+    "indications": [],
+    "cautions": [],
+    "contraindications": [],
+
+    "antagonisms": ["Qīng Lián Gēn"],
+    "incompatibilities": [],
+
+    "pharmacological_effects": [],
+    "biological_mechanisms": [
+      {
+        "system": "",
+        "target_action": ""
+      }
+    ],
+
+    "clinical_studies_and_research": [],
+    "herb_drug_interactions": [],
+    "herb_herb_interactions": [],
+    "allergens": [],
+    "notes": [],
+    "references": []
+  },
+
+  {
+    "herb_id": "h9_002_QLG",
+    "pinyin_name": "Qīng Lián Gēn",
+    "hanzi_name": "清莲根",
+    "pharmaceutical_name": "Radix Nelumbinis Purificata",
+    "english_name": "pure lotus root",
+
+    "category": "Heat-Clearing",
+    "subcategory": "Toxin-Eliminating",
+
+    "nature": "Cold",
+    "flavor": ["Sweet", "Bitter"],
+    "channels": ["HT", "ST"],
+
+    "toxicology": [],
+    "dose": "6~12g",
+
+    "banned_countries": [],
+
+    "actions": [
+      {
+        "title": "Clears toxin heat from the blood",
+        "branches": [
+          {
+            "pattern": "Toxic heat in the blood",
+            "sub_pattern": "Red eruptions and fever",
+            "combination": ["Shí Yán Zhī"],
+            "formula_example": "Lián Dú Tāng"
+          }
+        ]
+      }
+    ],
+
+    "indications": [],
+    "cautions": [],
+    "contraindications": [],
+
+    "antagonisms": ["Lóng Huǒ Fēng"],
+    "incompatibilities": ["Shí Yán Zhī"],
+
+    "pharmacological_effects": [],
+    "biological_mechanisms": [
+      {
+        "system": "",
+        "target_action": ""
+      }
+    ],
+
+    "clinical_studies_and_research": [],
+    "herb_drug_interactions": [],
+    "herb_herb_interactions": [],
+    "allergens": [],
+    "notes": [],
+    "references": []
+  },
+
+  {
+    "herb_id": "h9_003_SYZ",
+    "pinyin_name": "Shí Yán Zhī",
+    "hanzi_name": "石炎枝",
+    "pharmaceutical_name": "Ramulus Pyrocalcis",
+    "english_name": "stone flame twig",
+
+    "category": "Interior-Warming",
+    "subcategory": "Cold-Dispelling",
+
+    "nature": "Hot",
+    "flavor": ["Acrid", "Salty"],
+    "channels": ["KI", "SP"],
+
+    "toxicology": [],
+    "dose": "1~6g",
+
+    "banned_countries": [],
+
+    "actions": [
+      {
+        "title": "Warms kidney yang and disperses cold",
+        "branches": [
+          {
+            "pattern": "Kidney yang deficiency with cold limbs",
+            "sub_pattern": "",
+            "combination": ["Ròu Guì"],
+            "formula_example": "Yán Huǒ Wán"
+          }
+        ]
+      }
+    ],
+
+    "indications": [],
+    "cautions": [],
+    "contraindications": [],
+
+    "antagonisms": [],
+    "incompatibilities": ["Qīng Lián Gēn"],
+
+    "pharmacological_effects": [],
+    "biological_mechanisms": [
+      {
+        "system": "",
+        "target_action": ""
+      }
+    ],
+
+    "clinical_studies_and_research": [],
+    "herb_drug_interactions": [],
+    "herb_herb_interactions": [],
+    "allergens": [],
+    "notes": [],
+    "references": []
+  }
+]

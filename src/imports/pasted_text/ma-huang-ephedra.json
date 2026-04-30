@@ -1,0 +1,175 @@
+{
+  "herb_id": "h1_001_MH",
+  "pinyin_name": "Ma Huang",
+  "hanzi_name": "麻黄",
+  "pharmaceutical_name": "Herba Ephedrae",
+  "english_name": "ephedra",
+
+  "category": "Exterior-Releasing",
+  "subcategory": "Wind-Cold Releasing",
+
+  "nature": "Warm",
+  "flavor": ["Acrid", "Bitter"],
+  "channels": ["LU", "UB"],
+
+  "toxicology": [],
+  "dose": "2~9g",
+
+  "banned_countries": [],
+
+  "actions": [
+    "Relieves the exterior by expelling wind.",
+    "Removes dampness to relieve pain.",
+    "Relieves spasms.",
+    "Treat sores.",
+    "Arrests bleeding when charred.",
+    "Arrests diarrhoea."
+  ],
+
+  "indications": ["PERREO", "Acute bronchitis"],
+
+  "clinical_applications": [
+    {
+      "condition": "Acute bronchitis",
+      "pattern": "Qi stagnant"
+    }
+  ],
+
+  "dui_yao": [
+    {
+      "pair": ["Ma Huang", "Gui Zhi"],
+      "functions": [
+        "Strongly releases the exterior and disperses wind-cold",
+        "Promotes sweating in exterior excess wind-cold patterns"
+      ],
+      "notes": "Classic pair for exterior excess wind-cold without sweating; strongly opens the pores and releases the pathogen. Representative formula: Ma Huang Tang."
+    },
+    {
+      "pair": ["Ma Huang", "Xing Ren"],
+      "functions": [
+        "Facilitates Lung qi",
+        "Stops cough and wheezing",
+        "One disperses while the other descends"
+      ],
+      "notes": "A fundamental pair for cough, wheezing, and dyspnea. Commonly used for wind-cold constraining the Lung or other patterns with impaired Lung qi diffusion and descent."
+    },
+    {
+      "pair": ["Ma Huang", "Shi Gao"],
+      "functions": [
+        "Clears Lung heat while relieving wheezing",
+        "Simultaneously vents constrained exterior qi and drains internal heat"
+      ],
+      "notes": "Used when wheezing is due to Lung heat. Shi Gao moderates the warm, dispersing nature of Ma Huang. Representative formula: Ma Xing Gan Shi Tang."
+    },
+    {
+      "pair": ["Ma Huang", "Gan Jiang"],
+      "functions": [
+        "Warms the Lung and transforms thin mucus",
+        "Disperses cold from exterior and interior"
+      ],
+      "notes": "Useful in cold-type wheezing or cough with thin, profuse phlegm and internal cold. Often seen in Xiao Qing Long Tang-type presentations."
+    },
+    {
+      "pair": ["Ma Huang", "Xi Xin"],
+      "functions": [
+        "Disperses wind-cold",
+        "Warms the Lung",
+        "Relieves cough and wheezing"
+      ],
+      "notes": "A strong cold-dispersing pair for exterior cold with internal cold-fluid retention. Often combined with Gan Jiang and Ban Xia."
+    },
+    {
+      "pair": ["Ma Huang", "Ban Xia"],
+      "functions": [
+        "Redirects rebellious Lung qi downward",
+        "Transforms phlegm and cold-fluid accumulation",
+        "Relieves cough and wheezing"
+      ],
+      "notes": "Used when phlegm retention contributes to dyspnea or cough, especially in cold-phlegm or cold-fluid patterns."
+    },
+    {
+      "pair": ["Ma Huang", "Bai Zhu"],
+      "functions": [
+        "Releases the exterior and promotes urination",
+        "Reduces edema associated with exterior wind-water patterns"
+      ],
+      "notes": "Useful for edema with an exterior syndrome. Bai Zhu strengthens the Spleen and assists fluid metabolism. Representative formula: Yue Bi Jia Zhu Tang."
+    },
+    {
+      "pair": ["Ma Huang", "Sheng Jiang"],
+      "functions": [
+        "Assists exterior release",
+        "Warms and harmonizes the Lung and Stomach",
+        "Supports the dispersing action of Ma Huang"
+      ],
+      "notes": "A supportive pair often used in formulas for wind-cold or wind-water patterns."
+    },
+    {
+      "pair": ["Ma Huang", "Yi Yi Ren"],
+      "functions": [
+        "Expels wind-damp",
+        "Unblocks the channels",
+        "Relieves Bi pain"
+      ],
+      "notes": "Used in wind-damp painful obstruction when exterior cold-damp and channel obstruction are prominent."
+    },
+    {
+      "pair": ["Ma Huang", "Bai Jie Zi"],
+      "functions": [
+        "Warms the channels",
+        "Disperses cold-phlegm",
+        "Opens obstruction in yin-type sores or cold stagnation disorders"
+      ],
+      "notes": "A stronger warming and dispersing combination often seen in chronic cold-type obstruction or yin sores."
+    }
+  ],
+
+  "cautions": [
+    "Pregnancy.",
+    "Liver yang rising.",
+    "Yin deficiency fire."
+  ],
+
+  "contraindications": [
+    "Insomnia.",
+    "Convulsions.",
+    "Epilepsy or seizure disorders.",
+    "Hypertension.",
+    "Liver yang rising.",
+    "Yin deficiency fire."
+  ],
+
+  "antagonisms": [],
+  "incompatibilities": [],
+
+  "pharmacological_effects": [
+    "Contains ephedrine.",
+    "Diaphoretic.",
+    "Antipyretic.",
+    "Respiratory stimulant.",
+    "Diuretic.",
+    "Cardiovascular stimulant.",
+    "CNS stimulant.",
+    "Antibiotic activity reported."
+  ],
+
+  "biological_mechanisms": [
+    {
+      "system": "",
+      "target_action": ""
+    }
+  ],
+
+  "clinical_studies_and_research": [],
+
+  "herb_drug_interactions": [
+    "Cardiac glycosides.",
+    "Beta-blockers.",
+    "Diuretics."
+  ],
+
+  "herb_herb_interactions": [],
+  "allergens": [],
+  "notes": [],
+  "references": []
+}

@@ -1,0 +1,149 @@
+{
+  "herb_id": "h1_001_MH",
+  "pinyin_name": "Ma Huang",
+  "hanzi_name": "麻黄",
+  "pharmaceutical_name": "Herba Ephedrae",
+  "english_name": "ephedra",
+
+  "category": "Exterior-Releasing",
+  "subcategory": "Wind-Cold Releasing",
+
+  "nature": "Warm",
+  "flavor": ["Acrid", "Bitter"],
+  "channels": ["LU", "UB"],
+
+  "toxicology": [],
+  "dose": "2~9g",
+
+  "banned_countries": [],
+
+  "actions": [
+    {
+      "title": "Releases the exterior through diaphoresis",
+      "branches": [
+        {
+          "pattern": "Exterior-excess wind-cold condition",
+          "sub_pattern": "",
+          "combination": ["Gui Zhi"],
+          "formula_example": "Ma Huang Tang"
+        }
+      ]
+    },
+    {
+      "title": "Relieves wheezing and dyspnea, stops cough",
+      "branches": [
+        {
+          "pattern": "Wind-cold constriction of the Lung leading to Lung qi reversal",
+          "sub_pattern": "Cough from wind-cold attacking the exterior and constricting Lung qi",
+          "combination": ["Xing Ren"],
+          "formula_example": ""
+        },
+        {
+          "pattern": "Lung heat",
+          "sub_pattern": "Wheezing or cough caused by Lung heat",
+          "combination": ["Shi Gao", "Xing Ren"],
+          "formula_example": "Ma Xing Gan Shi Tang"
+        },
+        {
+          "pattern": "Wind-cold attack at the exterior with cold stagnation in the interior",
+          "sub_pattern": "Wheezing or cough from wind-cold attack with interior cold stagnation",
+          "combination": ["Gan Jiang", "Xi Xin", "Ban Xia"],
+          "formula_example": "Xiao Qing Long Tang"
+        },
+        {
+          "pattern": "Qi and phlegm stagnation",
+          "sub_pattern": "Wheezing and dyspnea caused by stagnation of qi and phlegm",
+          "combination": ["Xing Ren", "Chen Pi", "Hou Po"],
+          "formula_example": "Shen Mi Tang"
+        }
+      ]
+    },
+    {
+      "title": "Regulates water circulation and relieves edema",
+      "branches": [
+        {
+          "pattern": "Edema with exterior syndrome",
+          "sub_pattern": "",
+          "combination": ["Sheng Jiang", "Bai Zhu", "Gan Cao"],
+          "formula_example": "Yue Bi Jia Zhu Tang"
+        }
+      ]
+    },
+    {
+      "title": "Disperses cold",
+      "branches": [
+        {
+          "pattern": "Bi Zheng (painful obstruction syndrome)",
+          "sub_pattern": "Bi Zheng caused by wind-damp",
+          "combination": ["Yi Yi Ren", "Xing Ren", "Gan Cao"],
+          "formula_example": ""
+        },
+        {
+          "pattern": "Yin sores",
+          "sub_pattern": "Yin sores",
+          "combination": ["Shu Di Huang", "Bai Jie Zi", "Lu Jiao Jiao"],
+          "formula_example": ""
+        },
+        {
+          "pattern": "Arteritis obliterans / obliterating phlebitis / Raynaud’s disease",
+          "sub_pattern": "",
+          "combination": ["Shu Di Huang", "Bai Jie Zi", "Lu Jiao Jiao", "Rou Gui", "Gan Cao"],
+          "formula_example": ""
+        }
+      ]
+    }
+  ],
+
+  "indications": [],
+
+  "cautions": [
+    "Pregnancy.",
+    "Liver yang rising.",
+    "Yin deficiency fire."
+  ],
+
+  "contraindications": [
+    "Insomnia.",
+    "Convulsions.",
+    "Epilepsy or seizure disorders.",
+    "Hypertension.",
+    "Liver yang rising.",
+    "Yin deficiency fire."
+  ],
+
+  "antagonisms": [],
+  "incompatibilities": [],
+
+  "banned_countries": [],
+
+  "pharmacological_effects": [
+    "Contains ephedrine.",
+    "Diaphoretic.",
+    "Antipyretic.",
+    "Respiratory stimulant.",
+    "Diuretic.",
+    "Cardiovascular stimulant.",
+    "CNS stimulant.",
+    "Antibiotic activity reported."
+  ],
+
+  "biological_mechanisms": [
+    {
+      "system": "",
+      "target_action": ""
+    }
+  ],
+
+  "clinical_studies_and_research": [],
+
+  "herb_drug_interactions": [
+    "Cardiac glycosides.",
+    "Beta-blockers.",
+    "Diuretics."
+  ],
+
+  "herb_herb_interactions": [],
+  "allergens": [],
+  "notes": [],
+  "references": []
+}

@@ -1,0 +1,75 @@
+{
+  "herb_id": "h1_051_MH",
+  "pinyin_name": "Prueba 1",
+  "hanzi_name": "",
+  "pharmaceutical_name": "",
+  "english_name": "",
+
+  "category": "Tonic",
+  "subcategory": "Qi-Tonifying",
+
+  "nature": "",
+  "flavor": [],
+  "channels": [],
+
+  "toxicology": [],
+  "dose": "",
+
+  "banned_countries": [],
+
+  "actions": [
+    {
+      "title": "",
+      "branches": [
+        {
+          "pattern": "",
+          "sub_pattern": "",
+          "combination": [],
+          "formula_example": ""
+        }
+      ]
+    }
+  ],
+
+  "indications": [],
+
+  "clinical_applications": [
+    {
+      "condition": "",
+      "pattern": ""
+    }
+  ],
+
+  "dui_yao": [
+    {
+      "pair": [],
+      "functions": [],
+      "notes": ""
+    }
+  ],
+
+  "cautions": [],
+  "contraindications": [],
+
+  "antagonisms": [],
+  "incompatibilities": [],
+
+  "pharmacological_effects": [],
+
+  "biological_mechanisms": [
+    {
+      "system": "",
+      "target_action": ""
+    }
+  ],
+
+  "bioactive_compounds": [],
+
+  "clinical_studies_and_research": [],
+
+  "herb_drug_interactions": [],
+  "herb_herb_interactions": [],
+  "allergens": [],
+  "notes": [],
+  "references": []
+}

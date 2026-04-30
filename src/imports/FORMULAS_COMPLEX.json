@@ -1,0 +1,65 @@
+{
+  "formula_id": "",
+  "pinyin_name": "",
+  "hanzi_name": "",
+  "translated_name": "",
+  "alternative_names": [],
+
+  "category": "",
+  "subcategory": "",
+
+  "source": "",
+  "thermal_action": "",
+
+  "composition": [
+    {
+      "herb_pinyin": "",
+      "pharmaceutical_name": "",
+      "dosage": "",
+      "role": "",
+      "function_in_formula": "",
+    }
+  ],
+
+  "dosage": [],
+  "preparation": [],
+  "administration": [],
+
+  "tcm_actions": [],
+  "clinical_manifestations": [],
+  "clinical_applications": [
+    {
+      "condition": "",
+      "pattern": null
+    }
+  ],
+
+  "modifications": [
+    {
+      "pattern": "",
+      "add": [],
+      "remove": []
+    }
+  ],
+
+  "pharmacological_effects": [],
+  "biological_mechanisms": [
+    {
+      "system": "",
+      "target_action": ""
+    }
+  ],
+
+  "clinical_studies_and_research": [],
+
+  "drug_interactions": [],
+  "herb_interactions": [],
+  "allergens": [],
+
+  "cautions": [],
+  "contraindications": [],
+  "toxicology": [],
+
+  "notes": [],
+  "reference": []
+}

@@ -1,0 +1,279 @@
+[
+  {
+    "herb_id": "h1_001_MH",
+    "pinyin_name": "Ma Huang",
+    "hanzi_name": "麻黄",
+    "pharmaceutical_name": "Herba Ephedrae",
+    "english_name": "ephedra",
+    "category": "Exterior-Releasing",
+    "subcategory": "Wind-Cold Releasing",
+    "nature": "Warm",
+    "flavor": ["Acrid", "Bitter"],
+    "channels": ["LU", "UB"],
+    "banned_countries": [],
+    "actions": [
+      {
+        "title": "Releases the exterior through diaphoresis",
+        "branches": [
+          {
+            "pattern": "Exterior-excess wind-cold condition",
+            "combination": ["Gui Zhi"],
+            "formula_example": "Ma Huang Tang"
+          }
+        ]
+      },
+      {
+        "title": "Relieves wheezing and dyspnea, stops cough",
+        "branches": [
+          {
+            "pattern": "Wind-cold constriction of the Lung leading to Lung qi reversal",
+            "sub_pattern": "Cough from wind-cold attacking the exterior and constricting Lung qi",
+            "combination": ["Xing Ren"]
+          },
+          {
+            "pattern": "Lung heat",
+            "sub_pattern": "Wheezing or cough caused by Lung heat",
+            "combination": ["Shi Gao", "Xing Ren"],
+            "formula_example": "Ma Xing Gan Shi Tang"
+          },
+          {
+            "pattern": "Wind-cold attack at the exterior with cold stagnation in the interior",
+            "sub_pattern": "Wheezing or cough from wind-cold attack with interior cold stagnation",
+            "combination": ["Gan Jiang", "Xi Xin", "Ban Xia"],
+            "formula_example": "Xiao Qing Long Tang"
+          },
+          {
+            "pattern": "Qi and phlegm stagnation",
+            "sub_pattern": "Wheezing and dyspnea caused by stagnation of qi and phlegm",
+            "combination": ["Xing Ren", "Chen Pi", "Hou Po"],
+            "formula_example": "Shen Mi Tang"
+          }
+        ]
+      },
+      {
+        "title": "Regulates water circulation and relieves edema",
+        "branches": [
+          {
+            "pattern": "Edema with exterior syndrome",
+            "combination": ["Sheng Jiang", "Bai Zhu", "Gan Cao"],
+            "formula_example": "Yue Bi Jia Zhu Tang"
+          }
+        ]
+      },
+      {
+        "title": "Disperses cold",
+        "branches": [
+          {
+            "pattern": "Bi Zheng (painful obstruction syndrome)",
+            "sub_pattern": "Bi Zheng caused by wind-damp",
+            "combination": ["Yi Yi Ren", "Xing Ren", "Gan Cao"]
+          },
+          {
+            "pattern": "Yin sores",
+            "sub_pattern": "Yin sores",
+            "combination": ["Shu Di Huang", "Bai Jie Zi", "Lu Jiao Jiao"]
+          },
+          {
+            "pattern": "Arteritis obliterans / obliterating phlebitis / Raynaud's disease",
+            "combination": ["Shu Di Huang", "Bai Jie Zi", "Lu Jiao Jiao", "Rou Gui", "Gan Cao"]
+          }
+        ]
+      }
+    ],
+    "indications": [],
+    "cautions": [
+      "Pregnancy.",
+      "Liver yang rising.",
+      "Yin deficiency fire."
+    ],
+    "contraindications": [
+      "Insomnia.",
+      "Convulsions.",
+      "Epilepsy or seizure disorders.",
+      "Hypertension.",
+      "Liver yang rising.",
+      "Yin deficiency fire."
+    ],
+    "dose": "2-9g",
+    "toxic": { "icon": false, "details": [] },
+    "pregnancy_warning": { "icon": true, "details": ["Use with caution during pregnancy."] },
+    "antagonisms": { "icon": false, "herbs": [] },
+    "incompatibilities": { "icon": false, "herbs": [] },
+    "pharmacological_effects": [
+      "Contains ephedrine.",
+      "Diaphoretic.",
+      "Antipyretic.",
+      "Respiratory stimulant.",
+      "Diuretic.",
+      "Cardiovascular stimulant.",
+      "CNS stimulant.",
+      "Antibiotic activity reported."
+    ],
+    "biological_mechanisms": [],
+    "bioactive_compounds": [
+      {
+        "chemical_class": "Alkaloids",
+        "compounds": ["Ephedrine", "Pseudoephedrine", "Methylephedrine"]
+      },
+      {
+        "chemical_class": "Flavonoids",
+        "compounds": ["Quercetin", "Kaempferol"]
+      }
+    ],
+    "detoxification": [],
+    "clinical_studies_and_research": [],
+    "herb_drug_interactions": [
+      "Cardiac glycosides.",
+      "Beta-blockers.",
+      "Diuretics."
+    ],
+    "herb_herb_interactions": [],
+    "allergens": [],
+    "notes": [],
+    "references": []
+  },
+  {
+    "herb_id": "h1_002_GZ",
+    "pinyin_name": "Gui Zhi",
+    "hanzi_name": "桂枝",
+    "pharmaceutical_name": "Ramulus Cinnamomi",
+    "english_name": "cinnamon twig",
+    "category": "Exterior-Releasing",
+    "subcategory": "Wind-Cold Releasing",
+    "nature": "Warm",
+    "flavor": ["Acrid", "Sweet"],
+    "channels": ["HT", "LU", "UB"],
+    "banned_countries": [],
+    "actions": [
+      {
+        "title": "Releases the exterior through diaphoresis",
+        "branches": [
+          {
+            "pattern": "Exterior-excess wind-cold condition",
+            "sub_pattern": "Exterior-excess wind-cold condition in the absence of perspiration",
+            "combination": ["Ma Huang"],
+            "formula_example": "Ma Huang Tang"
+          },
+          {
+            "pattern": "Exterior-deficient wind-cold condition",
+            "sub_pattern": "Wind-cold with perspiration and aversion to wind",
+            "combination": ["Bai Shao"],
+            "formula_example": "Gui Zhi Tang"
+          }
+        ]
+      },
+      {
+        "title": "Warms and opens the channels and collaterals",
+        "branches": [
+          {
+            "pattern": "Bi Zheng (painful obstruction syndrome)",
+            "sub_pattern": "Bi Zheng",
+            "combination": ["Chuan Wu", "Cao Wu"]
+          },
+          {
+            "pattern": "Bi Zheng in the upper body",
+            "sub_pattern": "Especially affecting the shoulders",
+            "combination": ["Jiang Huang", "Fang Feng"]
+          },
+          {
+            "pattern": "Rheumatoid arthritis",
+            "combination": ["Qiang Huo", "Du Huo", "Fang Feng", "Wei Ling Xian"]
+          }
+        ]
+      },
+      {
+        "title": "Warms yang to eliminate water or phlegm stagnation",
+        "branches": [
+          {
+            "pattern": "Edema and dysuria",
+            "sub_pattern": "Due to yang deficiency",
+            "combination": ["Fu Ling", "Zhu Ling", "Ze Xie", "Bai Zhu"],
+            "formula_example": "Wu Ling San"
+          },
+          {
+            "pattern": "Tan yin (phlegm retention)",
+            "sub_pattern": "Phlegm accumulation with chest and hypochondrial fullness, dizziness, vertigo and palpitations",
+            "combination": ["Fu Ling", "Bai Zhu", "Gan Cao"],
+            "formula_example": "Ling Gui Zhu Gan Tang"
+          }
+        ]
+      },
+      {
+        "title": "Warms yang in the chest",
+        "branches": [
+          {
+            "pattern": "Xiong Bi (painful obstruction of the chest)",
+            "sub_pattern": "Due to yang deficiency",
+            "combination": ["Gua Lou Shi", "Xie Bai"]
+          },
+          {
+            "pattern": "Palpitations and intermittent pulse",
+            "sub_pattern": "Due to Heart yin and yang deficiency",
+            "combination": ["Zhi Gan Cao", "Ren Shen", "E Jiao"],
+            "formula_example": "Zhi Gan Cao Tang"
+          }
+        ]
+      },
+      {
+        "title": "Warms yang in the Chong and Ren channels to restore menstruation",
+        "branches": [
+          {
+            "pattern": "Irregular menstruation",
+            "sub_pattern": "Due to yang deficiency and cold stagnation",
+            "combination": ["Dang Gui", "Chuan Xiong"],
+            "formula_example": "Wen Jing Tang"
+          },
+          {
+            "pattern": "Blood stagnation with lower abdominal masses",
+            "combination": ["Mu Dan Pi", "Tao Ren"],
+            "formula_example": "Gui Zhi Fu Ling Wan"
+          }
+        ]
+      }
+    ],
+    "indications": [],
+    "cautions": [
+      "Pregnancy.",
+      "High risk of bleeding.",
+      "Hypermenorrhea."
+    ],
+    "contraindications": [
+      "Febrile disorders.",
+      "Yang excess related to yin deficiency.",
+      "Heat in the blood.",
+      "Heat-dominant disorders."
+    ],
+    "dose": "3-9g",
+    "toxic": { "icon": false, "details": [] },
+    "pregnancy_warning": { "icon": true, "details": ["Use with caution during pregnancy."] },
+    "antagonisms": { "icon": false, "herbs": [] },
+    "incompatibilities": { "icon": false, "herbs": [] },
+    "pharmacological_effects": [
+      "Antibiotic.",
+      "Diuretic.",
+      "Diaphoretic.",
+      "Antipyretic.",
+      "Analgesic.",
+      "Circulatory stimulant.",
+      "Cardiotonic.",
+      "Sedative.",
+      "Hypnotic.",
+      "Antitussive."
+    ],
+    "biological_mechanisms": [],
+    "bioactive_compounds": [
+      "Cinnamaldehyde",
+      "Cinnamic acid",
+      "Coumarin"
+    ],
+    "detoxification": [],
+    "clinical_studies_and_research": [],
+    "herb_drug_interactions": [
+      "Diuretics."
+    ],
+    "herb_herb_interactions": [],
+    "allergens": [],
+    "notes": [],
+    "references": []
+  }
+]

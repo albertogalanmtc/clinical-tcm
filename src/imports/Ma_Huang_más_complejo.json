@@ -1,0 +1,141 @@
+{
+  "herb_id": "h1_001_MH",
+  "pinyin_name": "Má Huáng",
+  "hanzi_name": "麻黄",
+  "pharmaceutical_name": "Herba Ephedrae",
+  "english_name": "ephedra",
+  "category": "Exterior-Releasing",
+  "subcategory": "Wind-Cold Releasing",
+  "nature": "Warm",
+  "flavor": ["Bitter", "Punge"],
+  "channels": ["BL", "LU"],
+  "banned_countries": [],
+
+  "actions": [
+    "Dispels pathogenic factors from the exterior by diaphoresis.",
+    "Promotes the flow of lung qi to relieve asthma.",
+    "Promotes water flow to reduce oedema."
+  ],
+
+  "indications": [
+    "Exterior syndrome of an excess type due to invasion by pathogenic wind cold manifesting as anhidrosis.",
+    "Cough with dyspnoea due to impaired dispersion of the lung qi.",
+    "Common oedema."
+  ],
+
+  "clinical_applications": [
+    {
+      "condition": "Bi zheng (painful obstruction syndrome)",
+      "pattern": "Tong bi (extremely painful obstruction)"
+    },
+    {
+      "condition": "Carbuncles and furuncles",
+      "pattern": "Yin type"
+    },
+    {
+      "condition": "Cough",
+      "pattern": "Wind-cold"
+    },
+    {
+      "condition": "Edema",
+      "pattern": "Edema with exterior syndrome"
+    },
+    {
+      "condition": "Headache",
+      "pattern": "Wind-cold"
+    },
+    {
+      "condition": "Loss of voice",
+      "pattern": "Wind-cold"
+    },
+    {
+      "condition": "Wheezing and dyspnea",
+      "pattern": "Cold"
+    },
+    {
+      "condition": "Arthritis",
+      "pattern": null
+    },
+    {
+      "condition": "Asthma",
+      "pattern": null
+    },
+    {
+      "condition": "Bleeding disorders",
+      "pattern": null
+    },
+    {
+      "condition": "Bronchitis",
+      "pattern": null
+    },
+    {
+      "condition": "Common colds and influenza",
+      "pattern": null
+    },
+    {
+      "condition": "Diarrhea",
+      "pattern": null
+    },
+    {
+      "condition": "Edema",
+      "pattern": null
+    },
+    {
+      "condition": "Infection (upper respiratory tract)",
+      "pattern": null
+    },
+    {
+      "condition": "Mastitis",
+      "pattern": null
+    },
+    {
+      "condition": "Nephritis",
+      "pattern": null
+    },
+    {
+      "condition": "Pneumonia",
+      "pattern": null
+    },
+    {
+      "condition": "Whooping cough",
+      "pattern": null
+    }
+  ],
+
+  "cautions": [
+    "Night sweats due to yin deficiency.",
+    "Spontaneous sweating due to exterior deficiency.",
+    "Deficiency type asthma due to lung and kidney deficiency."
+  ],
+
+  "contraindications": [],
+  "dose": "2~9g",
+
+  "toxic": { "icon": false, "details": [] },
+  "pregnancy_warning": { "icon": false, "details": [] },
+  "antagonisms": { "icon": false, "herbs": [] },
+  "incompatibilities": { "icon": false, "herbs": [] },
+
+  "pharmacological_effects": [
+    { "section": "", "effects": [] }
+  ],
+
+  "biological_mechanisms": [
+    { "system": "", "target_action": "" }
+  ],
+
+  "bioactive_compounds": [
+    { "chemical_class": "", "compounds": [] }
+  ],
+
+  "detoxification": [
+    { "toxin_group": "", "agents": [] }
+  ],
+
+  "clinical_studies_and_research": [],
+  "herb_drug_interactions": [],
+  "herb_herb_interactions": [],
+  "allergens": [],
+  "notes": [],
+  "references": []
+}

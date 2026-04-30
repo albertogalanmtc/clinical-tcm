@@ -1,0 +1,1825 @@
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+background.js:1 Uncaught (in promise) 
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+ Running frontend commit 29244711f25109c85ce9dbbe4291938e16e94ea0
+ Statsig is not ready to log exposures, will retry in 1 seconds
+ Loaded 41 scripts (6449680b), 41 from cache (6449680b)
+ [import] git: 29244711f25109c85ce9dbbe4291938e16e94ea0, stamp: 828238723CF476C8
+ Autosave Changes not available or already claimed by another tab undefined
+ [Fullscreen] Booting... (emscripten version 4.0.21)
+ [GPU] graphicsAPI:"WebGPU", vendor:"Google Inc. (Apple)" renderer:"ANGLE (Apple, ANGLE Metal Renderer: Apple M3, Unspecified Version)" deviceArchitecture:"metal-3" deviceDescription:"" webGPUDevice:"" webGPUVendor:"apple" bindings:"emdawnwebgpu"
+ [Fullscreen] Ready in 43.8ms
+ [FullscreenApp] calling setEditorTheme and setting preference light
+ [MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/0MmfrRaLM4KqcclEDHF5vJ?role=editor&tracking_session_id=VLoDwUwqeblQbWkT&version=151&recentReload=1&file-load-streaming-compression=&user-id=1630364159585785991&client_release=29244711f25109c85ce9dbbe4291938e16e94ea0&force-dpl-journaled-reconnect=1
+ [FullscreenApp] calling setEditorTheme and setting preference light
+/api/plans/368aab40-1c0f-4f02-a02e-bf74987a6243/npm_private_registry/scopes:1  Failed to load resource: the server responded with a status of 404 ()
+/api/folders/581688551:1  Failed to load resource: the server responded with a status of 403 ()
+8469-f47411c60eb019a8.min.js.br:1405 Uncaught (in promise) 
+ [MultiplayerSession] Joining file version 106 (initial load)
+ Migration succeeded: context: fullscreen_migrate_SceneGraphManager, version: 106, duration: 0ms.
+ [devtools] Initialized LS
+ [Fullscreen] loadtime=8.45s maxmem=302613172
+ [esbuild-wasm] Initializing from URL: /webpack-artifacts/assets/2b68f2d3d5e8b3d6.wasm
+/api/make/0MmfrRaLM4KqcclEDHF5vJ/cached_preview_urls?source_code_hash=c0fd7293b343d9f0ff0e7adb87616943c578fe14:1  Failed to load resource: the server responded with a status of 404 ()
+ Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently
+ [esbuild-wasm] Initialized
+ [devtools] Initialized LS
+ [esbuild] Build error: 
+ 
+/api/rev/0MmfrRaLM4KqcclEDHF5vJ/code_snapshot/edf632e4bff3f865187ee8946ab9ecd08f9155b31b3caba528c6ec8d7e026152:1  Failed to load resource: the server responded with a status of 404 ()
+vendor-core-34edd2c749031eb9.min.js.br:54 Failed to fetch snapshot files: T: XHR for "/api/rev/0MmfrRaLM4KqcclEDHF5vJ/code_snapshot/edf632e4bff3f865187ee8946ab9ecd08f9155b31b3caba528c6ec8d7e026152" failed with status 404
+    at N (8469-f47411c60eb019a8.min.js.br:1405:11227)
+    at async Object.R [as get] (8469-f47411c60eb019a8.min.js.br:1405:11610)
+    at async 8275-a1a784772be40624.min.js.br:3:23483
+    at async 8275-a1a784772be40624.min.js.br:3:73415
+    at async 6386-3ca6970ce49481c8.min.js.br:3:447
+    at async b (8275-a1a784772be40624.min.js.br:3:72835)
+    at async 8275-a1a784772be40624.min.js.br:3:63487
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:54
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+vendor-core-34edd2c749031eb9.min.js.br:54 [Livegraph] Connection closed. Code: 4010, reason: server_idle
+Error in event handler: TypeError: Cannot read properties of null (reading 'postMessage')
+    at #Q (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58676)
+    at #k (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58207)
+vendor-core-34edd2c749031eb9.min.js.br:54 [MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/0MmfrRaLM4KqcclEDHF5vJ?role=editor&tracking_session_id=VLoDwUwqeblQbWkT&version=151&recentReload=0&file-load-streaming-compression=&user-id=1630364159585785991&client_release=29244711f25109c85ce9dbbe4291938e16e94ea0&reconnect-key=d756aba45759c8f3d762ce28536ed5168cccd93d&reconnect-sequence-number=17063&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0&force-dpl-journaled-reconnect=1
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+vendor-core-34edd2c749031eb9.min.js.br:54 [MultiplayerSession] Joining file version 106 (journaled reconnect)
+(index):1 Access to script at 'https://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/@react-refresh' from origin 'https://10dff006-e9e7-40a0-9edc-75520788dadd-v3-figmaiframepreview.figma.site' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+(index):1 Access to script at 'https://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/@react-refresh' from origin 'https://10dff006-e9e7-40a0-9edc-75520788dadd-v3-figmaiframepreview.figma.site' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+(index):1 Access to script at 'https://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/@react-refresh' from origin 'https://10dff006-e9e7-40a0-9edc-75520788dadd-v3-figmaiframepreview.figma.site' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/@react-refresh:1  Failed to load resource: net::ERR_FAILED
+app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/@react-refresh:1  Failed to load resource: net::ERR_FAILED
+app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/@react-refresh:1  Failed to load resource: net::ERR_FAILED
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ [bundleCode] Found 5 CSS files in VFS
+ [bundleCode] Total CSS size to be processed by lightningcss: 0.01MB
+ [lightningcss-wasm] Initialized
+ [lightningCSS] Processing 0.12MB of CSS (environment: browser)
+ [lightningCSS] Encoded size: 0.12MB
+ [lightningCSS] Transform completed successfully
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ping @ app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/@vite/client:1035
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ping @ app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/@vite/client:1035
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ping @ app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/@vite/client:1035
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ping @ app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/@vite/client:1035
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ping @ app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/@vite/client:1035
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+/blobs/us/upload/figma-make-binary-files-us-production:1  Failed to load resource: the server responded with a status of 400 ()
+/blobs/us/upload/figma-make-binary-files-us-production:1  Failed to load resource: the server responded with a status of 400 ()
+/blobs/us/upload/figma-make-binary-files-us-production:1  Failed to load resource: the server responded with a status of 400 ()
+/blobs/us/upload/figma-make-binary-files-us-production:1  Failed to load resource: the server responded with a status of 400 ()
+/blobs/us/upload/figma-make-binary-files-us-production:1  Failed to load resource: the server responded with a status of 400 ()
+/blobs/us/upload/figma-make-binary-files-us-production:1  Failed to load resource: the server responded with a status of 400 ()
+/blobs/us/upload/figma-make-binary-files-us-production:1  Failed to load resource: the server responded with a status of 400 ()
+/blobs/us/upload/figma-make-binary-files-us-production:1  Failed to load resource: the server responded with a status of 400 ()
+/blobs/us/upload/figma-make-binary-files-us-production:1  Failed to load resource: the server responded with a status of 400 ()
+/blobs/us/upload/figma-make-binary-files-us-production:1  Failed to load resource: the server responded with a status of 400 ()
+/blobs/us/upload/figma-make-binary-files-us-production:1  Failed to load resource: the server responded with a status of 400 ()
+/blobs/us/upload/figma-make-binary-files-us-production:1  Failed to load resource: the server responded with a status of 400 ()
+/blobs/us/upload/figma-make-binary-files-us-production:1  Failed to load resource: the server responded with a status of 400 ()
+/blobs/us/upload/figma-make-binary-files-us-production:1  Failed to load resource: the server responded with a status of 400 ()
+/blobs/us/upload/figma-make-binary-files-us-production:1  Failed to load resource: the server responded with a status of 400 ()
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+/blobs/us/upload/figma-make-binary-files-us-production:1  Failed to load resource: the server responded with a status of 400 ()
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+ WebSocket connection to 'wss://app-upu677y2t3zfog424vhutrtaopc6eoqqbxftczagj5uuqdb4mksb.makeproxy-c.figma.site/' failed: 
+/api/rev/0MmfrRaLM4KqcclEDHF5vJ/code_snapshot/8b98f78738b0432c763e7a4b3d9da66c4c96d206c37c0e0a6336df5f91eb5bda:1  Failed to load resource: the server responded with a status of 404 ()
+vendor-core-34edd2c749031eb9.min.js.br:54 Failed to fetch snapshot files: T: XHR for "/api/rev/0MmfrRaLM4KqcclEDHF5vJ/code_snapshot/8b98f78738b0432c763e7a4b3d9da66c4c96d206c37c0e0a6336df5f91eb5bda" failed with status 404
+    at N (8469-f47411c60eb019a8.min.js.br:1405:11227)
+    at async Object.R [as get] (8469-f47411c60eb019a8.min.js.br:1405:11610)
+    at async 8275-a1a784772be40624.min.js.br:3:23483
+    at async 8275-a1a784772be40624.min.js.br:3:73415
+    at async 6386-3ca6970ce49481c8.min.js.br:3:447
+    at async b (8275-a1a784772be40624.min.js.br:3:72835)
+    at async 8275-a1a784772be40624.min.js.br:3:63487
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:54
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+vendor-core-34edd2c749031eb9.min.js.br:54 Too many elapsed hits of react since last report
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:54
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 11:18:56 PM [vite] (client) hmr update /src/app/components/dashboard/BannersAndSurveysWidget.tsx, /src/styles/index.css
+ Fetching active banners from Supabase...
+ Fetching active surveys from Supabase...
+ Active banners from Supabase: Array(3)
+ Active surveys from Supabase: Array(1)
+ 11:18:56 PM [vite] (client) hmr update /src/app/components/dashboard/BannersAndSurveysWidget.tsx, /src/styles/index.css
+ Fetching active banners from Supabase...
+ Fetching active surveys from Supabase...
+ Active banners from Supabase: Array(3)
+ Active surveys from Supabase: Array(1)
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+/api/rev/0MmfrRaLM4KqcclEDHF5vJ/code_snapshot/cd6132cf842571b4aa348ab5b2d9b84a9c0440409087a45f7b810da34245dfae:1  Failed to load resource: the server responded with a status of 404 ()
+vendor-core-34edd2c749031eb9.min.js.br:54 Failed to fetch snapshot files: T: XHR for "/api/rev/0MmfrRaLM4KqcclEDHF5vJ/code_snapshot/cd6132cf842571b4aa348ab5b2d9b84a9c0440409087a45f7b810da34245dfae" failed with status 404
+    at N (8469-f47411c60eb019a8.min.js.br:1405:11227)
+    at async Object.R [as get] (8469-f47411c60eb019a8.min.js.br:1405:11610)
+    at async 8275-a1a784772be40624.min.js.br:3:23483
+    at async 8275-a1a784772be40624.min.js.br:3:73415
+    at async 6386-3ca6970ce49481c8.min.js.br:3:447
+    at async b (8275-a1a784772be40624.min.js.br:3:72835)
+    at async 8275-a1a784772be40624.min.js.br:3:63487
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:54
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ AdminDashboardSurveys: Loading surveys...
+ Fetching ALL surveys from Supabase (admin)...
+ All surveys from Supabase (admin): Array(1)
+ AdminDashboardSurveys: Surveys loaded: Array(1)
+ AdminDashboardSurveys: Number of surveys: 1
+ Branding updated: Object
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ Branding updated: Object
+ Branding updated: Object
+ Branding updated: Object
+ Branding updated: Object
+ Branding updated: Object
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Fetching active banners from Supabase...
+ Fetching active surveys from Supabase...
+ Fetching active dashboard messages from Supabase...
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Active dashboard messages from Supabase: Array(0)
+ Active banners from Supabase: Array(3)
+ Active surveys from Supabase: Array(1)
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Fetching active banners from Supabase...
+ Fetching active surveys from Supabase...
+ Fetching active dashboard messages from Supabase...
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Active dashboard messages from Supabase: Array(0)
+ Active banners from Supabase: Array(3)
+ Active surveys from Supabase: Array(1)
+ 11:22:17 PM [vite] (client) hmr update /src/app/components/admin/SurveyModal.tsx, /src/styles/index.css
+ 11:22:17 PM [vite] (client) hmr update /src/app/components/admin/SurveyModal.tsx, /src/styles/index.css
+ 11:22:17 PM [vite] (client) hmr update /src/app/components/admin/SurveyModal.tsx, /src/styles/index.css
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+/api/rev/0MmfrRaLM4KqcclEDHF5vJ/code_snapshot/7cdd16deab1708cd3d59fa2aa6621ab0c72a7f06baab9a32dd78ce59806acf7b:1  Failed to load resource: the server responded with a status of 404 ()
+vendor-core-34edd2c749031eb9.min.js.br:54 Failed to fetch snapshot files: T: XHR for "/api/rev/0MmfrRaLM4KqcclEDHF5vJ/code_snapshot/7cdd16deab1708cd3d59fa2aa6621ab0c72a7f06baab9a32dd78ce59806acf7b" failed with status 404
+    at N (8469-f47411c60eb019a8.min.js.br:1405:11227)
+    at async Object.R [as get] (8469-f47411c60eb019a8.min.js.br:1405:11610)
+    at async 8275-a1a784772be40624.min.js.br:3:23483
+    at async 8275-a1a784772be40624.min.js.br:3:73415
+    at async 6386-3ca6970ce49481c8.min.js.br:3:447
+    at async b (8275-a1a784772be40624.min.js.br:3:72835)
+    at async 8275-a1a784772be40624.min.js.br:3:63487
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:54
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Fetching active banners from Supabase...
+ Fetching active surveys from Supabase...
+ Fetching active dashboard messages from Supabase...
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Active dashboard messages from Supabase: Array(0)
+ Active banners from Supabase: Array(3)
+ Active surveys from Supabase: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ AdminDashboardSurveys: Loading surveys...
+ Fetching ALL surveys from Supabase (admin)...
+ All surveys from Supabase (admin): Array(1)
+ AdminDashboardSurveys: Surveys loaded: Array(1)
+ AdminDashboardSurveys: Number of surveys: 1
+ AdminDashboardSurveys: Loading surveys...
+ Fetching ALL surveys from Supabase (admin)...
+ All surveys from Supabase (admin): Array(0)
+ AdminDashboardSurveys: Surveys loaded: Array(0)
+ AdminDashboardSurveys: Number of surveys: 0
+ SurveyModal: Saving survey with data: Object
+ SurveyModal: Create result: Object
+ AdminDashboardSurveys: Loading surveys...
+ Fetching ALL surveys from Supabase (admin)...
+ All surveys from Supabase (admin): Array(1)
+ AdminDashboardSurveys: Surveys loaded: Array(1)
+ AdminDashboardSurveys: Number of surveys: 1
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Fetching active banners from Supabase...
+ Fetching active surveys from Supabase...
+ Fetching active dashboard messages from Supabase...
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Active dashboard messages from Supabase: Array(0)
+ Active banners from Supabase: Array(3)
+ Active surveys from Supabase: Array(0)
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ AdminDashboardSurveys: Loading surveys...
+ Fetching ALL surveys from Supabase (admin)...
+ All surveys from Supabase (admin): Array(1)
+ AdminDashboardSurveys: Surveys loaded: Array(1)
+ AdminDashboardSurveys: Number of surveys: 1
+ SurveyModal: Saving survey with data: Object
+ SurveyModal: Update result: Object
+ AdminDashboardSurveys: Loading surveys...
+ Fetching ALL surveys from Supabase (admin)...
+ All surveys from Supabase (admin): Array(1)
+ AdminDashboardSurveys: Surveys loaded: Array(1)
+ AdminDashboardSurveys: Number of surveys: 1
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Fetching active banners from Supabase...
+ Fetching active surveys from Supabase...
+ Fetching active dashboard messages from Supabase...
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Active dashboard messages from Supabase: Array(0)
+ Active banners from Supabase: Array(3)
+ Active surveys from Supabase: Array(0)
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ AdminDashboardSurveys: Loading surveys...
+ Fetching ALL surveys from Supabase (admin)...
+ All surveys from Supabase (admin): Array(1)
+ AdminDashboardSurveys: Surveys loaded: Array(1)
+ AdminDashboardSurveys: Number of surveys: 1
+ SurveyModal: Saving survey with data: Object
+ SurveyModal: Create result: Object
+ AdminDashboardSurveys: Loading surveys...
+ Fetching ALL surveys from Supabase (admin)...
+ All surveys from Supabase (admin): Array(2)
+ AdminDashboardSurveys: Surveys loaded: Array(2)
+ AdminDashboardSurveys: Number of surveys: 2
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Fetching active banners from Supabase...
+ Fetching active surveys from Supabase...
+ Fetching active dashboard messages from Supabase...
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Active dashboard messages from Supabase: Array(0)
+ Active banners from Supabase: Array(3)
+ Active surveys from Supabase: Array(0)
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 🔄 Reloading Supabase user data after storage change
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Fetching active banners from Supabase...
+ Fetching active surveys from Supabase...
+ Fetching active dashboard messages from Supabase...
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: false planType: free
+ Active dashboard messages from Supabase: Array(0)
+ Active banners from Supabase: Array(3)
+ Active surveys from Supabase: Array(0)
+cezjuzscwjazgeklbpnw.supabase.co/rest/v1/banner_dismissals?columns=%22banner_id%22%2C%22user_id%22%2C%22dismissed_at%22:1  Failed to load resource: the server responded with a status of 409 ()
+cezjuzscwjazgeklbpnw.supabase.co/rest/v1/banner_dismissals?columns=%22banner_id%22%2C%22user_id%22%2C%22dismissed_at%22:1  Failed to load resource: the server responded with a status of 409 ()
+cezjuzscwjazgeklbpnw.supabase.co/rest/v1/banner_dismissals?columns=%22banner_id%22%2C%22user_id%22%2C%22dismissed_at%22:1  Failed to load resource: the server responded with a status of 409 ()
+ Error dismissing banner: Object
+ 🎯 Navigation render - isAdmin: false planType: free
+ 🎯 Navigation render - isAdmin: false planType: free
+ 🎯 Navigation render - isAdmin: false planType: free
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: false planType: free
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: false planType: free
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 11:24:59 PM [vite] (client) hmr update /src/app/components/dashboard/BannersAndSurveysWidget.tsx, /src/styles/index.css
+ 🎯 Navigation render - isAdmin: false planType: free
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: false planType: free
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Fetching active banners from Supabase...
+ Fetching active surveys from Supabase...
+ Fetching active dashboard messages from Supabase...
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Active dashboard messages from Supabase: Array(0)
+ Active banners from Supabase: Array(3)
+ Active surveys from Supabase: Array(0)
+ Banner 290bd242-cd6d-4bf7-935d-eca9b851659f already dismissed by user
+ Banner bf32febe-c865-48c1-871a-71be6bff9685 already dismissed by user
+ Banner 3cb02dbc-1908-4b94-a22a-e1c6155ac719 already dismissed by user
+/api/rev/0MmfrRaLM4KqcclEDHF5vJ/code_snapshot/29c503011ee738136774e85d1805dff1d3fcd492de8d261d151386ad339c292b:1  Failed to load resource: the server responded with a status of 404 ()
+vendor-core-34edd2c749031eb9.min.js.br:54 Failed to fetch snapshot files: T: XHR for "/api/rev/0MmfrRaLM4KqcclEDHF5vJ/code_snapshot/29c503011ee738136774e85d1805dff1d3fcd492de8d261d151386ad339c292b" failed with status 404
+    at N (8469-f47411c60eb019a8.min.js.br:1405:11227)
+    at async Object.R [as get] (8469-f47411c60eb019a8.min.js.br:1405:11610)
+    at async 8275-a1a784772be40624.min.js.br:3:23483
+    at async 8275-a1a784772be40624.min.js.br:3:73415
+    at async 6386-3ca6970ce49481c8.min.js.br:3:447
+    at async b (8275-a1a784772be40624.min.js.br:3:72835)
+    at async 8275-a1a784772be40624.min.js.br:3:63487
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:54
+ 🎯 Navigation render - isAdmin: false planType: free
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ 🎯 Navigation render - isAdmin: false planType: free
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ 🔄 Reloading Supabase user data after storage change
+ 🔄 Reloading Supabase user data after storage change
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ 🔄 Reloading Supabase user data after storage change
+ 🔄 Reloading Supabase user data after storage change
+ 🔄 Reloading Supabase user data after storage change
+ 🎯 Navigation render - isAdmin: false planType: free
+ 🎯 Navigation render - isAdmin: false planType: free
+ Branding updated: Object
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ 🔄 Reloading Supabase user data after storage change
+ 🎯 Navigation render - isAdmin: false planType: free
+ 🎯 Navigation render - isAdmin: false planType: free
+ 🎯 Navigation render - isAdmin: false planType: free
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Fetching active banners from Supabase...
+ Fetching active surveys from Supabase...
+ Fetching active dashboard messages from Supabase...
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🔄 Reloading Supabase user data after storage change
+ 🎯 Navigation render - isAdmin: false planType: free
+ Active dashboard messages from Supabase: Array(0)
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ Active banners from Supabase: Array(3)
+ Active surveys from Supabase: Array(0)
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ AdminDashboardSurveys: Loading surveys...
+ Fetching ALL surveys from Supabase (admin)...
+ All surveys from Supabase (admin): Array(2)
+ AdminDashboardSurveys: Surveys loaded: Array(2)
+ AdminDashboardSurveys: Number of surveys: 2
+ AdminDashboardSurveys: Loading surveys...
+ Fetching ALL surveys from Supabase (admin)...
+ All surveys from Supabase (admin): Array(1)
+ AdminDashboardSurveys: Surveys loaded: Array(1)
+ AdminDashboardSurveys: Number of surveys: 1
+ AdminDashboardSurveys: Loading surveys...
+ Fetching ALL surveys from Supabase (admin)...
+ All surveys from Supabase (admin): Array(0)
+ AdminDashboardSurveys: Surveys loaded: Array(0)
+ AdminDashboardSurveys: Number of surveys: 0
+ SurveyModal: Saving survey with data: Object
+ SurveyModal: Create result: Object
+ AdminDashboardSurveys: Loading surveys...
+ Fetching ALL surveys from Supabase (admin)...
+ All surveys from Supabase (admin): Array(1)
+ AdminDashboardSurveys: Surveys loaded: Array(1)
+ AdminDashboardSurveys: Number of surveys: 1
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Fetching active banners from Supabase...
+ Fetching active surveys from Supabase...
+ Fetching active dashboard messages from Supabase...
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Active dashboard messages from Supabase: Array(0)
+ Active banners from Supabase: Array(3)
+ Active surveys from Supabase: Array(0)
+ Banner 290bd242-cd6d-4bf7-935d-eca9b851659f already dismissed by user
+ Banner bf32febe-c865-48c1-871a-71be6bff9685 already dismissed by user
+ Banner 3cb02dbc-1908-4b94-a22a-e1c6155ac719 already dismissed by user
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 11:27:35 PM [vite] (client) hmr update /src/app/components/dashboard/BannersAndSurveysWidget.tsx, /src/styles/index.css
+/api/rev/0MmfrRaLM4KqcclEDHF5vJ/code_snapshot/ec5b528d6b661c352749be669909d039a2d3f47992bbc38968b11549c9046194:1  Failed to load resource: the server responded with a status of 404 ()
+vendor-core-34edd2c749031eb9.min.js.br:54 Failed to fetch snapshot files: T: XHR for "/api/rev/0MmfrRaLM4KqcclEDHF5vJ/code_snapshot/ec5b528d6b661c352749be669909d039a2d3f47992bbc38968b11549c9046194" failed with status 404
+    at N (8469-f47411c60eb019a8.min.js.br:1405:11227)
+    at async Object.R [as get] (8469-f47411c60eb019a8.min.js.br:1405:11610)
+    at async 8275-a1a784772be40624.min.js.br:3:23483
+    at async 8275-a1a784772be40624.min.js.br:3:73415
+    at async 6386-3ca6970ce49481c8.min.js.br:3:447
+    at async b (8275-a1a784772be40624.min.js.br:3:72835)
+    at async 8275-a1a784772be40624.min.js.br:3:63487
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:54
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Fetching active banners from Supabase...
+ Fetching active surveys from Supabase...
+ Fetching active dashboard messages from Supabase...
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Active dashboard messages from Supabase: Array(0)
+ Active banners from Supabase: Array(3)
+ Active surveys from Supabase: Array(0)
+ BannersAndSurveysWidget: Loaded surveys: Array(0)
+ BannersAndSurveysWidget: Loaded banners: Array(3)
+ Banner 290bd242-cd6d-4bf7-935d-eca9b851659f already dismissed by user
+ Banner bf32febe-c865-48c1-871a-71be6bff9685 already dismissed by user
+ Banner 3cb02dbc-1908-4b94-a22a-e1c6155ac719 already dismissed by user
+ BannersAndSurveysWidget: Final items to display: Array(0)
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Branding updated: Object
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ Branding updated: Object
+ Branding updated: Object
+ Branding updated: Object
+ 🔄 Reloading Supabase user data after storage change
+ 🔄 Reloading Supabase user data after storage change
+ Branding updated: Object
+ 🔄 Reloading Supabase user data after storage change
+ 🔄 Reloading Supabase user data after storage change
+ 🔄 Reloading Supabase user data after storage change
+ Branding updated: Object
+ Branding updated: Object
+ 🔄 Reloading Supabase user data after storage change
+ 🔄 Reloading Supabase user data after storage change
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ AdminDashboardSurveys: Loading surveys...
+ Fetching ALL surveys from Supabase (admin)...
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ All surveys from Supabase (admin): Array(1)
+ AdminDashboardSurveys: Surveys loaded: Array(1)
+ AdminDashboardSurveys: Number of surveys: 1
+ SurveyModal: Saving survey with data: Object
+ SurveyModal: Create result: Object
+ AdminDashboardSurveys: Loading surveys...
+ Fetching ALL surveys from Supabase (admin)...
+ All surveys from Supabase (admin): Array(2)
+ AdminDashboardSurveys: Surveys loaded: Array(2)
+ AdminDashboardSurveys: Number of surveys: 2
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Fetching active banners from Supabase...
+ Fetching active surveys from Supabase...
+ Fetching active dashboard messages from Supabase...
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Active dashboard messages from Supabase: Array(0)
+ Active banners from Supabase: Array(3)
+ Active surveys from Supabase: Array(0)
+ BannersAndSurveysWidget: Loaded surveys: Array(0)
+ BannersAndSurveysWidget: Loaded banners: Array(3)
+ Banner 290bd242-cd6d-4bf7-935d-eca9b851659f already dismissed by user
+ Banner bf32febe-c865-48c1-871a-71be6bff9685 already dismissed by user
+ Banner 3cb02dbc-1908-4b94-a22a-e1c6155ac719 already dismissed by user
+ BannersAndSurveysWidget: Final items to display: Array(0)
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+Error in event handler: TypeError: Cannot read properties of null (reading 'postMessage')
+    at #K (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58705)
+    at #x (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58038)
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Fetching active banners from Supabase...
+ Fetching active surveys from Supabase...
+ Fetching active dashboard messages from Supabase...
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ Active dashboard messages from Supabase: Array(0)
+ Active banners from Supabase: Array(3)
+ Active surveys from Supabase: Array(0)
+ BannersAndSurveysWidget: Loaded surveys: Array(0)
+ BannersAndSurveysWidget: Loaded banners: Array(3)
+ Banner 290bd242-cd6d-4bf7-935d-eca9b851659f already dismissed by user
+ Banner bf32febe-c865-48c1-871a-71be6bff9685 already dismissed by user
+ Banner 3cb02dbc-1908-4b94-a22a-e1c6155ac719 already dismissed by user
+ BannersAndSurveysWidget: Final items to display: Array(0)
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null

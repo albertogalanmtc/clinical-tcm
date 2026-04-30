@@ -1,0 +1,613 @@
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Error in event handler: TypeError: Cannot read properties of null (reading 'postMessage')
+    at #Q (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58676)
+    at #k (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58207)
+background.js:1 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'frameId')
+    at get #V (background.js:1:57818)
+    at #q (background.js:1:58286)
+    at #x (background.js:1:57916)
+background.js:1 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'frameId')
+    at get #V (background.js:1:57818)
+    at #H (background.js:1:58500)
+    at #x (background.js:1:57948)
+background.js:1 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'frameId')
+    at get #V (background.js:1:57818)
+    at #q (background.js:1:58286)
+    at #x (background.js:1:57916)
+background.js:1 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'frameId')
+    at get #V (background.js:1:57818)
+    at #H (background.js:1:58500)
+    at #x (background.js:1:57948)
+background.js:1 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'frameId')
+    at get #V (background.js:1:57818)
+    at #q (background.js:1:58286)
+    at #x (background.js:1:57916)
+background.js:1 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'frameId')
+    at get #V (background.js:1:57818)
+    at #H (background.js:1:58500)
+    at #x (background.js:1:57948)
+Error in event handler: TypeError: Cannot read properties of null (reading 'postMessage')
+    at #K (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58705)
+    at #x (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58038)
+Error in event handler: TypeError: Cannot read properties of null (reading 'postMessage')
+    at #K (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58705)
+    at #x (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58038)
+Error in event handler: TypeError: Cannot read properties of null (reading 'postMessage')
+    at #K (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58705)
+    at #x (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58038)
+background.js:1 Uncaught (in promise) FrameDoesNotExistError: Frame 1759 does not exist in tab 1519784353
+    at DelayedMessageSender.<anonymous> (background.js:1:49254)
+background.js:1 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'frameId')
+    at get #V (background.js:1:57818)
+    at #q (background.js:1:58286)
+    at #x (background.js:1:57916)
+background.js:1 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'frameId')
+    at get #V (background.js:1:57818)
+    at #H (background.js:1:58500)
+    at #x (background.js:1:57948)
+background.js:1 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'frameId')
+    at get #V (background.js:1:57818)
+    at #q (background.js:1:58286)
+    at #x (background.js:1:57916)
+background.js:1 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'frameId')
+    at get #V (background.js:1:57818)
+    at #H (background.js:1:58500)
+    at #x (background.js:1:57948)
+background.js:1 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'frameId')
+    at get #V (background.js:1:57818)
+    at #q (background.js:1:58286)
+    at #x (background.js:1:57916)
+background.js:1 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'frameId')
+    at get #V (background.js:1:57818)
+    at #H (background.js:1:58500)
+    at #x (background.js:1:57948)
+background.js:1 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'frameId')
+    at get #V (background.js:1:57818)
+    at #q (background.js:1:58286)
+    at #x (background.js:1:57916)
+background.js:1 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'frameId')
+    at get #V (background.js:1:57818)
+    at #H (background.js:1:58500)
+    at #x (background.js:1:57948)
+ Running frontend commit 51048fa4edca804e4e8770c6eefc1b2f1daa3891
+vendor-core-229ba1ea832d24ba.min.js.br:54 Statsig is not ready to log exposures, will retry in 1 seconds
+(anonymous) @ vendor-core-229ba1ea832d24ba.min.js.br:54
+vendor-core-229ba1ea832d24ba.min.js.br:54 Autosave Changes not available or already claimed by another tab undefined
+vendor-core-229ba1ea832d24ba.min.js.br:54 [import] git: 2deb43811cd6305174ef79c94e51fe11d15df1e2, stamp: DB76C5DC007AA6A4
+vendor-core-229ba1ea832d24ba.min.js.br:54 [Fullscreen] Booting... (emscripten version 4.0.21)
+vendor-core-229ba1ea832d24ba.min.js.br:54 [GPU] graphicsAPI:"WebGPU", vendor:"Google Inc. (Apple)" renderer:"ANGLE (Apple, ANGLE Metal Renderer: Apple M3, Unspecified Version)" deviceArchitecture:"metal-3" deviceDescription:"" webGPUDevice:"" webGPUVendor:"apple" bindings:"emdawnwebgpu"
+vendor-core-229ba1ea832d24ba.min.js.br:54 [Fullscreen] Ready in 83.8ms
+vendor-core-229ba1ea832d24ba.min.js.br:54 [FullscreenApp] calling setEditorTheme and setting preference light
+vendor-core-229ba1ea832d24ba.min.js.br:54 [MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/0MmfrRaLM4KqcclEDHF5vJ?role=editor&tracking_session_id=h887sStGNLUJZ1Rv&version=152&recentReload=0&file-load-streaming-compression=&user-id=1631307828071871417&client_release=51048fa4edca804e4e8770c6eefc1b2f1daa3891&force-dpl-journaled-reconnect=1
+vendor-core-229ba1ea832d24ba.min.js.br:54 [MultiplayerSession] Joining file version 106 (initial load)
+vendor-core-229ba1ea832d24ba.min.js.br:54 [FullscreenApp] calling setEditorTheme and setting preference light
+vendor-core-229ba1ea832d24ba.min.js.br:54 Loaded 0 scripts (0b), 0 from cache (0b)
+/api/folders/581688551:1  Failed to load resource: the server responded with a status of 403 ()
+vendor-core-229ba1ea832d24ba.min.js.br:54 [devtools] Initialized LS
+vendor-core-229ba1ea832d24ba.min.js.br:54 [Fullscreen] loadtime=17.29s maxmem=302180644
+3510-e3e4df8ae30e6a67.min.js.br:1403 Uncaught (in promise) T: XHR for "/api/folders/581688551" failed with status 403
+    at N (3510-e3e4df8ae30e6a67.min.js.br:1403:11227)
+    at async Object.R [as get] (3510-e3e4df8ae30e6a67.min.js.br:1403:11610)
+    at async 3510-e3e4df8ae30e6a67.min.js.br:1096:151627
+    at async g.validate (3510-e3e4df8ae30e6a67.min.js.br:1383:5958)
+    at async h.fetchObject (3510-e3e4df8ae30e6a67.min.js.br:347:160122)
+    at async f (3510-e3e4df8ae30e6a67.min.js.br:347:140425)
+figma_app-b827ad3136f1046e.min.js.br:52 Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently
+v @ figma_app-b827ad3136f1046e.min.js.br:52
+/api/plans/368aab40-1c0f-4f02-a02e-bf74987a6243/npm_private_registry/scopes:1  Failed to load resource: the server responded with a status of 404 ()
+vendor-core-229ba1ea832d24ba.min.js.br:54 [devtools] Initialized LS
+cezjuzscwjazgeklbpnw.supabase.co/rest/v1/cookie_consent?select=id&session_id=eq.session_1777488435347_yn9ny1i0u:1  Failed to load resource: the server responded with a status of 406 ()
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📦 Plans - Loading from Supabase...
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:17 Error loading plan features from planService: TypeError: Cannot read properties of undefined (reading 'monthlyFormulas')
+    at getPlanFeatures (usersManager.ts:372:38)
+    at getCurrentUserFeatures (usersManager.ts:392:10)
+    at UserProvider (UserContext.tsx:42:66)
+    at ms (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:68027)
+    at ES (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:114634)
+    at E4 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:127720)
+    at eh (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:166810)
+    at SX (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:160942)
+    at S$ (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:160557)
+    at Sz (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:160323) Component Stack
+    at UserProvider (UserContext.tsx:30:32)
+    at code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (fginspector:3:55)
+    at Router (react-router-dom.js?v=58349e3d:7230:13)
+    at BrowserRouter (react-router-dom.js?v=58349e3d:10534:3)
+    at App (App.tsx:320:3)
+    at u7 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:133:4437)
+    at R (code_components_preview_iframe-f315a529f3173ac1.min.js.br:737:13258)
+    at rr (code_components_preview_iframe-f315a529f3173ac1.min.js.br:791:13925)
+    at AJ (code_components_preview_iframe-f315a529f3173ac1.min.js.br:808:10316)
+    at ece2fd84-b016-4a82-9659-85dbb7f853a1-v3-figmaiframepreview.figma.site/div
+    at dd (code_components_preview_iframe-f315a529f3173ac1.min.js.br:133:14318)
+    at Sz (code_components_preview_iframe-f315a529f3173ac1.min.js.br:798:269224)
+    at Im (code_components_preview_iframe-f315a529f3173ac1.min.js.br:798:280484)
+    at lw (code_components_preview_iframe-f315a529f3173ac1.min.js.br:118:224031)
+    at fq (code_components_preview_iframe-f315a529f3173ac1.min.js.br:601:17988)
+r @ code_components_preview_iframe-f315a529f3173ac1.min.js.br:17
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ⚙️ Platform Settings - Loading from Supabase...
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📊 Dashboard Content - Loading from Supabase...
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 Admin plan updated to: pro
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📦 Plans - Loading from Supabase...
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:17 Error loading plan features from planService: TypeError: Cannot read properties of undefined (reading 'monthlyFormulas')
+    at getPlanFeatures (usersManager.ts:372:38)
+    at getCurrentUserFeatures (usersManager.ts:392:10)
+    at loadUserData (UserContext.tsx:111:24)
+r @ code_components_preview_iframe-f315a529f3173ac1.min.js.br:17
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📦 Plans - Loading from Supabase...
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:17 Error loading plan features from planService: TypeError: Cannot read properties of undefined (reading 'monthlyFormulas')
+    at getPlanFeatures (usersManager.ts:372:38)
+    at getCurrentUserFeatures (usersManager.ts:392:10)
+    at UserProvider (UserContext.tsx:42:66)
+    at ms (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:68027)
+    at Ec (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:110700)
+    at E4 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:127859)
+    at eh (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:166810)
+    at SX (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:160942)
+    at S$ (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:160557)
+    at Sz (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:160323) Component Stack
+    at UserProvider (UserContext.tsx:30:32)
+    at code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (fginspector:3:55)
+    at Router (react-router-dom.js?v=58349e3d:7230:13)
+    at BrowserRouter (react-router-dom.js?v=58349e3d:10534:3)
+    at App (App.tsx:320:3)
+    at u7 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:133:4437)
+    at R (code_components_preview_iframe-f315a529f3173ac1.min.js.br:737:13258)
+    at rr (code_components_preview_iframe-f315a529f3173ac1.min.js.br:791:13925)
+    at AJ (code_components_preview_iframe-f315a529f3173ac1.min.js.br:808:10316)
+    at ece2fd84-b016-4a82-9659-85dbb7f853a1-v3-figmaiframepreview.figma.site/div
+    at dd (code_components_preview_iframe-f315a529f3173ac1.min.js.br:133:14318)
+    at Sz (code_components_preview_iframe-f315a529f3173ac1.min.js.br:798:269224)
+    at Im (code_components_preview_iframe-f315a529f3173ac1.min.js.br:798:280484)
+    at lw (code_components_preview_iframe-f315a529f3173ac1.min.js.br:118:224031)
+    at fq (code_components_preview_iframe-f315a529f3173ac1.min.js.br:601:17988)
+r @ code_components_preview_iframe-f315a529f3173ac1.min.js.br:17
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📦 Plans - Loading from Supabase...
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:17 Error loading plan features from planService: TypeError: Cannot read properties of undefined (reading 'monthlyFormulas')
+    at getPlanFeatures (usersManager.ts:372:38)
+    at getCurrentUserFeatures (usersManager.ts:392:10)
+    at handleStorageChange (UserContext.tsx:177:24)
+r @ code_components_preview_iframe-f315a529f3173ac1.min.js.br:17
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📦 Plans - Loading from Supabase...
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:17 Error loading plan features from planService: TypeError: Cannot read properties of undefined (reading 'monthlyFormulas')
+    at getPlanFeatures (usersManager.ts:372:38)
+    at getCurrentUserFeatures (usersManager.ts:392:10)
+    at UserProvider (UserContext.tsx:42:66)
+    at ms (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:68027)
+    at Ec (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:110700)
+    at E4 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:127859)
+    at eh (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:166810)
+    at SX (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:160942)
+    at S$ (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:160557)
+    at Sz (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:160323) Component Stack
+    at UserProvider (UserContext.tsx:30:32)
+    at code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (fginspector:3:55)
+    at Router (react-router-dom.js?v=58349e3d:7230:13)
+    at BrowserRouter (react-router-dom.js?v=58349e3d:10534:3)
+    at App (App.tsx:320:3)
+    at u7 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:133:4437)
+    at R (code_components_preview_iframe-f315a529f3173ac1.min.js.br:737:13258)
+    at rr (code_components_preview_iframe-f315a529f3173ac1.min.js.br:791:13925)
+    at AJ (code_components_preview_iframe-f315a529f3173ac1.min.js.br:808:10316)
+    at ece2fd84-b016-4a82-9659-85dbb7f853a1-v3-figmaiframepreview.figma.site/div
+    at dd (code_components_preview_iframe-f315a529f3173ac1.min.js.br:133:14318)
+    at Sz (code_components_preview_iframe-f315a529f3173ac1.min.js.br:798:269224)
+    at Im (code_components_preview_iframe-f315a529f3173ac1.min.js.br:798:280484)
+    at lw (code_components_preview_iframe-f315a529f3173ac1.min.js.br:118:224031)
+    at fq (code_components_preview_iframe-f315a529f3173ac1.min.js.br:601:17988)
+r @ code_components_preview_iframe-f315a529f3173ac1.min.js.br:17
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ✅ Plans - Loaded from Supabase: 3 plans
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🔍 Raw Supabase data: {
+  "id": "1",
+  "code": "free",
+  "name": "Free",
+  "description": "Basic access to TCM resources",
+  "status": "active",
+  "stripe_price_id": null,
+  "stripe_price_id_monthly": "",
+  "stripe_price_id_yearly": "",
+  "monthly_price": 0,
+  "yearly_price": 0,
+  "is_popular": false,
+  "badge_icon_svg": null,
+  "features": {
+    "builder": false,
+    "allergies": false,
+    "statistics": false,
+    "medications": false,
+    "customContent": false,
+    "dashboardNews": true,
+    "tcmRiskPatterns": false,
+    "generalConditions": false,
+    "herbLibraryAccess": "sample",
+    "clinicalUseFilters": false,
+    "dashboardCommunity": true,
+    "herbPropertyFilters": false,
+    "prescriptionLibrary": false,
+    "formulaLibraryAccess": "sample",
+    "formulaPropertyFilters": false,
+    "bioactiveCompoundsFilter": false,
+    "biologicalMechanismsFilter": false,
+    "pharmacologicalEffectsFilter": false
+  },
+  "herb_detail_permissions": null,
+  "formula_detail_permissions": null,
+  "limits": {
+    "monthlyFormulas": 0
+  },
+  "offer": null,
+  "membership_display": null,
+  "safety_engine_mode": "disabled",
+  "last_updated": "2026-04-29T18:28:19.577752+00:00",
+  "created_at": "2026-04-29T18:28:19.577752+00:00",
+  "updated_at": "2026-04-29T18:28:19.577752+00:00"
+}
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ⚠️ Dashboard Content - No content in Supabase
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🎠 Carousel Settings - Loading from Supabase...
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ⚠️ Platform Settings - No settings in Supabase
+cezjuzscwjazgeklbpnw.supabase.co/rest/v1/cookie_consent?select=id&session_id=eq.session_1777488435347_yn9ny1i0u:1  Failed to load resource: the server responded with a status of 406 ()
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ✅ Plans - Loaded from Supabase: 3 plans
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🔍 Raw Supabase data: {
+  "id": "1",
+  "code": "free",
+  "name": "Free",
+  "description": "Basic access to TCM resources",
+  "status": "active",
+  "stripe_price_id": null,
+  "stripe_price_id_monthly": "",
+  "stripe_price_id_yearly": "",
+  "monthly_price": 0,
+  "yearly_price": 0,
+  "is_popular": false,
+  "badge_icon_svg": null,
+  "features": {
+    "builder": false,
+    "allergies": false,
+    "statistics": false,
+    "medications": false,
+    "customContent": false,
+    "dashboardNews": true,
+    "tcmRiskPatterns": false,
+    "generalConditions": false,
+    "herbLibraryAccess": "sample",
+    "clinicalUseFilters": false,
+    "dashboardCommunity": true,
+    "herbPropertyFilters": false,
+    "prescriptionLibrary": false,
+    "formulaLibraryAccess": "sample",
+    "formulaPropertyFilters": false,
+    "bioactiveCompoundsFilter": false,
+    "biologicalMechanismsFilter": false,
+    "pharmacologicalEffectsFilter": false
+  },
+  "herb_detail_permissions": null,
+  "formula_detail_permissions": null,
+  "limits": {
+    "monthlyFormulas": 0
+  },
+  "offer": null,
+  "membership_display": null,
+  "safety_engine_mode": "disabled",
+  "last_updated": "2026-04-29T18:28:19.577752+00:00",
+  "created_at": "2026-04-29T18:28:19.577752+00:00",
+  "updated_at": "2026-04-29T18:28:19.577752+00:00"
+}
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ✅ Carousel Settings - Loaded from Supabase
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ✅ Plans - Loaded from Supabase: 3 plans
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🔍 Raw Supabase data: {
+  "id": "1",
+  "code": "free",
+  "name": "Free",
+  "description": "Basic access to TCM resources",
+  "status": "active",
+  "stripe_price_id": null,
+  "stripe_price_id_monthly": "",
+  "stripe_price_id_yearly": "",
+  "monthly_price": 0,
+  "yearly_price": 0,
+  "is_popular": false,
+  "badge_icon_svg": null,
+  "features": {
+    "builder": false,
+    "allergies": false,
+    "statistics": false,
+    "medications": false,
+    "customContent": false,
+    "dashboardNews": true,
+    "tcmRiskPatterns": false,
+    "generalConditions": false,
+    "herbLibraryAccess": "sample",
+    "clinicalUseFilters": false,
+    "dashboardCommunity": true,
+    "herbPropertyFilters": false,
+    "prescriptionLibrary": false,
+    "formulaLibraryAccess": "sample",
+    "formulaPropertyFilters": false,
+    "bioactiveCompoundsFilter": false,
+    "biologicalMechanismsFilter": false,
+    "pharmacologicalEffectsFilter": false
+  },
+  "herb_detail_permissions": null,
+  "formula_detail_permissions": null,
+  "limits": {
+    "monthlyFormulas": 0
+  },
+  "offer": null,
+  "membership_display": null,
+  "safety_engine_mode": "disabled",
+  "last_updated": "2026-04-29T18:28:19.577752+00:00",
+  "created_at": "2026-04-29T18:28:19.577752+00:00",
+  "updated_at": "2026-04-29T18:28:19.577752+00:00"
+}
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ✅ Plans - Loaded from Supabase: 3 plans
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🔍 Raw Supabase data: {
+  "id": "1",
+  "code": "free",
+  "name": "Free",
+  "description": "Basic access to TCM resources",
+  "status": "active",
+  "stripe_price_id": null,
+  "stripe_price_id_monthly": "",
+  "stripe_price_id_yearly": "",
+  "monthly_price": 0,
+  "yearly_price": 0,
+  "is_popular": false,
+  "badge_icon_svg": null,
+  "features": {
+    "builder": false,
+    "allergies": false,
+    "statistics": false,
+    "medications": false,
+    "customContent": false,
+    "dashboardNews": true,
+    "tcmRiskPatterns": false,
+    "generalConditions": false,
+    "herbLibraryAccess": "sample",
+    "clinicalUseFilters": false,
+    "dashboardCommunity": true,
+    "herbPropertyFilters": false,
+    "prescriptionLibrary": false,
+    "formulaLibraryAccess": "sample",
+    "formulaPropertyFilters": false,
+    "bioactiveCompoundsFilter": false,
+    "biologicalMechanismsFilter": false,
+    "pharmacologicalEffectsFilter": false
+  },
+  "herb_detail_permissions": null,
+  "formula_detail_permissions": null,
+  "limits": {
+    "monthlyFormulas": 0
+  },
+  "offer": null,
+  "membership_display": null,
+  "safety_engine_mode": "disabled",
+  "last_updated": "2026-04-29T18:28:19.577752+00:00",
+  "created_at": "2026-04-29T18:28:19.577752+00:00",
+  "updated_at": "2026-04-29T18:28:19.577752+00:00"
+}
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ✅ Plans - Loaded from Supabase: 3 plans
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🔍 Raw Supabase data: {
+  "id": "1",
+  "code": "free",
+  "name": "Free",
+  "description": "Basic access to TCM resources",
+  "status": "active",
+  "stripe_price_id": null,
+  "stripe_price_id_monthly": "",
+  "stripe_price_id_yearly": "",
+  "monthly_price": 0,
+  "yearly_price": 0,
+  "is_popular": false,
+  "badge_icon_svg": null,
+  "features": {
+    "builder": false,
+    "allergies": false,
+    "statistics": false,
+    "medications": false,
+    "customContent": false,
+    "dashboardNews": true,
+    "tcmRiskPatterns": false,
+    "generalConditions": false,
+    "herbLibraryAccess": "sample",
+    "clinicalUseFilters": false,
+    "dashboardCommunity": true,
+    "herbPropertyFilters": false,
+    "prescriptionLibrary": false,
+    "formulaLibraryAccess": "sample",
+    "formulaPropertyFilters": false,
+    "bioactiveCompoundsFilter": false,
+    "biologicalMechanismsFilter": false,
+    "pharmacologicalEffectsFilter": false
+  },
+  "herb_detail_permissions": null,
+  "formula_detail_permissions": null,
+  "limits": {
+    "monthlyFormulas": 0
+  },
+  "offer": null,
+  "membership_display": null,
+  "safety_engine_mode": "disabled",
+  "last_updated": "2026-04-29T18:28:19.577752+00:00",
+  "created_at": "2026-04-29T18:28:19.577752+00:00",
+  "updated_at": "2026-04-29T18:28:19.577752+00:00"
+}

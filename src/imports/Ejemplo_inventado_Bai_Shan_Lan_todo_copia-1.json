@@ -1,0 +1,110 @@
+{
+  "herb_id": "h9_011_BSL",
+  "pinyin_name": "Bái Shān Lán",
+  "hanzi_name": "白山兰",
+  "pharmaceutical_name": "Radix Orchidalis Alba",
+  "english_name": "white mountain orchid root",
+
+  "category": "Qi-Regulating",
+  "subcategory": "Qi-Moving",
+
+  "nature": "Neutral",
+  "flavor": ["Sweet", "Acrid"],
+  "channels": ["SP", "ST"],
+
+  "toxicology": ["Mild toxicity reported", "Toxic in very high doses"],
+  "dose": "6~10g",
+
+  "banned_countries": ["Germany", "Australia"],
+
+  "actions": [
+    {
+      "title": "Regulates middle jiao qi",
+      "branches": [
+        {
+          "pattern": "",
+          "sub_pattern": "",
+          "combination": [],
+          "formula_example": ""
+        }
+      ]
+    },
+    {
+      "title": "Harmonizes stomach and relieves distention",
+      "branches": [
+        {
+          "pattern": "",
+          "sub_pattern": "",
+          "combination": [],
+          "formula_example": ""
+        }
+      ]
+    }
+  ],
+
+  "indications": [
+    "Abdominal distention",
+    "Poor appetite"
+  ],
+
+  "cautions": [
+    "Use with caution during pregnancy",
+    "Use with caution in severe qi deficiency"
+  ],
+
+  "contraindications": [
+    "Severe stomach cold",
+    "Chronic diarrhea due to spleen deficiency"
+  ],
+
+  "antagonisms": ["Wu Ling Zhi", "Hai Zao"],
+  "incompatibilities": ["Gan Sui", "Da Ji"],
+
+  "pharmacological_effects": [
+    "Digestive stimulant",
+    "Anti-inflammatory",
+    "Antispasmodic",
+    "Mild sedative"
+  ],
+
+  "biological_mechanisms": [
+    {
+      "system": "Digestive",
+      "target_action": "Stimulates gastric motility"
+    },
+    {
+      "system": "Nervous",
+      "target_action": "Reduces visceral pain signaling"
+    }
+  ],
+
+  "clinical_studies_and_research": [
+    "Small pilot study on functional dyspepsia",
+    "Animal study showing antispasmodic effects"
+  ],
+
+  "herb_drug_interactions": [
+    "May enhance effects of prokinetic drugs",
+    "May interact with antispasmodic medications"
+  ],
+
+  "herb_herb_interactions": [
+    "Synergistic with Chen Pi",
+    "Enhances digestive effects of Sha Ren"
+  ],
+
+  "allergens": [
+    "Rare allergic skin reactions",
+    "Possible gastrointestinal sensitivity"
+  ],
+
+  "notes": [
+    "Traditionally harvested in spring",
+    "Often used in digestive formulas"
+  ],
+
+  "references": [
+    "Materia Medica of the Southern Mountains",
+    "Journal of Herbal Digestive Research"
+  ]
+}

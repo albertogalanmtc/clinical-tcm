@@ -1,0 +1,97 @@
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 🎯 Navigation render - isAdmin: false planType: null
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 BannersAndSurveysWidget: Loading items...
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 Fetching active banners from Supabase...
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 Fetching active dashboard messages from Supabase...
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 📦 getUnifiedDashboardContentPublished - Raw data:
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106   Messages published: []
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106   Slides published: []
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106   Quick actions published: {id: 'quick-actions', enabled: true, order: 0, actions: Array(6)}
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106   Community card published: {id: 'community-card', enabled: true, order: 0, title: 'Community', description: 'Connect with fellow practitioners, share experiences, and support the development of Clinical TCM.', …}
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106   Banners published: []
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 🔍 Dashboard - All published content: (2) [{…}, {…}]
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 ⚙️ Dashboard - Carousel settings: {desktopRatio: '16:9', mobileRatio: '9:16', transitionInterval: 5}
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106   ⚡ Quick Actions: enabled
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 ✅ Visible content after filtering: [{…}]
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 🎨 Final rendered content: [{…}]
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 Admin plan updated to: pro
+ Branding updated: {primaryColor: '#0d9488', accentColor: '#14b8a6', logoUrl: '', appName: 'Clinical TCM', showAppName: true, …}
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 🎯 Navigation render - isAdmin: false planType: null
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ Branding updated: {primaryColor: '#0d9488', accentColor: '#14b8a6', logoUrl: '', appName: 'Clinical TCM', showAppName: true, …}
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 🎯 Navigation render - isAdmin: false planType: null
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+ Branding updated: {primaryColor: '#0d9488', accentColor: '#14b8a6', logoUrl: '', appName: 'Clinical TCM', showAppName: true, …}
+ Branding updated: {primaryColor: '#0d9488', accentColor: '#14b8a6', logoUrl: '', appName: 'Clinical TCM', showAppName: true, …}
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 🎯 Navigation render - isAdmin: false planType: null
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+ Branding updated: {primaryColor: '#0d9488', accentColor: '#14b8a6', logoUrl: '', appName: 'Clinical TCM', showAppName: true, …}
+ Branding updated: {primaryColor: '#0d9488', accentColor: '#14b8a6', logoUrl: '', appName: 'Clinical TCM', showAppName: true, …}
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 🎯 Navigation render - isAdmin: false planType: null
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: true planType: practitioner
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 Active dashboard messages from Supabase: (2) [{…}, {…}]
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 Active banners from Supabase: [{…}]
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 BannersAndSurveysWidget: Active surveys: (2) [{…}, {…}]
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 BannersAndSurveysWidget: Number of surveys: 2
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 BannersAndSurveysWidget: Checking survey "aaa" (1f58f4e7-c8a3-4087-8389-bfeb9ed18ad9)
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 Survey 1f58f4e7-c8a3-4087-8389-bfeb9ed18ad9 already responded (localStorage)
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 BannersAndSurveysWidget: Checking survey "Eres un hombre de alto valor?" (a03c8ab7-35f7-4b98-8a2f-beeea0299c4e)
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 Survey a03c8ab7-35f7-4b98-8a2f-beeea0299c4e already responded (localStorage)
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 BannersAndSurveysWidget: All items to display: [{…}]
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 BannersAndSurveysWidget: Number of items: 1
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 BannersAndSurveysWidget: Visible banners: 1
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 BannersAndSurveysWidget: Visible surveys: 0
+code_components_preview_iframe-b1e40decaa519db4.min.js.br:106 BannersAndSurveysWidget: Items to show: [{…}]
+ SurveyModal: Saving survey with data: {title: 'q', description: undefined, questions: Array(1), status: 'draft', start_date: undefined, …}
+  POST https://cezjuzscwjazgeklbpnw.supabase.co/rest/v1/surveys?columns=%22title%22%2C%22description%22%2C%22questions%22%2C%22status%22%2C%22start_date%22%2C%22end_date%22%2C%22show_results%22%2C%22thank_you_message%22%2C%22thank_you_emoji%22%2C%22show_thank_you_emoji%22%2C%22created_by%22&select=* 400 (Bad Request)
+(anonymous) @ @supabase_supabase-js.js:19962
+(anonymous) @ @supabase_supabase-js.js:19976
+await in (anonymous)
+executeWithRetry @ @supabase_supabase-js.js:555
+then @ @supabase_supabase-js.js:584
+ Error creating survey: {code: 'PGRST204', details: null, hint: null, message: "Could not find the 'thank_you_emoji' column of 'surveys' in the schema cache"}
+r @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:17
+error @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:106
+createSurvey @ app-tao25m3ur4iq3oorg3266wgu5cqhdumt3rw7ipzaxqifhosruacy.makeproxy-c.figma.site/src/app/services/surveysService.ts:42
+await in createSurvey
+handleSubmit @ app-tao25m3ur4iq3oorg3266wgu5cqhdumt3rw7ipzaxqifhosruacy.makeproxy-c.figma.site/src/app/components/admin/SurveyModal.tsx:130
+y @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:25
+ik @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:25
+iz @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:25
+i$ @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:25
+dP @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:37
+dM @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:37
+dG @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:37
+dk @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:37
+(anonymous) @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:37
+SC @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:37
+iC @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:25
+dj @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:37
+lR @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:25
+lO @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:25
+lv @ code_components_preview_iframe-b1e40decaa519db4.min.js.br:25
+ SurveyModal: Create result: null
+ AdminDashboardSurveys: Loading surveys...
+ Fetching ALL surveys from Supabase (admin)...
+ All surveys from Supabase (admin): (2) [{…}, {…}]
+ AdminDashboardSurveys: Surveys loaded: (2) [{…}, {…}]
+ AdminDashboardSurveys: Number of surveys: 2

@@ -1,0 +1,394 @@
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+waitForSuccessfulPing @ app-4xo2gut6fykkqncc…e/@vite/client:1060
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+waitForSuccessfulPing @ app-4xo2gut6fykkqncc…e/@vite/client:1060
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+waitForSuccessfulPing @ app-4xo2gut6fykkqncc…e/@vite/client:1060
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ 1:04:13 AM [vite] (client) hmr update /src/app/components/HerbDetails.tsx, /src/styles/index.css
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ Branding updated: Object
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branding updated: Object
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ ════════════════════════════════════════════════════════
+ 🔍 HeroCarousel - Loading Content
+ ════════════════════════════════════════════════════════
+ 📍 User Country: null
+ 📨 All Welcome Messages from localStorage: Array(0)
+ 🖼️  All Hero Slides from localStorage: Array(0)
+ ✅ Active Slides after filtering: 0 Array(0)
+ ⚙️  Carousel Settings: Object
+ ✅ Visible Welcome Messages after filtering: 0 Array(0)
+ ════════════════════════════════════════════════════════
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ Branch data: Object
+ Has sub_patterns? undefined
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ Branding updated: Object
+ Branding updated: Object
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ Branch data: Object
+ Has sub_patterns? undefined
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ Branch data: Object
+ Has sub_patterns? undefined
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+waitForSuccessfulPing @ app-4xo2gut6fykkqncc…e/@vite/client:1060
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+waitForSuccessfulPing @ app-4xo2gut6fykkqncc…e/@vite/client:1060
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+waitForSuccessfulPing @ app-4xo2gut6fykkqncc…e/@vite/client:1060
+ WebSocket connection to 'wss://app-4xo2gut6fykkqnccnjcsn5mbfbhbxjcjyo3aqsqk333vfvnckq2a.makeproxy-c.figma.site/' failed: 
+ping @ app-4xo2gut6fykkqncc…e/@vite/client:1035
+waitForSuccessfulPing @ app-4xo2gut6fykkqncc…e/@vite/client:1060

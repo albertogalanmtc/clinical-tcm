@@ -1,0 +1,1041 @@
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+background.js:1 Uncaught (in promise) 
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: Error: Called encrypt() without a session key
+    at SecretSession.encrypt (<URL>)
+    at SecretSession.createSMSG (<URL>)
+    at GetLoginNames4URL (<URL>)
+    at #G (<URL>)
+Error in event handler: TypeError: Cannot read properties of null (reading 'postMessage')
+    at #Q (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58676)
+    at #k (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58207)
+Error in event handler: TypeError: Cannot read properties of null (reading 'postMessage')
+    at #K (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58705)
+    at #x (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58038)
+Error in event handler: TypeError: Cannot read properties of null (reading 'postMessage')
+    at #K (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58705)
+    at #x (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58038)
+Error in event handler: TypeError: Cannot read properties of null (reading 'postMessage')
+    at #K (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58705)
+    at #x (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58038)
+ Running frontend commit 29244711f25109c85ce9dbbe4291938e16e94ea0
+ Statsig is not ready to log exposures, will retry in 1 seconds
+ Autosave Changes not available or already claimed by another tab undefined
+ [import] git: 29244711f25109c85ce9dbbe4291938e16e94ea0, stamp: 828238723CF476C8
+ [Fullscreen] Booting... (emscripten version 4.0.21)
+ [GPU] graphicsAPI:"WebGPU", vendor:"Google Inc. (Apple)" renderer:"ANGLE (Apple, ANGLE Metal Renderer: Apple M3, Unspecified Version)" deviceArchitecture:"metal-3" deviceDescription:"" webGPUDevice:"" webGPUVendor:"apple" bindings:"emdawnwebgpu"
+ [Fullscreen] Ready in 3521.2ms
+ [FullscreenApp] calling setEditorTheme and setting preference light
+ [MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/0MmfrRaLM4KqcclEDHF5vJ?role=editor&tracking_session_id=QtgV7z5cuELb66sW&version=151&recentReload=0&file-load-streaming-compression=&user-id=1630364159585785991&client_release=29244711f25109c85ce9dbbe4291938e16e94ea0&force-dpl-journaled-reconnect=1
+ [FullscreenApp] calling setEditorTheme and setting preference light
+ Loaded 0 scripts (0b), 0 from cache (0b)
+/api/plans/368aab40-1c0f-4f02-a02e-bf74987a6243/npm_private_registry/scopes:1  Failed to load resource: the server responded with a status of 404 ()
+/api/folders/581688551:1  Failed to load resource: the server responded with a status of 403 ()
+8469-f47411c60eb019a8.min.js.br:1405 Uncaught (in promise) 
+ [MultiplayerSession] Joining file version 106 (initial load)
+ Migration succeeded: context: fullscreen_migrate_SceneGraphManager, version: 106, duration: 0ms.
+ [devtools] Initialized LS
+ [Fullscreen] loadtime=17.38s maxmem=302612444
+ Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently
+/api/make/0MmfrRaLM4KqcclEDHF5vJ/cached_preview_urls?source_code_hash=94d0d08c53aea8f477df1eb671fb82f96be27918:1  Failed to load resource: the server responded with a status of 404 ()
+ [devtools] Initialized LS
+ 🎯 Navigation render - isAdmin: false planType: null
+ ⏳ Still loading...
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Fetching active banners from Supabase...
+ 🔍 Fetching active surveys from Supabase...
+ Fetching active dashboard messages from Supabase...
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: Array(0)
+   Slides published: Array(0)
+   Quick actions published: Object
+   Community card published: Object
+ 🔍 Dashboard - All published content: Array(2)
+ ⚙️ Dashboard - Carousel settings: Object
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: Array(1)
+ 🎨 Final rendered content: Array(1)
+ ⏳ Still loading...
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: null
+ ⏳ Still loading...
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Active dashboard messages from Supabase: Array(0)
+ Active banners from Supabase: Array(3)
+ 📊 Raw data from Supabase: Array(0)
+ ❌ Error: null
+ ✅ Active surveys after date filter: Array(0)
+ BannersAndSurveysWidget: Loaded surveys: Array(0)
+ BannersAndSurveysWidget: Loaded banners: Array(3)
+ 🔄 Processing surveys. Total count: 0
+ 🎯 Final items to display: Array(3)
+ 📊 Summary - Banners: 3 Surveys: 0
+ 🎨 Rendering widget. Total items: 3
+ 🚫 Dismissed items: Array(0)
+ 👁️ Visible banners: 3
+ 👁️ Visible surveys: 0
+ 🎯 First banner: 290bd242-cd6d-4bf7-935d-eca9b851659f
+ 🎯 First survey: undefined
+ ✅ Items to show: Array(1)
+ 🎨 Rendering widget. Total items: 3
+ 🚫 Dismissed items: Array(1)
+ 👁️ Visible banners: 2
+ 👁️ Visible surveys: 0
+ 🎯 First banner: bf32febe-c865-48c1-871a-71be6bff9685
+ 🎯 First survey: undefined
+ ✅ Items to show: Array(1)
+ 🎨 Rendering widget. Total items: 3
+ 🚫 Dismissed items: Array(2)
+ 👁️ Visible banners: 1
+ 👁️ Visible surveys: 0
+ 🎯 First banner: 3cb02dbc-1908-4b94-a22a-e1c6155ac719
+ 🎯 First survey: undefined
+ ✅ Items to show: Array(1)
+ 🎨 Rendering widget. Total items: 3
+ 🚫 Dismissed items: Array(3)
+ 👁️ Visible banners: 0
+ 👁️ Visible surveys: 0
+ 🎯 First banner: undefined
+ 🎯 First survey: undefined
+ ❌ No items to show, returning null
+ 🎯 Navigation render - isAdmin: true planType: null
+ 🎯 Navigation render - isAdmin: true planType: null
+ 🎯 Navigation render - isAdmin: true planType: null
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: null
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: null
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎯 Navigation render - isAdmin: true planType: null
+ 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Navigation render - isAdmin: true planType: null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Navigation render - isAdmin: true planType: null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 AdminDashboardSurveys: Loading surveys...
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 Fetching ALL surveys from Supabase (admin)...
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 All surveys from Supabase (admin): Array(1)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 AdminDashboardSurveys: Surveys loaded: Array(1)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 AdminDashboardSurveys: Number of surveys: 1
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 SurveyModal: Saving survey with data: Object
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 SurveyModal: Create result: Object
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 AdminDashboardSurveys: Loading surveys...
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 Fetching ALL surveys from Supabase (admin)...
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 All surveys from Supabase (admin): Array(2)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 AdminDashboardSurveys: Surveys loaded: Array(2)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 AdminDashboardSurveys: Number of surveys: 2
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Navigation render - isAdmin: true planType: null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⏳ Still loading...
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 Fetching active banners from Supabase...
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🔍 Fetching active surveys from Supabase...
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 Fetching active dashboard messages from Supabase...
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📦 getUnifiedDashboardContentPublished - Raw data:
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Messages published: Array(0)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Slides published: Array(0)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Quick actions published: Object
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Community card published: Object
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🔍 Dashboard - All published content: Array(2)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⚙️ Dashboard - Carousel settings: Object
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   ⚡ Quick Actions: enabled
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ✅ Visible content after filtering: Array(1)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Final rendered content: Array(1)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⏳ Still loading...
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📊 Raw data from Supabase: Array(0)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ❌ Error: null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ✅ Active surveys after date filter: Array(0)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 Active dashboard messages from Supabase: Array(0)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 Active banners from Supabase: Array(3)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 BannersAndSurveysWidget: Loaded surveys: Array(0)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 BannersAndSurveysWidget: Loaded banners: Array(3)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🔄 Processing surveys. Total count: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Final items to display: Array(3)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📊 Summary - Banners: 3 Surveys: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Rendering widget. Total items: 3
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🚫 Dismissed items: Array(0)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible banners: 3
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible surveys: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First banner: 290bd242-cd6d-4bf7-935d-eca9b851659f
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First survey: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ✅ Items to show: Array(1)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Rendering widget. Total items: 3
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🚫 Dismissed items: Array(1)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible banners: 2
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible surveys: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First banner: bf32febe-c865-48c1-871a-71be6bff9685
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First survey: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ✅ Items to show: Array(1)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Rendering widget. Total items: 3
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🚫 Dismissed items: Array(2)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible banners: 1
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible surveys: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First banner: 3cb02dbc-1908-4b94-a22a-e1c6155ac719
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First survey: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ✅ Items to show: Array(1)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Rendering widget. Total items: 3
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🚫 Dismissed items: Array(3)
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible banners: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible surveys: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First banner: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First survey: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ❌ No items to show, returning null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+vendor-core-34edd2c749031eb9.min.js.br:63  GET https://www.figma.com/api/rev/0MmfrRaLM4KqcclEDHF5vJ/code_snapshot/027ece086ec0bed94d576346ef3109da8fbeee8b5a4e9a5f8702e94ace55da0f 404 (Not Found)
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:63
+h @ vendor-45e1a1bbf1543603.min.js.br:3
+(anonymous) @ 8469-f47411c60eb019a8.min.js.br:1405
+k @ 8469-f47411c60eb019a8.min.js.br:1405
+await in k
+N @ 8469-f47411c60eb019a8.min.js.br:1405
+R @ 8469-f47411c60eb019a8.min.js.br:1405
+(anonymous) @ 8275-a1a784772be40624.min.js.br:3
+validate @ 8469-f47411c60eb019a8.min.js.br:1385
+getCodeSnapshot @ 8275-a1a784772be40624.min.js.br:3
+(anonymous) @ 8275-a1a784772be40624.min.js.br:3
+(anonymous) @ 6386-3ca6970ce49481c8.min.js.br:3
+run @ 6386-3ca6970ce49481c8.min.js.br:3
+b @ 8275-a1a784772be40624.min.js.br:3
+(anonymous) @ 8275-a1a784772be40624.min.js.br:3
+(anonymous) @ 8275-a1a784772be40624.min.js.br:3
+aB @ vendor-core-34edd2c749031eb9.min.js.br:11
+oD @ vendor-core-34edd2c749031eb9.min.js.br:11
+oP @ vendor-core-34edd2c749031eb9.min.js.br:11
+t5 @ vendor-core-34edd2c749031eb9.min.js.br:11
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:11
+oB @ vendor-core-34edd2c749031eb9.min.js.br:11
+oE @ vendor-core-34edd2c749031eb9.min.js.br:11
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:54
+S @ vendor-core-34edd2c749031eb9.min.js.br:54
+O @ vendor-core-34edd2c749031eb9.min.js.br:54
+postMessage
+a @ vendor-core-34edd2c749031eb9.min.js.br:54
+A @ vendor-core-34edd2c749031eb9.min.js.br:54
+n.unstable_scheduleCallback @ vendor-core-34edd2c749031eb9.min.js.br:54
+e.exports.unstable_scheduleCallback @ vendor-core-34edd2c749031eb9.min.js.br:54
+r @ vendor-core-34edd2c749031eb9.min.js.br:11
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:11
+oB @ vendor-core-34edd2c749031eb9.min.js.br:11
+oP @ vendor-core-34edd2c749031eb9.min.js.br:11
+t5 @ vendor-core-34edd2c749031eb9.min.js.br:11
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:11
+requestAnimationFrame
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:63
+_R @ 8469-f47411c60eb019a8.min.js.br:183
+s @ 8469-f47411c60eb019a8.min.js.br:349
+requestAnimationFrame @ 8469-f47411c60eb019a8.min.js.br:186
+_Async_requestAnimationFrame @ compiled_wasm.js.br:2
+$wasm-function[3328] @ compiled_wasm.wasm.br:0x121835
+$wasm-function[2007] @ compiled_wasm.wasm.br:0x490f0
+$wasm-function[41972] @ compiled_wasm.wasm.br:0x226259b
+$wasm-function[17552] @ compiled_wasm.wasm.br:0xf414fb
+$wasm-function[39671] @ compiled_wasm.wasm.br:0x2009e96
+(anonymous) @ compiled_wasm.js.br:2
+(anonymous) @ compiled_wasm.js.br:2
+_wrapCppCall @ compiled_wasm.js.br:2
+(anonymous) @ compiled_wasm.js.br:2
+T @ 1719-ec2610f0a96604cd.min.js.br:3
+_.onmessage @ 1719-ec2610f0a96604cd.min.js.br:3
+vendor-core-34edd2c749031eb9.min.js.br:54 Failed to fetch snapshot files: T: XHR for "/api/rev/0MmfrRaLM4KqcclEDHF5vJ/code_snapshot/027ece086ec0bed94d576346ef3109da8fbeee8b5a4e9a5f8702e94ace55da0f" failed with status 404
+    at N (8469-f47411c60eb019a8.min.js.br:1405:11227)
+    at async Object.R [as get] (8469-f47411c60eb019a8.min.js.br:1405:11610)
+    at async 8275-a1a784772be40624.min.js.br:3:23483
+    at async 8275-a1a784772be40624.min.js.br:3:73415
+    at async 6386-3ca6970ce49481c8.min.js.br:3:447
+    at async b (8275-a1a784772be40624.min.js.br:3:72835)
+    at async 8275-a1a784772be40624.min.js.br:3:63487
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:54
+(anonymous) @ 8275-a1a784772be40624.min.js.br:3
+await in (anonymous)
+(anonymous) @ 8275-a1a784772be40624.min.js.br:3
+aB @ vendor-core-34edd2c749031eb9.min.js.br:11
+oD @ vendor-core-34edd2c749031eb9.min.js.br:11
+oP @ vendor-core-34edd2c749031eb9.min.js.br:11
+t5 @ vendor-core-34edd2c749031eb9.min.js.br:11
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:11
+oB @ vendor-core-34edd2c749031eb9.min.js.br:11
+oE @ vendor-core-34edd2c749031eb9.min.js.br:11
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:54
+S @ vendor-core-34edd2c749031eb9.min.js.br:54
+O @ vendor-core-34edd2c749031eb9.min.js.br:54
+postMessage
+a @ vendor-core-34edd2c749031eb9.min.js.br:54
+A @ vendor-core-34edd2c749031eb9.min.js.br:54
+n.unstable_scheduleCallback @ vendor-core-34edd2c749031eb9.min.js.br:54
+e.exports.unstable_scheduleCallback @ vendor-core-34edd2c749031eb9.min.js.br:54
+r @ vendor-core-34edd2c749031eb9.min.js.br:11
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:11
+oB @ vendor-core-34edd2c749031eb9.min.js.br:11
+oP @ vendor-core-34edd2c749031eb9.min.js.br:11
+t5 @ vendor-core-34edd2c749031eb9.min.js.br:11
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:11
+requestAnimationFrame
+(anonymous) @ vendor-core-34edd2c749031eb9.min.js.br:63
+_R @ 8469-f47411c60eb019a8.min.js.br:183
+s @ 8469-f47411c60eb019a8.min.js.br:349
+requestAnimationFrame @ 8469-f47411c60eb019a8.min.js.br:186
+_Async_requestAnimationFrame @ compiled_wasm.js.br:2
+$wasm-function[3328] @ compiled_wasm.wasm.br:0x121835
+$wasm-function[2007] @ compiled_wasm.wasm.br:0x490f0
+$wasm-function[41972] @ compiled_wasm.wasm.br:0x226259b
+$wasm-function[17552] @ compiled_wasm.wasm.br:0xf414fb
+$wasm-function[39671] @ compiled_wasm.wasm.br:0x2009e96
+(anonymous) @ compiled_wasm.js.br:2
+(anonymous) @ compiled_wasm.js.br:2
+_wrapCppCall @ compiled_wasm.js.br:2
+(anonymous) @ compiled_wasm.js.br:2
+T @ 1719-ec2610f0a96604cd.min.js.br:3
+_.onmessage @ 1719-ec2610f0a96604cd.min.js.br:3
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Navigation render - isAdmin: false planType: null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⏳ Still loading...
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 Fetching active banners from Supabase...
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🔍 Fetching active surveys from Supabase...
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 Fetching active dashboard messages from Supabase...
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📦 getUnifiedDashboardContentPublished - Raw data:
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Messages published: []
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Slides published: []
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Quick actions published: {id: 'quick-actions', enabled: true, order: 0, actions: Array(9)}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Community card published: {id: 'community-card', enabled: true, order: 0, title: 'Join Our Community', description: 'Connect with fellow practitioners, share experiences, and support the development of TCM Clinical.', …}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🔍 Dashboard - All published content: (2) [{…}, {…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⚙️ Dashboard - Carousel settings: {desktopRatio: '16:9', mobileRatio: '9:16', transitionInterval: 5}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   ⚡ Quick Actions: enabled
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ✅ Visible content after filtering: [{…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Final rendered content: [{…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 Admin plan updated to: pro
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 Branding updated: {primaryColor: '#0d9488', accentColor: '#14b8a6', logoUrl: '', appName: 'TCM Clinical', showAppName: true, …}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📦 getUnifiedDashboardContentPublished - Raw data:
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Messages published: []
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Slides published: []
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Quick actions published: {id: 'quick-actions', enabled: true, order: 0, actions: Array(9)}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Community card published: {id: 'community-card', enabled: true, order: 0, title: 'Join Our Community', description: 'Connect with fellow practitioners, share experiences, and support the development of TCM Clinical.', …}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🔍 Dashboard - All published content: (2) [{…}, {…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⚙️ Dashboard - Carousel settings: {desktopRatio: '16:9', mobileRatio: '9:16', transitionInterval: 5}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   ⚡ Quick Actions: enabled
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ✅ Visible content after filtering: [{…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Final rendered content: [{…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Navigation render - isAdmin: false planType: null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⏳ Still loading...
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Navigation render - isAdmin: true planType: null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Rendering widget. Total items: 3
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🚫 Dismissed items: (3) ['290bd242-cd6d-4bf7-935d-eca9b851659f', 'bf32febe-c865-48c1-871a-71be6bff9685', '3cb02dbc-1908-4b94-a22a-e1c6155ac719']
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible banners: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible surveys: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First banner: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First survey: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ❌ No items to show, returning null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 Branding updated: {primaryColor: '#0d9488', accentColor: '#14b8a6', logoUrl: '', appName: 'TCM Clinical', showAppName: true, …}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📦 getUnifiedDashboardContentPublished - Raw data:
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Messages published: []
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Slides published: []
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Quick actions published: {id: 'quick-actions', enabled: true, order: 0, actions: Array(9)}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Community card published: {id: 'community-card', enabled: true, order: 0, title: 'Join Our Community', description: 'Connect with fellow practitioners, share experiences, and support the development of TCM Clinical.', …}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🔍 Dashboard - All published content: (2) [{…}, {…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⚙️ Dashboard - Carousel settings: {desktopRatio: '16:9', mobileRatio: '9:16', transitionInterval: 5}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   ⚡ Quick Actions: enabled
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ✅ Visible content after filtering: [{…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Final rendered content: [{…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Navigation render - isAdmin: false planType: null
+ ⏳ Still loading...
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 🎨 Rendering widget. Total items: 3
+ 🚫 Dismissed items: (3) ['290bd242-cd6d-4bf7-935d-eca9b851659f', 'bf32febe-c865-48c1-871a-71be6bff9685', '3cb02dbc-1908-4b94-a22a-e1c6155ac719']
+ 👁️ Visible banners: 0
+ 👁️ Visible surveys: 0
+ 🎯 First banner: undefined
+ 🎯 First survey: undefined
+ ❌ No items to show, returning null
+ Branding updated: {primaryColor: '#0d9488', accentColor: '#14b8a6', logoUrl: '', appName: 'TCM Clinical', showAppName: true, …}
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: []
+   Slides published: []
+   Quick actions published: {id: 'quick-actions', enabled: true, order: 0, actions: Array(9)}
+   Community card published: {id: 'community-card', enabled: true, order: 0, title: 'Join Our Community', description: 'Connect with fellow practitioners, share experiences, and support the development of TCM Clinical.', …}
+ 🔍 Dashboard - All published content: (2) [{…}, {…}]
+ ⚙️ Dashboard - Carousel settings: {desktopRatio: '16:9', mobileRatio: '9:16', transitionInterval: 5}
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: [{…}]
+ 🎨 Final rendered content: [{…}]
+ Branding updated: {primaryColor: '#0d9488', accentColor: '#14b8a6', logoUrl: '', appName: 'TCM Clinical', showAppName: true, …}
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+   Messages published: []
+   Slides published: []
+   Quick actions published: {id: 'quick-actions', enabled: true, order: 0, actions: Array(9)}
+   Community card published: {id: 'community-card', enabled: true, order: 0, title: 'Join Our Community', description: 'Connect with fellow practitioners, share experiences, and support the development of TCM Clinical.', …}
+ 🔍 Dashboard - All published content: (2) [{…}, {…}]
+ ⚙️ Dashboard - Carousel settings: {desktopRatio: '16:9', mobileRatio: '9:16', transitionInterval: 5}
+   ⚡ Quick Actions: enabled
+ ✅ Visible content after filtering: [{…}]
+ 🎨 Final rendered content: [{…}]
+ ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+ 🎯 Navigation render - isAdmin: false planType: null
+ ⏳ Still loading...
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ Branding updated: {primaryColor: '#0d9488', accentColor: '#14b8a6', logoUrl: '', appName: 'TCM Clinical', showAppName: true, …}
+ 📦 getUnifiedDashboardContentPublished - Raw data:
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Messages published: []
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Slides published: []
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Quick actions published: {id: 'quick-actions', enabled: true, order: 0, actions: Array(9)}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Community card published: {id: 'community-card', enabled: true, order: 0, title: 'Join Our Community', description: 'Connect with fellow practitioners, share experiences, and support the development of TCM Clinical.', …}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🔍 Dashboard - All published content: (2) [{…}, {…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⚙️ Dashboard - Carousel settings: {desktopRatio: '16:9', mobileRatio: '9:16', transitionInterval: 5}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   ⚡ Quick Actions: enabled
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ✅ Visible content after filtering: [{…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Final rendered content: [{…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 Branding updated: {primaryColor: '#0d9488', accentColor: '#14b8a6', logoUrl: '', appName: 'TCM Clinical', showAppName: true, …}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📦 getUnifiedDashboardContentPublished - Raw data:
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Messages published: []
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Slides published: []
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Quick actions published: {id: 'quick-actions', enabled: true, order: 0, actions: Array(9)}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   Community card published: {id: 'community-card', enabled: true, order: 0, title: 'Join Our Community', description: 'Connect with fellow practitioners, share experiences, and support the development of TCM Clinical.', …}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🔍 Dashboard - All published content: (2) [{…}, {…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⚙️ Dashboard - Carousel settings: {desktopRatio: '16:9', mobileRatio: '9:16', transitionInterval: 5}
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106   ⚡ Quick Actions: enabled
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ✅ Visible content after filtering: [{…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Final rendered content: [{…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Navigation render - isAdmin: true planType: practitioner
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Rendering widget. Total items: 3
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🚫 Dismissed items: (3) ['290bd242-cd6d-4bf7-935d-eca9b851659f', 'bf32febe-c865-48c1-871a-71be6bff9685', '3cb02dbc-1908-4b94-a22a-e1c6155ac719']
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible banners: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible surveys: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First banner: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First survey: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ❌ No items to show, returning null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Navigation render - isAdmin: false planType: null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⏳ Still loading...
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Navigation render - isAdmin: true planType: practitioner
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Rendering widget. Total items: 3
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🚫 Dismissed items: (3) ['290bd242-cd6d-4bf7-935d-eca9b851659f', 'bf32febe-c865-48c1-871a-71be6bff9685', '3cb02dbc-1908-4b94-a22a-e1c6155ac719']
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible banners: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible surveys: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First banner: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First survey: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ❌ No items to show, returning null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Navigation render - isAdmin: true planType: practitioner
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Rendering widget. Total items: 3
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🚫 Dismissed items: (3) ['290bd242-cd6d-4bf7-935d-eca9b851659f', 'bf32febe-c865-48c1-871a-71be6bff9685', '3cb02dbc-1908-4b94-a22a-e1c6155ac719']
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible banners: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible surveys: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First banner: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First survey: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ❌ No items to show, returning null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Navigation render - isAdmin: true planType: practitioner
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Rendering widget. Total items: 3
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🚫 Dismissed items: (3) ['290bd242-cd6d-4bf7-935d-eca9b851659f', 'bf32febe-c865-48c1-871a-71be6bff9685', '3cb02dbc-1908-4b94-a22a-e1c6155ac719']
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible banners: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible surveys: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First banner: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First survey: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ❌ No items to show, returning null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Navigation render - isAdmin: true planType: practitioner
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Rendering widget. Total items: 3
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🚫 Dismissed items: (3) ['290bd242-cd6d-4bf7-935d-eca9b851659f', 'bf32febe-c865-48c1-871a-71be6bff9685', '3cb02dbc-1908-4b94-a22a-e1c6155ac719']
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible banners: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible surveys: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First banner: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First survey: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ❌ No items to show, returning null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⚠️ handleStorageChange (demo user) - userRole: admin userPlan: practitioner
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Navigation render - isAdmin: true planType: practitioner
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Rendering widget. Total items: 3
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🚫 Dismissed items: (3) ['290bd242-cd6d-4bf7-935d-eca9b851659f', 'bf32febe-c865-48c1-871a-71be6bff9685', '3cb02dbc-1908-4b94-a22a-e1c6155ac719']
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible banners: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible surveys: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First banner: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First survey: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ❌ No items to show, returning null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Navigation render - isAdmin: true planType: practitioner
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ⏳ Still loading...
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 Active dashboard messages from Supabase: []
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📊 Raw data from Supabase: []
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ❌ Error: null
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ✅ Active surveys after date filter: []
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 Active banners from Supabase: (3) [{…}, {…}, {…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 BannersAndSurveysWidget: Loaded surveys: []
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 BannersAndSurveysWidget: Loaded banners: (3) [{…}, {…}, {…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🔄 Processing surveys. Total count: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 Final items to display: (3) [{…}, {…}, {…}]
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 📊 Summary - Banners: 3 Surveys: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎨 Rendering widget. Total items: 3
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🚫 Dismissed items: []
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible banners: 3
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 👁️ Visible surveys: 0
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First banner: 290bd242-cd6d-4bf7-935d-eca9b851659f
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 🎯 First survey: undefined
+code_components_preview_iframe-8d75d7a8602f83ab.min.js.br:106 ✅ Items to show: ['banner:290bd242-cd6d-4bf7-935d-eca9b851659f']

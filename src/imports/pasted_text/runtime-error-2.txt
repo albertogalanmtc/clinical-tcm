@@ -1,0 +1,630 @@
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Unchecked runtime.lastError: The message port closed before a response was received.
+Error in event handler: TypeError: Cannot read properties of null (reading 'postMessage')
+    at #Q (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58676)
+    at #k (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58207)
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+Error in event handler: TypeError: Cannot read properties of null (reading 'postMessage')
+    at #K (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58705)
+    at #x (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58038)
+Error in event handler: TypeError: Cannot read properties of null (reading 'postMessage')
+    at #K (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58705)
+    at #x (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58038)
+Error in event handler: TypeError: Cannot read properties of null (reading 'postMessage')
+    at #K (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58705)
+    at #x (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58038)
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+background.js:1 Uncaught (in promise) 
+Error in event handler: TypeError: Cannot read properties of null (reading 'postMessage')
+    at #Q (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58676)
+    at #k (chrome-extension://pejdijmoenmkgeppbflobdenhhabjlaj/background.js:1:58207)
+background.js:1 Uncaught (in promise) 
+ Running frontend commit 51048fa4edca804e4e8770c6eefc1b2f1daa3891
+ Statsig is not ready to log exposures, will retry in 1 seconds
+ Autosave Changes not available or already claimed by another tab undefined
+ [import] git: 2deb43811cd6305174ef79c94e51fe11d15df1e2, stamp: DB76C5DC007AA6A4
+ [Fullscreen] Booting... (emscripten version 4.0.21)
+ [GPU] graphicsAPI:"WebGPU", vendor:"Google Inc. (Apple)" renderer:"ANGLE (Apple, ANGLE Metal Renderer: Apple M3, Unspecified Version)" deviceArchitecture:"metal-3" deviceDescription:"" webGPUDevice:"" webGPUVendor:"apple" bindings:"emdawnwebgpu"
+vendor-core-229ba1ea832d24ba.min.js.br:54 [Fullscreen] Ready in 1707.2ms
+vendor-core-229ba1ea832d24ba.min.js.br:54 [FullscreenApp] calling setEditorTheme and setting preference light
+vendor-core-229ba1ea832d24ba.min.js.br:54 [MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/0MmfrRaLM4KqcclEDHF5vJ?role=editor&tracking_session_id=xqvZ1rRzUpjs91cl&version=152&recentReload=0&file-load-streaming-compression=&user-id=1631307828071871417&client_release=51048fa4edca804e4e8770c6eefc1b2f1daa3891&force-dpl-journaled-reconnect=1
+vendor-core-229ba1ea832d24ba.min.js.br:54 [FullscreenApp] calling setEditorTheme and setting preference light
+vendor-core-229ba1ea832d24ba.min.js.br:54 Loaded 0 scripts (0b), 0 from cache (0b)
+/api/folders/581688551:1  Failed to load resource: the server responded with a status of 403 ()
+3510-e3e4df8ae30e6a67.min.js.br:1403 Uncaught (in promise) T: XHR for "/api/folders/581688551" failed with status 403
+    at N (3510-e3e4df8ae30e6a67.min.js.br:1403:11227)
+    at async Object.R [as get] (3510-e3e4df8ae30e6a67.min.js.br:1403:11610)
+    at async 3510-e3e4df8ae30e6a67.min.js.br:1096:151627
+    at async g.validate (3510-e3e4df8ae30e6a67.min.js.br:1383:5958)
+    at async h.fetchObject (3510-e3e4df8ae30e6a67.min.js.br:347:160122)
+    at async f (3510-e3e4df8ae30e6a67.min.js.br:347:140425)
+/api/plans/368aab40-1c0f-4f02-a02e-bf74987a6243/npm_private_registry/scopes:1  Failed to load resource: the server responded with a status of 404 ()
+vendor-core-229ba1ea832d24ba.min.js.br:54 [MultiplayerSession] Joining file version 106 (initial load)
+vendor-core-229ba1ea832d24ba.min.js.br:54 Migration succeeded: context: fullscreen_migrate_SceneGraphManager, version: 106, duration: 0ms.
+vendor-core-229ba1ea832d24ba.min.js.br:54 [devtools] Initialized LS
+vendor-core-229ba1ea832d24ba.min.js.br:54 [Fullscreen] loadtime=18.05s maxmem=302584372
+figma_app-b827ad3136f1046e.min.js.br:52 Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently
+v @ figma_app-b827ad3136f1046e.min.js.br:52
+vendor-core-229ba1ea832d24ba.min.js.br:54 [devtools] Initialized LS
+cezjuzscwjazgeklbpnw.supabase.co/rest/v1/cookie_consent?select=id&session_id=eq.session_1777491539982_ix6vvn9ec:1  Failed to load resource: the server responded with a status of 406 ()
+cezjuzscwjazgeklbpnw.supabase.co/rest/v1/cookie_consent?select=id&session_id=eq.session_1777491539982_ix6vvn9ec:1  Failed to load resource: the server responded with a status of 406 ()
+cezjuzscwjazgeklbpnw.supabase.co/rest/v1/cookie_consent?select=id&session_id=eq.session_1777491539982_ix6vvn9ec:1  Failed to load resource: the server responded with a status of 406 ()
+ ⚙️ Platform Settings - Loading from Supabase...
+ 📊 Dashboard Content - Loading from Supabase...
+ 🔍 Fetching user profile for ID: 02b11c70-7e72-4cc5-a1cf-84017a32097d
+ ⚠️ Platform Settings - No settings in Supabase
+ ⚠️ Dashboard Content - No content in Supabase
+ 🎠 Carousel Settings - Loading from Supabase...
+ 🎯 Navigation render - isAdmin: false planType: null
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 📦 Plans - Loading from Supabase...
+code_components_prev…173ac1.min.js.br:37 Uncaught TypeError: loadedPlans.filter is not a function
+    at loadPlans (MembershipPage.tsx:126:10)
+    at MembershipPage.tsx:132:5
+    at TO (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:138396)
+    at T8 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:151856)
+    at T7 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:151634)
+    at T6 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:151542)
+    at T4 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:151420)
+    at S1 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:163585)
+    at SQ (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:163247)
+    at SR (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:158102)
+ The above error occurred in the <MembershipPage> component:
+
+    at MembershipPage (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/src/app/pages/MembershipPage.tsx:85:24)
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at RenderedRoute (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/node_modules/.vite/deps/react-router-dom.js?v=0059cc49:6423:26)
+    at Outlet (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/node_modules/.vite/deps/react-router-dom.js?v=0059cc49:7221:26)
+    at div
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at main
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at div
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at div
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at div
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at AccountLayout (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/src/app/layouts/AccountLayout.tsx:57:57)
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at RenderedRoute (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/node_modules/.vite/deps/react-router-dom.js?v=0059cc49:6423:26)
+    at Outlet (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/node_modules/.vite/deps/react-router-dom.js?v=0059cc49:7221:26)
+    at main
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at div
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at Layout (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/src/app/components/Layout.tsx:28:47)
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at ProtectedRoute (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/src/app/components/ProtectedRoute.tsx:23:34)
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at RenderedRoute (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/node_modules/.vite/deps/react-router-dom.js?v=0059cc49:6423:26)
+    at Routes (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/node_modules/.vite/deps/react-router-dom.js?v=0059cc49:7300:3)
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at UserProvider (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/src/app/contexts/UserContext.tsx:23:32)
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at Router (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/node_modules/.vite/deps/react-router-dom.js?v=0059cc49:7230:13)
+    at BrowserRouter (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/node_modules/.vite/deps/react-router-dom.js?v=0059cc49:10534:3)
+    at App (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/src/app/App.tsx:266:3)
+    at u7 (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:133:4437)
+    at R (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:737:13258)
+    at rr (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:791:13925)
+    at AJ (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:808:10316)
+    at div
+    at dd (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:133:14318)
+    at Sz (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:798:269224)
+    at Im (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:798:280484)
+    at lw (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:118:224031)
+    at fq (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:601:17988)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+r @ code_components_preview_iframe-f315a529f3173ac1.min.js.br:17
+code_components_prev…173ac1.min.js.br:37 Uncaught TypeError: loadedPlans.filter is not a function
+    at loadPlans (MembershipPage.tsx:126:10)
+    at MembershipPage.tsx:132:5
+    at TO (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:138396)
+    at T8 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:151856)
+    at T7 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:151634)
+    at T6 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:151542)
+    at T4 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:151420)
+    at S1 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:163585)
+    at SQ (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:163247)
+    at SR (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:158102)
+ 📝 Notes - Loading from Supabase for user: 02b11c70-7e72-4cc5-a1cf-84017a32097d
+ 🔍 Query result - data: Object error: null
+ 🔍 DEBUG - Supabase userProfile: Object
+ 🔍 DEBUG - role: admin
+ 🔍 DEBUG - plan_type: advanced
+ 🔍 DEBUG - isAdmin will be: true
+ ✅ Carousel Settings - Loaded from Supabase
+ ✅ Plans - Loaded from Supabase: 3 plans
+ ✅ Notes - Loaded from Supabase successfully
+ ✅ DEBUG - Plan features loaded from Supabase: Object
+ ✅ DEBUG - State updated. localStorage userRole: admin
+ ✅ DEBUG - State updated. isAdmin: true
+ [Make] Blank preview detected: Your app rendered no content.
+
+This typically happens when:
+1. The component returns null, undefined, or an empty fragment
+2. A conditional render (e.g., `condition && <Component />`) evaluated to false
+3. The component threw an error during render that was silently caught
+4. Required props are missing or have unexpected values
+
+To fix this:
+- Check that your component's return statement returns valid JSX
+- Verify all conditional renders have fallback content
+- Ensure required props are being passed correctly
+- Check the console for any other errors that may have occurred
+r @ code_components_preview_iframe-f315a529f3173ac1.min.js.br:17
+ 7:40:54 PM [vite] (client) hmr update /src/app/contexts/UserContext.tsx, /src/styles/index.css
+ 7:40:55 PM [vite] (client) hmr invalidate /src/app/contexts/UserContext.tsx Could not Fast Refresh ("useUser" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+ 7:40:55 PM [vite] (client) hmr update /src/styles/index.css, /src/app/App.tsx, /src/app/pages/ProfilePage.tsx, /src/app/pages/MembershipPage.tsx, /src/app/pages/SettingsPage.tsx, /src/app/pages/Community.tsx, /src/app/pages/PricingPlans.tsx, /src/app/pages/DebugUserInfo.tsx, /src/app/pages/TestSurveyDisplay.tsx, /src/app/components/Navigation.tsx, /src/app/components/dashboard/BannersAndSurveysWidget.tsx, /src/app/pages/HerbDetail.tsx, /src/app/pages/FormulaDetail.tsx, /src/app/pages/Usage.tsx, /src/app/pages/Herbs.tsx, /src/app/pages/Prescriptions.tsx, /src/app/pages/Formulas.tsx, /src/app/pages/Builder.tsx, /src/app/pages/PrescriptionDetail.tsx, /src/app/components/PrescriptionPreviewModal.tsx, /src/app/components/UpgradePrompt.tsx, /src/app/components/FeatureGuard.tsx, /src/app/components/community/NewPostModal.tsx, /src/app/components/community/PostDetailModal.tsx, /src/app/components/PlanBadge.tsx, /src/app/components/UpgradePlanModal.tsx, /src/app/components/HerbDetails.tsx, /src/app/components/FormulaDetails.tsx
+ ⚙️ Platform Settings - Loading from Supabase...
+ 📊 Dashboard Content - Loading from Supabase...
+ Admin plan updated to: pro
+ 🔍 Fetching user profile for ID: 02b11c70-7e72-4cc5-a1cf-84017a32097d
+ ⚠️ Platform Settings - No settings in Supabase
+ ⚠️ Dashboard Content - No content in Supabase
+ 🎠 Carousel Settings - Loading from Supabase...
+ 🔍 Query result - data: Object error: null
+ 🔍 DEBUG - Supabase userProfile: Object
+ 🔍 DEBUG - role: admin
+ 🔍 DEBUG - plan_type: advanced
+ 🔍 DEBUG - isAdmin will be: true
+ 🎯 Navigation render - isAdmin: true planType: advanced
+ 📝 FloatingNotes render - isVisible: false
+ 📝 FloatingNotes NOT VISIBLE - returning null
+ 📦 Plans - Loading from Supabase...
+code_components_prev…173ac1.min.js.br:37 Uncaught TypeError: loadedPlans.filter is not a function
+    at loadPlans (MembershipPage.tsx:126:10)
+    at MembershipPage.tsx:132:5
+    at TO (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:138396)
+    at T8 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:151856)
+    at T7 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:151634)
+    at T6 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:151542)
+    at T4 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:151420)
+    at S1 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:163585)
+    at SQ (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:163247)
+    at SR (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:158102)
+ The above error occurred in the <MembershipPage> component:
+
+    at MembershipPage (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/src/app/pages/MembershipPage.tsx?t=1777491654092:85:24)
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at RenderedRoute (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/node_modules/.vite/deps/react-router-dom.js?v=0059cc49:6423:26)
+    at Outlet (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/node_modules/.vite/deps/react-router-dom.js?v=0059cc49:7221:26)
+    at div
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at main
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at div
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at div
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at div
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at AccountLayout (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/src/app/layouts/AccountLayout.tsx:57:57)
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at RenderedRoute (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/node_modules/.vite/deps/react-router-dom.js?v=0059cc49:6423:26)
+    at Outlet (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/node_modules/.vite/deps/react-router-dom.js?v=0059cc49:7221:26)
+    at main
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at div
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at Layout (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/src/app/components/Layout.tsx?t=1777491654092:28:47)
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at ProtectedRoute (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/src/app/components/ProtectedRoute.tsx:23:34)
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at RenderedRoute (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/node_modules/.vite/deps/react-router-dom.js?v=0059cc49:6423:26)
+    at Routes (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/node_modules/.vite/deps/react-router-dom.js?v=0059cc49:7300:3)
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at UserProvider (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/src/app/contexts/UserContext.tsx?t=1777491654092:23:32)
+    at https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:388:15475
+    at FGCmp (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/@id/fginspector:3:55)
+    at Router (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/node_modules/.vite/deps/react-router-dom.js?v=0059cc49:7230:13)
+    at BrowserRouter (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/node_modules/.vite/deps/react-router-dom.js?v=0059cc49:10534:3)
+    at App (https://app-7skvnomhthyeqshprt3r52r67vbyrt2k623ggzsnafrod56me3wp.makeproxy-c.figma.site/src/app/App.tsx?t=1777491654092:266:3)
+    at u7 (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:133:4437)
+    at R (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:737:13258)
+    at rr (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:791:13925)
+    at AJ (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:808:10316)
+    at div
+    at dd (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:133:14318)
+    at Sz (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:798:269224)
+    at Im (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:798:280484)
+    at lw (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:118:224031)
+    at fq (https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f315a529f3173ac1.min.js.br:601:17988)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+r @ code_components_preview_iframe-f315a529f3173ac1.min.js.br:17
+code_components_prev…173ac1.min.js.br:37 Uncaught TypeError: loadedPlans.filter is not a function
+    at loadPlans (MembershipPage.tsx:126:10)
+    at MembershipPage.tsx:132:5
+    at TO (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:138396)
+    at T8 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:151856)
+    at T7 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:151634)
+    at T6 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:151542)
+    at T4 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:151420)
+    at S1 (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:163585)
+    at SQ (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:163247)
+    at SR (code_components_preview_iframe-f315a529f3173ac1.min.js.br:37:158102)
+ 📝 Notes - Loading from Supabase for user: 02b11c70-7e72-4cc5-a1cf-84017a32097d
+ ✅ Carousel Settings - Loaded from Supabase
+ ✅ Plans - Loaded from Supabase: 3 plans
+ ✅ Notes - Loaded from Supabase successfully
+ ✅ DEBUG - Plan features loaded from Supabase: Object
+ ✅ DEBUG - State updated. localStorage userRole: admin
+ ✅ DEBUG - State updated. isAdmin: true
+ [Make] Blank preview detected: Your app rendered no content.
+
+This typically happens when:
+1. The component returns null, undefined, or an empty fragment
+2. A conditional render (e.g., `condition && <Component />`) evaluated to false
+3. The component threw an error during render that was silently caught
+4. Required props are missing or have unexpected values
+
+To fix this:
+- Check that your component's return statement returns valid JSX
+- Verify all conditional renders have fallback content
+- Ensure required props are being passed correctly
+- Check the console for any other errors that may have occurred
+r @ code_components_preview_iframe-f315a529f3173ac1.min.js.br:17
+/api/rev/0MmfrRaLM4KqcclEDHF5vJ/code_snapshot/1c40f1b7edfb46c8054c00c85c23c0668a34187bfa63537f2358c90a5f1a8b49:1  Failed to load resource: the server responded with a status of 404 ()
+vendor-core-229ba1ea832d24ba.min.js.br:54 Failed to fetch snapshot files: T: XHR for "/api/rev/0MmfrRaLM4KqcclEDHF5vJ/code_snapshot/1c40f1b7edfb46c8054c00c85c23c0668a34187bfa63537f2358c90a5f1a8b49" failed with status 404
+    at N (3510-e3e4df8ae30e6a67.min.js.br:1403:11227)
+    at async Object.R [as get] (3510-e3e4df8ae30e6a67.min.js.br:1403:11610)
+    at async 9476-ef63b19e1fdb99a6.min.js.br:3:24086
+    at async 9476-ef63b19e1fdb99a6.min.js.br:3:69164
+    at async 3522-057575b1b51afce9.min.js.br:3:447
+    at async b (9476-ef63b19e1fdb99a6.min.js.br:3:68584)
+    at async 9476-ef63b19e1fdb99a6.min.js.br:3:59220
+(anonymous) @ vendor-core-229ba1ea832d24ba.min.js.br:54
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ⚙️ Platform Settings - Loading from Supabase...
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📊 Dashboard Content - Loading from Supabase...
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 Admin plan updated to: pro
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🔍 Fetching user profile for ID: 02b11c70-7e72-4cc5-a1cf-84017a32097d
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ⚠️ Platform Settings - No settings in Supabase
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ⚠️ Dashboard Content - No content in Supabase
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🎠 Carousel Settings - Loading from Supabase...
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🎯 Navigation render - isAdmin: false planType: null
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 Fetching active banners from Supabase...
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 Fetching active dashboard messages from Supabase...
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📦 getUnifiedDashboardContentPublished - Raw data:
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106   Messages published: []
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106   Slides published: []
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106   Quick actions published: {id: 'quick-actions', enabled: true, order: 0, actions: Array(6)}
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106   Community card published: {id: 'community-card', enabled: true, order: 0, title: 'Community', description: 'Connect with fellow practitioners, share experiences, and support the development of Clinical TCM.', …}
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106   Banners published: []
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🔍 Dashboard - All published content: (2) [{…}, {…}]
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ⚙️ Dashboard - Carousel settings: {desktopRatio: '16:9', mobileRatio: '9:16', transitionInterval: 5}
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🔍 Query result - data: {id: '02b11c70-7e72-4cc5-a1cf-84017a32097d', email: 'galanmtc@gmail.com', first_name: 'Alberto', last_name: 'Galán', title: 'Dr.', …} error: null
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🔍 DEBUG - Supabase userProfile: {id: '02b11c70-7e72-4cc5-a1cf-84017a32097d', email: 'galanmtc@gmail.com', first_name: 'Alberto', last_name: 'Galán', title: 'Dr.', …}
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🔍 DEBUG - role: admin
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🔍 DEBUG - plan_type: advanced
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🔍 DEBUG - isAdmin will be: true
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🎯 Navigation render - isAdmin: true planType: advanced
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📝 Notes - Loading from Supabase for user: 02b11c70-7e72-4cc5-a1cf-84017a32097d
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ✅ Carousel Settings - Loaded from Supabase
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ✅ DEBUG - Plan features loaded from Supabase: {builder: true, allergies: true, statistics: true, medications: true, customContent: true, …}
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ✅ DEBUG - State updated. localStorage userRole: admin
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ✅ DEBUG - State updated. isAdmin: true
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🎯 Navigation render - isAdmin: true planType: advanced
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 Active dashboard messages from Supabase: (3) [{…}, {…}, {…}]
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ✅ Notes - Loaded from Supabase successfully
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📝 FloatingNotes render - isVisible: false
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📝 FloatingNotes NOT VISIBLE - returning null
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 Active banners from Supabase: []
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106   ⚡ Quick Actions: enabled
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ✅ Visible content after filtering: [{…}]
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 🎨 Final rendered content: [{…}]
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📝 Notes - Saving notes, length: 0
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 📝 Notes - Saving to Supabase for user: 02b11c70-7e72-4cc5-a1cf-84017a32097d
+code_components_preview_iframe-f315a529f3173ac1.min.js.br:106 ✅ Notes - Saved to Supabase successfully

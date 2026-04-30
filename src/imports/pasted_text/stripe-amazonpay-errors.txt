@@ -1,0 +1,274 @@
+cs_test_a1wQesnBySIrjtUa7YJOYi4nNNY33QK5ls6CSOoIkgNtaZURRM0WfHdfnZ#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWnFgdnFaMDRRVFdRTUdyQnNJUHVCcEc3U3NpNXQ3QmJ1YX9xR2d0NHV2V0pRd1RmTXRxf01yfW1pYktcRlBpf21HN2BubVxSa2JnbUl2VkdLSlQ3fFM8Rl9nclZxN0o1NWFWXGx%2FRnVnJyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl:1 <link rel=preload> uses an unsupported `as` value
+cs_test_a1wQesnBySIrjtUa7YJOYi4nNNY33QK5ls6CSOoIkgNtaZURRM0WfHdfnZ#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWnFgdnFaMDRRVFdRTUdyQnNJUHVCcEc3U3NpNXQ3QmJ1YX9xR2d0NHV2V0pRd1RmTXRxf01yfW1pYktcRlBpf21HN2BubVxSa2JnbUl2VkdLSlQ3fFM8Rl9nclZxN0o1NWFWXGx%2FRnVnJyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl:1 <link rel=preload> uses an unsupported `as` value
+controller-4134999ffd81adad33ada0b7c7020f63.js:1 [Stripe.js] The following payment method types are not activated:
+
+- link
+- amazon_pay
+
+They will be displayed in test mode, but hidden in live mode. Please activate the payment method types in your dashboard (https://dashboard.stripe.com/settings/payment_methods) and ensure your account is enabled for any preview features that you are trying to use.
+warn @ controller-4134999ffd81adad33ada0b7c7020f63.js:1
+(anonymous) @ controller-4134999ffd81adad33ada0b7c7020f63.js:1
+lA @ controller-4134999ffd81adad33ada0b7c7020f63.js:1
+(anonymous) @ controller-4134999ffd81adad33ada0b7c7020f63.js:1
+vendors~AddressAutocomplete~AffirmInContext~AfterpayInContext~AmazonPayButton~ApplePay~Arkose~Arkos…:16 Estimated order amount for sandbox is {"amount":"19","currencyCode":"eur"}
+checkout.js:1 Estimated order amount for sandbox is {"amount":"19","currencyCode":"eur"}
+AmazonPayButton.html?id=ac718214-afa2-47fe-8762-5661d638085a&origin=https%3A%2F%2Fjs.stripe.com:1 Access to fetch at 'https://payments-eu.amazon.com/amazonpayMerchantId?ledgerCurrency=EUR&externalPartnerId=A2LYRA14DQME2H&externalMerchantDomain=checkout.stripe.com&isSandbox=true' from origin 'https://b.stripecdn.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+checkout.js:1  GET https://payments-eu.amazon.com/amazonpayMerchantId?ledgerCurrency=EUR&externalPartnerId=A2LYRA14DQME2H&externalMerchantDomain=checkout.stripe.com&isSandbox=true net::ERR_FAILED 200 (OK)
+(anonymous) @ instrument.js:136
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+e @ checkout.js:1
+Ls @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+e @ checkout.js:1
+Ds @ checkout.js:1
+Wr @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+e @ checkout.js:1
+renderButton @ checkout.js:1
+(anonymous) @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+e @ cPSPcheckout.js:1
+LA @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+i @ cPSPcheckout.js:1
+Promise.then
+c @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+e @ cPSPcheckout.js:1
+A.mount @ cPSPcheckout.js:1
+(anonymous) @ PartnerPayButton.ts:295
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+oe @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+a @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+value @ PartnerPayButton.ts:282
+(anonymous) @ PartnerPayButton.ts:120
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+oe @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+a @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+Promise.then
+oe @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+a @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+value @ PartnerPayButton.ts:115
+(anonymous) @ PartnerPayButton.ts:489
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+oe @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+a @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+script
+(anonymous) @ injectScript.ts:137
+(anonymous) @ PartnerPayButton.ts:526
+(anonymous) @ PartnerPayButton.ts:552
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+oe @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+a @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ setupMessages.ts:150
+(anonymous) @ helpers.js:72
+checkout.js:1 Failed to fetch Amazon Pay merchantId for Stripe flow: TypeError: Failed to fetch
+    at instrument.js:136:34
+    at checkout.js:1:287849
+    at checkout.js:1:1495
+    at Object.next (checkout.js:1:1600)
+    at checkout.js:1:538
+    at new Promise (<anonymous>)
+    at e (checkout.js:1:315)
+    at Ls (checkout.js:1:287587)
+    at checkout.js:1:288310
+    at checkout.js:1:1495
+    at Object.next (checkout.js:1:1600)
+    at checkout.js:1:538
+    at new Promise (<anonymous>)
+    at e (checkout.js:1:315)
+    at Ds (checkout.js:1:287965)
+    at Wr (checkout.js:1:166976)
+    at Object.<anonymous> (checkout.js:1:344100)
+    at checkout.js:1:1495
+    at Object.next (checkout.js:1:1600)
+    at checkout.js:1:538
+    at new Promise (<anonymous>)
+    at e (checkout.js:1:315)
+    at Object.renderButton [as renderJSButton] (checkout.js:1:343304)
+    at cPSPcheckout.js:1:151313
+    at cPSPcheckout.js:1:1233
+    at Object.next (cPSPcheckout.js:1:1338)
+    at cPSPcheckout.js:1:276
+    at new Promise (<anonymous>)
+    at e (cPSPcheckout.js:1:53)
+    at LA (cPSPcheckout.js:1:151053)
+    at A.<anonymous> (cPSPcheckout.js:1:152208)
+    at cPSPcheckout.js:1:1233
+    at Object.next (cPSPcheckout.js:1:1338)
+    at i (cPSPcheckout.js:1:109)
+(anonymous) @ instrument.js:109
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+u @ checkout.js:1
+Promise.then
+c @ checkout.js:1
+(anonymous) @ checkout.js:1
+e @ checkout.js:1
+Ds @ checkout.js:1
+Wr @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+e @ checkout.js:1
+renderButton @ checkout.js:1
+(anonymous) @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+e @ cPSPcheckout.js:1
+LA @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+i @ cPSPcheckout.js:1
+Promise.then
+c @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+e @ cPSPcheckout.js:1
+A.mount @ cPSPcheckout.js:1
+(anonymous) @ PartnerPayButton.ts:295
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+oe @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+a @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+value @ PartnerPayButton.ts:282
+(anonymous) @ PartnerPayButton.ts:120
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+oe @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+a @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+Promise.then
+oe @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+a @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+value @ PartnerPayButton.ts:115
+(anonymous) @ PartnerPayButton.ts:489
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+oe @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+a @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+script
+(anonymous) @ injectScript.ts:137
+(anonymous) @ PartnerPayButton.ts:526
+(anonymous) @ PartnerPayButton.ts:552
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+oe @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+a @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ setupMessages.ts:150
+(anonymous) @ helpers.js:72
+AmazonPayButton.html?id=ac718214-afa2-47fe-8762-5661d638085a&origin=https%3A%2F%2Fjs.stripe.com:1 Access to fetch at 'https://payments-eu.amazon.com/alaMessage?merchantId=undefined&ledgerCurrency=EUR&affirmEnabled=false&amount=19&pageType=banner&useBestTerms=true&isSandbox=true&partnerId=A2LYRA14DQME2H&merchantDomain=checkout.stripe.com' from origin 'https://b.stripecdn.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+checkout.js:1  GET https://payments-eu.amazon.com/alaMessage?merchantId=undefined&ledgerCurrency=EUR&affirmEnabled=false&amount=19&pageType=banner&useBestTerms=true&isSandbox=true&partnerId=A2LYRA14DQME2H&merchantDomain=checkout.stripe.com net::ERR_FAILED 200 (OK)
+(anonymous) @ instrument.js:136
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+e @ checkout.js:1
+getALAIfMerchantSignedUpForAffirm @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+e @ checkout.js:1
+sr @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+(anonymous) @ checkout.js:1
+e @ checkout.js:1
+renderButton @ checkout.js:1
+(anonymous) @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+e @ cPSPcheckout.js:1
+LA @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+i @ cPSPcheckout.js:1
+Promise.then
+c @ cPSPcheckout.js:1
+(anonymous) @ cPSPcheckout.js:1
+e @ cPSPcheckout.js:1
+A.mount @ cPSPcheckout.js:1
+(anonymous) @ PartnerPayButton.ts:295
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+oe @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+a @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+value @ PartnerPayButton.ts:282
+(anonymous) @ PartnerPayButton.ts:120
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+oe @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+a @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+Promise.then
+oe @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+a @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+value @ PartnerPayButton.ts:115
+(anonymous) @ PartnerPayButton.ts:489
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+oe @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+a @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+script
+(anonymous) @ injectScript.ts:137
+(anonymous) @ PartnerPayButton.ts:526
+(anonymous) @ PartnerPayButton.ts:552
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+oe @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+a @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ AmazonPayButton.ebb89374ae9f091811ca.bundle.js:1
+(anonymous) @ setupMessages.ts:150
+(anonymous) @ helpers.js:72
