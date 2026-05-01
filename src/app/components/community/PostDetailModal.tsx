@@ -33,6 +33,7 @@ import { useUser } from '@/app/contexts/UserContext';
 import { communityService } from '@/app/services/communityService';
 import { markPostAsRead } from '../../data/postVisits';
 import { supabase } from '@/app/lib/supabase';
+import { communityTextToHtml } from '@/app/utils/communityContent';
 
 interface PostDetailModalProps {
   isOpen: boolean;
@@ -466,7 +467,10 @@ export function PostDetailModal({ isOpen, onClose, postId }: PostDetailModalProp
                 </div>
               ) : (
                 <div className="prose prose-sm max-w-none mb-6">
-                  <div className="whitespace-pre-wrap text-gray-700" dangerouslySetInnerHTML={{ __html: post.content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*(.*?)\*/g, '<em>$1</em>').replace(/<u>(.*?)<\/u>/g, '<u>$1</u>') }} />
+                  <div
+                    className="whitespace-pre-wrap text-gray-700"
+                    dangerouslySetInnerHTML={{ __html: communityTextToHtml(post.content) }}
+                  />
                 </div>
               )}
 
@@ -743,7 +747,10 @@ function CommentItem({
             </div>
           </div>
         ) : (
-          <p className="text-gray-700 text-sm mb-3 whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: comment.content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*(.*?)\*/g, '<em>$1</em>').replace(/<u>(.*?)<\/u>/g, '<u>$1</u>') }} />
+          <p
+            className="text-gray-700 text-sm mb-3 whitespace-pre-wrap"
+            dangerouslySetInnerHTML={{ __html: communityTextToHtml(comment.content) }}
+          />
         )}
 
         {/* Comment actions */}

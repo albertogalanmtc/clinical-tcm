@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { Bold, Italic, Underline } from 'lucide-react';
+import { communityTextToHtml, htmlToCommunityText } from '@/app/utils/communityContent';
 
 interface TextEditorProps {
   value: string;
@@ -17,13 +18,7 @@ export function TextEditor({ value, onChange, placeholder, className = '', minHe
   useEffect(() => {
     if (!editorRef.current || isUpdatingRef.current) return;
 
-    // Convert markdown-like syntax to HTML
-    // Process bold first (double asterisk) to avoid conflicts with italic (single asterisk)
-    let htmlContent = value
-      .replace(/\*\*([\s\S]*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*([\s\S]*?)\*/g, '<em>$1</em>')
-      .replace(/<u>([\s\S]*?)<\/u>/g, '<u>$1</u>')
-      .replace(/\n/g, '<br>');
+    const htmlContent = communityTextToHtml(value);
 
     if (editorRef.current.innerHTML !== htmlContent) {
       editorRef.current.innerHTML = htmlContent;
@@ -35,22 +30,8 @@ export function TextEditor({ value, onChange, placeholder, className = '', minHe
 
     isUpdatingRef.current = true;
 
-    // Get HTML content and convert back to markdown-like syntax
     const htmlContent = editorRef.current.innerHTML;
-    // Process specific tags to markdown, then clean up remaining HTML
-    let textContent = htmlContent
-      .replace(/<strong>([\s\S]*?)<\/strong>/gi, '**$1**')
-      .replace(/<b>([\s\S]*?)<\/b>/gi, '**$1**')
-      .replace(/<em>([\s\S]*?)<\/em>/gi, '*$1*')
-      .replace(/<i>([\s\S]*?)<\/i>/gi, '*$1*')
-      .replace(/<u>([\s\S]*?)<\/u>/gi, '<u>$1</u>')
-      .replace(/<div>/gi, '\n')
-      .replace(/<\/div>/gi, '')
-      .replace(/<br\s*\/?>/gi, '\n')
-      .replace(/&nbsp;/g, ' ')
-      .replace(/&amp;/g, '&')
-      .replace(/&lt;/g, '<')
-      .replace(/&gt;/g, '>');
+    const textContent = htmlToCommunityText(htmlContent);
 
     onChange(textContent);
 

@@ -7,6 +7,7 @@ import { PostDetailModal } from '../components/community/PostDetailModal';
 import { markSectionAsVisited } from '../data/sectionVisits';
 import { useUser } from '../contexts/UserContext';
 import { hasUnreadContent } from '../data/postVisits';
+import { communityTextToHtml } from '../utils/communityContent';
 
 type FilterType = 'all' | 'myPosts';
 
@@ -243,7 +244,10 @@ function PostCard({ post, onOpenPost, isAdmin, userId }: { post: CommunityPost; 
         <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">{post.title}</h3>
 
         {/* Content preview */}
-        <p className="text-gray-600 text-sm mb-4 line-clamp-2">{post.content}</p>
+        <div
+          className="text-gray-600 text-sm mb-4 line-clamp-2 whitespace-pre-wrap"
+          dangerouslySetInnerHTML={{ __html: communityTextToHtml(post.content) }}
+        />
 
         {/* Tags */}
         {post.tags && post.tags.length > 0 && (

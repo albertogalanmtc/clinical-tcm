@@ -32,6 +32,7 @@ import {
   updateCommunityPost,
   deleteCommunityPost
 } from '../data/communityPosts';
+import { communityTextToHtml } from '../utils/communityContent';
 
 export default function CommunityPostDetail() {
   const { postId } = useParams<{ postId: string }>();
@@ -237,7 +238,10 @@ export default function CommunityPostDetail() {
 
           {/* Content */}
           <div className="prose prose-sm max-w-none mb-6">
-            <div className="whitespace-pre-wrap text-gray-700">{post.content}</div>
+            <div
+              className="whitespace-pre-wrap text-gray-700"
+              dangerouslySetInnerHTML={{ __html: communityTextToHtml(post.content) }}
+            />
           </div>
 
           {/* Meta */}
@@ -429,7 +433,10 @@ function CommentItem({
             </div>
           </div>
         ) : (
-          <p className="text-gray-700 text-sm mb-3 whitespace-pre-wrap">{comment.content}</p>
+          <p
+            className="text-gray-700 text-sm mb-3 whitespace-pre-wrap"
+            dangerouslySetInnerHTML={{ __html: communityTextToHtml(comment.content) }}
+          />
         )}
 
         {/* Comment actions */}
