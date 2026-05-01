@@ -11,9 +11,7 @@ export default function CreateAccount() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [generalError, setGeneralError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -26,8 +24,7 @@ export default function CreateAccount() {
   
   const [touched, setTouched] = useState({
     email: false,
-    password: false,
-    confirmPassword: false
+    password: false
   });
 
   // Email validation
@@ -50,8 +47,7 @@ export default function CreateAccount() {
   // Validation errors
   const errors = {
     email: touched.email && email.length > 0 && !isValidEmail(email),
-    password: touched.password && password.length > 0 && !isPasswordValid,
-    confirmPassword: touched.confirmPassword && confirmPassword.length > 0 && password !== confirmPassword
+    password: touched.password && password.length > 0 && !isPasswordValid
   };
 
   // Form is valid if all fields are filled and no errors
@@ -59,8 +55,6 @@ export default function CreateAccount() {
     email.length > 0 &&
     isValidEmail(email) &&
     isPasswordValid &&
-    confirmPassword.length > 0 &&
-    password === confirmPassword &&
     agreedToTerms;
 
   const handleBlur = (field: keyof typeof touched) => {
@@ -124,8 +118,7 @@ export default function CreateAccount() {
     // Mark all as touched
     setTouched({
       email: true,
-      password: true,
-      confirmPassword: true
+      password: true
     });
 
     if (!isFormValid) {
@@ -365,53 +358,6 @@ export default function CreateAccount() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Confirm Password */}
-        <div>
-          <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
-            Confirm password
-          </label>
-          <div className="relative">
-            <input
-              id="confirmPassword"
-              type={showConfirmPassword ? 'text' : 'password'}
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              onBlur={() => handleBlur('confirmPassword')}
-              disabled={isLoading}
-              autoComplete="new-password"
-              className={`w-full px-4 py-3 pr-12 border rounded-lg focus:outline-none focus:ring-2 transition-all ${
-                errors.confirmPassword
-                  ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
-                  : 'border-gray-300 focus:ring-teal-500 focus:border-transparent'
-              } disabled:opacity-50 disabled:cursor-not-allowed`}
-              placeholder="••••••••"
-            />
-            <button
-              type="button"
-              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-            >
-              {showConfirmPassword ? (
-                <EyeOff className="w-5 h-5" />
-              ) : (
-                <Eye className="w-5 h-5" />
-              )}
-            </button>
-          </div>
-          {errors.confirmPassword && (
-            <div className="flex items-center gap-1.5 mt-1.5 text-red-600 text-sm">
-              <AlertCircle className="w-4 h-4" />
-              <span>Passwords do not match</span>
-            </div>
-          )}
-          {!errors.confirmPassword && confirmPassword.length > 0 && password === confirmPassword && (
-            <div className="flex items-center gap-1.5 mt-1.5 text-green-600 text-sm">
-              <Check className="w-4 h-4" />
-              <span>Passwords match</span>
-            </div>
-          )}
         </div>
 
         {/* Terms and Conditions Checkbox */}
