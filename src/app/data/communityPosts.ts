@@ -20,6 +20,7 @@ export interface CommunityComment {
 
 export interface CommunityPost {
   id: string;
+  supabaseId?: string;
   title: string;
   content: string;
   category: PostCategory;
@@ -217,6 +218,45 @@ async function triggerCommunityNotification(payload: Record<string, unknown>): P
   }
 }
 
+function updateLocalPostSupabaseId(localPostId: string, supabaseId: string): void {
+  const posts = getCommunityPosts();
+  const index = posts.findIndex(post => post.id === localPostId);
+
+  if (index !== -1) {
+    posts[index].supabaseId = supabaseId;
+    localStorage.setItem(POSTS_KEY, JSON.stringify(posts));
+    window.dispatchEvent(new CustomEvent('community-posts-updated'));
+  }
+}
+
+async function resolveSupabasePostId(localPostId: string, authorId?: string): Promise<string | null> {
+  const localPost = getCommunityPost(localPostId);
+  if (!localPost) return null;
+
+  if (localPost.supabaseId) {
+    return localPost.supabaseId;
+  }
+
+  const lookupAuthorId = authorId || getCurrentUser().id;
+  if (lookupAuthorId && !lookupAuthorId.startsWith('user-demo')) {
+    const { data } = await supabase
+      .from('community_posts')
+      .select('id')
+      .eq('author_id', lookupAuthorId)
+      .eq('title', localPost.title)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (data?.id) {
+      updateLocalPostSupabaseId(localPostId, data.id);
+      return data.id;
+    }
+  }
+
+  return null;
+}
+
 export function createCommunityPost(
   post: Omit<CommunityPost, 'id' | 'createdAt' | 'views' | 'commentCount' | 'followedBy' | 'authorId' | 'author'>,
   userOverride?: { id: string; name: string; isAdmin: boolean }
@@ -257,6 +297,7 @@ export function createCommunityPost(
     }).then(result => {
       if (result) {
         console.log('✅ Post saved to Supabase successfully:', result);
+        updateLocalPostSupabaseId(uniqueId, result.id);
       } else {
         console.error('❌ Post save returned null');
       }
@@ -405,32 +446,36 @@ export function createComment(
   console.log('💬 Creating comment - User ID:', user.id, 'Name:', user.name);
   if (user.id && !user.id.startsWith('user-demo')) {
     console.log('🔄 Saving comment to Supabase...');
-    communityService.createComment({
-      post_id: comment.postId,
-      author_id: user.id,
-      author_name: user.name,
-      content: comment.content,
-      parent_comment_id: comment.parentId,
-      status: 'active'
-    }).then(result => {
+    resolveSupabasePostId(comment.postId, user.id).then(async (resolvedPostId) => {
+      const supabasePostId = resolvedPostId || comment.postId;
+      const localPost = getCommunityPost(comment.postId);
+
+      const result = await communityService.createComment({
+        post_id: supabasePostId,
+        author_id: user.id,
+        author_name: user.name,
+        content: comment.content,
+        parent_comment_id: comment.parentId,
+        status: 'active'
+      });
+
       if (result) {
         console.log('✅ Comment saved to Supabase successfully:', result);
-      } else {
-        console.error('❌ Comment save returned null');
-      }
-      if (result) {
         triggerCommunityNotification({
           type: 'reply_to_post',
-          postId: comment.postId,
+          postId: supabasePostId,
           commentId: result.id,
-          postTitle: getCommunityPost(comment.postId)?.title,
-          postAuthorId: getCommunityPost(comment.postId)?.authorId,
+          postTitle: localPost?.title,
+          postAuthorId: localPost?.authorId,
           actorId: user.id,
           actorName: user.name,
           commentContent: comment.content,
           parentCommentId: comment.parentId || null
         });
+      } else {
+        console.error('❌ Comment save returned null');
       }
+
       // Dispatch event to refresh the list
       window.dispatchEvent(new CustomEvent('community-posts-updated'));
     }).catch(err => {
