@@ -2021,10 +2021,10 @@ export default function Builder() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4rem)] flex flex-col lg:flex-row gap-4 lg:gap-6 p-4 lg:p-6 bg-gray-50">
+    <div className="min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4rem)] flex flex-col lg:flex-row items-stretch gap-4 lg:gap-6 p-4 lg:p-6 bg-gray-50">
       {/* Module 1: All Filters - Hidden on mobile, narrowest column on desktop */}
       <div className="hidden lg:block w-72 flex-shrink-0">
-        <div className="bg-white rounded-lg border border-gray-200 sticky top-4 max-h-[calc(100vh-6rem)] flex flex-col overflow-hidden">
+        <div className="bg-white rounded-lg border border-gray-200 sticky top-4 max-h-[calc(100vh-6rem)] flex h-full flex-col overflow-hidden self-stretch">
           <div className="flex-1 min-h-0 overflow-y-auto">
             <div className="px-6 py-6 space-y-6">
               {/* Herb Filters Header */}
@@ -3077,7 +3077,7 @@ export default function Builder() {
       </div>
 
       {/* Module 2: Library Selector */}
-      <div className="lg:flex-1 flex flex-col">
+      <div className="lg:flex-1 flex h-full min-h-0 flex-col self-stretch">
         <div className="hidden lg:block mb-4">
           <div className="flex items-center gap-2 mb-4">
             <div className="inline-flex items-center gap-1 bg-gray-100 rounded-lg p-1">
@@ -3764,7 +3764,7 @@ export default function Builder() {
       </div>
 
       {/* Module 3: Prescription Builder */}
-      <div className="lg:flex-1 bg-white rounded-lg border border-gray-200 flex flex-col overflow-hidden">
+      <div className="lg:flex-1 bg-white rounded-lg border border-gray-200 flex h-full min-h-0 flex-col overflow-hidden self-stretch">
         <div className="flex-shrink-0 px-4 sm:px-6 py-4 sm:py-6 border-b border-gray-200 relative">
           <div className="mb-3">
             <h2 className="text-lg font-semibold text-gray-900">Prescription Builder</h2>
@@ -3779,7 +3779,7 @@ export default function Builder() {
           />
         </div>
 
-        <div className="flex-1 lg:overflow-y-auto px-4 sm:px-6 py-4 lg:max-h-none">
+        <div className="flex-1 lg:overflow-y-auto px-4 sm:px-6 py-6 lg:max-h-none">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-semibold text-gray-900">Selected components</h3>
             {selectedComponents && selectedComponents.length > 0 && (
