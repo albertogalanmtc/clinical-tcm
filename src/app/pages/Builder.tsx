@@ -2024,7 +2024,7 @@ export default function Builder() {
     <div className="min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4rem)] flex flex-col lg:flex-row items-stretch gap-4 lg:gap-6 p-4 lg:p-6 bg-gray-50">
       {/* Module 1: All Filters - Hidden on mobile, narrowest column on desktop */}
       <div className="hidden lg:block w-72 flex-shrink-0">
-        <div className="bg-white rounded-lg border border-gray-200 sticky top-4 max-h-[calc(100vh-6rem)] flex h-full flex-col overflow-hidden self-stretch">
+        <div className="bg-white rounded-lg border border-gray-200 sticky top-4 max-h-[calc(100vh-6rem)] flex min-h-full flex-col overflow-hidden self-stretch">
           <div className="flex-1 min-h-0 overflow-y-auto">
             <div className="px-6 py-6 space-y-6">
               {/* Herb Filters Header */}
