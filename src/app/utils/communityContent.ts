@@ -27,6 +27,14 @@ function cleanSpacing(value: string): string {
     .trim();
 }
 
+function formatInlineMarkdown(value: string): string {
+  const escaped = escapeHtml(value.replace(/\u00a0/g, ' '));
+
+  return escaped
+    .replace(/\*\*([\s\S]*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|[^*])\*([^*\n]+?)\*(?!\*)/g, '$1<em>$2</em>');
+}
+
 function renderHtmlNodeToMarkdown(node: Node): string {
   if (node.nodeType === Node.TEXT_NODE) {
     return (node.textContent || '').replace(/\u00a0/g, ' ');
@@ -69,7 +77,7 @@ function renderHtmlNodeToMarkdown(node: Node): string {
 
 function renderHtmlNodeToSafeHtml(node: Node): string {
   if (node.nodeType === Node.TEXT_NODE) {
-    return escapeHtml((node.textContent || '').replace(/\n/g, ' '));
+    return formatInlineMarkdown((node.textContent || '').replace(/\n/g, ' '));
   }
 
   if (node.nodeType !== Node.ELEMENT_NODE) {
