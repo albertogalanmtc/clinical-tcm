@@ -16,6 +16,7 @@ interface NotificationRequest {
   actorName?: string
   actorEmail?: string
   postTitle?: string
+  postAuthorId?: string
   commentContent?: string
 }
 
@@ -113,7 +114,17 @@ Deno.serve(async (req) => {
         .eq('id', payload.postId)
         .single();
 
-      if (postError || !post) {
+      const fallbackPost = payload.postAuthorId
+        ? {
+            id: payload.postId,
+            title: payload.postTitle || 'Your Community post',
+            author_id: payload.postAuthorId,
+          }
+        : null;
+
+      const effectivePost = post || fallbackPost;
+
+      if (!effectivePost) {
         return new Response(JSON.stringify({ error: 'Post not found' }), {
           status: 404,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -143,7 +154,7 @@ Deno.serve(async (req) => {
       const { data: recipient, error: recipientError } = await admin
         .from('users')
         .select('email, first_name, last_name, email_community_replies')
-        .eq('id', post.author_id)
+        .eq('id', effectivePost.author_id)
         .single();
 
       if (recipientError || !recipient?.email) {
@@ -162,10 +173,10 @@ Deno.serve(async (req) => {
 
       const recipientName = `${recipient.first_name || ''} ${recipient.last_name || ''}`.trim() || 'there';
       const snippet = createSnippet(comment.content || '');
-      const subject = `New reply on your Community post: ${post.title}`;
+      const subject = `New reply on your Community post: ${effectivePost.title}`;
       const body = `
         <p style="margin: 0 0 12px;">Hi ${escapeHtml(recipientName)},</p>
-        <p style="margin: 0 0 12px;"><strong>${escapeHtml(comment.author_name || payload.actorName || 'Someone')}</strong> replied to your post <strong>${escapeHtml(post.title)}</strong>.</p>
+        <p style="margin: 0 0 12px;"><strong>${escapeHtml(comment.author_name || payload.actorName || 'Someone')}</strong> replied to your post <strong>${escapeHtml(effectivePost.title)}</strong>.</p>
         <p style="margin: 0 0 12px; color: #475569;">"${escapeHtml(snippet)}"</p>
         <p style="margin: 0;">Open the conversation to read and respond.</p>
       `;
@@ -175,7 +186,7 @@ Deno.serve(async (req) => {
         subject,
         title: 'You have a new reply',
         body,
-        ctaUrl: `${appUrl}/community/post/${post.id}`,
+        ctaUrl: `${appUrl}/community/post/${payload.postId}`,
         ctaLabel: 'View reply',
       });
 

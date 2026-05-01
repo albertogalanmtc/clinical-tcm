@@ -423,6 +423,8 @@ export function createComment(
           type: 'reply_to_post',
           postId: comment.postId,
           commentId: result.id,
+          postTitle: getCommunityPost(comment.postId)?.title,
+          postAuthorId: getCommunityPost(comment.postId)?.authorId,
           actorId: user.id,
           actorName: user.name,
           commentContent: comment.content,
