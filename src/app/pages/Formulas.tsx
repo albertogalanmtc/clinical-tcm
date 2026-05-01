@@ -504,7 +504,7 @@ export default function Formulas() {
           
 
           {/* Filters Container */}
-          <div className="bg-white rounded-lg border border-gray-200 sticky top-0 max-h-[calc(100vh-6rem)] flex flex-1 min-h-0 flex-col overflow-hidden">
+          <div className="bg-white rounded-lg border border-gray-200 sticky top-0 max-h-[calc(100vh-6rem)] flex flex-col overflow-hidden">
             <div className="flex-1 min-h-0 overflow-y-auto">
               <div className="px-6 py-6 space-y-6">
               {/* Formula Filters Header */}
