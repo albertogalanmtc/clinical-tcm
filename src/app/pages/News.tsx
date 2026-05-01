@@ -58,10 +58,10 @@ export default function News() {
   });
 
   return (
-    <div className="flex-1 overflow-y-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 pt-4 sm:pt-6 lg:pt-6 pb-20 sm:pb-6 lg:pb-8">
+    <div className="flex flex-col h-full overflow-hidden">
+      <div className="flex flex-col flex-1 min-h-0 overflow-hidden sm:overflow-auto p-4 lg:p-6 pb-[86px] sm:pb-4 lg:pb-6 gap-4">
         {/* Two Column Layout */}
-        <div className="flex gap-4 lg:gap-6 flex-1 min-h-0 items-start">
+        <div className="max-w-7xl mx-auto w-full flex gap-4 lg:gap-6 flex-1 min-h-0 items-start">
           {/* Left Column: News List */}
           <aside className="hidden lg:block w-80 flex-shrink-0">
             <div className="bg-white rounded-lg border border-gray-200 sticky top-4 max-h-[calc(100vh-6rem)] flex flex-col overflow-hidden">
@@ -129,11 +129,11 @@ export default function News() {
           </aside>
 
           {/* Right Column: News Details */}
-          <main className="hidden lg:block flex-1 min-w-0">
+          <main className="hidden lg:block flex-1 min-w-0 flex flex-col self-stretch">
             {selectedNews ? (
-              <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <div className="bg-white rounded-lg border border-gray-200 flex flex-col flex-1 min-h-0 overflow-hidden">
                 {/* News Header */}
-                <div className="mb-6">
+                <div className="flex-shrink-0 p-6">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">
                     {selectedNews.title}
                   </h2>
@@ -158,7 +158,7 @@ export default function News() {
                 </div>
 
                 {/* Content */}
-                <div className="border-t border-gray-200 pt-6">
+                <div className="flex-1 min-h-0 overflow-y-auto border-t border-gray-200 px-6 py-6">
                   <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
                     {selectedNews.content}
                   </p>
