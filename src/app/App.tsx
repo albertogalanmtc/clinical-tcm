@@ -425,6 +425,7 @@ export default function App() {
         <UserProvider>
           <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/landing" element={<Landing />} />
 
           {/* Public Routes */}
           <Route path="/login" element={<Login />} />

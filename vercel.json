@@ -2,13 +2,6 @@
   "buildCommand": "pnpm build",
   "outputDirectory": "dist",
   "framework": "vite",
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/landing",
-      "permanent": false
-    }
-  ],
   "rewrites": [
     {
       "source": "/(.*)",
