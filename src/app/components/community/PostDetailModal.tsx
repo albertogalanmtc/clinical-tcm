@@ -19,7 +19,7 @@ import {
   createComment,
   updateComment,
   deleteComment,
-  toggleUpvoteComment,
+  toggleUpvoteComment as toggleLocalCommentUpvote,
   markCommentAsUseful,
   toggleFollowPost,
   getCurrentUser,
@@ -34,6 +34,36 @@ import { communityService } from '@/app/services/communityService';
 import { markPostAsRead } from '../../data/postVisits';
 import { supabase } from '@/app/lib/supabase';
 import { communityTextToHtml } from '@/app/utils/communityContent';
+
+const POST_UPVOTES_STORAGE_KEY = (userId: string) => `community_upvoted_posts_${userId}`;
+const COMMENT_UPVOTES_STORAGE_KEY = (userId: string) => `community_upvoted_comments_${userId}`;
+
+function readStoredStringArray(keys: string[]): string[] {
+  for (const key of keys) {
+    try {
+      const stored = localStorage.getItem(key);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          return parsed.filter(item => typeof item === 'string');
+        }
+      }
+    } catch (error) {
+      console.error(`Error reading stored values for ${key}:`, error);
+    }
+  }
+
+  return [];
+}
+
+function writeStoredStringArray(keys: string[], value: string[]): void {
+  try {
+    const serialized = JSON.stringify(value);
+    keys.forEach(key => localStorage.setItem(key, serialized));
+  } catch (error) {
+    console.error('Error writing stored values:', error);
+  }
+}
 
 interface PostDetailModalProps {
   isOpen: boolean;
@@ -58,8 +88,10 @@ export function PostDetailModal({ isOpen, onClose, postId }: PostDetailModalProp
   const [loading, setLoading] = useState(false);
   const [postUpvotes, setPostUpvotes] = useState(0);
   const [hasUpvotedPost, setHasUpvotedPost] = useState(false);
+  const [commentsSource, setCommentsSource] = useState<'supabase' | 'local'>('supabase');
 
   const user = getCurrentUser();
+  const currentUserId = userContext.userId || user.id;
 
   useEffect(() => {
     if (!postId || !isOpen) return;
@@ -91,7 +123,10 @@ export function PostDetailModal({ isOpen, onClose, postId }: PostDetailModalProp
         setPostUpvotes(supabasePost.upvotes || 0);
 
         // Check if user has upvoted this post
-        const upvotedPosts = JSON.parse(localStorage.getItem('upvoted_posts') || '[]');
+        const upvotedPosts = readStoredStringArray([
+          POST_UPVOTES_STORAGE_KEY(currentUserId),
+          'upvoted_posts'
+        ]);
         setHasUpvotedPost(upvotedPosts.includes(postId));
 
         // View count incremented by getPostById automatically
@@ -117,7 +152,7 @@ export function PostDetailModal({ isOpen, onClose, postId }: PostDetailModalProp
 
     window.addEventListener('community-posts-updated', handleUpdate);
     return () => window.removeEventListener('community-posts-updated', handleUpdate);
-  }, [postId, isOpen]);
+  }, [postId, isOpen, currentUserId]);
 
   // Mark post as read when loaded
   useEffect(() => {
@@ -134,6 +169,11 @@ export function PostDetailModal({ isOpen, onClose, postId }: PostDetailModalProp
     const supabaseComments = await communityService.getPostComments(postId);
 
     if (supabaseComments && supabaseComments.length > 0) {
+      setCommentsSource('supabase');
+      const upvotedCommentIds = readStoredStringArray([
+        COMMENT_UPVOTES_STORAGE_KEY(currentUserId)
+      ]);
+
       // Map Supabase comments to local format
       const mappedComments = supabaseComments.map(c => ({
         id: c.id,
@@ -145,12 +185,13 @@ export function PostDetailModal({ isOpen, onClose, postId }: PostDetailModalProp
         createdAt: c.created_at,
         editedAt: c.updated_at !== c.created_at ? c.updated_at : undefined,
         upvotes: c.upvotes || 0,
-        upvotedBy: [], // Not tracked yet
+        upvotedBy: upvotedCommentIds.includes(c.id) ? [currentUserId] : [],
         markedAsUseful: false // Not tracked yet
       }));
       setComments(mappedComments);
     } else {
       // Fallback to localStorage
+      setCommentsSource('local');
       const localComments = getPostComments(postId);
       setComments(localComments);
     }
@@ -301,10 +342,63 @@ export function PostDetailModal({ isOpen, onClose, postId }: PostDetailModalProp
       setHasUpvotedPost(true);
 
       // Save to localStorage
-      const upvotedPosts = JSON.parse(localStorage.getItem('upvoted_posts') || '[]');
-      upvotedPosts.push(postId);
-      localStorage.setItem('upvoted_posts', JSON.stringify(upvotedPosts));
+      const upvotedPosts = readStoredStringArray([
+        POST_UPVOTES_STORAGE_KEY(currentUserId),
+        'upvoted_posts'
+      ]);
+      if (!upvotedPosts.includes(postId)) {
+        upvotedPosts.push(postId);
+      }
+      writeStoredStringArray([
+        POST_UPVOTES_STORAGE_KEY(currentUserId),
+        'upvoted_posts'
+      ], upvotedPosts);
     }
+  };
+
+  const handleUpvoteComment = async (commentId: string) => {
+    const alreadyUpvoted = comments.some(
+      comment => comment.id === commentId && comment.upvotedBy.includes(currentUserId)
+    );
+
+    if (alreadyUpvoted) return;
+
+    if (commentsSource === 'local') {
+      toggleLocalCommentUpvote(commentId, {
+        id: currentUserId,
+        name: userContext.name || user.name,
+        isAdmin: userContext.isAdmin
+      });
+      await loadComments();
+      return;
+    }
+
+    const success = await communityService.upvoteComment(commentId);
+
+    if (!success) return;
+
+    const storedCommentIds = readStoredStringArray([
+      COMMENT_UPVOTES_STORAGE_KEY(currentUserId)
+    ]);
+
+    if (!storedCommentIds.includes(commentId)) {
+      storedCommentIds.push(commentId);
+      writeStoredStringArray([
+        COMMENT_UPVOTES_STORAGE_KEY(currentUserId)
+      ], storedCommentIds);
+    }
+
+    setComments(prevComments =>
+      prevComments.map(comment =>
+        comment.id === commentId
+          ? {
+              ...comment,
+              upvotes: comment.upvotes + 1,
+              upvotedBy: [...comment.upvotedBy, currentUserId]
+            }
+          : comment
+      )
+    );
   };
 
   const handleCloseModal = (open: boolean) => {
@@ -566,7 +660,7 @@ export function PostDetailModal({ isOpen, onClose, postId }: PostDetailModalProp
                         setEditingComment(null);
                         setEditContent('');
                       }}
-                      onUpvote={toggleUpvoteComment}
+                      onUpvote={handleUpvoteComment}
                       onMarkUseful={(commentId) => markCommentAsUseful(commentId, post.id)}
                       replyingTo={replyingTo}
                       editingComment={editingComment}
@@ -577,6 +671,7 @@ export function PostDetailModal({ isOpen, onClose, postId }: PostDetailModalProp
                         setReplyingTo(null);
                         setEditContent('');
                       }}
+                      currentUserId={currentUserId}
                       isAdmin={userContext.isAdmin}
                     />
                   ))
@@ -665,6 +760,7 @@ interface CommentItemProps {
   onCancelReply: () => void;
   level?: number;
   isAdmin?: boolean;
+  currentUserId: string;
 }
 
 function CommentItem({
@@ -685,13 +781,13 @@ function CommentItem({
   onSubmitReply,
   onCancelReply,
   level = 0,
-  isAdmin = false
+  isAdmin = false,
+  currentUserId
 }: CommentItemProps) {
-  const user = getCurrentUser();
-  const isAuthor = comment.authorId === user.id;
+  const isAuthor = comment.authorId === currentUserId;
   const isPostAuthor = comment.authorId === postAuthorId;
-  const hasUpvoted = comment.upvotedBy.includes(user.id);
-  const canMarkUseful = user.id === postAuthorId; // Author can always mark/unmark
+  const hasUpvoted = comment.upvotedBy.includes(currentUserId);
+  const canMarkUseful = currentUserId === postAuthorId; // Author can always mark/unmark
   const isMarkedUseful = comment.markedAsUseful;
   const timeAgo = getTimeAgo(new Date(comment.createdAt));
 
@@ -757,10 +853,11 @@ function CommentItem({
         <div className="flex items-center gap-3 text-sm">
           <button
             onClick={() => onUpvote(comment.id)}
-            className={`flex items-center gap-1 hover:text-teal-600 transition-colors ${
+            disabled={hasUpvoted}
+            className={`flex items-center gap-1 transition-colors ${
               hasUpvoted ? 'text-teal-600 font-medium' : 'text-gray-600'
             }`}
-            title="Like"
+            title={hasUpvoted ? 'Already liked' : 'Like'}
           >
             <ThumbsUp className={`w-4 h-4 ${hasUpvoted ? 'fill-current' : ''}`} />
             {comment.upvotes > 0 && <span>{comment.upvotes}</span>}
@@ -861,6 +958,7 @@ function CommentItem({
               onSubmitReply={onSubmitReply}
               onCancelReply={onCancelReply}
               level={level + 1}
+              currentUserId={currentUserId}
               isAdmin={isAdmin}
             />
           ))}

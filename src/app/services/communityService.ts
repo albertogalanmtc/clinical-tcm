@@ -1,5 +1,11 @@
 import { supabase } from '../lib/supabase';
 
+function dispatchCommunityUpdated() {
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('community-posts-updated'));
+  }
+}
+
 export interface CommunityPost {
   id: string;
   title: string;
@@ -157,6 +163,10 @@ export const communityService = {
       .update({ upvotes: (post.upvotes || 0) + 1 })
       .eq('id', id);
 
+    if (!error) {
+      dispatchCommunityUpdated();
+    }
+
     return !error;
   },
 
@@ -251,6 +261,10 @@ export const communityService = {
       .from('community_comments')
       .update({ upvotes: (comment.upvotes || 0) + 1 })
       .eq('id', id);
+
+    if (!error) {
+      dispatchCommunityUpdated();
+    }
 
     return !error;
   },

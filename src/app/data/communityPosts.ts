@@ -460,10 +460,13 @@ export function deleteComment(id: string): void {
   }
 }
 
-export function toggleUpvoteComment(commentId: string): void {
+export function toggleUpvoteComment(
+  commentId: string,
+  userOverride?: { id: string; name: string; isAdmin: boolean }
+): void {
   const comments = getCommunityComments();
   const index = comments.findIndex(c => c.id === commentId);
-  const user = getCurrentUser();
+  const user = userOverride || getCurrentUser();
 
   if (index !== -1) {
     const comment = comments[index];
