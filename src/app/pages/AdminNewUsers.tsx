@@ -1,25 +1,23 @@
-import { useSearchParams, Link, useNavigate } from 'react-router-dom';
-import { ChevronLeft, TrendingUp } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import { ChevronLeft, Loader2 } from 'lucide-react';
 import { useSwipeBack } from '../hooks/useSwipeBack';
-
-function formatPlanName(planCode: string): string {
-  switch (planCode) {
-    case 'free':
-      return 'Free';
-    case 'practitioner':
-    case 'pro':
-      return 'Practitioner';
-    case 'advanced':
-    case 'clinic':
-      return 'Advanced';
-    default:
-      return planCode;
-  }
-}
+import {
+  fetchNewUsers,
+  formatPlanName,
+  getAccountStatus,
+  getPlanBadgeClass,
+  getStatusBadgeClass,
+  getTimeRangeBounds,
+  getUserDisplayName,
+  type AdminUserRecord,
+} from '../services/adminUsersService';
 
 export default function AdminNewUsers() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const [users, setUsers] = useState<AdminUserRecord[]>([]);
+  const [loading, setLoading] = useState(true);
   
   // Enable swipe-to-go-back gesture on mobile
   useSwipeBack();
@@ -40,33 +38,17 @@ export default function AdminNewUsers() {
     return labels[preset] || 'This month';
   };
 
-  // Mock data - in production this would be fetched based on time range
-  const mockNewUsers = [
-    {
-      id: '2',
-      name: 'Maria Lopez',
-      email: 'maria.lopez@example.com',
-      planCode: 'free' as const,
-      status: 'Active',
-      joinDate: '2024-02-03',
-    },
-    {
-      id: '6',
-      name: 'David Wong',
-      email: 'david.wong@example.com',
-      planCode: 'free' as const,
-      status: 'Active',
-      joinDate: '2024-02-01',
-    },
-    {
-      id: '4',
-      name: 'Michael Johnson',
-      email: 'michael.j@example.com',
-      planCode: 'free' as const,
-      status: 'Active',
-      joinDate: '2024-01-28',
-    },
-  ];
+  useEffect(() => {
+    const loadUsers = async () => {
+      setLoading(true);
+      const bounds = getTimeRangeBounds(preset, startDate, endDate);
+      const data = await fetchNewUsers(bounds);
+      setUsers(data);
+      setLoading(false);
+    };
+
+    loadUsers();
+  }, [preset, startDate, endDate]);
 
   return (
     <>
@@ -83,9 +65,15 @@ export default function AdminNewUsers() {
           <h1 className="text-3xl font-bold text-gray-900">New users</h1>
         </div>
         <p className="hidden sm:block text-gray-600">
-          Users who joined during the selected period
+          Users who joined during {getTimeRangeLabel()}
         </p>
       </div>
+
+      {loading ? (
+        <div className="flex items-center justify-center py-16">
+          <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
+        </div>
+      ) : null}
 
       {/* New Users List */}
       <div className="bg-white rounded-lg border border-gray-200">
@@ -108,49 +96,49 @@ export default function AdminNewUsers() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {mockNewUsers.map((user) => (
-                <tr key={user.id} className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4">
-                    <div>
-                      <div className="text-sm font-medium text-gray-900">{user.name}</div>
-                      <div className="text-sm text-gray-500">{user.email}</div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span
-                      className={`px-2 py-1 text-xs font-medium rounded ${
-                        user.planCode === 'pro'
-                          ? 'bg-teal-50 text-teal-700'
-                          : user.planCode === 'clinic'
-                          ? 'bg-purple-50 text-purple-700'
-                          : 'bg-gray-100 text-gray-600'
-                      }`}
-                    >
-                      {formatPlanName(user.planCode)}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span
-                      className={`px-2 py-1 text-xs font-medium rounded ${
-                        user.status === 'Active'
-                          ? 'bg-green-50 text-green-700'
-                          : 'bg-gray-100 text-gray-600'
-                      }`}
-                    >
-                      {user.status}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className="text-sm text-gray-500">
-                      {new Date(user.joinDate).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                      })}
-                    </span>
+              {users.map((user) => {
+                const status = getAccountStatus(user);
+                return (
+                  <tr key={user.id} className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4">
+                      <div>
+                        <div className="text-sm font-medium text-gray-900">{getUserDisplayName(user)}</div>
+                        <div className="text-sm text-gray-500">{user.email}</div>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span
+                        className={`px-2 py-1 text-xs font-medium rounded ${getPlanBadgeClass(user.plan_type)}`}
+                      >
+                        {formatPlanName(user.plan_type)}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span
+                        className={`px-2 py-1 text-xs font-medium rounded ${getStatusBadgeClass(status)}`}
+                      >
+                        {status}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span className="text-sm text-gray-500">
+                        {new Date(user.created_at).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        })}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
+              {!loading && users.length === 0 && (
+                <tr>
+                  <td colSpan={4} className="px-6 py-12 text-center text-gray-500">
+                    No users found for this period
                   </td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>

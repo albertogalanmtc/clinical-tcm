@@ -1,72 +1,35 @@
-import { useSearchParams, Link, useNavigate } from 'react-router-dom';
-import { ChevronLeft, CreditCard } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ChevronLeft, Loader2 } from 'lucide-react';
 import { useSwipeBack } from '../hooks/useSwipeBack';
-
-function formatPlanName(planCode: string): string {
-  switch (planCode) {
-    case 'free':
-      return 'Free';
-    case 'practitioner':
-    case 'pro':
-      return 'Practitioner';
-    case 'advanced':
-    case 'clinic':
-      return 'Advanced';
-    default:
-      return planCode;
-  }
-}
+import {
+  fetchActiveSubscriptions,
+  formatPlanName,
+  getAccountStatus,
+  getPlanBadgeClass,
+  getStatusBadgeClass,
+  getUserDisplayName,
+  type AdminUserRecord,
+} from '../services/adminUsersService';
 
 export default function AdminActiveSubscriptions() {
-  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const [subscriptions, setSubscriptions] = useState<AdminUserRecord[]>([]);
+  const [loading, setLoading] = useState(true);
   
   // Enable swipe-to-go-back gesture on mobile
   useSwipeBack();
-  const preset = searchParams.get('preset') || 'month';
-  const startDate = searchParams.get('startDate');
-  const endDate = searchParams.get('endDate');
 
-  // Helper to get readable time range
-  const getTimeRangeLabel = () => {
-    if (preset === 'custom' && startDate && endDate) {
-      return `${startDate} - ${endDate}`;
-    }
-    const labels: Record<string, string> = {
-      week: 'This week',
-      month: 'This month',
-      year: 'This year',
+  useEffect(() => {
+    const loadSubscriptions = async () => {
+      setLoading(true);
+      const data = await fetchActiveSubscriptions();
+      setSubscriptions(data);
+      setLoading(false);
     };
-    return labels[preset] || 'This month';
-  };
 
-  // Mock data - in production this would be fetched based on time range
-  const mockSubscriptions = [
-    {
-      id: '1',
-      userName: 'Dr. James Kim',
-      email: 'dr.james.kim@example.com',
-      planCode: 'pro' as const,
-      startDate: '2024-01-15',
-      status: 'Active',
-    },
-    {
-      id: '2',
-      userName: 'Dr. Alberto Galán',
-      email: 'admin@tcm.com',
-      planCode: 'pro' as const,
-      startDate: '2023-11-20',
-      status: 'Active',
-    },
-    {
-      id: '3',
-      userName: 'Dr. Anna Martinez',
-      email: 'anna.martinez@example.com',
-      planCode: 'pro' as const,
-      startDate: '2023-09-12',
-      status: 'Active',
-    },
-  ];
+    loadSubscriptions();
+  }, []);
 
   return (
     <>
@@ -83,9 +46,15 @@ export default function AdminActiveSubscriptions() {
           <h1 className="text-3xl font-bold text-gray-900">Active subscriptions</h1>
         </div>
         <p className="hidden sm:block text-gray-600">
-          Users with active Pro subscriptions
+          Users with active paid subscriptions
         </p>
       </div>
+
+      {loading ? (
+        <div className="flex items-center justify-center py-16">
+          <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
+        </div>
+      ) : null}
 
       {/* Subscriptions List */}
       <div className="bg-white rounded-lg border border-gray-200">
@@ -108,43 +77,51 @@ export default function AdminActiveSubscriptions() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {mockSubscriptions.map((sub) => (
-                <tr key={sub.id} className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4">
-                    <div>
-                      <div className="text-sm font-medium text-gray-900">{sub.userName}</div>
-                      <div className="text-sm text-gray-500">{sub.email}</div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span
-                      className={`px-2 py-1 text-xs font-medium rounded ${
-                        sub.planCode === 'pro'
-                          ? 'bg-teal-50 text-teal-700'
-                          : sub.planCode === 'clinic'
-                          ? 'bg-purple-50 text-purple-700'
-                          : 'bg-gray-100 text-gray-600'
-                      }`}
-                    >
-                      {formatPlanName(sub.planCode)}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className="px-2 py-1 text-xs font-medium rounded bg-green-50 text-green-700">
-                      {sub.status}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className="text-sm text-gray-500">
-                      {new Date(sub.startDate).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                      })}
-                    </span>
+              {subscriptions.map((sub) => {
+                const status = getAccountStatus(sub);
+                const startDate = sub.updated_at || sub.created_at;
+
+                return (
+                  <tr key={sub.id} className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4">
+                      <div>
+                        <div className="text-sm font-medium text-gray-900">{getUserDisplayName(sub)}</div>
+                        <div className="text-sm text-gray-500">{sub.email}</div>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span
+                        className={`px-2 py-1 text-xs font-medium rounded ${getPlanBadgeClass(sub.plan_type)}`}
+                      >
+                        {formatPlanName(sub.plan_type)}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span
+                        className={`px-2 py-1 text-xs font-medium rounded ${getStatusBadgeClass(status)}`}
+                      >
+                        {status}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span className="text-sm text-gray-500">
+                        {new Date(startDate).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        })}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
+              {!loading && subscriptions.length === 0 && (
+                <tr>
+                  <td colSpan={4} className="px-6 py-12 text-center text-gray-500">
+                    No active subscriptions found
                   </td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>

@@ -1,72 +1,36 @@
-import { useSearchParams, Link, useNavigate } from 'react-router-dom';
-import { ChevronLeft, Users } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ChevronLeft, Loader2 } from 'lucide-react';
 import { useSwipeBack } from '../hooks/useSwipeBack';
-
-function formatPlanName(planCode: string): string {
-  switch (planCode) {
-    case 'free':
-      return 'Free';
-    case 'practitioner':
-    case 'pro':
-      return 'Practitioner';
-    case 'advanced':
-    case 'clinic':
-      return 'Advanced';
-    default:
-      return planCode;
-  }
-}
+import {
+  fetchAllAdminUsers,
+  formatPlanName,
+  getAccountStatus,
+  getPlanBadgeClass,
+  getStatusBadgeClass,
+  getUserDisplayName,
+  type AdminUserRecord,
+} from '../services/adminUsersService';
 
 export default function AdminTotalUsers() {
-  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const [users, setUsers] = useState<AdminUserRecord[]>([]);
+  const [loading, setLoading] = useState(true);
   
   // Enable swipe-to-go-back gesture on mobile
   useSwipeBack();
-  const preset = searchParams.get('preset') || 'month';
-  const startDate = searchParams.get('startDate');
-  const endDate = searchParams.get('endDate');
 
-  // Helper to get readable time range
-  const getTimeRangeLabel = () => {
-    if (preset === 'custom' && startDate && endDate) {
-      return `${startDate} - ${endDate}`;
-    }
-    const labels: Record<string, string> = {
-      week: 'This week',
-      month: 'This month',
-      year: 'This year',
+  useEffect(() => {
+    const loadUsers = async () => {
+      setLoading(true);
+      const data = await fetchAllAdminUsers();
+      setUsers(data);
+
+      setLoading(false);
     };
-    return labels[preset] || 'This month';
-  };
 
-  // Mock data - in production this would be fetched based on time range
-  const mockUsers = [
-    {
-      id: '1',
-      name: 'Dr. James Kim',
-      email: 'dr.james.kim@example.com',
-      planCode: 'pro' as const,
-      status: 'Active',
-      joinDate: '2024-01-15',
-    },
-    {
-      id: '2',
-      name: 'Maria Lopez',
-      email: 'maria.lopez@example.com',
-      planCode: 'free' as const,
-      status: 'Active',
-      joinDate: '2024-02-03',
-    },
-    {
-      id: '3',
-      name: 'Dr. Alberto Galán',
-      email: 'admin@tcm.com',
-      planCode: 'pro' as const,
-      status: 'Active',
-      joinDate: '2023-11-20',
-    },
-  ];
+    loadUsers();
+  }, []);
 
   return (
     <>
@@ -82,10 +46,14 @@ export default function AdminTotalUsers() {
           </button>
           <h1 className="text-3xl font-bold text-gray-900">Total users</h1>
         </div>
-        <p className="hidden sm:block text-gray-600">
-          All users across the platform
-        </p>
+        <p className="hidden sm:block text-gray-600">All users across the platform</p>
       </div>
+
+      {loading ? (
+        <div className="flex items-center justify-center py-16">
+          <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
+        </div>
+      ) : null}
 
       {/* Users List */}
       <div className="bg-white rounded-lg border border-gray-200">
@@ -108,49 +76,49 @@ export default function AdminTotalUsers() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {mockUsers.map((user) => (
-                <tr key={user.id} className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4">
-                    <div>
-                      <div className="text-sm font-medium text-gray-900">{user.name}</div>
-                      <div className="text-sm text-gray-500">{user.email}</div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span
-                      className={`px-2 py-1 text-xs font-medium rounded ${
-                        user.planCode === 'pro'
-                          ? 'bg-teal-50 text-teal-700'
-                          : user.planCode === 'clinic'
-                          ? 'bg-purple-50 text-purple-700'
-                          : 'bg-gray-100 text-gray-600'
-                      }`}
-                    >
-                      {formatPlanName(user.planCode)}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span
-                      className={`px-2 py-1 text-xs font-medium rounded ${
-                        user.status === 'Active'
-                          ? 'bg-green-50 text-green-700'
-                          : 'bg-gray-100 text-gray-600'
-                      }`}
-                    >
-                      {user.status}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className="text-sm text-gray-500">
-                      {new Date(user.joinDate).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                      })}
-                    </span>
+              {users.map((user) => {
+                const status = getAccountStatus(user);
+                return (
+                  <tr key={user.id} className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4">
+                      <div>
+                        <div className="text-sm font-medium text-gray-900">{getUserDisplayName(user)}</div>
+                        <div className="text-sm text-gray-500">{user.email}</div>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span
+                        className={`px-2 py-1 text-xs font-medium rounded ${getPlanBadgeClass(user.plan_type)}`}
+                      >
+                        {formatPlanName(user.plan_type)}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span
+                        className={`px-2 py-1 text-xs font-medium rounded ${getStatusBadgeClass(status)}`}
+                      >
+                        {status}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span className="text-sm text-gray-500">
+                        {new Date(user.created_at).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        })}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
+              {!loading && users.length === 0 && (
+                <tr>
+                  <td colSpan={4} className="px-6 py-12 text-center text-gray-500">
+                    No users found
                   </td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
