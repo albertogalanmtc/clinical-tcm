@@ -229,7 +229,11 @@ function updateLocalPostSupabaseId(localPostId: string, supabaseId: string): voi
   }
 }
 
-async function resolveSupabasePostId(localPostId: string, authorId?: string): Promise<string | null> {
+async function resolveSupabasePostId(
+  localPostId: string,
+  postAuthorId?: string,
+  postTitle?: string
+): Promise<string | null> {
   const localPost = getCommunityPost(localPostId);
   if (!localPost) return null;
 
@@ -237,13 +241,13 @@ async function resolveSupabasePostId(localPostId: string, authorId?: string): Pr
     return localPost.supabaseId;
   }
 
-  const lookupAuthorId = authorId || getCurrentUser().id;
+  const lookupAuthorId = postAuthorId || localPost.authorId;
   if (lookupAuthorId && !lookupAuthorId.startsWith('user-demo')) {
     const { data } = await supabase
       .from('community_posts')
       .select('id')
       .eq('author_id', lookupAuthorId)
-      .eq('title', localPost.title)
+      .eq('title', postTitle || localPost.title)
       .order('created_at', { ascending: false })
       .limit(1)
       .maybeSingle();
@@ -413,7 +417,8 @@ export function getPostComments(postId: string): CommunityComment[] {
 
 export function createComment(
   comment: Omit<CommunityComment, 'id' | 'createdAt' | 'upvotes' | 'upvotedBy' | 'authorId' | 'author'>,
-  userOverride?: { id: string; name: string; isAdmin: boolean }
+  userOverride?: { id: string; name: string; isAdmin: boolean },
+  context?: { postAuthorId?: string; postTitle?: string }
 ): void {
   const comments = getCommunityComments();
   const user = userOverride || getCurrentUser();
@@ -446,7 +451,7 @@ export function createComment(
   console.log('💬 Creating comment - User ID:', user.id, 'Name:', user.name);
   if (user.id && !user.id.startsWith('user-demo')) {
     console.log('🔄 Saving comment to Supabase...');
-    resolveSupabasePostId(comment.postId, user.id).then(async (resolvedPostId) => {
+    resolveSupabasePostId(comment.postId, context?.postAuthorId, context?.postTitle).then(async (resolvedPostId) => {
       const supabasePostId = resolvedPostId || comment.postId;
       const localPost = getCommunityPost(comment.postId);
 

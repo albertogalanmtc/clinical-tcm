@@ -240,7 +240,10 @@ export function PostDetailModal({ isOpen, onClose, postId }: PostDetailModalProp
       postId,
       content: content.trim(),
       parentId
-    }, userForComment);
+    }, userForComment, {
+      postAuthorId: post?.authorId,
+      postTitle: post?.title
+    });
 
     if (parentId) {
       setReplyingTo(null);
