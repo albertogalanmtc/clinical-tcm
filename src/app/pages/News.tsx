@@ -63,8 +63,8 @@ export default function News() {
         {/* Two Column Layout */}
         <div className="max-w-7xl mx-auto w-full flex gap-4 lg:gap-6 flex-1 min-h-0 items-stretch">
           {/* Left Column: News List */}
-          <aside className="hidden lg:flex lg:flex-col w-80 flex-shrink-0 self-stretch">
-            <div className="bg-white rounded-lg border border-gray-200 sticky top-4 max-h-[calc(100vh-6rem)] flex h-full flex-col overflow-hidden self-stretch">
+          <aside className="hidden lg:flex lg:flex-col w-80 flex-shrink-0">
+            <div className="bg-white rounded-lg border border-gray-200 sticky top-0 max-h-[calc(100vh-6rem)] flex flex-col overflow-hidden">
               {/* Search */}
               <div className="p-4 border-b border-gray-200">
                 <div className="relative">
@@ -132,8 +132,7 @@ export default function News() {
           <main className="hidden lg:flex flex-1 min-w-0 flex h-full min-h-0 flex-col self-stretch">
             {selectedNews ? (
               <div className="bg-white rounded-lg border border-gray-200 flex h-full flex-col flex-1 min-h-0 max-h-[calc(100vh-6rem)] overflow-hidden">
-                {/* News Header */}
-                <div className="flex-shrink-0 p-6">
+                <div className="flex-1 min-h-0 overflow-y-auto px-6 py-6">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">
                     {selectedNews.title}
                   </h2>
@@ -152,13 +151,9 @@ export default function News() {
                       </>
                     )}
                   </div>
-                  <p className="text-gray-700 italic mb-4">
+                  <p className="text-gray-700 italic mb-6">
                     {selectedNews.summary}
                   </p>
-                </div>
-
-                {/* Content */}
-                <div className="flex-1 min-h-0 overflow-y-auto border-t border-gray-200 px-6 py-6">
                   <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
                     {selectedNews.content}
                   </p>
