@@ -20,6 +20,7 @@ export default function Community() {
   const [showNewPostModal, setShowNewPostModal] = useState(false);
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const currentUserId = userContext.userId || getCurrentUser().id;
 
   useEffect(() => {
     markSectionAsVisited('community');
@@ -43,10 +44,8 @@ export default function Community() {
   };
 
   const filteredPosts = posts.filter(post => {
-    const user = getCurrentUser();
-
     // Apply filter
-    if (filter === 'myPosts' && post.author_id !== user.id) return false;
+    if (filter === 'myPosts' && post.author_id !== currentUserId) return false;
 
     // Apply search
     if (searchQuery) {
@@ -115,7 +114,7 @@ export default function Community() {
               active={filter === 'myPosts'}
               onClick={() => setFilter('myPosts')}
               label="My Posts"
-              count={posts.filter(p => p.author_id === getCurrentUser().id).length}
+              count={posts.filter(p => p.author_id === currentUserId).length}
             />
           </div>
         </div>
@@ -152,7 +151,7 @@ export default function Community() {
                 post={post}
                 onOpenPost={setSelectedPostId}
                 isAdmin={userContext.isAdmin}
-                userId={userContext.userId || getCurrentUser().id}
+                userId={currentUserId}
               />
             ))}
           </div>
