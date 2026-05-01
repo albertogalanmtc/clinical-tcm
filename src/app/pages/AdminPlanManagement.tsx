@@ -502,16 +502,39 @@ export default function AdminPlanManagement() {
                       </div>
                     ) : (
                       <div>
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-3xl font-bold text-gray-900">
-                            ${plan.yearlyPrice ?? '--'}
-                          </span>
-                          <span className="text-sm text-gray-600">/year</span>
-                        </div>
-                        {plan.monthlyPrice && plan.yearlyPrice && (
-                          <div className="mt-1 text-sm text-teal-600 font-medium">
-                            Save ${(plan.monthlyPrice * 12) - plan.yearlyPrice}/year
+                        {plan.offer?.yearlyEnabled ? (
+                          <div>
+                            <div className="flex items-baseline gap-2">
+                              <span className="text-3xl font-bold text-gray-900">
+                                ${plan.offer.yearlyDiscountedPrice}
+                              </span>
+                              <span className="text-lg text-gray-400 line-through">
+                                ${plan.offer.yearlyOriginalPrice}
+                              </span>
+                              <span className="text-sm text-gray-600">/year</span>
+                            </div>
+                            {(plan.offer.yearlyLabel || plan.offer.label) && (
+                              <div className="mt-1">
+                                <span className="inline-block px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-medium rounded">
+                                  {plan.offer.yearlyLabel || plan.offer.label}
+                                </span>
+                              </div>
+                            )}
                           </div>
+                        ) : (
+                          <>
+                            <div className="flex items-baseline gap-2">
+                              <span className="text-3xl font-bold text-gray-900">
+                                ${plan.yearlyPrice ?? '--'}
+                              </span>
+                              <span className="text-sm text-gray-600">/year</span>
+                            </div>
+                            {plan.monthlyPrice && plan.yearlyPrice && (
+                              <div className="mt-1 text-sm text-teal-600 font-medium">
+                                Save ${(plan.monthlyPrice * 12) - plan.yearlyPrice}/year
+                              </div>
+                            )}
+                          </>
                         )}
                       </div>
                     )}
@@ -2415,6 +2438,102 @@ export default function AdminPlanManagement() {
                     </div>
                   </>
                 )}
+
+                {/* Yearly Launch Offer */}
+                <div className="pt-4 border-t border-gray-200 space-y-4">
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">Enable Yearly Launch Offer</p>
+                      <p className="text-xs text-gray-500">Show a separate promotional price for the yearly billing period</p>
+                    </div>
+                    <button
+                      onClick={() => setEditingPlanDisplay({
+                        ...editingPlanDisplay,
+                        offer: {
+                          ...editingPlanDisplay.offer!,
+                          yearlyEnabled: !editingPlanDisplay.offer?.yearlyEnabled,
+                          yearlyOriginalPrice: editingPlanDisplay.offer?.yearlyOriginalPrice || editingPlanDisplay.yearlyPrice || 0,
+                          yearlyDiscountedPrice: editingPlanDisplay.offer?.yearlyDiscountedPrice || editingPlanDisplay.yearlyPrice || 0,
+                        }
+                      })}
+                      className={`chip-compact relative inline-flex h-5 w-9 sm:h-6 sm:w-11 items-center rounded-full transition-colors ${
+                        editingPlanDisplay.offer?.yearlyEnabled ? 'bg-teal-600' : 'bg-gray-300'
+                      }`}
+                    >
+                      <span
+                        className={`inline-block h-3.5 w-3.5 sm:h-4 sm:w-4 transform rounded-full bg-white transition-transform ${
+                          editingPlanDisplay.offer?.yearlyEnabled ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0.5 sm:translate-x-1'
+                        }`}
+                      />
+                    </button>
+                  </div>
+
+                  {editingPlanDisplay.offer?.yearlyEnabled && (
+                    <>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Yearly Offer Label (Optional)
+                        </label>
+                        <input
+                          type="text"
+                          value={editingPlanDisplay.offer?.yearlyLabel || ''}
+                          onChange={(e) => setEditingPlanDisplay({
+                            ...editingPlanDisplay,
+                            offer: { ...editingPlanDisplay.offer!, yearlyLabel: e.target.value }
+                          })}
+                          placeholder="e.g., Yearly Launch Offer"
+                          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Yearly Original Price ($)
+                        </label>
+                        <input
+                          type="number"
+                          value={editingPlanDisplay.offer?.yearlyOriginalPrice || 0}
+                          onChange={(e) => setEditingPlanDisplay({
+                            ...editingPlanDisplay,
+                            offer: { ...editingPlanDisplay.offer!, yearlyOriginalPrice: Number(e.target.value) }
+                          })}
+                          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Yearly Discounted Price ($)
+                        </label>
+                        <input
+                          type="number"
+                          value={editingPlanDisplay.offer?.yearlyDiscountedPrice || 0}
+                          onChange={(e) => setEditingPlanDisplay({
+                            ...editingPlanDisplay,
+                            offer: { ...editingPlanDisplay.offer!, yearlyDiscountedPrice: Number(e.target.value) }
+                          })}
+                          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Yearly Expiration Note (Optional)
+                        </label>
+                        <input
+                          type="text"
+                          value={editingPlanDisplay.offer?.yearlyExpirationNote || ''}
+                          onChange={(e) => setEditingPlanDisplay({
+                            ...editingPlanDisplay,
+                            offer: { ...editingPlanDisplay.offer!, yearlyExpirationNote: e.target.value }
+                          })}
+                          placeholder="e.g., Yearly offer ends soon"
+                          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                        />
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
 
               {/* Custom Features List */}

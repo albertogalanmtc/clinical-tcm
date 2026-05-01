@@ -9,8 +9,18 @@ interface LandingPlanCard {
   name: string;
   monthlyPrice?: number;
   yearlyPrice?: number;
-  originalPrice?: number;
-  discountedPrice?: number;
+  monthlyOffer?: {
+    originalPrice?: number;
+    discountedPrice?: number;
+    label?: string;
+    expirationNote?: string;
+  };
+  yearlyOffer?: {
+    originalPrice?: number;
+    discountedPrice?: number;
+    label?: string;
+    expirationNote?: string;
+  };
   description: string;
   features: string[];
   cta: string;
@@ -96,20 +106,34 @@ export default function Landing() {
   };
 
   const toLandingPlan = (plan: Plan): LandingPlanCard => {
-    const hasOffer = Boolean(plan.offer?.enabled);
+    const hasMonthlyOffer = Boolean(plan.offer?.enabled);
+    const hasYearlyOffer = Boolean(plan.offer?.yearlyEnabled);
 
     return {
       id: plan.code,
       name: plan.name,
       monthlyPrice: plan.monthlyPrice,
       yearlyPrice: plan.yearlyPrice,
-      originalPrice: hasOffer ? plan.offer?.originalPrice : undefined,
-      discountedPrice: hasOffer ? plan.offer?.discountedPrice : undefined,
+      monthlyOffer: hasMonthlyOffer
+        ? {
+            originalPrice: plan.offer?.originalPrice,
+            discountedPrice: plan.offer?.discountedPrice,
+            label: plan.offer?.label,
+            expirationNote: plan.offer?.expirationNote,
+          }
+        : undefined,
+      yearlyOffer: hasYearlyOffer
+        ? {
+            originalPrice: plan.offer?.yearlyOriginalPrice,
+            discountedPrice: plan.offer?.yearlyDiscountedPrice,
+            label: plan.offer?.yearlyLabel || plan.offer?.label,
+            expirationNote: plan.offer?.yearlyExpirationNote || plan.offer?.expirationNote,
+          }
+        : undefined,
       description: plan.description,
       features: plan.membershipDisplay?.customFeatures?.length ? plan.membershipDisplay.customFeatures : buildPlanFeatures(plan),
       cta: plan.code === 'free' ? 'Get Started Free' : `Start ${plan.name}`,
       popular: plan.isPopular,
-      badge: hasOffer ? (plan.offer?.label || 'Limited time offer') : undefined,
       action: (selectedBillingPeriod) => {
         if (plan.code === 'free') {
           navigate('/create-account');
@@ -354,15 +378,18 @@ export default function Landing() {
                     : 'border-gray-200'
                 }`}
               >
+                {(() => {
+                  const currentOffer = billingPeriod === 'yearly' ? plan.yearlyOffer : plan.monthlyOffer;
+                  return currentOffer?.label && !plan.popular ? (
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                      {currentOffer.label}
+                    </div>
+                  ) : null;
+                })()}
+
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-teal-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
                     Most Popular
-                  </div>
-                )}
-
-                {plan.badge && !plan.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                    {plan.badge}
                   </div>
                 )}
 
@@ -382,18 +409,18 @@ export default function Landing() {
                     <>
                       <div className="flex items-baseline gap-2">
                         <span className="text-5xl font-bold text-gray-900">
-                          ${plan.discountedPrice ?? plan.monthlyPrice ?? 0}
+                          ${plan.monthlyOffer?.discountedPrice ?? plan.monthlyPrice ?? 0}
                         </span>
-                        {plan.originalPrice ? (
+                        {plan.monthlyOffer?.originalPrice ? (
                           <span className="text-lg text-gray-400 line-through">
-                            ${plan.originalPrice}
+                            ${plan.monthlyOffer.originalPrice}
                           </span>
                         ) : null}
                         <span className="text-gray-600">/month</span>
                       </div>
-                      {plan.badge && (
+                      {plan.monthlyOffer?.label && (
                         <p className="text-sm text-orange-600 font-medium mt-2">
-                          🎉 Limited time offer
+                          🎉 {plan.monthlyOffer.label}
                         </p>
                       )}
                     </>
@@ -401,15 +428,29 @@ export default function Landing() {
                     <>
                       <div className="flex items-baseline gap-2">
                         <span className="text-5xl font-bold text-gray-900">
-                          ${plan.yearlyPrice ?? 0}
+                          ${plan.yearlyOffer?.discountedPrice ?? plan.yearlyPrice ?? 0}
                         </span>
+                        {plan.yearlyOffer?.originalPrice ? (
+                          <span className="text-lg text-gray-400 line-through">
+                            ${plan.yearlyOffer.originalPrice}
+                          </span>
+                        ) : null}
                         <span className="text-gray-600">/year</span>
                       </div>
-                      {plan.monthlyPrice && plan.yearlyPrice ? (
+                      {plan.yearlyOffer?.originalPrice && plan.yearlyOffer?.discountedPrice ? (
+                        <p className="text-sm text-teal-600 font-medium mt-2">
+                          Save ${plan.yearlyOffer.originalPrice - plan.yearlyOffer.discountedPrice}/year
+                        </p>
+                      ) : plan.monthlyPrice && plan.yearlyPrice ? (
                         <p className="text-sm text-teal-600 font-medium mt-2">
                           Save ${(plan.monthlyPrice * 12) - plan.yearlyPrice}/year
                         </p>
                       ) : null}
+                      {plan.yearlyOffer?.label && (
+                        <p className="text-sm text-orange-600 font-medium mt-2">
+                          🎉 {plan.yearlyOffer.label}
+                        </p>
+                      )}
                     </>
                   )}
                 </div>

@@ -7,6 +7,30 @@ import { getPlatformSettings } from '@/app/data/platformSettings';
 import { createStripeCheckout, getStripePriceId } from '@/lib/stripe';
 import { supabase } from '@/app/lib/supabase';
 
+type PlanOfferDisplay = {
+  originalPrice?: number;
+  discountedPrice?: number;
+  label?: string;
+};
+
+const getPlanOfferDisplay = (plan: Plan, billingPeriod: 'monthly' | 'yearly'): PlanOfferDisplay | undefined => {
+  if (billingPeriod === 'yearly') {
+    if (!plan.offer?.yearlyEnabled) return undefined;
+    return {
+      originalPrice: plan.offer.yearlyOriginalPrice,
+      discountedPrice: plan.offer.yearlyDiscountedPrice,
+      label: plan.offer.yearlyLabel || plan.offer.label,
+    };
+  }
+
+  if (!plan.offer?.enabled) return undefined;
+  return {
+    originalPrice: plan.offer.originalPrice,
+    discountedPrice: plan.offer.discountedPrice,
+    label: plan.offer.label,
+  };
+};
+
 export default function SelectMembership() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -262,7 +286,7 @@ export default function SelectMembership() {
           ) : (
             plans.map(plan => {
             const isSelected = selectedPlan === plan.code;
-            const hasOffer = plan.offer?.enabled;
+            const activeOffer = getPlanOfferDisplay(plan, billingPeriod);
             const features = plan.features ?? {};
             const limits = plan.limits ?? { monthlyFormulas: 0 };
 
@@ -316,19 +340,19 @@ export default function SelectMembership() {
                         <div>
                           <div className="flex items-baseline gap-2">
                             <span className="text-3xl font-bold text-gray-900">
-                              ${hasOffer ? plan.offer!.discountedPrice : plan.monthlyPrice}
+                              ${activeOffer?.discountedPrice ?? plan.monthlyPrice}
                             </span>
-                            {hasOffer && (
+                            {activeOffer?.originalPrice ? (
                               <span className="text-lg text-gray-400 line-through">
-                                ${plan.offer!.originalPrice}
+                                ${activeOffer.originalPrice}
                               </span>
-                            )}
+                            ) : null}
                             <span className="text-sm text-gray-600">/month</span>
                           </div>
-                          {hasOffer && plan.offer!.label && (
+                          {activeOffer?.label && (
                             <div className="mt-1">
                               <span className="inline-block px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-medium rounded">
-                                {plan.offer!.label}
+                                {activeOffer.label}
                               </span>
                             </div>
                           )}
@@ -338,13 +362,29 @@ export default function SelectMembership() {
                         <div>
                           <div className="flex items-baseline gap-2">
                             <span className="text-3xl font-bold text-gray-900">
-                              ${plan.yearlyPrice}
+                              ${activeOffer?.discountedPrice ?? plan.yearlyPrice}
                             </span>
+                            {activeOffer?.originalPrice ? (
+                              <span className="text-lg text-gray-400 line-through">
+                                ${activeOffer.originalPrice}
+                              </span>
+                            ) : null}
                             <span className="text-sm text-gray-600">/year</span>
                           </div>
-                          {plan.monthlyPrice && plan.yearlyPrice && (
+                          {activeOffer?.originalPrice && activeOffer?.discountedPrice ? (
+                            <div className="mt-1 text-sm text-teal-600 font-medium">
+                              Save ${activeOffer.originalPrice - activeOffer.discountedPrice}/year
+                            </div>
+                          ) : plan.monthlyPrice && plan.yearlyPrice && (
                             <div className="mt-1 text-sm text-teal-600 font-medium">
                               Save ${(plan.monthlyPrice * 12) - plan.yearlyPrice}/year
+                            </div>
+                          )}
+                          {activeOffer?.label && (
+                            <div className="mt-1">
+                              <span className="inline-block px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-medium rounded">
+                                {activeOffer.label}
+                              </span>
                             </div>
                           )}
                         </div>

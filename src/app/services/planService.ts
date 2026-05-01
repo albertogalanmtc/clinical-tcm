@@ -94,8 +94,13 @@ export interface Plan {
     enabled: boolean;
     originalPrice: number;
     discountedPrice: number;
+    yearlyEnabled?: boolean;
+    yearlyOriginalPrice?: number;
+    yearlyDiscountedPrice?: number;
     label?: string;
+    yearlyLabel?: string;
     expirationNote?: string;
+    yearlyExpirationNote?: string;
   };
   membershipDisplay?: {
     customFeatures?: string[]; // Custom features list for SelectMembership page
