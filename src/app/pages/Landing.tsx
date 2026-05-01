@@ -156,7 +156,7 @@ export default function Landing() {
         if (cancelled) return;
 
         const activePlans = ['free', 'practitioner', 'advanced']
-          .map(code => loadedPlans.find(plan => plan.code === code))
+          .map(code => loadedPlans.find(plan => plan.code === code && plan.status === 'active'))
           .filter(Boolean) as Plan[];
 
         setPlans(activePlans.map(toLandingPlan));
