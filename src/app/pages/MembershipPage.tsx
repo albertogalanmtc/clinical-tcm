@@ -122,8 +122,22 @@ function transformPlanToDisplay(plan: Plan): DisplayPlan {
   };
 }
 
+function inferPlanCodeFromInvoiceDescription(description: string): 'practitioner' | 'advanced' | null {
+  const normalized = description.toLowerCase();
+
+  if (normalized.includes('advanced')) {
+    return 'advanced';
+  }
+
+  if (normalized.includes('practitioner')) {
+    return 'practitioner';
+  }
+
+  return null;
+}
+
 export default function MembershipPage() {
-  const { planType } = useUser();
+  const { planType, billingPeriod: userBillingPeriod } = useUser();
   const [plans, setPlans] = useState<DisplayPlan[]>([]);
   const [originalPlans, setOriginalPlans] = useState<Plan[]>([]);
   const [invoices, setInvoices] = useState<Invoice[]>([]);
@@ -203,6 +217,23 @@ export default function MembershipPage() {
   // Use actual user plan
   const currentPlan = planType;
   const renewalDate = 'Mar 12, 2026';
+  const latestPaidInvoice = invoices.find(invoice => invoice.status === 'paid');
+  const inferredCurrentPlan = currentPlan !== 'free'
+    ? currentPlan
+    : inferPlanCodeFromInvoiceDescription(latestPaidInvoice?.description || '') || currentPlan;
+  const currentPlanData = originalPlans.find(plan => plan.code === inferredCurrentPlan);
+  const currentPlanAmount = inferredCurrentPlan === 'free'
+    ? 0
+    : latestPaidInvoice?.amount ?? (
+        userBillingPeriod === 'yearly'
+          ? (currentPlanData?.yearlyPrice ?? currentPlanData?.monthlyPrice ?? 0)
+          : (currentPlanData?.monthlyPrice ?? 0)
+      );
+  const currentPlanPeriod = inferredCurrentPlan === 'free'
+    ? 'forever'
+    : (userBillingPeriod === 'yearly' || /year|annual/i.test(latestPaidInvoice?.description || ''))
+      ? 'per year'
+      : 'per month';
 
   const handleManageBilling = () => {
     setBillingModalMode('manage');
@@ -316,11 +347,11 @@ export default function MembershipPage() {
               <div>
                 <div className="inline-flex items-center gap-2 mb-3">
                   <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${
-                    currentPlan === 'free' ? 'bg-gray-100 text-gray-700' :
-                    currentPlan === 'practitioner' ? 'bg-purple-100 text-purple-700' :
+                    inferredCurrentPlan === 'free' ? 'bg-gray-100 text-gray-700' :
+                    inferredCurrentPlan === 'practitioner' ? 'bg-purple-100 text-purple-700' :
                     'bg-teal-100 text-teal-800'
                   }`}>
-                    {plans.find(p => p.id === currentPlan)?.name}
+                    {currentPlanData?.name || 'Free'}
                   </span>
                 </div>
                 <p className="text-sm text-gray-600">
@@ -329,10 +360,10 @@ export default function MembershipPage() {
               </div>
               <div className="text-right">
                 <div className="text-2xl font-bold text-gray-900">
-                  {plans.find(p => p.id === currentPlan)?.price}
+                  {currentPlan === 'free' ? '$0' : `$${currentPlanAmount.toFixed(2)}`}
                 </div>
                 <div className="text-xs text-gray-500">
-                  {plans.find(p => p.id === currentPlan)?.period}
+                  {currentPlanPeriod}
                 </div>
               </div>
             </div>

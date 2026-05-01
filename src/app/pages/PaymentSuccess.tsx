@@ -51,6 +51,7 @@ export default function PaymentSuccess() {
         const userEmail = session?.user?.email || '';
 
         let resolvedPlan: PlanType = planFromUrl || 'free';
+        const resolvedBillingPeriod: 'monthly' | 'yearly' = billingPeriod === 'yearly' ? 'yearly' : 'monthly';
         let latestProfile: { plan_type?: string; subscription_status?: string; email?: string } | null = null;
 
         if (userId) {
@@ -87,6 +88,7 @@ export default function PaymentSuccess() {
               email: userEmail || latestProfile?.email || '',
               plan_type: resolvedPlan,
               subscription_status: resolvedPlan === 'free' ? 'inactive' : 'active',
+              billing_period: resolvedPlan === 'free' ? null : resolvedBillingPeriod,
               updated_at: new Date().toISOString(),
             }, {
               onConflict: 'id',
@@ -116,6 +118,8 @@ export default function PaymentSuccess() {
               ...storedProfile,
               planType: resolvedPlan,
               plan_type: resolvedPlan,
+              billingPeriod: resolvedPlan === 'free' ? null : resolvedBillingPeriod,
+              billing_period: resolvedPlan === 'free' ? null : resolvedBillingPeriod,
             }));
           } catch {
             // Ignore localStorage parse errors and continue.

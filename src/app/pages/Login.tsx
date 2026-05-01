@@ -104,6 +104,7 @@ export default function Login() {
           lastName: userProfile.last_name,
           title: userProfile.title,
           email: userProfile.email,
+          billingPeriod: userProfile.billing_period || null,
         }));
         setUserPlan(userProfile.plan_type || 'free');
         localStorage.setItem('onboardingCompleted', onboardingCompleted ? 'true' : 'false');

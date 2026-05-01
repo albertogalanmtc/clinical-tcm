@@ -13,6 +13,7 @@ interface UserContextType {
   avatarImage: string | null;
   isAdmin: boolean;
   planType: PlanType | null;
+  billingPeriod: 'monthly' | 'yearly' | null;
   planFeatures: PlanFeatures;
   userId: string | null; // Supabase user ID
   user: { id: string; email: string } | null; // For compatibility with services
@@ -39,6 +40,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const [avatarImage, setAvatarImage] = useState<string | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [planType, setPlanType] = useState<PlanType | null>(null);
+  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly' | null>(null);
   const [planFeatures, setPlanFeatures] = useState<PlanFeatures>(DEFAULT_PLANS.free);
   const [userId, setUserId] = useState<string | null>(null);
 
@@ -70,6 +72,9 @@ export function UserProvider({ children }: { children: ReactNode }) {
           setTitle(userProfile.title || '');
           setCountry(userProfile.country || '');
           setPlanType(userProfile.plan_type || 'free');
+          setBillingPeriod(userProfile.billing_period === 'monthly' || userProfile.billing_period === 'yearly'
+            ? userProfile.billing_period
+            : null);
           setIsAdmin(userProfile.role === 'admin');
 
           // Load plan features from Supabase
@@ -98,6 +103,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
           setTitle('');
           setCountry('');
           setPlanType('free');
+          setBillingPeriod(null);
           setIsAdmin(false);
           setPlanFeatures(DEFAULT_PLANS.free);
         }
@@ -130,6 +136,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
       setIsAdmin(userRole === 'admin');
       setPlanType(userPlan);
+      setBillingPeriod(null);
       setPlanFeatures(features);
     };
 
@@ -160,6 +167,9 @@ export function UserProvider({ children }: { children: ReactNode }) {
           setTitle(userProfile.title || '');
           setCountry(userProfile.country || '');
           setPlanType(userProfile.plan_type || 'free');
+          setBillingPeriod(userProfile.billing_period === 'monthly' || userProfile.billing_period === 'yearly'
+            ? userProfile.billing_period
+            : null);
           setIsAdmin(userProfile.role === 'admin');
 
           // Reload plan features from Supabase
@@ -177,6 +187,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
       setIsAdmin(userRole === 'admin');
       setPlanType(userPlan);
+      setBillingPeriod(null);
       setPlanFeatures(features);
 
       const newProfile = getUserProfile();
@@ -215,6 +226,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
         avatarImage,
         isAdmin,
         planType,
+        billingPeriod,
         planFeatures,
         userId,
         user: userId ? { id: userId, email } : null,
@@ -249,6 +261,7 @@ export function useUser() {
         avatarImage: null,
         isAdmin: false,
         planType: 'free' as PlanType,
+        billingPeriod: null,
         planFeatures: DEFAULT_PLANS.free,
         userId: null,
         user: null,

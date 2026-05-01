@@ -24,6 +24,28 @@ const normalizePlanType = (value: string | null | undefined): 'free' | 'practiti
   return null
 }
 
+const normalizeBillingPeriod = (value: string | null | undefined): 'monthly' | 'yearly' | null => {
+  if (value === 'monthly' || value === 'yearly') {
+    return value
+  }
+
+  return null
+}
+
+const getSubscriptionBillingPeriod = (subscription: Stripe.Subscription): 'monthly' | 'yearly' | null => {
+  const interval = subscription.items.data[0]?.price?.recurring?.interval
+
+  if (interval === 'year') {
+    return 'yearly'
+  }
+
+  if (interval === 'month') {
+    return 'monthly'
+  }
+
+  return null
+}
+
 serve(async (req) => {
   const signature = req.headers.get('stripe-signature')
 
@@ -45,6 +67,7 @@ serve(async (req) => {
         const session = event.data.object as Stripe.Checkout.Session
         const userId = session.metadata?.userId || session.client_reference_id
         const planType = normalizePlanType(session.metadata?.planType)
+        const billingPeriod = normalizeBillingPeriod(session.metadata?.billingPeriod)
 
         if (!userId || !planType) {
           console.error('Missing userId or planType in session metadata')
@@ -57,6 +80,7 @@ serve(async (req) => {
             id: userId,
             email: session.customer_email || session.customer_details?.email || '',
             plan_type: planType,
+            billing_period: planType === 'free' ? null : billingPeriod,
             stripe_customer_id: session.customer as string,
             stripe_subscription_id: session.subscription as string,
             subscription_status: 'active',
@@ -85,9 +109,11 @@ serve(async (req) => {
 
         if (user) {
           const isActive = subscription.status === 'active'
+          const billingPeriod = getSubscriptionBillingPeriod(subscription)
           const updatePayload: Record<string, unknown> = {
             stripe_subscription_id: subscription.id,
             subscription_status: subscription.status,
+            billing_period: isActive ? billingPeriod : null,
             updated_at: new Date().toISOString(),
           }
 
@@ -124,6 +150,7 @@ serve(async (req) => {
               plan_type: 'free',
               stripe_subscription_id: null,
               subscription_status: 'cancelled',
+              billing_period: null,
               updated_at: new Date().toISOString(),
             })
             .eq('id', user.id)

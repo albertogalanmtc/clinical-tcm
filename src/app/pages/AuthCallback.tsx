@@ -63,6 +63,7 @@ export default function AuthCallback() {
               last_name: lastName,
               role: 'user',
               plan_type: 'free',
+              billing_period: null,
               onboarding_completed: false,
             }, {
               onConflict: 'id',
@@ -83,6 +84,7 @@ export default function AuthCallback() {
             lastName,
             email,
             title: '',
+            billingPeriod: null,
           }));
           setUserPlan('free');
 
@@ -100,6 +102,7 @@ export default function AuthCallback() {
             lastName: userProfile.last_name,
             title: userProfile.title,
             email: userProfile.email,
+            billingPeriod: userProfile.billing_period || null,
           }));
           setUserPlan(userProfile.plan_type || 'free');
 
