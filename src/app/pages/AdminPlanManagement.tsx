@@ -51,7 +51,20 @@ export default function AdminPlanManagement() {
 
   // Load plans from service on mount
   useEffect(() => {
-    setPlans(planService.getPlans());
+    let cancelled = false;
+
+    const loadPlans = async () => {
+      const loadedPlans = await planService.getPlans();
+      if (!cancelled) {
+        setPlans(loadedPlans);
+      }
+    };
+
+    loadPlans();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   // Calculate average savings for yearly billing badge
@@ -228,10 +241,10 @@ export default function AdminPlanManagement() {
     setEditingPlan(null);
   };
 
-  const handleResetToDefaults = () => {
+  const handleResetToDefaults = async () => {
     if (confirm('Are you sure you want to reset all plans to default settings? This cannot be undone.')) {
-      planService.resetToDefaults();
-      setPlans(planService.getPlans());
+      await planService.resetToDefaults();
+      setPlans(await planService.getPlans());
     }
   };
 
@@ -259,7 +272,7 @@ export default function AdminPlanManagement() {
       p.id === editingPlanDisplay.id ? editingPlanDisplay : p
     );
     planService.savePlans(updatedPlans);
-    setPlans(planService.getPlans());
+    setPlans(updatedPlans);
     setEditingPlanDisplay(null);
   };
 

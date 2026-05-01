@@ -1,26 +1,27 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Leaf, Check, ArrowRight, ArrowLeft, Sparkles, Info } from 'lucide-react';
-import { planService } from '../services/planService';
+import { planService, type Plan } from '../services/planService';
+import type { PlanType } from '@/app/data/usersManager';
 import { getPlatformSettings } from '@/app/data/platformSettings';
 import { createStripeCheckout } from '@/lib/stripe';
 import { supabase } from '@/app/lib/supabase';
 
 export default function SelectMembership() {
   const navigate = useNavigate();
-  const [selectedPlan, setSelectedPlan] = useState<'free' | 'pro' | 'clinic' | null>(() => {
+  const [selectedPlan, setSelectedPlan] = useState<PlanType | null>(() => {
     // Pre-select recommended plan based on onboarding survey answer
     try {
       const raw = localStorage.getItem('onboardingSurvey');
       if (!raw) return null;
       const survey = JSON.parse(raw) as { primaryGoal?: string };
-      if (survey.primaryGoal === 'research') return 'clinic';
+      if (survey.primaryGoal === 'research') return 'advanced';
       if (
         survey.primaryGoal === 'study' ||
         survey.primaryGoal === 'quick_reference' ||
         survey.primaryGoal === 'prescriptions'
       ) {
-        return 'pro';
+        return 'practitioner';
       }
     } catch {
       // ignore
@@ -28,9 +29,10 @@ export default function SelectMembership() {
     return null;
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isPlansLoading, setIsPlansLoading] = useState(true);
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly');
   const [branding, setBranding] = useState(() => getPlatformSettings().branding);
-  const [plans, setPlans] = useState(() => planService.getPlans().filter(plan => plan.status === 'active'));
+  const [plans, setPlans] = useState<Plan[]>([]);
 
   // Default logo URL
   const DEFAULT_LOGO_URL = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="45" fill="%230d9488"/%3E%3Ctext x="50" y="65" font-size="32" fill="white" text-anchor="middle" font-family="Arial"%3ECT%3C/text%3E%3C/svg%3E';
@@ -53,16 +55,36 @@ export default function SelectMembership() {
 
   // Update plans when they change
   useEffect(() => {
-    const handlePlansUpdate = () => {
-      setPlans(planService.getPlans().filter(plan => plan.status === 'active'));
+    let cancelled = false;
+
+    const loadPlans = async () => {
+      setIsPlansLoading(true);
+      try {
+        const loadedPlans = await planService.getPlans();
+        if (!cancelled) {
+          setPlans(loadedPlans.filter(plan => plan.status === 'active'));
+        }
+      } catch (error) {
+        console.error('Error loading membership plans:', error);
+        if (!cancelled) {
+          setPlans([]);
+        }
+      } finally {
+        if (!cancelled) {
+          setIsPlansLoading(false);
+        }
+      }
     };
 
-    window.addEventListener('plansUpdated', handlePlansUpdate);
-    window.addEventListener('storage', handlePlansUpdate);
+    loadPlans();
+
+    window.addEventListener('plansUpdated', loadPlans);
+    window.addEventListener('storage', loadPlans);
 
     return () => {
-      window.removeEventListener('plansUpdated', handlePlansUpdate);
-      window.removeEventListener('storage', handlePlansUpdate);
+      cancelled = true;
+      window.removeEventListener('plansUpdated', loadPlans);
+      window.removeEventListener('storage', loadPlans);
     };
   }, []);
 
@@ -72,8 +94,6 @@ export default function SelectMembership() {
     setIsLoading(true);
 
     try {
-      const selectedPlanData = plans.find(p => p.code === selectedPlan);
-
       // If Free plan, save directly and continue
       if (selectedPlan === 'free') {
         // Simulate API call
@@ -90,7 +110,7 @@ export default function SelectMembership() {
         window.dispatchEvent(new Event('user-login'));
 
         // Navigate to app
-        navigate('/');
+        navigate('/app');
       } else {
         // For paid plans, redirect to Stripe
         const userProfile = JSON.parse(localStorage.getItem('userProfile') || '{}');
@@ -104,12 +124,8 @@ export default function SelectMembership() {
         const userId = session?.user?.id || userProfile.id || 'temp-' + Date.now();
         const userEmail = session?.user?.email || userProfile.email;
 
-        // Call createStripeCheckout (same function used in MembershipPage)
-        await createStripeCheckout(
-          selectedPlan as 'practitioner' | 'advanced',
-          userId,
-          userEmail
-        );
+        // Call createStripeCheckout with the normalized plan code expected by Stripe
+        await createStripeCheckout(selectedPlan, userId, userEmail);
 
         // The function will redirect to Stripe, so we don't reset loading
       }
@@ -186,9 +202,20 @@ export default function SelectMembership() {
 
         {/* Plans Grid */}
         <div className="flex flex-wrap justify-center gap-6 mb-8">
-          {plans.map(plan => {
+          {isPlansLoading ? (
+            <div className="w-full text-center py-12 text-gray-600">
+              Loading plans...
+            </div>
+          ) : plans.length === 0 ? (
+            <div className="w-full text-center py-12 text-gray-600">
+              No plans are available right now. Please try again in a moment.
+            </div>
+          ) : (
+            plans.map(plan => {
             const isSelected = selectedPlan === plan.code;
             const hasOffer = plan.offer?.enabled;
+            const features = plan.features ?? {};
+            const limits = plan.limits ?? { monthlyFormulas: 0 };
 
             return (
               <button
@@ -298,25 +325,25 @@ export default function SelectMembership() {
                     // Default Features - Show ALL enabled features
                     <>
                       {/* Library Access */}
-                      {plan.features.herbLibraryAccess !== 'none' && (
+                      {features.herbLibraryAccess !== 'none' && (
                         <div className="flex items-start gap-2">
                           <Check className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-gray-700">
-                            {plan.features.herbLibraryAccess === 'full' ? 'Full' : 'Sample'} Herb Library
+                            {features.herbLibraryAccess === 'full' ? 'Full' : 'Sample'} Herb Library
                           </span>
                         </div>
                       )}
-                      {plan.features.formulaLibraryAccess !== 'none' && (
+                      {features.formulaLibraryAccess !== 'none' && (
                         <div className="flex items-start gap-2">
                           <Check className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-gray-700">
-                            {plan.features.formulaLibraryAccess === 'full' ? 'Full' : 'Sample'} Formula Library
+                            {features.formulaLibraryAccess === 'full' ? 'Full' : 'Sample'} Formula Library
                           </span>
                         </div>
                       )}
 
                       {/* Builder & Library */}
-                      {plan.features.builder && (
+                      {features.builder && (
                         <div className="flex items-start gap-2">
                           <Check className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-gray-700">
@@ -324,7 +351,7 @@ export default function SelectMembership() {
                           </span>
                         </div>
                       )}
-                      {plan.features.prescriptionLibrary && (
+                      {features.prescriptionLibrary && (
                         <div className="flex items-start gap-2">
                           <Check className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-gray-700">
@@ -337,14 +364,14 @@ export default function SelectMembership() {
                       <div className="flex items-start gap-2">
                         <Check className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
                         <span className="text-sm text-gray-700">
-                          {plan.limits.monthlyFormulas === null
+                          {limits.monthlyFormulas === null
                             ? 'Unlimited'
-                            : `Up to ${plan.limits.monthlyFormulas}`} prescriptions/month
+                            : `Up to ${limits.monthlyFormulas}`} prescriptions/month
                         </span>
                       </div>
 
                       {/* Property Filters */}
-                      {plan.features.herbPropertyFilters && (
+                      {features.herbPropertyFilters && (
                         <div className="flex items-start gap-2">
                           <Check className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-gray-700">
@@ -352,7 +379,7 @@ export default function SelectMembership() {
                           </span>
                         </div>
                       )}
-                      {plan.features.formulaPropertyFilters && (
+                      {features.formulaPropertyFilters && (
                         <div className="flex items-start gap-2">
                           <Check className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-gray-700">
@@ -360,7 +387,7 @@ export default function SelectMembership() {
                           </span>
                         </div>
                       )}
-                      {plan.features.clinicalUseFilters && (
+                      {features.clinicalUseFilters && (
                         <div className="flex items-start gap-2">
                           <Check className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-gray-700">
@@ -370,9 +397,9 @@ export default function SelectMembership() {
                       )}
 
                       {/* Advanced Filters */}
-                      {(plan.features.pharmacologicalEffectsFilter ||
-                        plan.features.biologicalMechanismsFilter ||
-                        plan.features.bioactiveCompoundsFilter) && (
+                      {(features.pharmacologicalEffectsFilter ||
+                        features.biologicalMechanismsFilter ||
+                        features.bioactiveCompoundsFilter) && (
                         <div className="flex items-start gap-2">
                           <Check className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-gray-700">
@@ -382,10 +409,10 @@ export default function SelectMembership() {
                       )}
 
                       {/* Safety Profile */}
-                      {(plan.features.generalConditions ||
-                        plan.features.medications ||
-                        plan.features.allergies ||
-                        plan.features.tcmRiskPatterns) && (
+                      {(features.generalConditions ||
+                        features.medications ||
+                        features.allergies ||
+                        features.tcmRiskPatterns) && (
                         <div className="flex items-start gap-2">
                           <Check className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-gray-700">
@@ -395,7 +422,7 @@ export default function SelectMembership() {
                       )}
 
                       {/* Analytics */}
-                      {plan.features.statistics && (
+                      {features.statistics && (
                         <div className="flex items-start gap-2">
                           <Check className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-gray-700">
@@ -405,7 +432,7 @@ export default function SelectMembership() {
                       )}
 
                       {/* Custom Content */}
-                      {plan.features.customContent && (
+                      {features.customContent && (
                         <div className="flex items-start gap-2">
                           <Check className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-gray-700">
@@ -418,7 +445,8 @@ export default function SelectMembership() {
                 </div>
               </button>
             );
-          })}
+            })
+          )}
         </div>
 
         {/* Free plan notice */}

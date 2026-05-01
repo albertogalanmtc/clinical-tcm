@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS users (
   last_name TEXT,
   title TEXT,
   country TEXT,
+  onboarding_completed BOOLEAN NOT NULL DEFAULT FALSE,
   role TEXT NOT NULL DEFAULT 'user' CHECK (role IN ('user', 'admin')),
   plan_type TEXT NOT NULL DEFAULT 'free' CHECK (plan_type IN ('free', 'pro', 'clinic', 'practitioner', 'advanced', 'admin')),
   stripe_customer_id TEXT,
@@ -44,6 +45,10 @@ CREATE POLICY "Users can view own profile" ON users
 DROP POLICY IF EXISTS "Users can update own profile" ON users;
 CREATE POLICY "Users can update own profile" ON users
   FOR UPDATE USING (auth.uid() = id);
+
+DROP POLICY IF EXISTS "Users can insert own profile" ON users;
+CREATE POLICY "Users can insert own profile" ON users
+  FOR INSERT WITH CHECK (auth.uid() = id);
 
 DROP POLICY IF EXISTS "Admins can view all users" ON users;
 CREATE POLICY "Admins can view all users" ON users

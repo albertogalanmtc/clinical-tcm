@@ -137,7 +137,7 @@ export function Navigation({ onToggleNotes, isNotesVisible, onOpenGlobalSettings
       <div className="w-full px-4 sm:px-6">
         <div className="flex items-center justify-between h-14 sm:h-16">
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-            <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity flex-shrink-0">
+            <Link to="/app" className="flex items-center gap-2 hover:opacity-80 transition-opacity flex-shrink-0">
               {branding.logoUrl ? (
                 <img 
                   src={branding.logoUrl} 

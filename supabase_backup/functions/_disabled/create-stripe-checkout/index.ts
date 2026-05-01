@@ -16,6 +16,8 @@ interface CheckoutRequest {
   userId: string
   userEmail: string
   planType: 'free' | 'practitioner' | 'advanced'
+  successUrl?: string
+  cancelUrl?: string
 }
 
 serve(async (req) => {
@@ -25,7 +27,7 @@ serve(async (req) => {
   }
 
   try {
-    const { priceId, userId, userEmail, planType }: CheckoutRequest = await req.json()
+    const { priceId, userId, userEmail, planType, successUrl, cancelUrl }: CheckoutRequest = await req.json()
 
     if (!priceId || !userId || !userEmail) {
       return new Response(
@@ -43,6 +45,8 @@ serve(async (req) => {
     }
 
     const appUrl = Deno.env.get('APP_URL') || 'http://localhost:5173'
+    const resolvedSuccessUrl = successUrl || `${appUrl}/payment-success?session_id={CHECKOUT_SESSION_ID}`
+    const resolvedCancelUrl = cancelUrl || `${appUrl}/select-membership`
 
     // Create Stripe Checkout Session
     const session = await stripe.checkout.sessions.create({
@@ -55,8 +59,8 @@ serve(async (req) => {
         },
       ],
       mode: 'subscription',
-      success_url: `${appUrl}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${appUrl}/account/membership`,
+      success_url: resolvedSuccessUrl,
+      cancel_url: resolvedCancelUrl,
       metadata: {
         userId: userId,
         planType: planType,

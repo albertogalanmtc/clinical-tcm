@@ -54,7 +54,7 @@ export default function Login() {
         if (demoUser.role === 'admin') {
           navigate('/admin');
         } else {
-          navigate('/');
+          navigate('/app');
         }
         setIsLoading(false);
         return;
@@ -92,9 +92,10 @@ export default function Login() {
 
       // Store user data
       localStorage.setItem('userRole', 'user');
-      localStorage.setItem('onboardingCompleted', 'true');
       localStorage.setItem('supabaseSession', JSON.stringify(data.session));
       localStorage.setItem('supabaseUser', JSON.stringify(data.user));
+
+      const onboardingCompleted = Boolean(userProfile?.onboarding_completed);
 
       if (userProfile) {
         localStorage.setItem('userProfile', JSON.stringify({
@@ -105,15 +106,17 @@ export default function Login() {
           email: userProfile.email,
         }));
         setUserPlan(userProfile.plan_type || 'free');
+        localStorage.setItem('onboardingCompleted', onboardingCompleted ? 'true' : 'false');
       } else {
         setUserPlan('free');
+        localStorage.setItem('onboardingCompleted', 'false');
       }
 
       // Dispatch custom event to notify UserContext
       window.dispatchEvent(new Event('user-login'));
 
-      // Redirect to home
-      navigate('/');
+      // Redirect to onboarding if the profile is incomplete
+      navigate(onboardingCompleted ? '/app' : '/complete-profile');
       setIsLoading(false);
     } catch (error: any) {
       console.error('Login exception:', error);

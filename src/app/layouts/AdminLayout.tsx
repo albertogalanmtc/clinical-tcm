@@ -105,7 +105,7 @@ export default function AdminLayout() {
   const handleMobileBack = () => {
     if (!isOnSubPage) {
       // If on Admin index, go back to main app
-      navigate('/');
+      navigate('/app');
       return;
     }
 

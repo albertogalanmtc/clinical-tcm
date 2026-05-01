@@ -94,6 +94,7 @@ import TestUpgradeModal from "./pages/TestUpgradeModal";
 import Landing from "./pages/Landing";
 import { getPlatformSettings, initializePlatformSettings } from "./data/platformSettings";
 import { initializeDashboardContent } from "./services/dashboardContentService";
+import { AppErrorBoundary } from "./components/AppErrorBoundary";
 import "./data/resetCommunityData"; // Make reset function available globally
 
 // Helper function to convert hex to RGB
@@ -420,10 +421,12 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <UserProvider>
-        <Routes>
+      <AppErrorBoundary>
+        <UserProvider>
+          <Routes>
+          <Route path="/" element={<Landing />} />
+
           {/* Public Routes */}
-          <Route path="/landing" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route
             path="/auth/callback"
@@ -516,14 +519,13 @@ export default function App() {
 
           {/* Protected Routes */}
           <Route
-            path="/"
             element={
               <ProtectedRoute>
                 <Layout />
               </ProtectedRoute>
             }
           >
-            <Route index element={<Dashboard />} />
+            <Route path="/app" element={<Dashboard />} />
             <Route
               path="account-hub"
               element={<AccountHub />}
@@ -735,9 +737,10 @@ export default function App() {
             <Route path="legal" element={<Legal />} />
             <Route path="*" element={<NotFound />} />
           </Route>
-        </Routes>
+          </Routes>
+        </UserProvider>
+      </AppErrorBoundary>
         <CookieBanner />
-      </UserProvider>
     </BrowserRouter>
   );
 }

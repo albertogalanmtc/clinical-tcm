@@ -207,7 +207,7 @@ export default function MembershipPage() {
 
     try {
       // Get the plan data (planId is actually the plan code: 'free', 'practitioner', 'advanced')
-      const allPlans = planService.getPlans();
+      const allPlans = await planService.getPlans();
       const selectedPlan = allPlans.find(p => p.code === planId);
 
       if (!selectedPlan) {

@@ -176,16 +176,21 @@ export default function CompleteProfile() {
         }
       }
 
-      // Update user profile in Supabase
+      const registrationEmail = localStorage.getItem('registrationEmail') || session.user.email || '';
+
+      // Upsert user profile in Supabase so the row exists even if the trigger/policy is missing.
       const { error: updateError } = await supabase
         .from('users')
-        .update({
+        .upsert({
+          id: session.user.id,
+          email: registrationEmail,
           first_name: formData.firstName.trim(),
           last_name: formData.lastName.trim(),
           country: formData.country,
           onboarding_completed: true,
-        })
-        .eq('id', session.user.id);
+        }, {
+          onConflict: 'id',
+        });
 
       if (updateError) {
         console.error('Error updating profile in Supabase:', updateError);
@@ -193,9 +198,6 @@ export default function CompleteProfile() {
         setIsLoading(false);
         return;
       }
-
-      // Get email from registration step
-      const registrationEmail = localStorage.getItem('registrationEmail') || session.user.email || '';
 
       // Save profile data to localStorage for compatibility
       const userProfile = {

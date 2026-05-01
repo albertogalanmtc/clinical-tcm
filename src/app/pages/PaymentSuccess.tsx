@@ -52,7 +52,7 @@ export default function PaymentSuccess() {
 
         // Redirect to dashboard after 2 seconds
         setTimeout(() => {
-          navigate('/');
+          navigate('/app');
         }, 2000);
       } catch (error: any) {
         console.error('Error processing payment:', error);

@@ -344,12 +344,12 @@ export async function getPlanFeaturesAsync(planType: PlanType): Promise<PlanFeat
 
   // Fallback to planService (localStorage)
   try {
-    const plan = planService.getPlanByCode(planType);
+    const plan = await planService.getPlanByCode(planType);
     if (plan) {
       return {
         ...plan.features,
-        safetyEngineMode: plan.safetyEngineMode,
-        monthlyFormulas: plan.limits.monthlyFormulas,
+        safetyEngineMode: plan.safetyEngineMode || DEFAULT_PLANS[planType].safetyEngineMode,
+        monthlyFormulas: plan.limits?.monthlyFormulas ?? DEFAULT_PLANS[planType].monthlyFormulas,
       };
     }
   } catch (error) {

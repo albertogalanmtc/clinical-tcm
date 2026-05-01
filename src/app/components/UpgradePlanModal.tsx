@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { X, Check, Sparkles, ArrowRight } from 'lucide-react';
-import { planService } from '../services/planService';
+import { planService, type Plan } from '../services/planService';
 import { useUser } from '../contexts/UserContext';
 import { createStripeCheckout } from '@/lib/stripe';
 import { supabase } from '@/app/lib/supabase';
@@ -19,7 +19,7 @@ export function UpgradePlanModal({ isOpen, onClose, currentPlan, suggestedPlan, 
   const [selectedPlan, setSelectedPlan] = useState<'free' | 'practitioner' | 'advanced' | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly');
-  const [allPlans, setAllPlans] = useState(() => planService.getPlans().filter(plan => plan.status === 'active'));
+  const [allPlans, setAllPlans] = useState<Plan[]>([]);
 
   // Map old plan codes to new ones for backward compatibility
   const normalizePlanCode = (code?: string): 'free' | 'practitioner' | 'advanced' => {
@@ -39,16 +39,31 @@ export function UpgradePlanModal({ isOpen, onClose, currentPlan, suggestedPlan, 
 
   // Update plans when they change
   useEffect(() => {
-    const handlePlansUpdate = () => {
-      setAllPlans(planService.getPlans().filter(plan => plan.status === 'active'));
+    let cancelled = false;
+
+    const loadPlans = async () => {
+      try {
+        const loadedPlans = await planService.getPlans();
+        if (!cancelled) {
+          setAllPlans(loadedPlans.filter(plan => plan.status === 'active'));
+        }
+      } catch (error) {
+        console.error('Error loading upgrade plans:', error);
+        if (!cancelled) {
+          setAllPlans([]);
+        }
+      }
     };
 
-    window.addEventListener('plansUpdated', handlePlansUpdate);
-    window.addEventListener('storage', handlePlansUpdate);
+    loadPlans();
+
+    window.addEventListener('plansUpdated', loadPlans);
+    window.addEventListener('storage', loadPlans);
 
     return () => {
-      window.removeEventListener('plansUpdated', handlePlansUpdate);
-      window.removeEventListener('storage', handlePlansUpdate);
+      cancelled = true;
+      window.removeEventListener('plansUpdated', loadPlans);
+      window.removeEventListener('storage', loadPlans);
     };
   }, []);
 

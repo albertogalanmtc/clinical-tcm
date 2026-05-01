@@ -30,6 +30,8 @@ export default function AuthCallback() {
         }
 
         console.log('✅ Session found:', session.user.email);
+        localStorage.setItem('supabaseSession', JSON.stringify(session));
+        localStorage.setItem('supabaseUser', JSON.stringify(session.user));
 
         // Check if user profile exists in database
         const { data: userProfile, error: profileError } = await supabase
@@ -51,16 +53,19 @@ export default function AuthCallback() {
           const lastName = session.user.user_metadata?.family_name || session.user.user_metadata?.name?.split(' ').slice(1).join(' ') || '';
           const email = session.user.email || '';
 
-          // Create user profile
+          // Create or update the user profile so the onboarding flow can continue.
           const { error: insertError } = await supabase
             .from('users')
-            .insert({
+            .upsert({
               id: session.user.id,
               email: email,
               first_name: firstName,
               last_name: lastName,
               role: 'user',
               plan_type: 'free',
+              onboarding_completed: false,
+            }, {
+              onConflict: 'id',
             });
 
           if (insertError) {
@@ -88,7 +93,8 @@ export default function AuthCallback() {
 
           // Store user data
           localStorage.setItem('userRole', userProfile.role || 'user');
-          localStorage.setItem('onboardingCompleted', 'true');
+          const onboardingCompleted = Boolean(userProfile.onboarding_completed);
+          localStorage.setItem('onboardingCompleted', onboardingCompleted ? 'true' : 'false');
           localStorage.setItem('userProfile', JSON.stringify({
             firstName: userProfile.first_name,
             lastName: userProfile.last_name,
@@ -100,8 +106,8 @@ export default function AuthCallback() {
           // Dispatch event to update UserContext
           window.dispatchEvent(new Event('user-login'));
 
-          // Redirect to home
-          navigate('/');
+          // Redirect according to onboarding state
+          navigate(onboardingCompleted ? '/' : '/complete-profile');
         }
       } catch (error: any) {
         console.error('OAuth callback exception:', error);

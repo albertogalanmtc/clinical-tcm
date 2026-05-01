@@ -16,6 +16,7 @@ export default function CreateAccount() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [generalError, setGeneralError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [selectedDocument, setSelectedDocument] = useState<LegalDocument | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -89,12 +90,16 @@ export default function CreateAccount() {
 
     setIsLoading(true);
     setGeneralError(null);
+    setSuccessMessage(null);
 
     try {
       // Create user in Supabase Auth
       const { data, error: signUpError } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
+        },
       });
 
       if (signUpError) {
@@ -118,30 +123,20 @@ export default function CreateAccount() {
 
       console.log('Account created in Supabase:', data.user);
 
-      // Create user profile in database
-      const { error: profileError } = await supabase
-        .from('users')
-        .insert({
-          id: data.user.id,
-          email: data.user.email,
-          plan_type: 'free',
-          onboarding_completed: false,
-        });
-
-      if (profileError) {
-        console.error('Error creating user profile:', profileError);
-        // Don't block the flow, user can complete profile later
-      }
-
       // Save email to localStorage for the Complete Profile step
       localStorage.setItem('registrationEmail', email);
       localStorage.setItem('supabaseUser', JSON.stringify(data.user));
       if (data.session) {
         localStorage.setItem('supabaseSession', JSON.stringify(data.session));
+        setSuccessMessage(null);
+        navigate('/complete-profile');
+        return;
       }
 
-      // After successful registration, redirect to Complete Profile
-      navigate('/complete-profile');
+      // When email verification is enabled, Supabase may not create a session yet.
+      // The verification link will return the user to /auth/callback.
+      setSuccessMessage('We sent you a verification email. Open the link to finish creating your account.');
+      setIsLoading(false);
 
     } catch (error: any) {
       console.error('Error creating account:', error);
@@ -161,6 +156,13 @@ export default function CreateAccount() {
           <div className="flex items-start gap-2 p-3 bg-red-50 border border-red-200 rounded-lg">
             <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
             <p className="text-sm text-red-800">{generalError}</p>
+          </div>
+        )}
+
+        {successMessage && (
+          <div className="flex items-start gap-2 p-3 bg-green-50 border border-green-200 rounded-lg">
+            <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-green-800">{successMessage}</p>
           </div>
         )}
 

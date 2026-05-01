@@ -88,7 +88,7 @@ export default function AccountLayout() {
       navigate('/account');
     } else {
       // If on Account index, go back to main app
-      navigate('/');
+      navigate('/app');
     }
   };
 
