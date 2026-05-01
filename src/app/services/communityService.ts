@@ -1,11 +1,5 @@
 import { supabase } from '../lib/supabase';
 
-function dispatchCommunityUpdated() {
-  if (typeof window !== 'undefined') {
-    window.dispatchEvent(new CustomEvent('community-posts-updated'));
-  }
-}
-
 export interface CommunityPost {
   id: string;
   title: string;
@@ -149,7 +143,7 @@ export const communityService = {
     return true;
   },
 
-  async upvotePost(id: string): Promise<boolean> {
+  async upvotePost(id: string, shouldUpvote = true): Promise<boolean> {
     const { data: post } = await supabase
       .from('community_posts')
       .select('upvotes')
@@ -158,14 +152,11 @@ export const communityService = {
 
     if (!post) return false;
 
+    const nextUpvotes = Math.max(0, (post.upvotes || 0) + (shouldUpvote ? 1 : -1));
     const { error } = await supabase
       .from('community_posts')
-      .update({ upvotes: (post.upvotes || 0) + 1 })
+      .update({ upvotes: nextUpvotes })
       .eq('id', id);
-
-    if (!error) {
-      dispatchCommunityUpdated();
-    }
 
     return !error;
   },
@@ -248,7 +239,7 @@ export const communityService = {
     return true;
   },
 
-  async upvoteComment(id: string): Promise<boolean> {
+  async upvoteComment(id: string, shouldUpvote = true): Promise<boolean> {
     const { data: comment } = await supabase
       .from('community_comments')
       .select('upvotes')
@@ -257,14 +248,11 @@ export const communityService = {
 
     if (!comment) return false;
 
+    const nextUpvotes = Math.max(0, (comment.upvotes || 0) + (shouldUpvote ? 1 : -1));
     const { error } = await supabase
       .from('community_comments')
-      .update({ upvotes: (comment.upvotes || 0) + 1 })
+      .update({ upvotes: nextUpvotes })
       .eq('id', id);
-
-    if (!error) {
-      dispatchCommunityUpdated();
-    }
 
     return !error;
   },

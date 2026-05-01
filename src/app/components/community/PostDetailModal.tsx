@@ -331,37 +331,38 @@ export function PostDetailModal({ isOpen, onClose, postId }: PostDetailModalProp
   };
 
   const handleUpvotePost = async () => {
-    if (!postId || hasUpvotedPost) return;
+    if (!postId) return;
+    const shouldUpvote = !hasUpvotedPost;
 
     // Update Supabase
-    const success = await communityService.upvotePost(postId);
+    const success = await communityService.upvotePost(postId, shouldUpvote);
 
     if (success) {
       // Update local state
-      setPostUpvotes(prev => prev + 1);
-      setHasUpvotedPost(true);
+      setPostUpvotes(prev => Math.max(0, prev + (shouldUpvote ? 1 : -1)));
+      setHasUpvotedPost(shouldUpvote);
 
       // Save to localStorage
       const upvotedPosts = readStoredStringArray([
         POST_UPVOTES_STORAGE_KEY(currentUserId),
         'upvoted_posts'
       ]);
-      if (!upvotedPosts.includes(postId)) {
-        upvotedPosts.push(postId);
-      }
+      const nextUpvotedPosts = shouldUpvote
+        ? Array.from(new Set([...upvotedPosts, postId]))
+        : upvotedPosts.filter(id => id !== postId);
       writeStoredStringArray([
         POST_UPVOTES_STORAGE_KEY(currentUserId),
         'upvoted_posts'
-      ], upvotedPosts);
+      ], nextUpvotedPosts);
+
+      window.dispatchEvent(new CustomEvent('community-posts-updated'));
     }
   };
 
   const handleUpvoteComment = async (commentId: string) => {
-    const alreadyUpvoted = comments.some(
-      comment => comment.id === commentId && comment.upvotedBy.includes(currentUserId)
-    );
-
-    if (alreadyUpvoted) return;
+    const targetComment = comments.find(comment => comment.id === commentId);
+    if (!targetComment) return;
+    const shouldUpvote = !targetComment.upvotedBy.includes(currentUserId);
 
     if (commentsSource === 'local') {
       toggleLocalCommentUpvote(commentId, {
@@ -373,32 +374,35 @@ export function PostDetailModal({ isOpen, onClose, postId }: PostDetailModalProp
       return;
     }
 
-    const success = await communityService.upvoteComment(commentId);
+    const success = await communityService.upvoteComment(commentId, shouldUpvote);
 
     if (!success) return;
 
     const storedCommentIds = readStoredStringArray([
       COMMENT_UPVOTES_STORAGE_KEY(currentUserId)
     ]);
-
-    if (!storedCommentIds.includes(commentId)) {
-      storedCommentIds.push(commentId);
-      writeStoredStringArray([
-        COMMENT_UPVOTES_STORAGE_KEY(currentUserId)
-      ], storedCommentIds);
-    }
+    const nextStoredCommentIds = shouldUpvote
+      ? Array.from(new Set([...storedCommentIds, commentId]))
+      : storedCommentIds.filter(id => id !== commentId);
+    writeStoredStringArray([
+      COMMENT_UPVOTES_STORAGE_KEY(currentUserId)
+    ], nextStoredCommentIds);
 
     setComments(prevComments =>
       prevComments.map(comment =>
         comment.id === commentId
           ? {
               ...comment,
-              upvotes: comment.upvotes + 1,
-              upvotedBy: [...comment.upvotedBy, currentUserId]
+              upvotes: Math.max(0, comment.upvotes + (shouldUpvote ? 1 : -1)),
+              upvotedBy: shouldUpvote
+                ? Array.from(new Set([...comment.upvotedBy, currentUserId]))
+                : comment.upvotedBy.filter(id => id !== currentUserId)
             }
           : comment
       )
     );
+
+    window.dispatchEvent(new CustomEvent('community-posts-updated'));
   };
 
   const handleCloseModal = (open: boolean) => {
@@ -585,13 +589,12 @@ export function PostDetailModal({ isOpen, onClose, postId }: PostDetailModalProp
                 <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
                   <button
                     onClick={handleUpvotePost}
-                    disabled={hasUpvotedPost}
-                    className={`flex items-center gap-1.5 transition-colors ${
+                    className={`flex items-center gap-1.5 transition-colors cursor-pointer ${
                       hasUpvotedPost
-                        ? 'text-teal-600 cursor-default'
-                        : 'hover:text-teal-600 cursor-pointer'
+                        ? 'text-teal-600 font-medium'
+                        : 'hover:text-teal-600'
                     }`}
-                    title={hasUpvotedPost ? 'Already upvoted' : 'Upvote'}
+                    title={hasUpvotedPost ? 'Remove like' : 'Like'}
                   >
                     <ThumbsUp className={`w-4 h-4 ${hasUpvotedPost ? 'fill-current' : ''}`} />
                     <span>{postUpvotes}</span>
@@ -853,11 +856,10 @@ function CommentItem({
         <div className="flex items-center gap-3 text-sm">
           <button
             onClick={() => onUpvote(comment.id)}
-            disabled={hasUpvoted}
-            className={`flex items-center gap-1 transition-colors ${
+            className={`flex items-center gap-1 transition-colors cursor-pointer ${
               hasUpvoted ? 'text-teal-600 font-medium' : 'text-gray-600'
             }`}
-            title={hasUpvoted ? 'Already liked' : 'Like'}
+            title={hasUpvoted ? 'Remove like' : 'Like'}
           >
             <ThumbsUp className={`w-4 h-4 ${hasUpvoted ? 'fill-current' : ''}`} />
             {comment.upvotes > 0 && <span>{comment.upvotes}</span>}
