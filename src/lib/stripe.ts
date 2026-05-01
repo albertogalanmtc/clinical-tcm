@@ -19,6 +19,11 @@ export interface StripeCheckoutOptions {
   cancelUrl?: string;
 }
 
+export interface StripeBillingPortalOptions {
+  userId: string;
+  returnUrl?: string;
+}
+
 export function getStripePriceId(
   planType: Exclude<PlanType, 'free'>,
   billingPeriod: StripeBillingPeriod,
@@ -102,6 +107,54 @@ export async function createStripeCheckout(options: StripeCheckoutOptions) {
         detail
           ? `Stripe checkout failed: ${detail}`
           : `Stripe checkout failed with HTTP ${error.context.status}`
+      );
+    }
+
+    if (error instanceof FunctionsRelayError || error instanceof FunctionsFetchError) {
+      throw new Error(error.message);
+    }
+
+    throw error;
+  }
+}
+
+export async function createStripeBillingPortal(options: StripeBillingPortalOptions) {
+  const { userId, returnUrl } = options;
+
+  if (!userId) {
+    throw new Error('Missing user ID for billing portal');
+  }
+
+  try {
+    const { supabase } = await import('@/app/lib/supabase');
+    const resolvedReturnUrl = returnUrl || `${window.location.origin}/account/membership`;
+
+    const { data, error } = await supabase.functions.invoke('create-stripe-portal', {
+      body: {
+        userId,
+        returnUrl: resolvedReturnUrl,
+      },
+    });
+
+    if (error) {
+      throw error;
+    }
+
+    if (!data?.url) {
+      throw new Error('No billing portal URL returned');
+    }
+
+    window.location.href = data.url;
+  } catch (error: any) {
+    console.error('Error creating billing portal session:', error);
+
+    if (error instanceof FunctionsHttpError && error.context instanceof Response) {
+      const responseText = await error.context.text().catch(() => '');
+      const detail = responseText.trim();
+      throw new Error(
+        detail
+          ? `Billing portal failed: ${detail}`
+          : `Billing portal failed with HTTP ${error.context.status}`
       );
     }
 

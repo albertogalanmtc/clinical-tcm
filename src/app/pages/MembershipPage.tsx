@@ -1,8 +1,19 @@
-import { CreditCard, Check, ArrowUpRight, Download, CheckCircle } from 'lucide-react';
+import { CreditCard, Check, ArrowUpRight, Download, CheckCircle, Loader2 } from 'lucide-react';
 import { useUser } from '../contexts/UserContext';
 import { useState, useEffect } from 'react';
 import { planService, Plan } from '../services/planService';
-import { createStripeCheckout, getStripePriceId } from '@/lib/stripe';
+import { createStripeBillingPortal, createStripeCheckout, getStripePriceId } from '@/lib/stripe';
+import { supabase } from '@/app/lib/supabase';
+import {
+  Dialog as BillingDialog,
+  DialogClose as BillingDialogClose,
+  DialogContent as BillingDialogContent,
+  DialogDescription as BillingDialogDescription,
+  DialogHeader as BillingDialogHeader,
+  DialogOverlay as BillingDialogOverlay,
+  DialogPortal as BillingDialogPortal,
+  DialogTitle as BillingDialogTitle,
+} from '@/app/components/ui/dialog';
 import { toast } from 'sonner';
 
 // Transform Plan from service format to display format
@@ -118,6 +129,10 @@ export default function MembershipPage() {
   const [invoices, setInvoices] = useState<Invoice[]>([]);
   const [loadingPlanId, setLoadingPlanId] = useState<string | null>(null);
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly');
+  const [billingModalOpen, setBillingModalOpen] = useState(false);
+  const [billingModalMode, setBillingModalMode] = useState<'manage' | 'switch' | null>(null);
+  const [billingModalPlan, setBillingModalPlan] = useState<Plan | null>(null);
+  const [billingModalLoading, setBillingModalLoading] = useState(false);
 
   // Load plans from service
   useEffect(() => {
@@ -154,10 +169,30 @@ export default function MembershipPage() {
   const renewalDate = 'Mar 12, 2026';
 
   const handleManageBilling = () => {
-    // TODO: Redirect to Stripe Customer Portal
-    console.log('Opening Stripe billing portal...');
-    // For future implementation:
-    // window.location.href = stripePortalUrl;
+    setBillingModalMode('manage');
+    setBillingModalPlan(null);
+    setBillingModalOpen(true);
+  };
+
+  const handleBillingPortalConfirm = async () => {
+    setBillingModalLoading(true);
+
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+
+      if (!session?.user) {
+        throw new Error('You must be logged in to manage billing');
+      }
+
+      await createStripeBillingPortal({
+        userId: session.user.id,
+        returnUrl: `${window.location.origin}/account/membership`,
+      });
+    } catch (error: any) {
+      console.error('Error opening billing portal:', error);
+      toast.error(error.message || 'There was an error opening the billing portal.');
+      setBillingModalLoading(false);
+    }
   };
 
   const handleUpgrade = async (planId: string) => {
@@ -207,67 +242,25 @@ export default function MembershipPage() {
   };
 
   const handleDowngrade = async (planId: string) => {
-    const confirmed = window.confirm(
-      'Are you sure you want to downgrade your plan? You will lose access to some features at the end of your current billing period.'
-    );
+    const selectedPlan = originalPlans.find(p => p.code === planId);
 
-    if (!confirmed) return;
-
-    setLoadingPlanId(planId);
-
-    try {
-      // Get the plan data (planId is actually the plan code: 'free', 'practitioner', 'advanced')
-      const allPlans = await planService.getPlans();
-      const selectedPlan = allPlans.find(p => p.code === planId);
-
-      if (!selectedPlan) {
-        throw new Error('Plan not found');
-      }
-
-      // TODO: Replace with your actual API endpoint for downgrades
-      const API_ENDPOINT = '/api/update-subscription';
-
-      // For development: Show alert that backend is not ready
-      alert(
-        'Stripe backend not yet configured.\n\n' +
-        `You would be downgrading to: ${selectedPlan.name}\n\n` +
-        'This would normally update your Stripe subscription.\n' +
-        'See STRIPE_INTEGRATION.md for backend setup instructions.'
-      );
-      setLoadingPlanId(null);
+    if (!selectedPlan) {
+      toast.error('Plan not found');
       return;
-
-      // Uncomment when backend is ready:
-      /*
-      const response = await fetch(API_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          newPlanCode: selectedPlan.code,
-          currentPlan: planType,
-          isDowngrade: true,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to update subscription');
-      }
-
-      // Update local plan
-      localStorage.setItem('userPlanType', selectedPlan.code);
-      window.dispatchEvent(new Event('user-login'));
-
-      alert('Your plan will be downgraded at the end of your current billing period.');
-      setLoadingPlanId(null);
-      */
-    } catch (error) {
-      console.error('Error processing downgrade:', error);
-      alert('There was an error processing your downgrade. Please try again.');
-      setLoadingPlanId(null);
     }
+
+    setBillingModalMode('switch');
+    setBillingModalPlan(selectedPlan);
+    setBillingModalOpen(true);
   };
+
+  const billingModalTitle = billingModalMode === 'manage'
+    ? 'Open billing portal?'
+    : `Change to ${billingModalPlan?.name || 'this plan'}?`;
+
+  const billingModalDescription = billingModalMode === 'manage'
+    ? 'You will be sent to Stripe, where you can update your payment method, view invoices, cancel your subscription, or switch between available paid plans.'
+    : 'You will be sent to Stripe Billing Portal to update your subscription. Depending on your portal settings, you will be able to change plan, cancel, or update your payment method.';
 
   return (
     <>
@@ -649,6 +642,61 @@ export default function MembershipPage() {
           </ul>
         </div>
       </div>
+
+      <BillingDialog open={billingModalOpen} onOpenChange={(open) => {
+        setBillingModalOpen(open);
+        if (!open) {
+          setBillingModalMode(null);
+          setBillingModalPlan(null);
+          setBillingModalLoading(false);
+        }
+      }}>
+        <BillingDialogPortal>
+          <BillingDialogOverlay className="fixed inset-0 bg-black/50 z-50" />
+          <BillingDialogContent className="fixed top-1/2 left-1/2 z-50 w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl">
+            <BillingDialogHeader className="text-left">
+              <BillingDialogTitle className="text-xl font-semibold text-gray-900">
+                {billingModalTitle}
+              </BillingDialogTitle>
+              <BillingDialogDescription className="mt-2 text-sm text-gray-600">
+                {billingModalDescription}
+              </BillingDialogDescription>
+            </BillingDialogHeader>
+
+            {billingModalMode === 'switch' && billingModalPlan && (
+              <div className="mt-4 rounded-xl border border-teal-100 bg-teal-50 p-4">
+                <p className="text-sm font-medium text-teal-900">
+                  Selected plan: {billingModalPlan.name}
+                </p>
+                <p className="mt-1 text-sm text-teal-800">
+                  Your current subscription will be managed through Stripe.
+                </p>
+              </div>
+            )}
+
+            <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+              <BillingDialogClose asChild>
+                <button
+                  type="button"
+                  className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50"
+                  disabled={billingModalLoading}
+                >
+                  Cancel
+                </button>
+              </BillingDialogClose>
+              <button
+                type="button"
+                onClick={handleBillingPortalConfirm}
+                disabled={billingModalLoading}
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-teal-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-teal-700 transition-colors disabled:opacity-50"
+              >
+                {billingModalLoading && <Loader2 className="w-4 h-4 animate-spin" />}
+                {billingModalMode === 'manage' ? 'Open portal' : 'Continue to portal'}
+              </button>
+            </div>
+          </BillingDialogContent>
+        </BillingDialogPortal>
+      </BillingDialog>
     </>
   );
 }
