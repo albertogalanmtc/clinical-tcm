@@ -7,21 +7,23 @@ import { planService, type Plan } from '@/app/services/planService';
 interface LandingPlanCard {
   id: string;
   name: string;
-  price: string;
-  originalPrice?: string;
-  period: string;
+  monthlyPrice?: number;
+  yearlyPrice?: number;
+  originalPrice?: number;
+  discountedPrice?: number;
   description: string;
   features: string[];
   cta: string;
   popular: boolean;
   badge?: string;
-  action: () => void;
+  action: (billingPeriod: 'monthly' | 'yearly') => void;
 }
 
 export default function Landing() {
   const navigate = useNavigate();
   const [plans, setPlans] = useState<LandingPlanCard[]>([]);
   const [isPlansLoading, setIsPlansLoading] = useState(true);
+  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly');
   const [branding, setBranding] = useState(() => getPlatformSettings().branding);
 
   const features = [
@@ -95,22 +97,27 @@ export default function Landing() {
 
   const toLandingPlan = (plan: Plan): LandingPlanCard => {
     const hasOffer = Boolean(plan.offer?.enabled);
-    const displayPrice = plan.code === 'free'
-      ? '$0'
-      : `$${hasOffer ? plan.offer!.discountedPrice : plan.monthlyPrice || plan.yearlyPrice || 0}`;
 
     return {
       id: plan.code,
       name: plan.name,
-      price: displayPrice,
-      originalPrice: hasOffer && plan.offer?.originalPrice ? `$${plan.offer.originalPrice}` : undefined,
-      period: plan.code === 'free' ? 'forever' : 'per month',
+      monthlyPrice: plan.monthlyPrice,
+      yearlyPrice: plan.yearlyPrice,
+      originalPrice: hasOffer ? plan.offer?.originalPrice : undefined,
+      discountedPrice: hasOffer ? plan.offer?.discountedPrice : undefined,
       description: plan.description,
       features: plan.membershipDisplay?.customFeatures?.length ? plan.membershipDisplay.customFeatures : buildPlanFeatures(plan),
       cta: plan.code === 'free' ? 'Get Started Free' : `Start ${plan.name}`,
       popular: plan.isPopular,
       badge: hasOffer ? (plan.offer?.label || 'Limited time offer') : undefined,
-      action: () => plan.code === 'free' ? navigate('/create-account') : navigate('/select-membership'),
+      action: (selectedBillingPeriod) => {
+        if (plan.code === 'free') {
+          navigate('/create-account');
+          return;
+        }
+
+        navigate(`/select-membership?plan=${plan.code}&billing=${selectedBillingPeriod}`);
+      },
     };
   };
 
@@ -283,13 +290,41 @@ export default function Landing() {
       {/* Pricing Section */}
       <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Choose Your Plan
-            </h2>
-            <p className="text-xl text-gray-600">
-              Select the perfect plan for your practice
-            </p>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Choose Your Plan
+          </h2>
+          <p className="text-xl text-gray-600">
+            Select the perfect plan for your practice
+          </p>
+        </div>
+
+          <div className="flex justify-center mb-10">
+            <div className="inline-flex items-center bg-white rounded-lg border-2 border-gray-200 p-1 shadow-sm">
+              <button
+                onClick={() => setBillingPeriod('monthly')}
+                className={`px-6 py-2.5 rounded-md font-medium text-sm transition-all ${
+                  billingPeriod === 'monthly'
+                    ? 'bg-teal-600 text-white shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Monthly
+              </button>
+              <button
+                onClick={() => setBillingPeriod('yearly')}
+                className={`px-6 py-2.5 rounded-md font-medium text-sm transition-all relative ${
+                  billingPeriod === 'yearly'
+                    ? 'bg-teal-600 text-white shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Yearly
+                <span className="ml-2 text-xs font-semibold px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full">
+                  Save 17%
+                </span>
+              </button>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -338,21 +373,44 @@ export default function Landing() {
                   <p className="text-gray-600 text-sm mb-4">
                     {plan.description}
                   </p>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-5xl font-bold text-gray-900">
-                      {plan.price}
-                    </span>
-                    {plan.originalPrice && (
-                      <span className="text-lg text-gray-400 line-through">
-                        {plan.originalPrice}
-                      </span>
-                    )}
-                    <span className="text-gray-600">/{plan.period}</span>
-                  </div>
-                  {plan.badge && (
-                    <p className="text-sm text-orange-600 font-medium mt-2">
-                      🎉 Limited time offer
-                    </p>
+                  {plan.id === 'free' ? (
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-5xl font-bold text-gray-900">Free</span>
+                      <span className="text-gray-600">forever</span>
+                    </div>
+                  ) : billingPeriod === 'monthly' ? (
+                    <>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-5xl font-bold text-gray-900">
+                          ${plan.discountedPrice ?? plan.monthlyPrice ?? 0}
+                        </span>
+                        {plan.originalPrice ? (
+                          <span className="text-lg text-gray-400 line-through">
+                            ${plan.originalPrice}
+                          </span>
+                        ) : null}
+                        <span className="text-gray-600">/month</span>
+                      </div>
+                      {plan.badge && (
+                        <p className="text-sm text-orange-600 font-medium mt-2">
+                          🎉 Limited time offer
+                        </p>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-5xl font-bold text-gray-900">
+                          ${plan.yearlyPrice ?? 0}
+                        </span>
+                        <span className="text-gray-600">/year</span>
+                      </div>
+                      {plan.monthlyPrice && plan.yearlyPrice ? (
+                        <p className="text-sm text-teal-600 font-medium mt-2">
+                          Save ${(plan.monthlyPrice * 12) - plan.yearlyPrice}/year
+                        </p>
+                      ) : null}
+                    </>
                   )}
                 </div>
 
@@ -366,7 +424,7 @@ export default function Landing() {
                 </ul>
 
                 <button
-                  onClick={plan.action}
+                  onClick={() => plan.action(billingPeriod)}
                   className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors ${
                     plan.popular
                       ? 'bg-teal-600 text-white hover:bg-teal-700'

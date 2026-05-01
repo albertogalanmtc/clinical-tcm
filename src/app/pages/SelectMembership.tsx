@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Leaf, Check, ArrowRight, ArrowLeft, Sparkles, Info } from 'lucide-react';
 import { planService, type Plan } from '../services/planService';
 import type { PlanType } from '@/app/data/usersManager';
@@ -9,7 +9,14 @@ import { supabase } from '@/app/lib/supabase';
 
 export default function SelectMembership() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const selectedPlanFromUrl = searchParams.get('plan') as PlanType | null;
+  const billingFromUrl = searchParams.get('billing') === 'yearly' ? 'yearly' : 'monthly';
   const [selectedPlan, setSelectedPlan] = useState<PlanType | null>(() => {
+    if (selectedPlanFromUrl === 'free' || selectedPlanFromUrl === 'practitioner' || selectedPlanFromUrl === 'advanced') {
+      return selectedPlanFromUrl;
+    }
+
     // Pre-select recommended plan based on onboarding survey answer
     try {
       const raw = localStorage.getItem('onboardingSurvey');
@@ -30,7 +37,7 @@ export default function SelectMembership() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isPlansLoading, setIsPlansLoading] = useState(true);
-  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly');
+  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>(billingFromUrl);
   const [branding, setBranding] = useState(() => getPlatformSettings().branding);
   const [plans, setPlans] = useState<Plan[]>([]);
 
