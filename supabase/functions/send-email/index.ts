@@ -1,4 +1,3 @@
-import "@supabase/functions-js/edge-runtime.d.ts"
 import { sendResendEmail } from "../_shared/resend.ts"
 
 const corsHeaders = {
