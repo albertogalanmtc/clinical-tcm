@@ -1,4 +1,4 @@
-import { Users, CreditCard, Beaker, AlertTriangle, Database, BarChart3, ChevronRight, Layout, Settings, DollarSign, Filter, Type, FileText, UserPlus, X } from 'lucide-react';
+import { Users, CreditCard, Beaker, AlertTriangle, Database, BarChart3, ChevronRight, Layout, Settings, DollarSign, Filter, Type, FileText, UserPlus, X, ClipboardList, MessageSquare } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -9,15 +9,31 @@ import { getAllUsers } from '../data/usersManager';
 import { getPlatformSettings } from '../data/platformSettings';
 import * as Dialog from '@radix-ui/react-dialog';
 import { PrescriptionView } from '../components/PrescriptionView';
+import { fetchRecentAdminActivity, type AdminActivityItem as RecentAdminActivityItem } from '../services/adminActivityService';
 
 interface ActivityItem {
   event: string;
   detail: string;
   user?: string;
   time: string;
-  type: 'prescription' | 'herb' | 'formula' | 'user';
+  type: 'prescription' | 'herb' | 'formula' | 'user' | 'message' | 'survey' | 'response' | 'banner' | 'post';
   clickable?: boolean;
   data?: any;
+}
+
+function formatRelativeTime(date: Date | string): string {
+  const now = new Date();
+  const then = typeof date === 'string' ? new Date(date) : date;
+  const diffMs = now.getTime() - then.getTime();
+  const diffMins = Math.floor(diffMs / 60000);
+  const diffHours = Math.floor(diffMs / 3600000);
+  const diffDays = Math.floor(diffMs / 86400000);
+
+  if (diffMins < 1) return 'Just now';
+  if (diffMins < 60) return `${diffMins} min ago`;
+  if (diffHours < 24) return `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+  if (diffDays < 7) return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+  return new Date(then).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 }
 
 export default function AdminDashboard() {
@@ -53,117 +69,6 @@ export default function AdminDashboard() {
       setFormulaCount(getAllFormulas().length);
       setPrescriptionCount(getPrescriptionsSync().length);
       setUserCount(allUsers.length);
-
-      // Generate recent activity from real data
-      const herbs = getAllHerbs();
-      const formulas = getAllFormulas();
-      const prescriptions = getPrescriptionsSync();
-
-      const activities: Array<{
-        event: string;
-        detail: string;
-        user?: string;
-        time: Date | string;
-        type: 'herb' | 'formula' | 'prescription' | 'user';
-        clickable?: boolean;
-        data?: any;
-      }> = [];
-
-      // Add custom herbs with updatedAt or createdAt
-      herbs.forEach(herb => {
-        if ((herb.updatedAt || herb.createdAt) && isCustomHerb(herb.pinyin_name || herb.english_name || '')) {
-          activities.push({
-            event: 'Custom herb created',
-            detail: herb.pinyin_name || herb.english_name || 'Unknown herb',
-            user: herb.createdBy || 'Unknown user',
-            time: herb.updatedAt || herb.createdAt || new Date(),
-            type: 'herb',
-            clickable: false
-          });
-        }
-      });
-
-      // Add custom formulas with updatedAt or createdAt
-      formulas.forEach(formula => {
-        if ((formula.updatedAt || formula.createdAt) && isCustomFormula(formula.formula_id || '')) {
-          activities.push({
-            event: 'Custom formula created',
-            detail: formula.pinyin_name || formula.english_name || 'Unknown formula',
-            user: formula.createdBy || 'Unknown user',
-            time: formula.updatedAt || formula.createdAt || new Date(),
-            type: 'formula',
-            clickable: false
-          });
-        }
-      });
-
-      // Add prescriptions
-      prescriptions.forEach(prescription => {
-        const userName = prescription.createdBy?.userName || prescription.createdBy?.userEmail || 'Unknown user';
-        activities.push({
-          event: 'Prescription generated',
-          detail: prescription.name || 'Untitled prescription',
-          user: userName,
-          time: prescription.createdAt,
-          type: 'prescription',
-          clickable: true,
-          data: prescription
-        });
-      });
-
-      // Add new users (only if they have a createdAt/joinDate)
-      allUsers.forEach(user => {
-        // Check if user has profile with onboarding completed date
-        if (user.profile?.onboardingCompleted) {
-          // Use a timestamp for when user completed onboarding (approximation)
-          const joinDate = new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000); // Random date within last 30 days for demo
-          activities.push({
-            event: 'New user registered',
-            detail: `${user.profile.firstName} ${user.profile.lastName}`,
-            user: user.email,
-            time: joinDate,
-            type: 'user',
-            clickable: false
-          });
-        }
-      });
-
-      // Sort by time (most recent first) and take the top 10
-      const sortedActivities = activities
-        .sort((a, b) => {
-          const timeA = typeof a.time === 'string' ? new Date(a.time) : a.time;
-          const timeB = typeof b.time === 'string' ? new Date(b.time) : b.time;
-          return timeB.getTime() - timeA.getTime();
-        })
-        .slice(0, 10);
-
-      // Format time as relative time
-      const formatRelativeTime = (date: Date | string): string => {
-        const now = new Date();
-        const then = typeof date === 'string' ? new Date(date) : date;
-        const diffMs = now.getTime() - then.getTime();
-        const diffMins = Math.floor(diffMs / 60000);
-        const diffHours = Math.floor(diffMs / 3600000);
-        const diffDays = Math.floor(diffMs / 86400000);
-
-        if (diffMins < 1) return 'Just now';
-        if (diffMins < 60) return `${diffMins} min ago`;
-        if (diffHours < 24) return `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
-        if (diffDays < 7) return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
-        return new Date(then).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      };
-
-      setRecentActivity(
-        sortedActivities.map(activity => ({
-          event: activity.event,
-          detail: activity.detail,
-          user: activity.user,
-          time: formatRelativeTime(activity.time),
-          type: activity.type as 'prescription' | 'herb' | 'formula' | 'user',
-          clickable: activity.clickable,
-          data: activity.data
-        }))
-      );
     };
 
     updateCounts();
@@ -175,6 +80,51 @@ export default function AdminDashboard() {
     return () => {
       window.removeEventListener('prescriptions-updated', updateCounts);
       window.removeEventListener('storage', updateCounts);
+    };
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const loadRecentActivity = async () => {
+      const activityItems: RecentAdminActivityItem[] = await fetchRecentAdminActivity(10);
+
+      if (cancelled) {
+        return;
+      }
+
+      setRecentActivity(
+        activityItems.map(activity => ({
+          event: activity.event,
+          detail: activity.detail,
+          user: activity.user,
+          time: formatRelativeTime(activity.time),
+          type: activity.type,
+          clickable: activity.clickable,
+          data: activity.data
+        }))
+      );
+    };
+
+    loadRecentActivity();
+
+    const refreshRecentActivity = () => {
+      loadRecentActivity();
+    };
+
+    window.addEventListener('community-posts-updated', refreshRecentActivity);
+    window.addEventListener('banners-updated', refreshRecentActivity);
+    window.addEventListener('dashboard-content-updated', refreshRecentActivity);
+    window.addEventListener('prescriptions-updated', refreshRecentActivity);
+    window.addEventListener('storage', refreshRecentActivity);
+
+    return () => {
+      cancelled = true;
+      window.removeEventListener('community-posts-updated', refreshRecentActivity);
+      window.removeEventListener('banners-updated', refreshRecentActivity);
+      window.removeEventListener('dashboard-content-updated', refreshRecentActivity);
+      window.removeEventListener('prescriptions-updated', refreshRecentActivity);
+      window.removeEventListener('storage', refreshRecentActivity);
     };
   }, []);
 
@@ -267,6 +217,11 @@ export default function AdminDashboard() {
                     {activity.type === 'user' && <UserPlus className="w-4 h-4 text-blue-600" />}
                     {activity.type === 'herb' && <LucideIcons.Leaf className="w-4 h-4 text-green-600" />}
                     {activity.type === 'formula' && <LucideIcons.Pill className="w-4 h-4 text-purple-600" />}
+                    {activity.type === 'message' && <MessageSquare className="w-4 h-4 text-teal-600" />}
+                    {activity.type === 'survey' && <ClipboardList className="w-4 h-4 text-indigo-600" />}
+                    {activity.type === 'response' && <BarChart3 className="w-4 h-4 text-amber-600" />}
+                    {activity.type === 'banner' && <Layout className="w-4 h-4 text-orange-600" />}
+                    {activity.type === 'post' && <MessageSquare className="w-4 h-4 text-pink-600" />}
                     {activity.event}
                   </div>
                   <div className="text-sm text-gray-500 truncate">{activity.detail}</div>
