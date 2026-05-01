@@ -497,14 +497,14 @@ export default function Formulas() {
         </div>
       </div>
 
-      <div className="flex gap-4 lg:gap-6 flex-1 min-h-0 items-start">
+      <div className="flex gap-4 lg:gap-6 flex-1 min-h-0 items-stretch">
         {/* Left Column: H1 + Sidebar - Hidden on mobile */}
-        <aside className="hidden lg:block w-72 flex-shrink-0">
+        <aside className="hidden lg:block w-72 flex-shrink-0 self-stretch">
           {/* Desktop H1 - Above filter container */}
           
 
           {/* Filters Container */}
-          <div className="bg-white rounded-lg border border-gray-200 sticky top-4 max-h-[calc(100vh-6rem)] flex flex-col overflow-hidden">
+          <div className="bg-white rounded-lg border border-gray-200 sticky top-4 max-h-[calc(100vh-6rem)] flex h-full flex-col overflow-hidden self-stretch">
             <div className="flex-1 min-h-0 overflow-y-auto">
               <div className="px-6 py-6 space-y-6">
               {/* Formula Filters Header */}
@@ -787,7 +787,7 @@ export default function Formulas() {
         </aside>
 
         {/* Main content */}
-        <main className="flex-1 min-w-0 flex flex-col gap-4 self-stretch">
+        <main className="flex-1 min-w-0 flex h-full min-h-0 flex-col gap-4 self-stretch">
           {/* Search bar with Filters and Display Settings */}
           <div className="flex items-center gap-2 h-10 sm:h-11 flex-shrink-0">
               <>
