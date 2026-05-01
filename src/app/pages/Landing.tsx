@@ -1,8 +1,26 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Check, Sparkles, Users, BookOpen, Leaf, Heart, ArrowRight, Database, FlaskConical, FileText, ShieldCheck, Search } from 'lucide-react';
+import { planService, type Plan } from '@/app/services/planService';
+
+interface LandingPlanCard {
+  id: string;
+  name: string;
+  price: string;
+  originalPrice?: string;
+  period: string;
+  description: string;
+  features: string[];
+  cta: string;
+  popular: boolean;
+  badge?: string;
+  action: () => void;
+}
 
 export default function Landing() {
   const navigate = useNavigate();
+  const [plans, setPlans] = useState<LandingPlanCard[]>([]);
+  const [isPlansLoading, setIsPlansLoading] = useState(true);
 
   const features = [
     {
@@ -37,67 +55,97 @@ export default function Landing() {
     }
   ];
 
-  const plans = [
-    {
-      name: 'Free',
-      price: '$0',
-      period: 'forever',
-      description: 'Basic access to TCM resources',
-      features: [
-        'Sample herb database access',
-        'Sample formula library access',
-        'Basic herb property filters',
-        'Community access',
-        'Dashboard news updates',
-        'No monthly formula limit'
-      ],
-      cta: 'Get Started Free',
-      popular: false,
-      action: () => navigate('/create-account')
-    },
-    {
-      name: 'Practitioner',
-      price: '$9',
-      originalPrice: '$19',
-      period: 'per month',
-      description: 'Full access for individual practitioners',
-      features: [
-        'Full herb & formula library access',
-        'Prescription builder',
-        'Prescription library & statistics',
-        'Advanced filters (properties, clinical use)',
-        'Patient safety profiles (conditions, medications, allergies)',
-        'TCM risk patterns analysis',
-        'Pharmacological effects & biological mechanisms',
-        'Basic safety engine',
-        'Up to 100 monthly formulas'
-      ],
-      cta: 'Start Practitioner',
-      popular: true,
-      badge: 'Launch Offer',
-      action: () => navigate('/select-membership')
-    },
-    {
-      name: 'Advanced',
-      price: '$19',
-      originalPrice: '$29',
-      period: 'per month',
-      description: 'Advanced features for professionals',
-      features: [
-        'Everything in Practitioner',
-        'Bioactive compounds filter',
-        'Custom content creation',
-        'Advanced safety engine',
-        'Unlimited monthly formulas',
-        'Priority support',
-        'Advanced clinical tools'
-      ],
-      cta: 'Start Advanced',
-      popular: false,
-      badge: 'Launch Offer',
-      action: () => navigate('/select-membership')
+  const buildPlanFeatures = (plan: Plan): string[] => {
+    const features: string[] = [];
+
+    if (plan.features.herbLibraryAccess === 'full') {
+      features.push('Full herb library access');
+    } else if (plan.features.herbLibraryAccess === 'sample') {
+      features.push('Sample herb library access');
     }
-  ];
+
+    if (plan.features.formulaLibraryAccess === 'full') {
+      features.push('Full formula library access');
+    } else if (plan.features.formulaLibraryAccess === 'sample') {
+      features.push('Sample formula library access');
+    }
+
+    if (plan.features.builder) features.push('Prescription builder');
+    if (plan.features.prescriptionLibrary) features.push('Prescription library');
+    if (plan.features.statistics) features.push('Usage analytics');
+    if (plan.features.herbPropertyFilters || plan.features.formulaPropertyFilters || plan.features.clinicalUseFilters) {
+      features.push('Advanced filtering tools');
+    }
+    if (plan.features.generalConditions || plan.features.medications || plan.features.allergies || plan.features.tcmRiskPatterns) {
+      features.push('Patient safety profiles');
+    }
+    if (plan.features.pharmacologicalEffectsFilter || plan.features.biologicalMechanismsFilter || plan.features.bioactiveCompoundsFilter) {
+      features.push('Advanced clinical insights');
+    }
+    if (plan.limits.monthlyFormulas === null) {
+      features.push('Unlimited monthly formulas');
+    } else if (plan.limits.monthlyFormulas > 0) {
+      features.push(`Up to ${plan.limits.monthlyFormulas} monthly formulas`);
+    }
+
+    return features;
+  };
+
+  const toLandingPlan = (plan: Plan): LandingPlanCard => {
+    const hasOffer = Boolean(plan.offer?.enabled);
+    const displayPrice = plan.code === 'free'
+      ? '$0'
+      : `$${hasOffer ? plan.offer!.discountedPrice : plan.monthlyPrice || plan.yearlyPrice || 0}`;
+
+    return {
+      id: plan.code,
+      name: plan.name,
+      price: displayPrice,
+      originalPrice: hasOffer && plan.offer?.originalPrice ? `$${plan.offer.originalPrice}` : undefined,
+      period: plan.code === 'free' ? 'forever' : 'per month',
+      description: plan.description,
+      features: plan.membershipDisplay?.customFeatures?.length ? plan.membershipDisplay.customFeatures : buildPlanFeatures(plan),
+      cta: plan.code === 'free' ? 'Get Started Free' : `Start ${plan.name}`,
+      popular: plan.isPopular,
+      badge: hasOffer ? (plan.offer?.label || 'Limited time offer') : undefined,
+      action: () => plan.code === 'free' ? navigate('/create-account') : navigate('/select-membership'),
+    };
+  };
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const loadPlans = async () => {
+      setIsPlansLoading(true);
+
+      try {
+        const loadedPlans = await planService.getPlans();
+        if (cancelled) return;
+
+        const activePlans = ['free', 'practitioner', 'advanced']
+          .map(code => loadedPlans.find(plan => plan.code === code))
+          .filter(Boolean) as Plan[];
+
+        setPlans(activePlans.map(toLandingPlan));
+      } catch (error) {
+        console.error('Error loading landing plans:', error);
+        if (!cancelled) setPlans([]);
+      } finally {
+        if (!cancelled) setIsPlansLoading(false);
+      }
+    };
+
+    loadPlans();
+
+    window.addEventListener('plansUpdated', loadPlans);
+    window.addEventListener('storage', loadPlans);
+
+    return () => {
+      cancelled = true;
+      window.removeEventListener('plansUpdated', loadPlans);
+      window.removeEventListener('storage', loadPlans);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
@@ -212,7 +260,24 @@ export default function Landing() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {plans.map((plan, index) => (
+            {isPlansLoading && plans.length === 0 ? (
+              [0, 1, 2].map((index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl border-2 border-gray-200 p-8 flex flex-col animate-pulse"
+                >
+                  <div className="h-6 w-24 bg-gray-100 rounded mb-4" />
+                  <div className="h-4 w-48 bg-gray-100 rounded mb-6" />
+                  <div className="h-12 w-32 bg-gray-100 rounded mb-6" />
+                  <div className="space-y-4 mb-8 flex-1">
+                    <div className="h-4 w-full bg-gray-100 rounded" />
+                    <div className="h-4 w-5/6 bg-gray-100 rounded" />
+                    <div className="h-4 w-4/6 bg-gray-100 rounded" />
+                  </div>
+                  <div className="h-12 w-full bg-gray-100 rounded-lg" />
+                </div>
+              ))
+            ) : plans.map((plan, index) => (
               <div
                 key={index}
                 className={`relative bg-white rounded-2xl border-2 p-8 flex flex-col ${
