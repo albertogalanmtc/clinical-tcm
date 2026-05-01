@@ -20,6 +20,64 @@ interface NotificationRequest {
   commentContent?: string
 }
 
+async function resolveReplyRecipient(admin: ReturnType<typeof createClient>, payload: NotificationRequest) {
+  let postAuthorId = payload.postAuthorId;
+  let postTitle = payload.postTitle;
+
+  if ((!postAuthorId || !postTitle) && payload.postId) {
+    const { data: post, error: postError } = await admin
+      .from('community_posts')
+      .select('author_id, title')
+      .eq('id', payload.postId)
+      .maybeSingle();
+
+    if (!postError && post) {
+      postAuthorId = postAuthorId || post.author_id;
+      postTitle = postTitle || post.title;
+    }
+  }
+
+  if (!postAuthorId) {
+    return { error: 'Missing required field: postAuthorId' };
+  }
+
+  let recipient: {
+    email: string;
+    first_name?: string | null;
+    last_name?: string | null;
+    email_community_replies?: boolean | null;
+  } | null = null;
+
+  const { data: profileRecipient, error: recipientError } = await admin
+    .from('users')
+    .select('email, first_name, last_name, email_community_replies')
+    .eq('id', postAuthorId)
+    .maybeSingle();
+
+  if (!recipientError && profileRecipient?.email) {
+    recipient = profileRecipient;
+  }
+
+  if (!recipient?.email) {
+    const { data: authUser, error: authError } = await admin.auth.admin.getUserById(postAuthorId);
+
+    if (!authError && authUser?.user?.email) {
+      recipient = {
+        email: authUser.user.email,
+        first_name: authUser.user.user_metadata?.first_name,
+        last_name: authUser.user.user_metadata?.last_name,
+        email_community_replies: recipient?.email_community_replies ?? true,
+      };
+    }
+  }
+
+  return {
+    recipient,
+    postAuthorId,
+    postTitle,
+  };
+}
+
 function escapeHtml(value: string): string {
   return value
     .replace(/&/g, '&amp;')
@@ -101,27 +159,25 @@ Deno.serve(async (req) => {
     const fromUrl = `${appUrl}/community`;
 
     if (payload.type === 'reply_to_post') {
-      if (!payload.postAuthorId) {
-        return new Response(JSON.stringify({ error: 'Missing required field: postAuthorId' }), {
+      const resolved = await resolveReplyRecipient(admin, payload);
+
+      if ('error' in resolved) {
+        return new Response(JSON.stringify({ error: resolved.error }), {
           status: 400,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         });
       }
 
-      if (payload.actorId && payload.postAuthorId === payload.actorId) {
+      const { recipient, postAuthorId, postTitle } = resolved;
+
+      if (payload.actorId && postAuthorId === payload.actorId) {
         return new Response(JSON.stringify({ success: true, skipped: true, reason: 'self_reply' }), {
           status: 200,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         });
       }
 
-      const { data: recipient, error: recipientError } = await admin
-        .from('users')
-        .select('email, first_name, last_name, email_community_replies')
-        .eq('id', payload.postAuthorId)
-        .single();
-
-      if (recipientError || !recipient?.email) {
+      if (!recipient?.email) {
         return new Response(JSON.stringify({ success: true, skipped: true, reason: 'recipient_not_found' }), {
           status: 200,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -137,10 +193,10 @@ Deno.serve(async (req) => {
 
       const recipientName = `${recipient.first_name || ''} ${recipient.last_name || ''}`.trim() || 'there';
       const snippet = createSnippet(payload.commentContent || '');
-      const subject = `New reply on your Community post: ${payload.postTitle || 'Your Community post'}`;
+      const subject = `New reply on your Community post: ${postTitle || 'Your Community post'}`;
       const body = `
         <p style="margin: 0 0 12px;">Hi ${escapeHtml(recipientName)},</p>
-        <p style="margin: 0 0 12px;"><strong>${escapeHtml(payload.actorName || 'Someone')}</strong> replied to your post <strong>${escapeHtml(payload.postTitle || 'your post')}</strong>.</p>
+        <p style="margin: 0 0 12px;"><strong>${escapeHtml(payload.actorName || 'Someone')}</strong> replied to your post <strong>${escapeHtml(postTitle || 'your post')}</strong>.</p>
         <p style="margin: 0 0 12px; color: #475569;">"${escapeHtml(snippet)}"</p>
         <p style="margin: 0;">Open the conversation to read and respond.</p>
       `;
