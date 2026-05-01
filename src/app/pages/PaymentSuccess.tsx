@@ -2,8 +2,23 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Leaf, CheckCircle, XCircle, Loader2 } from 'lucide-react';
 import { getPlatformSettings } from '@/app/data/platformSettings';
+import { supabase } from '@/app/lib/supabase';
+import type { PlanType } from '@/app/data/usersManager';
 
 type PaymentStatus = 'verifying' | 'success' | 'error';
+
+const normalizePlanType = (value: string | null): PlanType | null => {
+  if (value === 'free' || value === 'practitioner' || value === 'advanced') {
+    return value;
+  }
+
+  if (value === 'pro') return 'practitioner';
+  if (value === 'clinic') return 'advanced';
+
+  return null;
+};
+
+const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 export default function PaymentSuccess() {
   const navigate = useNavigate();
@@ -18,6 +33,8 @@ export default function PaymentSuccess() {
   useEffect(() => {
     const verifyPayment = async () => {
       const sessionId = searchParams.get('session_id');
+      const planFromUrl = normalizePlanType(searchParams.get('plan'));
+      const billingPeriod = searchParams.get('billing') || 'monthly';
 
       if (!sessionId) {
         setStatus('error');
@@ -26,22 +43,83 @@ export default function PaymentSuccess() {
       }
 
       try {
-        // Wait 2 seconds to allow Stripe webhook to process
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        // Give Stripe webhook time to update the user row, then poll for the updated plan.
+        await wait(1500);
 
-        // Get the plan from URL params or localStorage
-        const urlParams = new URLSearchParams(window.location.search);
-        const planFromUrl = urlParams.get('plan');
+        const { data: { session } } = await supabase.auth.getSession();
+        const userId = session?.user?.id;
+        const userEmail = session?.user?.email || '';
 
-        // If plan is in URL, save it
-        if (planFromUrl) {
-          localStorage.setItem('userPlanType', planFromUrl);
+        let resolvedPlan: PlanType = planFromUrl || 'free';
+        let latestProfile: { plan_type?: string; subscription_status?: string; email?: string } | null = null;
+
+        if (userId) {
+          for (let attempt = 0; attempt < 4; attempt += 1) {
+            const { data: userProfile, error: profileError } = await supabase
+              .from('users')
+              .select('plan_type, subscription_status, email')
+              .eq('id', userId)
+              .single();
+
+            if (!profileError && userProfile) {
+              latestProfile = userProfile;
+              const dbPlan = normalizePlanType(userProfile.plan_type);
+
+              if (dbPlan) {
+                resolvedPlan = dbPlan;
+                if (dbPlan !== 'free' || userProfile.subscription_status === 'active') {
+                  break;
+                }
+              }
+            }
+
+            await wait(1500);
+          }
+
+          if (resolvedPlan === 'free' && planFromUrl && planFromUrl !== 'free') {
+            resolvedPlan = planFromUrl;
+          }
+
+          const { error: upsertError } = await supabase
+            .from('users')
+            .upsert({
+              id: userId,
+              email: userEmail || latestProfile?.email || '',
+              plan_type: resolvedPlan,
+              subscription_status: resolvedPlan === 'free' ? 'inactive' : 'active',
+              updated_at: new Date().toISOString(),
+            }, {
+              onConflict: 'id',
+            });
+
+          if (upsertError) {
+            console.error('Error syncing plan after payment:', upsertError);
+          }
+        } else if (planFromUrl) {
+          resolvedPlan = planFromUrl;
         }
 
-        // Set user role to 'user' if not already admin
+        localStorage.setItem('userPlanType', resolvedPlan);
+        localStorage.removeItem('pendingPlanType');
+        localStorage.removeItem('pendingBillingPeriod');
+
         const currentRole = localStorage.getItem('userRole');
         if (currentRole !== 'admin') {
           localStorage.setItem('userRole', 'user');
+        }
+
+        const storedProfileRaw = localStorage.getItem('userProfile');
+        if (storedProfileRaw) {
+          try {
+            const storedProfile = JSON.parse(storedProfileRaw);
+            localStorage.setItem('userProfile', JSON.stringify({
+              ...storedProfile,
+              planType: resolvedPlan,
+              plan_type: resolvedPlan,
+            }));
+          } catch {
+            // Ignore localStorage parse errors and continue.
+          }
         }
 
         // Dispatch events to update UserContext

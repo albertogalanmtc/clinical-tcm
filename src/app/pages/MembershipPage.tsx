@@ -2,7 +2,7 @@ import { CreditCard, Check, ArrowUpRight, Download, CheckCircle } from 'lucide-r
 import { useUser } from '../contexts/UserContext';
 import { useState, useEffect } from 'react';
 import { planService, Plan } from '../services/planService';
-import { createStripeCheckout, STRIPE_PRICE_IDS } from '@/lib/stripe';
+import { createStripeCheckout, getStripePriceId } from '@/lib/stripe';
 import { toast } from 'sonner';
 
 // Transform Plan from service format to display format
@@ -181,12 +181,22 @@ export default function MembershipPage() {
         return;
       }
 
+      const selectedPlanData = allPlans.find(plan => plan.code === planId);
+      const normalizedPlan = planId as 'practitioner' | 'advanced';
+      const priceId = getStripePriceId(normalizedPlan, billingPeriod, selectedPlanData);
+      const successUrl = `${window.location.origin}/payment-success?session_id={CHECKOUT_SESSION_ID}&plan=${normalizedPlan}&billing=${billingPeriod}`;
+      const cancelUrl = `${window.location.origin}/account/membership`;
+
       // Call createStripeCheckout with the plan type
-      await createStripeCheckout(
-        planId as 'practitioner' | 'advanced',
-        session.user.id,
-        session.user.email || ''
-      );
+      await createStripeCheckout({
+        planType: normalizedPlan,
+        userId: session.user.id,
+        userEmail: session.user.email || '',
+        priceId,
+        billingPeriod,
+        successUrl,
+        cancelUrl,
+      });
 
       // The function will redirect to Stripe, so we don't need to reset loading
     } catch (error: any) {

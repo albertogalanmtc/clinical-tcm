@@ -4,7 +4,7 @@ import { Leaf, Check, ArrowRight, ArrowLeft, Sparkles, Info } from 'lucide-react
 import { planService, type Plan } from '../services/planService';
 import type { PlanType } from '@/app/data/usersManager';
 import { getPlatformSettings } from '@/app/data/platformSettings';
-import { createStripeCheckout } from '@/lib/stripe';
+import { createStripeCheckout, getStripePriceId } from '@/lib/stripe';
 import { supabase } from '@/app/lib/supabase';
 
 export default function SelectMembership() {
@@ -96,11 +96,31 @@ export default function SelectMembership() {
     try {
       // If Free plan, save directly and continue
       if (selectedPlan === 'free') {
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 800));
+        const { data: { session } } = await supabase.auth.getSession();
+        const userEmail = session?.user?.email || JSON.parse(localStorage.getItem('userProfile') || '{}')?.email || '';
+
+        if (session?.user) {
+          const { error: updateError } = await supabase
+            .from('users')
+            .upsert({
+              id: session.user.id,
+              email: userEmail,
+              plan_type: 'free',
+              subscription_status: 'inactive',
+              updated_at: new Date().toISOString(),
+            }, {
+              onConflict: 'id',
+            });
+
+          if (updateError) {
+            console.error('Error saving free plan to Supabase:', updateError);
+          }
+        }
 
         // Save selected plan and set user role to 'user' (not admin) - only if not already admin
         localStorage.setItem('userPlanType', selectedPlan);
+        localStorage.removeItem('pendingPlanType');
+        localStorage.removeItem('pendingBillingPeriod');
         const currentRole = localStorage.getItem('userRole');
         if (currentRole !== 'admin') {
           localStorage.setItem('userRole', 'user');
@@ -123,9 +143,31 @@ export default function SelectMembership() {
         const { data: { session } } = await supabase.auth.getSession();
         const userId = session?.user?.id || userProfile.id || 'temp-' + Date.now();
         const userEmail = session?.user?.email || userProfile.email;
+        const selectedPlanData = plans.find(plan => plan.code === selectedPlan);
+        const priceId = selectedPlanData
+          ? getStripePriceId(
+              selectedPlan,
+              billingPeriod,
+              selectedPlanData
+            )
+          : undefined;
+
+        localStorage.setItem('pendingPlanType', selectedPlan);
+        localStorage.setItem('pendingBillingPeriod', billingPeriod);
+
+        const successUrl = `${window.location.origin}/payment-success?session_id={CHECKOUT_SESSION_ID}&plan=${selectedPlan}&billing=${billingPeriod}`;
+        const cancelUrl = `${window.location.origin}/select-membership`;
 
         // Call createStripeCheckout with the normalized plan code expected by Stripe
-        await createStripeCheckout(selectedPlan, userId, userEmail);
+        await createStripeCheckout({
+          planType: selectedPlan,
+          userId,
+          userEmail,
+          priceId,
+          billingPeriod,
+          successUrl,
+          cancelUrl,
+        });
 
         // The function will redirect to Stripe, so we don't reset loading
       }

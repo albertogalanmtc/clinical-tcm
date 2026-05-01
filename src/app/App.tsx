@@ -335,10 +335,10 @@ export default function App() {
     const userRole = localStorage.getItem("userRole");
     const currentPlan = localStorage.getItem("userPlanType");
 
-    // If user is admin and plan is not set to 'pro', fix it
-    if (userRole === "admin" && currentPlan !== "pro") {
-      localStorage.setItem("userPlanType", "pro");
-      console.log("Admin plan updated to: pro");
+    // If user is admin and plan is not set to the highest plan, fix it
+    if (userRole === "admin" && currentPlan !== "advanced") {
+      localStorage.setItem("userPlanType", "advanced");
+      console.log("Admin plan updated to: advanced");
     }
   }, []);
 

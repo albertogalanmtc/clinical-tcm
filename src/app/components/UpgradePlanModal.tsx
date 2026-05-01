@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { X, Check, Sparkles, ArrowRight } from 'lucide-react';
 import { planService, type Plan } from '../services/planService';
 import { useUser } from '../contexts/UserContext';
-import { createStripeCheckout } from '@/lib/stripe';
+import { createStripeCheckout, getStripePriceId } from '@/lib/stripe';
 import { supabase } from '@/app/lib/supabase';
 
 interface UpgradePlanModalProps {
@@ -104,12 +104,24 @@ export function UpgradePlanModal({ isOpen, onClose, currentPlan, suggestedPlan, 
         throw new Error('User not authenticated');
       }
 
-      // Call createStripeCheckout (same function used in MembershipPage)
-      await createStripeCheckout(
-        selectedPlan as 'practitioner' | 'advanced',
-        session.user.id,
-        session.user.email || ''
+      const priceId = getStripePriceId(
+        selectedPlan,
+        billingPeriod,
+        selectedPlanData
       );
+      const successUrl = `${window.location.origin}/payment-success?session_id={CHECKOUT_SESSION_ID}&plan=${selectedPlan}&billing=${billingPeriod}`;
+      const cancelUrl = `${window.location.origin}/account/membership`;
+
+      // Call createStripeCheckout (same function used in MembershipPage)
+      await createStripeCheckout({
+        planType: selectedPlan,
+        userId: session.user.id,
+        userEmail: session.user.email || '',
+        priceId,
+        billingPeriod,
+        successUrl,
+        cancelUrl,
+      });
 
       // The function will redirect to Stripe, so we don't reset loading
     } catch (error) {
