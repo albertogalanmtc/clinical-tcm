@@ -61,10 +61,10 @@ export default function News() {
     <div className="flex flex-col h-full overflow-hidden">
       <div className="flex flex-col flex-1 min-h-0 overflow-hidden sm:overflow-auto px-4 py-6 lg:px-6 lg:py-6 pb-[86px] sm:pb-4 lg:pb-6 gap-4">
         {/* Two Column Layout */}
-        <div className="max-w-7xl mx-auto w-full flex gap-4 lg:gap-6 flex-1 min-h-0 items-start">
+        <div className="max-w-7xl mx-auto w-full flex gap-4 lg:gap-6 flex-1 min-h-0 items-stretch">
           {/* Left Column: News List */}
-          <aside className="hidden lg:block w-80 flex-shrink-0">
-            <div className="bg-white rounded-lg border border-gray-200 sticky top-4 max-h-[calc(100vh-6rem)] flex flex-col overflow-hidden">
+          <aside className="hidden lg:flex lg:flex-col w-80 flex-shrink-0 self-stretch">
+            <div className="bg-white rounded-lg border border-gray-200 sticky top-4 max-h-[calc(100vh-6rem)] flex h-full flex-col overflow-hidden self-stretch">
               {/* Search */}
               <div className="p-4 border-b border-gray-200">
                 <div className="relative">
@@ -129,9 +129,9 @@ export default function News() {
           </aside>
 
           {/* Right Column: News Details */}
-          <main className="hidden lg:block flex-1 min-w-0 flex flex-col self-stretch">
+          <main className="hidden lg:flex flex-1 min-w-0 flex h-full min-h-0 flex-col self-stretch">
             {selectedNews ? (
-              <div className="bg-white rounded-lg border border-gray-200 flex flex-col flex-1 min-h-0 max-h-[calc(100vh-6rem)] overflow-hidden">
+              <div className="bg-white rounded-lg border border-gray-200 flex h-full flex-col flex-1 min-h-0 max-h-[calc(100vh-6rem)] overflow-hidden">
                 {/* News Header */}
                 <div className="flex-shrink-0 p-6">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">
