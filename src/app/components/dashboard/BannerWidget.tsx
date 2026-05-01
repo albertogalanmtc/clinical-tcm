@@ -81,7 +81,7 @@ export function BannerWidget() {
 
   return (
     <div className="max-w-5xl mx-auto mb-6">
-      <div className="bg-white border-2 border-gray-200 rounded-lg p-4 relative animate-in fade-in slide-in-from-top-4 duration-500">
+      <div className="bg-white border border-gray-200 rounded-lg p-4 relative animate-in fade-in slide-in-from-top-4 duration-500">
         {banner.dismissible && (
           <button
             onClick={handleTemporaryDismiss}

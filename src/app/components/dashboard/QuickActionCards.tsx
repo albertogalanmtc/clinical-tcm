@@ -81,7 +81,7 @@ function QuickActionCard({ action }: { action: QuickActionItem }) {
   return (
     <Link
       to={action.to}
-      className="group block bg-white border-2 border-gray-200 rounded-lg p-4 hover:border-teal-500 hover:shadow-md transition-all relative"
+      className="group block bg-white border border-gray-200 rounded-lg p-4 hover:border-teal-500 hover:shadow-md transition-all relative"
     >
       {/* Notification badge */}
       {notificationCount > 0 && (

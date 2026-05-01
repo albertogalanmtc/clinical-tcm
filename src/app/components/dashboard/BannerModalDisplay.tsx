@@ -191,7 +191,7 @@ export function BannerModalDisplay({ banner, onClose }: BannerModalDisplayProps)
                         setSelectedAnswer(option);
                         setFreeTextAnswer('');
                       }}
-                      className={`w-full flex items-start gap-3 p-4 rounded-lg border-2 transition-all text-left ${
+                      className={`w-full flex items-start gap-3 p-4 rounded-lg border transition-all text-left ${
                         selectedAnswer === option
                           ? 'border-teal-600 bg-teal-50'
                           : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
@@ -199,7 +199,7 @@ export function BannerModalDisplay({ banner, onClose }: BannerModalDisplayProps)
                     >
                       {/* Radio circle */}
                       <div
-                        className={`flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 transition-all ${
+                        className={`flex-shrink-0 w-5 h-5 rounded-full border flex items-center justify-center mt-0.5 transition-all ${
                           selectedAnswer === option
                             ? 'border-teal-600'
                             : 'border-gray-300'
@@ -221,7 +221,7 @@ export function BannerModalDisplay({ banner, onClose }: BannerModalDisplayProps)
                   {banner.questions && banner.questions[currentQuestionIndex]?.allowFreeText && (
                     <div
                       onClick={() => setSelectedAnswer('__custom__')}
-                      className={`w-full flex items-start gap-3 p-4 rounded-lg border-2 transition-all cursor-pointer ${
+                      className={`w-full flex items-start gap-3 p-4 rounded-lg border transition-all cursor-pointer ${
                         selectedAnswer === '__custom__'
                           ? 'border-teal-600 bg-teal-50'
                           : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
@@ -229,7 +229,7 @@ export function BannerModalDisplay({ banner, onClose }: BannerModalDisplayProps)
                     >
                       {/* Radio circle */}
                       <div
-                        className={`flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 transition-all ${
+                        className={`flex-shrink-0 w-5 h-5 rounded-full border flex items-center justify-center mt-0.5 transition-all ${
                           selectedAnswer === '__custom__'
                             ? 'border-teal-600'
                             : 'border-gray-300'

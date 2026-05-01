@@ -43,12 +43,12 @@ export function CommunityCard({ isAlone = false }: CommunityCardProps) {
           href={communityCard.externalUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="block bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-lg p-6 hover:border-purple-400 hover:shadow-lg transition-all"
+          className="block bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 rounded-lg p-6 hover:border-purple-400 hover:shadow-lg transition-all"
         >
           {CardContent}
         </a>
       ) : (
-        <div className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-lg p-6">
+        <div className="bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 rounded-lg p-6">
           {CardContent}
         </div>
       )}

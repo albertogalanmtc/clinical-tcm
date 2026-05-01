@@ -321,7 +321,7 @@ export function SurveyWidget() {
 
   return (
     <div className="max-w-5xl mx-auto mb-6">
-      <div className="border-2 border-teal-200 bg-teal-50 rounded-lg p-5 relative animate-in fade-in slide-in-from-top-4 duration-500">
+      <div className="border border-teal-200 bg-teal-50 rounded-lg p-5 relative animate-in fade-in slide-in-from-top-4 duration-500">
         <button
           onClick={handleDismiss}
           className="absolute top-3 right-3 p-1.5 hover:bg-teal-100 rounded-full transition-colors z-10"

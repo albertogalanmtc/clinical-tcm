@@ -233,7 +233,7 @@ function PostCard({ post, onOpenPost, isAdmin, userId }: { post: CommunityPost; 
 
       <div
         onClick={() => onOpenPost(post.id)}
-        className={`block bg-white rounded-lg p-4 sm:p-6 border-2 hover:shadow-md transition-all cursor-pointer ${
+        className={`block bg-white rounded-lg p-4 sm:p-6 border hover:shadow-md transition-all cursor-pointer ${
           hasUnread
             ? 'border-teal-500 hover:border-teal-600'
             : 'border-gray-200 hover:border-teal-500'

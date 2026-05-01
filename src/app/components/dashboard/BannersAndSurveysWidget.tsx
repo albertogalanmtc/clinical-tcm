@@ -199,7 +199,7 @@ export function BannersAndSurveysWidget() {
           const banner = item.data;
           return (
             <div key={`banner-${banner.id}`} className="max-w-5xl mx-auto mb-6">
-              <div className="bg-white border-2 border-gray-200 rounded-lg p-4 relative animate-in fade-in slide-in-from-top-4 duration-500">
+              <div className="bg-white border border-gray-200 rounded-lg p-4 relative animate-in fade-in slide-in-from-top-4 duration-500">
                 {banner.dismissible && (
                   <button
                     onClick={() => handleTemporaryDismiss(banner.id)}
@@ -255,7 +255,7 @@ export function BannersAndSurveysWidget() {
 
             return (
               <div key={`survey-${survey.id}`} className="max-w-5xl mx-auto mb-6">
-                <div className="bg-white border-2 border-teal-200 rounded-lg p-8 text-center animate-in fade-in slide-in-from-top-4 duration-500">
+                <div className="bg-white border border-teal-200 rounded-lg p-8 text-center animate-in fade-in slide-in-from-top-4 duration-500">
                   {emoji && (
                     <div className="text-6xl mb-4">
                       {emoji}
@@ -280,7 +280,7 @@ export function BannersAndSurveysWidget() {
 
           return (
             <div key={`survey-${survey.id}`} className="max-w-5xl mx-auto mb-6">
-              <div className="bg-white border-2 border-gray-200 rounded-lg p-6 relative animate-in fade-in slide-in-from-top-4 duration-500">
+              <div className="bg-white border border-gray-200 rounded-lg p-6 relative animate-in fade-in slide-in-from-top-4 duration-500">
                 <button
                   onClick={() => handleTemporaryDismiss(survey.id)}
                   className="absolute top-3 right-3 p-1.5 hover:bg-gray-100 rounded-full transition-colors z-10"
@@ -311,7 +311,7 @@ export function BannersAndSurveysWidget() {
                         ) : (
                           <div className="space-y-2">
                             {q.options.map((option, oIndex) => (
-                              <label key={oIndex} className={`flex items-center gap-2 cursor-pointer px-3 py-2 border-2 rounded-lg hover:bg-gray-50 transition-colors ${
+                              <label key={oIndex} className={`flex items-center gap-2 cursor-pointer px-3 py-2 border rounded-lg hover:bg-gray-50 transition-colors ${
                                 answers[qIndex] === option
                                   ? 'border-teal-600 bg-teal-50'
                                   : 'border-gray-300'
