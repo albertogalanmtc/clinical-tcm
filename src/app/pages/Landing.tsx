@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Check, Sparkles, Users, BookOpen, Leaf, Heart, ArrowRight, Database, FlaskConical, FileText, ShieldCheck, Search } from 'lucide-react';
+import { getPlatformSettings } from '@/app/data/platformSettings';
 import { planService, type Plan } from '@/app/services/planService';
 
 interface LandingPlanCard {
@@ -21,6 +22,7 @@ export default function Landing() {
   const navigate = useNavigate();
   const [plans, setPlans] = useState<LandingPlanCard[]>([]);
   const [isPlansLoading, setIsPlansLoading] = useState(true);
+  const [branding, setBranding] = useState(() => getPlatformSettings().branding);
 
   const features = [
     {
@@ -147,6 +149,22 @@ export default function Landing() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleBrandingUpdate = () => {
+      setBranding(getPlatformSettings().branding);
+    };
+
+    window.addEventListener('storage', handleBrandingUpdate);
+    window.addEventListener('platformSettingsUpdated', handleBrandingUpdate);
+
+    return () => {
+      window.removeEventListener('storage', handleBrandingUpdate);
+      window.removeEventListener('platformSettingsUpdated', handleBrandingUpdate);
+    };
+  }, []);
+
+  const DEFAULT_LOGO_URL = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="45" fill="%230d9488"/%3E%3Ctext x="50" y="65" font-size="32" fill="white" text-anchor="middle" font-family="Arial"%3ECT%3C/text%3E%3C/svg%3E';
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header/Navigation */}
@@ -154,8 +172,23 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
-              <Leaf className="w-8 h-8 text-teal-600" />
-              <span className="text-xl font-bold text-gray-900">Clinical TCM</span>
+              {branding.logoUrl ? (
+                <img
+                  src={branding.logoUrl}
+                  alt="Logo"
+                  className="w-8 h-8 object-contain"
+                  onError={(e) => {
+                    e.currentTarget.src = DEFAULT_LOGO_URL;
+                  }}
+                />
+              ) : (
+                <div className="w-8 h-8 bg-teal-600 rounded-lg flex items-center justify-center">
+                  <Leaf className="w-5 h-5 text-white" />
+                </div>
+              )}
+              {branding.showAppName && (
+                <span className="text-xl font-bold text-gray-900">{branding.appName}</span>
+              )}
             </div>
             <div className="flex items-center gap-4">
               <button
