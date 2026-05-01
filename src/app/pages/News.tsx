@@ -129,9 +129,9 @@ export default function News() {
           </aside>
 
           {/* Right Column: News Details */}
-          <main className="hidden lg:block flex-1 min-w-0 flex flex-col self-stretch">
+          <main className="hidden lg:block flex-1 min-w-0 flex flex-col self-stretch h-[calc(100vh-6rem)] max-h-[calc(100vh-6rem)]">
             {selectedNews ? (
-              <div className="bg-white rounded-lg border border-gray-200 flex flex-col flex-1 min-h-0 overflow-hidden">
+              <div className="bg-white rounded-lg border border-gray-200 flex flex-col h-full min-h-0 overflow-hidden">
                 {/* News Header */}
                 <div className="flex-shrink-0 p-6">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">
@@ -165,7 +165,7 @@ export default function News() {
                 </div>
               </div>
             ) : (
-              <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
+              <div className="bg-white rounded-lg border border-gray-200 p-12 text-center h-full flex flex-col items-center justify-center">
                 <FileText className="w-12 h-12 mx-auto mb-4 text-gray-400" />
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">No News Selected</h3>
                 <p className="text-gray-600">Select a news item from the list to view details</p>
