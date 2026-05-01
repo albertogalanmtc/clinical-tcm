@@ -1,7 +1,21 @@
 import { useSearchParams, Link, useNavigate } from 'react-router-dom';
 import { ChevronLeft, CreditCard } from 'lucide-react';
 import { useSwipeBack } from '../hooks/useSwipeBack';
-import { planService } from '../services/planService';
+
+function formatPlanName(planCode: string): string {
+  switch (planCode) {
+    case 'free':
+      return 'Free';
+    case 'practitioner':
+    case 'pro':
+      return 'Practitioner';
+    case 'advanced':
+    case 'clinic':
+      return 'Advanced';
+    default:
+      return planCode;
+  }
+}
 
 export default function AdminActiveSubscriptions() {
   const [searchParams] = useSearchParams();
@@ -112,7 +126,7 @@ export default function AdminActiveSubscriptions() {
                           : 'bg-gray-100 text-gray-600'
                       }`}
                     >
-                      {planService.getPlanName(sub.planCode)}
+                      {formatPlanName(sub.planCode)}
                     </span>
                   </td>
                   <td className="px-6 py-4">

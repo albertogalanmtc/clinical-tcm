@@ -1,7 +1,21 @@
 import { useSearchParams, Link, useNavigate } from 'react-router-dom';
 import { ChevronLeft, Users } from 'lucide-react';
 import { useSwipeBack } from '../hooks/useSwipeBack';
-import { planService } from '../services/planService';
+
+function formatPlanName(planCode: string): string {
+  switch (planCode) {
+    case 'free':
+      return 'Free';
+    case 'practitioner':
+    case 'pro':
+      return 'Practitioner';
+    case 'advanced':
+    case 'clinic':
+      return 'Advanced';
+    default:
+      return planCode;
+  }
+}
 
 export default function AdminTotalUsers() {
   const [searchParams] = useSearchParams();
@@ -112,7 +126,7 @@ export default function AdminTotalUsers() {
                           : 'bg-gray-100 text-gray-600'
                       }`}
                     >
-                      {planService.getPlanName(user.planCode)}
+                      {formatPlanName(user.planCode)}
                     </span>
                   </td>
                   <td className="px-6 py-4">
