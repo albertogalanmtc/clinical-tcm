@@ -15,6 +15,8 @@ import {
   Send,
   MoreVertical
 } from 'lucide-react';
+import { supabase } from '@/app/lib/supabase';
+import { useUser } from '@/app/contexts/UserContext';
 import {
   getCommunityPost,
   getPostComments,
@@ -37,6 +39,7 @@ import { communityTextToHtml } from '../utils/communityContent';
 export default function CommunityPostDetail() {
   const { postId } = useParams<{ postId: string }>();
   const navigate = useNavigate();
+  const userContext = useUser();
   const [post, setPost] = useState(getCommunityPost(postId!));
   const [comments, setComments] = useState<CommunityComment[]>([]);
   const [newComment, setNewComment] = useState('');
@@ -71,17 +74,43 @@ export default function CommunityPostDetail() {
     setComments(postComments);
   };
 
-  const handleSubmitComment = (e: React.FormEvent, parentId?: string) => {
+  const handleSubmitComment = async (e: React.FormEvent, parentId?: string) => {
     e.preventDefault();
 
     const content = parentId ? editContent : newComment;
     if (!content.trim()) return;
 
+    let userForComment = userContext.userId ? {
+      id: userContext.userId,
+      name: userContext.name,
+      isAdmin: userContext.isAdmin
+    } : undefined;
+
+    if (!userForComment) {
+      const { data: { session } } = await supabase.auth.getSession();
+
+      if (session?.user) {
+        const { data: userProfile } = await supabase
+          .from('users')
+          .select('first_name, last_name, role')
+          .eq('id', session.user.id)
+          .single();
+
+        if (userProfile) {
+          userForComment = {
+            id: session.user.id,
+            name: `${userProfile.first_name} ${userProfile.last_name}`.trim(),
+            isAdmin: userProfile.role === 'admin'
+          };
+        }
+      }
+    }
+
     createComment({
       postId: postId!,
       content: content.trim(),
       parentId
-    });
+    }, userForComment);
 
     if (parentId) {
       setReplyingTo(null);
