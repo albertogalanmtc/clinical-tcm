@@ -44,7 +44,7 @@ export function DashboardMessages() {
   };
 
   const getMessageColor = (highlighted: boolean) => {
-    return highlighted ? 'bg-green-50 border-green-200' : 'bg-white border-gray-200';
+    return highlighted ? 'bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-200' : 'bg-white border-gray-200';
   };
 
   if (loading) {

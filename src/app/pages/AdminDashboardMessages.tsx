@@ -138,7 +138,7 @@ export default function AdminDashboardMessages() {
                 </p>
                 <div className="flex items-center gap-2 mb-3">
                   {message.highlighted && (
-                    <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded font-medium">
+                    <span className="px-2 py-0.5 bg-teal-100 text-teal-700 text-xs rounded font-medium">
                       Highlighted
                     </span>
                   )}
