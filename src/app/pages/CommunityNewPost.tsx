@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Plus, X, HelpCircle } from 'lucide-react';
 import { createCommunityPost, getCategoryInfo, type PostCategory } from '../data/communityPosts';
+import { useUser } from '../contexts/UserContext';
+import { supabase } from '../lib/supabase';
 
 const TEMPLATE = `**Contexto:** [edad/género, medicación actual, duración]
 
@@ -22,6 +24,7 @@ const TEMPLATE = `**Contexto:** [edad/género, medicación actual, duración]
 
 export default function CommunityNewPost() {
   const navigate = useNavigate();
+  const userContext = useUser();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [category, setCategory] = useState<PostCategory>('question');
@@ -53,14 +56,44 @@ export default function CommunityNewPost() {
       return;
     }
 
-    const newPost = createCommunityPost({
-      title: title.trim(),
-      content: content.trim(),
-      category,
-      symptoms: symptoms.length > 0 ? symptoms : undefined
-    });
+    const submitPost = async () => {
+      let userForPost = userContext.userId ? {
+        id: userContext.userId,
+        name: userContext.name,
+        isAdmin: userContext.isAdmin
+      } : undefined;
 
-    navigate(`/community/post/${newPost.id}`);
+      if (!userForPost) {
+        const { data: { session } } = await supabase.auth.getSession();
+
+        if (session?.user) {
+          const { data: userProfile } = await supabase
+            .from('users')
+            .select('first_name, last_name, role')
+            .eq('id', session.user.id)
+            .single();
+
+          if (userProfile) {
+            userForPost = {
+              id: session.user.id,
+              name: `${userProfile.first_name} ${userProfile.last_name}`.trim(),
+              isAdmin: userProfile.role === 'admin'
+            };
+          }
+        }
+      }
+
+      const newPost = createCommunityPost({
+        title: title.trim(),
+        content: content.trim(),
+        category,
+        symptoms: symptoms.length > 0 ? symptoms : undefined
+      }, userForPost);
+
+      navigate(`/community/post/${newPost.id}`);
+    };
+
+    submitPost();
   };
 
   return (
