@@ -13,6 +13,7 @@ import {
   ArrowRight,
   Check,
 } from 'lucide-react';
+import { getPlatformSettings } from '@/app/data/platformSettings';
 
 type UserProfile = 'student' | 'classical_practitioner' | 'integrative_clinician';
 type PrimaryGoal = 'study' | 'quick_reference' | 'prescriptions' | 'research';
@@ -109,6 +110,7 @@ const REFERRAL_OPTIONS: Array<{ value: ReferralSource; label: string }> = [
 export default function OnboardingSurvey() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const [branding, setBranding] = useState(() => getPlatformSettings().branding);
 
   // Restore previous answers if the user is coming back from /select-membership
   const [data, setData] = useState<SurveyData>(() => {
@@ -139,6 +141,20 @@ export default function OnboardingSurvey() {
     if (stepParam >= 1 && stepParam <= TOTAL_STEPS) return stepParam;
     return 1;
   });
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setBranding(getPlatformSettings().branding);
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('platformSettingsUpdated', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('platformSettingsUpdated', handleStorageChange);
+    };
+  }, []);
 
   const canContinue = (() => {
     if (currentStep === 1) return data.userProfile !== null;
@@ -177,8 +193,18 @@ export default function OnboardingSurvey() {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
-            <div className="w-16 h-16 rounded-2xl bg-teal-600 flex items-center justify-center shadow-lg">
-              <Leaf className="w-10 h-10 text-white" />
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg overflow-hidden">
+              {branding.logoUrl ? (
+                <img
+                  src={branding.logoUrl}
+                  alt="Logo"
+                  className="w-full h-full object-contain"
+                />
+              ) : (
+                <div className="w-full h-full bg-teal-600 rounded-2xl flex items-center justify-center">
+                  <Leaf className="w-10 h-10 text-white" />
+                </div>
+              )}
             </div>
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
