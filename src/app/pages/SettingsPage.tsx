@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
-import { Shield, Lock, Globe, Bell, Trash2, AlertTriangle, Eye, EyeOff, X, Mail, Key, Check, AlertCircle } from 'lucide-react';
+import { Shield, Lock, Globe, Bell, Trash2, AlertTriangle, Eye, EyeOff, X, Mail, Key, Check, AlertCircle, MessageCircle } from 'lucide-react';
 import { useUser } from '../contexts/UserContext';
 import { updatePassword } from '@/services/api/authService';
 import { supabase } from '../lib/supabase';
@@ -14,6 +14,24 @@ const LANGUAGES = [
   { code: 'de', name: 'German' },
   { code: 'zh', name: 'Chinese' },
 ];
+
+interface NotificationPreferences {
+  subscriptionRenewal: boolean;
+  latestUpdates: boolean;
+  communityReplies: boolean;
+  communityNewPosts: boolean;
+}
+
+const DEFAULT_NOTIFICATION_PREFERENCES: NotificationPreferences = {
+  subscriptionRenewal: true,
+  latestUpdates: true,
+  communityReplies: true,
+  communityNewPosts: false,
+};
+
+function getNotificationPreferencesKey(email: string): string {
+  return `notification_preferences:${email.toLowerCase()}`;
+}
 
 export default function SettingsPage() {
   const { email, firstName, lastName } = useUser();
@@ -49,9 +67,39 @@ export default function SettingsPage() {
 
   // Preferences
   const [language, setLanguage] = useState('en');
-  const [notifyRenewal, setNotifyRenewal] = useState(true);
-  const [notifyUsage, setNotifyUsage] = useState(true);
-  const [notifyUpdates, setNotifyUpdates] = useState(false);
+  const [notificationPreferences, setNotificationPreferences] = useState<NotificationPreferences>(DEFAULT_NOTIFICATION_PREFERENCES);
+
+  useEffect(() => {
+    if (!email) return;
+
+    try {
+      const stored = localStorage.getItem(getNotificationPreferencesKey(email));
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        setNotificationPreferences({
+          ...DEFAULT_NOTIFICATION_PREFERENCES,
+          ...parsed,
+        });
+      } else {
+        setNotificationPreferences(DEFAULT_NOTIFICATION_PREFERENCES);
+      }
+    } catch (error) {
+      console.error('Error loading notification preferences:', error);
+      setNotificationPreferences(DEFAULT_NOTIFICATION_PREFERENCES);
+    }
+  }, [email]);
+
+  useEffect(() => {
+    if (!email) return;
+    try {
+      localStorage.setItem(
+        getNotificationPreferencesKey(email),
+        JSON.stringify(notificationPreferences)
+      );
+    } catch (error) {
+      console.error('Error saving notification preferences:', error);
+    }
+  }, [email, notificationPreferences]);
 
   // Delete account modal
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -427,8 +475,8 @@ export default function SettingsPage() {
                 <Globe className="w-5 h-5 text-purple-600" />
               </div>
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">Preferences</h2>
-                <p className="text-sm text-gray-500">Customize your experience</p>
+                <h2 className="text-lg font-semibold text-gray-900">Latest updates</h2>
+                <p className="text-sm text-gray-500">Stay informed about important news, updates, and announcements</p>
               </div>
             </div>
           </div>
@@ -458,76 +506,118 @@ export default function SettingsPage() {
 
             {/* Notifications */}
             <div>
-              <div className="flex items-center gap-2 mb-3">
-                <Bell className="w-4 h-4 text-gray-400" />
-                <label className="text-sm font-medium text-gray-700">
-                  Email Notifications
-                </label>
-              </div>
-
-              <div className="space-y-3">
-                {/* Subscription Renewal */}
-                <div className="flex items-center justify-between py-2">
-                  <div>
-                    <p className="text-sm font-medium text-gray-900">Subscription renewal</p>
-                    <p className="text-xs text-gray-500">Get notified before your subscription renews</p>
-                  </div>
-                  <button
-                    onClick={() => setNotifyRenewal(!notifyRenewal)}
-                    className={`chip-compact relative inline-flex h-5 w-9 sm:h-6 sm:w-11 items-center rounded-full transition-colors ${
-                      notifyRenewal ? 'bg-teal-600' : 'bg-gray-300'
-                    }`}
-                  >
-                    <span
-                      className={`inline-block h-3.5 w-3.5 sm:h-4 sm:w-4 transform rounded-full bg-white transition-transform ${
-                        notifyRenewal ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0.5 sm:translate-x-1'
-                      }`}
-                    />
-                  </button>
+                <div className="flex items-center gap-2 mb-3">
+                  <Bell className="w-4 h-4 text-gray-400" />
+                  <label className="text-sm font-medium text-gray-700">
+                    Notifications
+                  </label>
                 </div>
 
-                {/* Usage Limits */}
-                <div className="flex items-center justify-between py-2">
-                  <div>
-                    <p className="text-sm font-medium text-gray-900">Usage limit alerts</p>
-                    <p className="text-xs text-gray-500">Get notified when approaching usage limits</p>
-                  </div>
-                  <button
-                    onClick={() => setNotifyUsage(!notifyUsage)}
-                    className={`chip-compact relative inline-flex h-5 w-9 sm:h-6 sm:w-11 items-center rounded-full transition-colors ${
-                      notifyUsage ? 'bg-teal-600' : 'bg-gray-300'
-                    }`}
-                  >
-                    <span
-                      className={`inline-block h-3.5 w-3.5 sm:h-4 sm:w-4 transform rounded-full bg-white transition-transform ${
-                        notifyUsage ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0.5 sm:translate-x-1'
+                <div className="space-y-3">
+                  {/* Subscription Renewal */}
+                  <div className="flex items-center justify-between py-2">
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">Subscription renewal</p>
+                      <p className="text-xs text-gray-500">Get notified before your subscription renews</p>
+                    </div>
+                    <button
+                      onClick={() => setNotificationPreferences(prev => ({
+                        ...prev,
+                        subscriptionRenewal: !prev.subscriptionRenewal
+                      }))}
+                      className={`chip-compact relative inline-flex h-5 w-9 sm:h-6 sm:w-11 items-center rounded-full transition-colors ${
+                        notificationPreferences.subscriptionRenewal ? 'bg-teal-600' : 'bg-gray-300'
                       }`}
-                    />
-                  </button>
-                </div>
+                    >
+                      <span
+                        className={`inline-block h-3.5 w-3.5 sm:h-4 sm:w-4 transform rounded-full bg-white transition-transform ${
+                          notificationPreferences.subscriptionRenewal ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0.5 sm:translate-x-1'
+                        }`}
+                      />
+                    </button>
+                  </div>
 
-                {/* Product Updates */}
-                <div className="flex items-center justify-between py-2">
-                  <div>
-                    <p className="text-sm font-medium text-gray-900">Product updates</p>
-                    <p className="text-xs text-gray-500">Receive news about new features and improvements</p>
-                  </div>
-                  <button
-                    onClick={() => setNotifyUpdates(!notifyUpdates)}
-                    className={`chip-compact relative inline-flex h-5 w-9 sm:h-6 sm:w-11 items-center rounded-full transition-colors ${
-                      notifyUpdates ? 'bg-teal-600' : 'bg-gray-300'
-                    }`}
-                  >
-                    <span
-                      className={`inline-block h-3.5 w-3.5 sm:h-4 sm:w-4 transform rounded-full bg-white transition-transform ${
-                        notifyUpdates ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0.5 sm:translate-x-1'
+                  {/* Latest Updates */}
+                  <div className="flex items-center justify-between py-2">
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">Latest updates</p>
+                      <p className="text-xs text-gray-500">Stay informed about important news, updates, and announcements</p>
+                    </div>
+                    <button
+                      onClick={() => setNotificationPreferences(prev => ({
+                        ...prev,
+                        latestUpdates: !prev.latestUpdates
+                      }))}
+                      className={`chip-compact relative inline-flex h-5 w-9 sm:h-6 sm:w-11 items-center rounded-full transition-colors ${
+                        notificationPreferences.latestUpdates ? 'bg-teal-600' : 'bg-gray-300'
                       }`}
-                    />
-                  </button>
+                    >
+                      <span
+                        className={`inline-block h-3.5 w-3.5 sm:h-4 sm:w-4 transform rounded-full bg-white transition-transform ${
+                          notificationPreferences.latestUpdates ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0.5 sm:translate-x-1'
+                        }`}
+                      />
+                    </button>
+                  </div>
+
+                  {/* Community Notifications */}
+                  <div className="pt-4 border-t border-gray-200">
+                    <div className="flex items-center gap-2 mb-3">
+                      <MessageCircle className="w-4 h-4 text-gray-400" />
+                      <label className="text-sm font-medium text-gray-700">
+                        Community notifications
+                      </label>
+                    </div>
+
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between py-2">
+                        <div>
+                          <p className="text-sm font-medium text-gray-900">Replies to my posts</p>
+                          <p className="text-xs text-gray-500">Get an email when someone replies to a post you created</p>
+                        </div>
+                        <button
+                          onClick={() => setNotificationPreferences(prev => ({
+                            ...prev,
+                            communityReplies: !prev.communityReplies
+                          }))}
+                          className={`chip-compact relative inline-flex h-5 w-9 sm:h-6 sm:w-11 items-center rounded-full transition-colors ${
+                            notificationPreferences.communityReplies ? 'bg-teal-600' : 'bg-gray-300'
+                          }`}
+                        >
+                          <span
+                            className={`inline-block h-3.5 w-3.5 sm:h-4 sm:w-4 transform rounded-full bg-white transition-transform ${
+                              notificationPreferences.communityReplies ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0.5 sm:translate-x-1'
+                            }`}
+                          />
+                        </button>
+                      </div>
+
+                      <div className="flex items-center justify-between py-2">
+                        <div>
+                          <p className="text-sm font-medium text-gray-900">New community posts</p>
+                          <p className="text-xs text-gray-500">Get emails about new posts shared by other users</p>
+                        </div>
+                        <button
+                          onClick={() => setNotificationPreferences(prev => ({
+                            ...prev,
+                            communityNewPosts: !prev.communityNewPosts
+                          }))}
+                          className={`chip-compact relative inline-flex h-5 w-9 sm:h-6 sm:w-11 items-center rounded-full transition-colors ${
+                            notificationPreferences.communityNewPosts ? 'bg-teal-600' : 'bg-gray-300'
+                          }`}
+                        >
+                          <span
+                            className={`inline-block h-3.5 w-3.5 sm:h-4 sm:w-4 transform rounded-full bg-white transition-transform ${
+                              notificationPreferences.communityNewPosts ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0.5 sm:translate-x-1'
+                            }`}
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
         </div>
 
         {/* Danger Zone */}
