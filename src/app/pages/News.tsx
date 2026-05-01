@@ -131,7 +131,7 @@ export default function News() {
           {/* Right Column: News Details */}
           <main className="hidden lg:block flex-1 min-w-0 flex flex-col self-stretch">
             {selectedNews ? (
-              <div className="bg-white rounded-lg border border-gray-200 flex flex-col flex-1 min-h-0 max-h-[calc(100vh-6rem)] overflow-hidden">
+              <div className="bg-white rounded-lg border border-gray-200 flex flex-col flex-1 min-h-0 max-h-[calc(100vh-6rem)] overflow-hidden mb-6">
                 {/* News Header */}
                 <div className="flex-shrink-0 p-6">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">
