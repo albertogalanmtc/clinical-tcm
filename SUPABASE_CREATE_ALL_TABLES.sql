@@ -25,6 +25,10 @@ CREATE TABLE IF NOT EXISTS users (
   billing_period TEXT CHECK (billing_period IN ('monthly', 'yearly')),
   trial_ends_at TIMESTAMPTZ,
   subscription_ends_at TIMESTAMPTZ,
+  email_subscription_renewal BOOLEAN NOT NULL DEFAULT TRUE,
+  email_latest_updates BOOLEAN NOT NULL DEFAULT TRUE,
+  email_community_replies BOOLEAN NOT NULL DEFAULT TRUE,
+  email_community_new_posts BOOLEAN NOT NULL DEFAULT FALSE,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );

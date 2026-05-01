@@ -34,7 +34,7 @@ function getNotificationPreferencesKey(email: string): string {
 }
 
 export default function SettingsPage() {
-  const { email, firstName, lastName } = useUser();
+  const { email, firstName, lastName, userId } = useUser();
   const navigate = useNavigate();
 
   // Auth provider state
@@ -68,6 +68,7 @@ export default function SettingsPage() {
   // Preferences
   const [language, setLanguage] = useState('en');
   const [notificationPreferences, setNotificationPreferences] = useState<NotificationPreferences>(DEFAULT_NOTIFICATION_PREFERENCES);
+  const [preferencesLoaded, setPreferencesLoaded] = useState(false);
 
   useEffect(() => {
     if (!email) return;
@@ -87,7 +88,7 @@ export default function SettingsPage() {
       console.error('Error loading notification preferences:', error);
       setNotificationPreferences(DEFAULT_NOTIFICATION_PREFERENCES);
     }
-  }, [email]);
+  }, [email, userId]);
 
   useEffect(() => {
     if (!email) return;
@@ -100,6 +101,67 @@ export default function SettingsPage() {
       console.error('Error saving notification preferences:', error);
     }
   }, [email, notificationPreferences]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const loadPreferences = async () => {
+      if (!userId) {
+        setPreferencesLoaded(true);
+        return;
+      }
+
+      try {
+        const { data, error } = await supabase
+          .from('users')
+          .select('email_subscription_renewal, email_latest_updates, email_community_replies, email_community_new_posts')
+          .eq('id', userId)
+          .single();
+
+        if (!cancelled && !error && data) {
+          setNotificationPreferences({
+            subscriptionRenewal: data.email_subscription_renewal ?? DEFAULT_NOTIFICATION_PREFERENCES.subscriptionRenewal,
+            latestUpdates: data.email_latest_updates ?? DEFAULT_NOTIFICATION_PREFERENCES.latestUpdates,
+            communityReplies: data.email_community_replies ?? DEFAULT_NOTIFICATION_PREFERENCES.communityReplies,
+            communityNewPosts: data.email_community_new_posts ?? DEFAULT_NOTIFICATION_PREFERENCES.communityNewPosts,
+          });
+        }
+      } catch (error) {
+        console.error('Error loading notification preferences from Supabase:', error);
+      } finally {
+        if (!cancelled) setPreferencesLoaded(true);
+      }
+    };
+
+    loadPreferences();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userId]);
+
+  useEffect(() => {
+    if (!preferencesLoaded) return;
+    if (!userId) return;
+
+    const savePreferences = async () => {
+      try {
+        await supabase
+          .from('users')
+          .update({
+            email_subscription_renewal: notificationPreferences.subscriptionRenewal,
+            email_latest_updates: notificationPreferences.latestUpdates,
+            email_community_replies: notificationPreferences.communityReplies,
+            email_community_new_posts: notificationPreferences.communityNewPosts,
+          })
+          .eq('id', userId);
+      } catch (error) {
+        console.error('Error saving notification preferences to Supabase:', error);
+      }
+    };
+
+    savePreferences();
+  }, [preferencesLoaded, userId, notificationPreferences]);
 
   // Delete account modal
   const [showDeleteModal, setShowDeleteModal] = useState(false);

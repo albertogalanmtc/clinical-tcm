@@ -1,5 +1,6 @@
 // Community Posts Management - Types and Storage
 import { communityService } from '../services/communityService';
+import { supabase } from '../lib/supabase';
 
 export type PostCategory = 'help' | 'success' | 'question' | 'discussion';
 
@@ -199,6 +200,23 @@ function generateUniqueId(prefix: string): string {
   return `${prefix}-${timestamp}-${counter}-${random}`;
 }
 
+async function triggerCommunityNotification(payload: Record<string, unknown>): Promise<void> {
+  try {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.access_token) return;
+
+    const { error } = await supabase.functions.invoke('send-community-notification', {
+      body: payload
+    });
+
+    if (error) {
+      console.error('❌ Failed to trigger community notification:', error);
+    }
+  } catch (error) {
+    console.error('❌ Error triggering community notification:', error);
+  }
+}
+
 export function createCommunityPost(
   post: Omit<CommunityPost, 'id' | 'createdAt' | 'views' | 'commentCount' | 'followedBy' | 'authorId' | 'author'>,
   userOverride?: { id: string; name: string; isAdmin: boolean }
@@ -241,6 +259,15 @@ export function createCommunityPost(
         console.log('✅ Post saved to Supabase successfully:', result);
       } else {
         console.error('❌ Post save returned null');
+      }
+      if (result) {
+        triggerCommunityNotification({
+          type: 'new_post',
+          postId: result.id,
+          postTitle: result.title,
+          actorId: user.id,
+          actorName: user.name
+        });
       }
       // Dispatch event to refresh the list
       window.dispatchEvent(new CustomEvent('community-posts-updated'));
@@ -390,6 +417,17 @@ export function createComment(
         console.log('✅ Comment saved to Supabase successfully:', result);
       } else {
         console.error('❌ Comment save returned null');
+      }
+      if (result) {
+        triggerCommunityNotification({
+          type: 'reply_to_post',
+          postId: comment.postId,
+          commentId: result.id,
+          actorId: user.id,
+          actorName: user.name,
+          commentContent: comment.content,
+          parentCommentId: comment.parentId || null
+        });
       }
       // Dispatch event to refresh the list
       window.dispatchEvent(new CustomEvent('community-posts-updated'));
