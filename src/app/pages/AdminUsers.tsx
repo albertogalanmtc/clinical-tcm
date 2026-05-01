@@ -4,7 +4,6 @@ import { Search, Users, CreditCard, Calendar, TrendingUp, Beaker, Leaf, FlaskCon
 import { Avatar } from '../components/Avatar';
 import { TimeRangeSelector, TimeRange } from '../components/TimeRangeSelector';
 import { getAllUsers, User } from '../data/usersManager';
-import { planService } from '../services/planService';
 
 // Avatar colors for users
 const avatarColors = ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b', '#ec4899', '#06b6d4', '#ef4444', '#14b8a6'];
@@ -20,10 +19,18 @@ function getAvatarColor(email: string): string {
 
 // Helper to format plan name (reads from planService for dynamic names)
 function formatPlanName(planType: string): string {
-  if (planType === 'free' || planType === 'pro' || planType === 'clinic') {
-    return planService.getPlanName(planType as 'free' | 'pro' | 'clinic');
+  switch (planType) {
+    case 'free':
+      return 'Free';
+    case 'practitioner':
+    case 'pro':
+      return 'Practitioner';
+    case 'advanced':
+    case 'clinic':
+      return 'Advanced';
+    default:
+      return planType;
   }
-  return planType;
 }
 
 // Transform User data to AdminUsers display format
