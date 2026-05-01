@@ -2,7 +2,7 @@ import { CreditCard, Check, ArrowUpRight, Download, CheckCircle, Loader2 } from 
 import { useUser } from '../contexts/UserContext';
 import { useState, useEffect } from 'react';
 import { planService, Plan } from '../services/planService';
-import { createStripeBillingPortal, createStripeCheckout, getStripePriceId } from '@/lib/stripe';
+import { createStripeBillingPortal, createStripeCheckout, fetchStripeInvoices, getStripePriceId } from '@/lib/stripe';
 import { supabase } from '@/app/lib/supabase';
 import {
   Dialog as BillingDialog,
@@ -127,6 +127,7 @@ export default function MembershipPage() {
   const [plans, setPlans] = useState<DisplayPlan[]>([]);
   const [originalPlans, setOriginalPlans] = useState<Plan[]>([]);
   const [invoices, setInvoices] = useState<Invoice[]>([]);
+  const [isInvoicesLoading, setIsInvoicesLoading] = useState(true);
   const [loadingPlanId, setLoadingPlanId] = useState<string | null>(null);
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly');
   const [billingModalOpen, setBillingModalOpen] = useState(false);
@@ -160,9 +161,44 @@ export default function MembershipPage() {
 
   // Load invoices from service
   useEffect(() => {
-    const loadedInvoices = planService.getInvoices();
-    setInvoices(loadedInvoices);
-  }, []);
+    let cancelled = false;
+
+    const loadInvoices = async () => {
+      setIsInvoicesLoading(true);
+      try {
+        if (!planType) {
+          if (!cancelled) setInvoices([]);
+          return;
+        }
+
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session?.user) {
+          if (!cancelled) setInvoices([]);
+          return;
+        }
+
+        const loadedInvoices = await fetchStripeInvoices(session.user.id, 10);
+        if (!cancelled) {
+          setInvoices(loadedInvoices);
+        }
+      } catch (error) {
+        console.error('Error loading invoices:', error);
+        if (!cancelled) {
+          setInvoices([]);
+        }
+      } finally {
+        if (!cancelled) {
+          setIsInvoicesLoading(false);
+        }
+      }
+    };
+
+    loadInvoices();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [planType]);
 
   // Use actual user plan
   const currentPlan = planType;
@@ -320,7 +356,11 @@ export default function MembershipPage() {
       <div className="mb-8">
         <h2 className="text-xl font-semibold text-gray-900 mb-4">Invoice History</h2>
         
-        {invoices.length > 0 ? (
+        {isInvoicesLoading ? (
+          <div className="bg-white rounded-lg border border-gray-200 p-8 text-center">
+            <p className="text-sm text-gray-500">Loading invoices...</p>
+          </div>
+        ) : invoices.length > 0 ? (
           <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
             {/* Desktop Table View */}
             <div className="hidden sm:block overflow-x-auto">
@@ -428,7 +468,7 @@ export default function MembershipPage() {
           </div>
         ) : (
           <div className="bg-white rounded-lg border border-gray-200 p-8 text-center">
-            <p className="text-sm text-gray-500">No invoices yet</p>
+            <p className="text-sm text-gray-500">No invoices found for this account yet.</p>
           </div>
         )}
       </div>

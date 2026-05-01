@@ -24,6 +24,15 @@ export interface StripeBillingPortalOptions {
   returnUrl?: string;
 }
 
+export interface StripeInvoiceRecord {
+  id: string;
+  date: string;
+  description: string;
+  amount: number;
+  status: 'paid' | 'pending' | 'failed';
+  invoiceUrl?: string;
+}
+
 export function getStripePriceId(
   planType: Exclude<PlanType, 'free'>,
   billingPeriod: StripeBillingPeriod,
@@ -165,6 +174,56 @@ export async function createStripeBillingPortal(options: StripeBillingPortalOpti
         detail
           ? `Billing portal failed: ${detail}`
           : `Billing portal failed with HTTP ${error.context.status}`
+      );
+    }
+
+    if (error instanceof FunctionsRelayError || error instanceof FunctionsFetchError) {
+      throw new Error(error.message);
+    }
+
+    throw error;
+  }
+}
+
+export async function fetchStripeInvoices(userId: string, limit = 10): Promise<StripeInvoiceRecord[]> {
+  if (!userId) {
+    return [];
+  }
+
+  try {
+    const { supabase } = await import('@/app/lib/supabase');
+    const { data, error } = await supabase.functions.invoke('list-stripe-invoices', {
+      body: {
+        userId,
+        limit,
+      },
+    });
+
+    if (error) {
+      throw error;
+    }
+
+    return Array.isArray(data?.invoices) ? data.invoices : [];
+  } catch (error: any) {
+    console.error('Error fetching Stripe invoices:', error);
+
+    if (error instanceof FunctionsHttpError && error.context instanceof Response) {
+      const responseText = await error.context.text().catch(() => '');
+      let detail = responseText.trim();
+
+      try {
+        const parsed = JSON.parse(responseText);
+        if (parsed?.error) {
+          detail = String(parsed.error);
+        }
+      } catch {
+        // keep raw text fallback
+      }
+
+      throw new Error(
+        detail
+          ? `Failed to load invoices: ${detail}`
+          : `Failed to load invoices with HTTP ${error.context.status}`
       );
     }
 
