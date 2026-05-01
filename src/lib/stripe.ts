@@ -33,6 +33,13 @@ export interface StripeInvoiceRecord {
   invoiceUrl?: string;
 }
 
+export interface StripeSubscriptionRecord {
+  id: string;
+  status: string;
+  currentPeriodEnd: string | null;
+  billingPeriod: StripeBillingPeriod | null;
+}
+
 export function getStripePriceId(
   planType: Exclude<PlanType, 'free'>,
   billingPeriod: StripeBillingPeriod,
@@ -224,6 +231,66 @@ export async function fetchStripeInvoices(userId: string, limit = 10): Promise<S
         detail
           ? `Failed to load invoices: ${detail}`
           : `Failed to load invoices with HTTP ${error.context.status}`
+      );
+    }
+
+    if (error instanceof FunctionsRelayError || error instanceof FunctionsFetchError) {
+      throw new Error(error.message);
+    }
+
+    throw error;
+  }
+}
+
+export async function fetchStripeSubscription(userId: string): Promise<StripeSubscriptionRecord | null> {
+  if (!userId) {
+    return null;
+  }
+
+  try {
+    const { supabase } = await import('@/app/lib/supabase');
+    const { data, error } = await supabase.functions.invoke('get-stripe-subscription', {
+      body: {
+        userId,
+      },
+    });
+
+    if (error) {
+      throw error;
+    }
+
+    if (!data?.subscription) {
+      return null;
+    }
+
+    return {
+      id: String(data.subscription.id || ''),
+      status: String(data.subscription.status || ''),
+      currentPeriodEnd: data.subscription.currentPeriodEnd || null,
+      billingPeriod: data.subscription.billingPeriod === 'monthly' || data.subscription.billingPeriod === 'yearly'
+        ? data.subscription.billingPeriod
+        : null,
+    };
+  } catch (error: any) {
+    console.error('Error fetching Stripe subscription:', error);
+
+    if (error instanceof FunctionsHttpError && error.context instanceof Response) {
+      const responseText = await error.context.text().catch(() => '');
+      let detail = responseText.trim();
+
+      try {
+        const parsed = JSON.parse(responseText);
+        if (parsed?.error) {
+          detail = String(parsed.error);
+        }
+      } catch {
+        // keep raw text fallback
+      }
+
+      throw new Error(
+        detail
+          ? `Failed to load subscription: ${detail}`
+          : `Failed to load subscription with HTTP ${error.context.status}`
       );
     }
 

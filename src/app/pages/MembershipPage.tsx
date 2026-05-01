@@ -2,7 +2,7 @@ import { CreditCard, Check, ArrowUpRight, Download, CheckCircle, Loader2 } from 
 import { useUser } from '../contexts/UserContext';
 import { useState, useEffect } from 'react';
 import { planService, Plan } from '../services/planService';
-import { createStripeBillingPortal, createStripeCheckout, fetchStripeInvoices, getStripePriceId } from '@/lib/stripe';
+import { createStripeBillingPortal, createStripeCheckout, fetchStripeInvoices, fetchStripeSubscription, getStripePriceId } from '@/lib/stripe';
 import { supabase } from '@/app/lib/supabase';
 import {
   Dialog as BillingDialog,
@@ -142,6 +142,8 @@ export default function MembershipPage() {
   const [originalPlans, setOriginalPlans] = useState<Plan[]>([]);
   const [invoices, setInvoices] = useState<Invoice[]>([]);
   const [isInvoicesLoading, setIsInvoicesLoading] = useState(true);
+  const [renewalDate, setRenewalDate] = useState<string>('—');
+  const [isRenewalLoading, setIsRenewalLoading] = useState(true);
   const [loadingPlanId, setLoadingPlanId] = useState<string | null>(null);
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly');
   const [billingModalOpen, setBillingModalOpen] = useState(false);
@@ -214,9 +216,63 @@ export default function MembershipPage() {
     };
   }, [planType]);
 
+  // Load subscription renewal info
+  useEffect(() => {
+    let cancelled = false;
+
+    const loadSubscription = async () => {
+      setIsRenewalLoading(true);
+      try {
+        if (!planType || planType === 'free') {
+          if (!cancelled) {
+            setRenewalDate('—');
+          }
+          return;
+        }
+
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session?.user) {
+          if (!cancelled) {
+            setRenewalDate('—');
+          }
+          return;
+        }
+
+        const subscription = await fetchStripeSubscription(session.user.id);
+
+        if (!cancelled) {
+          if (subscription?.currentPeriodEnd) {
+            const formatted = new Date(subscription.currentPeriodEnd).toLocaleDateString('en-US', {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+            });
+            setRenewalDate(formatted);
+          } else {
+            setRenewalDate('—');
+          }
+        }
+      } catch (error) {
+        console.error('Error loading subscription renewal:', error);
+        if (!cancelled) {
+          setRenewalDate('—');
+        }
+      } finally {
+        if (!cancelled) {
+          setIsRenewalLoading(false);
+        }
+      }
+    };
+
+    loadSubscription();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [planType]);
+
   // Use actual user plan
   const currentPlan = planType;
-  const renewalDate = 'Mar 12, 2026';
   const latestPaidInvoice = invoices.find(invoice => invoice.status === 'paid');
   const inferredCurrentPlan = currentPlan !== 'free'
     ? currentPlan
@@ -355,7 +411,7 @@ export default function MembershipPage() {
                   </span>
                 </div>
                 <p className="text-sm text-gray-600">
-                  Next renewal: <span className="font-medium text-gray-900">{renewalDate}</span>
+                  Next renewal: <span className="font-medium text-gray-900">{isRenewalLoading ? 'Loading...' : renewalDate}</span>
                 </p>
               </div>
               <div className="text-right">
