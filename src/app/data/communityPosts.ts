@@ -451,6 +451,17 @@ export function createComment(
   console.log('💬 Creating comment - User ID:', user.id, 'Name:', user.name);
   if (user.id && !user.id.startsWith('user-demo')) {
     console.log('🔄 Saving comment to Supabase...');
+    triggerCommunityNotification({
+      type: 'reply_to_post',
+      postId: comment.postId,
+      postTitle: context?.postTitle || getCommunityPost(comment.postId)?.title,
+      postAuthorId: context?.postAuthorId || getCommunityPost(comment.postId)?.authorId,
+      actorId: user.id,
+      actorName: user.name,
+      commentContent: comment.content,
+      parentCommentId: comment.parentId || null
+    });
+
     resolveSupabasePostId(comment.postId, context?.postAuthorId, context?.postTitle).then(async (resolvedPostId) => {
       const supabasePostId = resolvedPostId || comment.postId;
       const localPost = getCommunityPost(comment.postId);
@@ -466,17 +477,6 @@ export function createComment(
 
       if (result) {
         console.log('✅ Comment saved to Supabase successfully:', result);
-        triggerCommunityNotification({
-          type: 'reply_to_post',
-          postId: supabasePostId,
-          commentId: result.id,
-          postTitle: localPost?.title,
-          postAuthorId: localPost?.authorId,
-          actorId: user.id,
-          actorName: user.name,
-          commentContent: comment.content,
-          parentCommentId: comment.parentId || null
-        });
       } else {
         console.error('❌ Comment save returned null');
       }

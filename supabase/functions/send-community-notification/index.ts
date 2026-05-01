@@ -101,50 +101,14 @@ Deno.serve(async (req) => {
     const fromUrl = `${appUrl}/community`;
 
     if (payload.type === 'reply_to_post') {
-      if (!payload.postId || !payload.commentId) {
-        return new Response(JSON.stringify({ error: 'Missing required fields: postId, commentId' }), {
+      if (!payload.postAuthorId) {
+        return new Response(JSON.stringify({ error: 'Missing required field: postAuthorId' }), {
           status: 400,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         });
       }
 
-      const { data: post, error: postError } = await admin
-        .from('community_posts')
-        .select('id, title, author_id')
-        .eq('id', payload.postId)
-        .single();
-
-      const fallbackPost = payload.postAuthorId
-        ? {
-            id: payload.postId,
-            title: payload.postTitle || 'Your Community post',
-            author_id: payload.postAuthorId,
-          }
-        : null;
-
-      const effectivePost = post || fallbackPost;
-
-      if (!effectivePost) {
-        return new Response(JSON.stringify({ error: 'Post not found' }), {
-          status: 404,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        });
-      }
-
-      const { data: comment, error: commentError } = await admin
-        .from('community_comments')
-        .select('id, content, author_id, author_name, parent_comment_id')
-        .eq('id', payload.commentId)
-        .single();
-
-      if (commentError || !comment) {
-        return new Response(JSON.stringify({ error: 'Comment not found' }), {
-          status: 404,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        });
-      }
-
-      if (payload.actorId && comment.author_id === payload.actorId) {
+      if (payload.actorId && payload.postAuthorId === payload.actorId) {
         return new Response(JSON.stringify({ success: true, skipped: true, reason: 'self_reply' }), {
           status: 200,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -154,7 +118,7 @@ Deno.serve(async (req) => {
       const { data: recipient, error: recipientError } = await admin
         .from('users')
         .select('email, first_name, last_name, email_community_replies')
-        .eq('id', effectivePost.author_id)
+        .eq('id', payload.postAuthorId)
         .single();
 
       if (recipientError || !recipient?.email) {
@@ -172,11 +136,11 @@ Deno.serve(async (req) => {
       }
 
       const recipientName = `${recipient.first_name || ''} ${recipient.last_name || ''}`.trim() || 'there';
-      const snippet = createSnippet(comment.content || '');
-      const subject = `New reply on your Community post: ${effectivePost.title}`;
+      const snippet = createSnippet(payload.commentContent || '');
+      const subject = `New reply on your Community post: ${payload.postTitle || 'Your Community post'}`;
       const body = `
         <p style="margin: 0 0 12px;">Hi ${escapeHtml(recipientName)},</p>
-        <p style="margin: 0 0 12px;"><strong>${escapeHtml(comment.author_name || payload.actorName || 'Someone')}</strong> replied to your post <strong>${escapeHtml(effectivePost.title)}</strong>.</p>
+        <p style="margin: 0 0 12px;"><strong>${escapeHtml(payload.actorName || 'Someone')}</strong> replied to your post <strong>${escapeHtml(payload.postTitle || 'your post')}</strong>.</p>
         <p style="margin: 0 0 12px; color: #475569;">"${escapeHtml(snippet)}"</p>
         <p style="margin: 0;">Open the conversation to read and respond.</p>
       `;
@@ -186,7 +150,7 @@ Deno.serve(async (req) => {
         subject,
         title: 'You have a new reply',
         body,
-        ctaUrl: `${appUrl}/community/post/${payload.postId}`,
+        ctaUrl: payload.postId ? `${appUrl}/community/post/${payload.postId}` : fromUrl,
         ctaLabel: 'View reply',
       });
 
