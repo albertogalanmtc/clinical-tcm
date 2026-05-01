@@ -21,6 +21,55 @@ interface PortalRequest {
   returnUrl?: string
 }
 
+const ACTIVE_SUBSCRIPTION_STATUSES = new Set([
+  'active',
+  'trialing',
+  'past_due',
+  'unpaid',
+  'paused',
+])
+
+async function findStripeCustomerIdByEmail(email: string): Promise<string | null> {
+  if (!email) return null
+
+  const customers = await stripe.customers.list({
+    email,
+    limit: 10,
+  })
+
+  if (!customers.data.length) {
+    return null
+  }
+
+  let fallbackCustomerId: string | null = null
+
+  for (const customer of customers.data) {
+    if (!customer || customer.deleted) {
+      continue
+    }
+
+    if (!fallbackCustomerId) {
+      fallbackCustomerId = customer.id
+    }
+
+    const subscriptions = await stripe.subscriptions.list({
+      customer: customer.id,
+      status: 'all',
+      limit: 10,
+    })
+
+    const hasActiveSubscription = subscriptions.data.some((subscription) =>
+      ACTIVE_SUBSCRIPTION_STATUSES.has(subscription.status)
+    )
+
+    if (hasActiveSubscription) {
+      return customer.id
+    }
+  }
+
+  return fallbackCustomerId
+}
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
@@ -50,7 +99,27 @@ serve(async (req) => {
       )
     }
 
-    if (!user?.stripe_customer_id) {
+    let stripeCustomerId = user?.stripe_customer_id || null
+
+    if (!stripeCustomerId && user?.email) {
+      stripeCustomerId = await findStripeCustomerIdByEmail(user.email)
+
+      if (stripeCustomerId) {
+        const { error: updateError } = await supabase
+          .from('users')
+          .update({
+            stripe_customer_id: stripeCustomerId,
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', userId)
+
+        if (updateError) {
+          console.error('Error caching recovered Stripe customer ID:', updateError)
+        }
+      }
+    }
+
+    if (!stripeCustomerId) {
       return new Response(
         JSON.stringify({
           error: 'No Stripe customer found for this user. Complete a paid subscription first.',
@@ -63,7 +132,7 @@ serve(async (req) => {
     const resolvedReturnUrl = returnUrl || `${appUrl}/account/membership`
 
     const session = await stripe.billingPortal.sessions.create({
-      customer: user.stripe_customer_id,
+      customer: stripeCustomerId,
       return_url: resolvedReturnUrl,
     })
 

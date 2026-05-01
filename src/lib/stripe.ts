@@ -150,7 +150,17 @@ export async function createStripeBillingPortal(options: StripeBillingPortalOpti
 
     if (error instanceof FunctionsHttpError && error.context instanceof Response) {
       const responseText = await error.context.text().catch(() => '');
-      const detail = responseText.trim();
+      let detail = responseText.trim();
+
+      try {
+        const parsed = JSON.parse(responseText);
+        if (parsed?.error) {
+          detail = String(parsed.error);
+        }
+      } catch {
+        // keep raw text fallback
+      }
+
       throw new Error(
         detail
           ? `Billing portal failed: ${detail}`
