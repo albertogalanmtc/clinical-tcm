@@ -181,7 +181,7 @@ export default function MembershipPage() {
         return;
       }
 
-      const selectedPlanData = allPlans.find(plan => plan.code === planId);
+      const selectedPlanData = originalPlans.find(plan => plan.code === planId);
       const normalizedPlan = planId as 'practitioner' | 'advanced';
       const priceId = getStripePriceId(normalizedPlan, billingPeriod, selectedPlanData);
       const successUrl = `${window.location.origin}/payment-success?session_id={CHECKOUT_SESSION_ID}&plan=${normalizedPlan}&billing=${billingPeriod}`;

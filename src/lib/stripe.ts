@@ -1,9 +1,10 @@
+import { FunctionsHttpError, FunctionsFetchError, FunctionsRelayError } from '@supabase/supabase-js';
 import type { PlanType } from '@/app/data/usersManager';
 
 export const STRIPE_PRICE_IDS = {
-  free: import.meta.env.VITE_STRIPE_PRICE_FREE || 'price_1TQSiKBwGvLUpGuBwZs5woZ5',
-  practitioner: import.meta.env.VITE_STRIPE_PRICE_PRACTITIONER || 'price_1TQSimBwGvLUpGuBBhXw7LHb',
-  advanced: import.meta.env.VITE_STRIPE_PRICE_ADVANCED || 'price_1TQSj3BwGvLUpGuBSyqanz4O',
+  free: import.meta.env.VITE_STRIPE_PRICE_FREE || '',
+  practitioner: import.meta.env.VITE_STRIPE_PRICE_PRACTITIONER || '',
+  advanced: import.meta.env.VITE_STRIPE_PRICE_ADVANCED || '',
 } as const;
 
 export type StripeBillingPeriod = 'monthly' | 'yearly';
@@ -51,7 +52,9 @@ export async function createStripeCheckout(options: StripeCheckoutOptions) {
 
   const resolvedPriceId = priceId || STRIPE_PRICE_IDS[planType];
   if (!resolvedPriceId) {
-    throw new Error(`Missing Stripe price ID for plan: ${planType}`);
+    throw new Error(
+      `Missing Stripe price ID for plan: ${planType}. Set the plan's Stripe price ID in Supabase (admin_plans) or define VITE_STRIPE_PRICE_${planType.toUpperCase()} in Vercel.`
+    );
   }
 
   try {
@@ -91,6 +94,21 @@ export async function createStripeCheckout(options: StripeCheckoutOptions) {
     window.location.href = data.url;
   } catch (error: any) {
     console.error('Error creating checkout:', error);
+
+    if (error instanceof FunctionsHttpError && error.context instanceof Response) {
+      const responseText = await error.context.text().catch(() => '');
+      const detail = responseText.trim();
+      throw new Error(
+        detail
+          ? `Stripe checkout failed: ${detail}`
+          : `Stripe checkout failed with HTTP ${error.context.status}`
+      );
+    }
+
+    if (error instanceof FunctionsRelayError || error instanceof FunctionsFetchError) {
+      throw new Error(error.message);
+    }
+
     throw error;
   }
 }
