@@ -35,10 +35,16 @@ export default function SelectMembership() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const selectedPlanFromUrl = searchParams.get('plan') as PlanType | null;
-  const billingFromUrl = searchParams.get('billing') === 'yearly' ? 'yearly' : 'monthly';
+  const pendingPlanFromStorage = localStorage.getItem('pendingPlanType') as PlanType | null;
+  const billingFromUrl = searchParams.get('billing') === 'yearly' ? 'yearly' : null;
+  const pendingBillingFromStorage = localStorage.getItem('pendingBillingPeriod') === 'yearly' ? 'yearly' : 'monthly';
   const [selectedPlan, setSelectedPlan] = useState<PlanType | null>(() => {
     if (selectedPlanFromUrl === 'free' || selectedPlanFromUrl === 'practitioner' || selectedPlanFromUrl === 'advanced') {
       return selectedPlanFromUrl;
+    }
+
+    if (pendingPlanFromStorage === 'free' || pendingPlanFromStorage === 'practitioner' || pendingPlanFromStorage === 'advanced') {
+      return pendingPlanFromStorage;
     }
 
     // Pre-select recommended plan based on onboarding survey answer
@@ -61,7 +67,7 @@ export default function SelectMembership() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isPlansLoading, setIsPlansLoading] = useState(true);
-  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>(billingFromUrl);
+  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>(billingFromUrl || pendingBillingFromStorage);
   const [branding, setBranding] = useState(() => getPlatformSettings().branding);
   const [plans, setPlans] = useState<Plan[]>([]);
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Eye, EyeOff, AlertCircle, Check } from 'lucide-react';
 import AuthLayout from '../components/AuthLayout';
 import { LegalDocumentModal } from '../components/LegalDocumentModal';
@@ -9,6 +9,7 @@ import { supabase } from '../lib/supabase';
 
 export default function CreateAccount() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -21,6 +22,8 @@ export default function CreateAccount() {
   const [authentication, setAuthentication] = useState(() => getPlatformSettings().authentication);
   
   const settings = getPlatformSettings();
+  const pendingPlanType = searchParams.get('plan');
+  const pendingBillingPeriod = searchParams.get('billing') === 'yearly' ? 'yearly' : 'monthly';
   
   const [touched, setTouched] = useState({
     email: false,
@@ -83,6 +86,13 @@ export default function CreateAccount() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!pendingPlanType) return;
+
+    localStorage.setItem('pendingPlanType', pendingPlanType);
+    localStorage.setItem('pendingBillingPeriod', pendingBillingPeriod);
+  }, [pendingBillingPeriod, pendingPlanType]);
+
   const handleOAuthLogin = async (provider: 'google' | 'microsoft' | 'apple') => {
     setIsLoading(true);
     setGeneralError(null);
@@ -130,6 +140,11 @@ export default function CreateAccount() {
     setSuccessMessage(null);
 
     try {
+      if (pendingPlanType) {
+        localStorage.setItem('pendingPlanType', pendingPlanType);
+        localStorage.setItem('pendingBillingPeriod', pendingBillingPeriod);
+      }
+
       // Create user in Supabase Auth
       const { data, error: signUpError } = await supabase.auth.signUp({
         email,

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Check, Sparkles, Users, BookOpen, Leaf, Heart, ArrowRight, Database, FlaskConical, FileText, ShieldCheck, Search } from 'lucide-react';
 import { getPlatformSettings } from '@/app/data/platformSettings';
 import { planService, type Plan } from '@/app/services/planService';
+import { supabase } from '@/app/lib/supabase';
 
 interface LandingPlanCard {
   id: string;
@@ -134,13 +135,16 @@ export default function Landing() {
       features: plan.membershipDisplay?.customFeatures?.length ? plan.membershipDisplay.customFeatures : buildPlanFeatures(plan),
       cta: plan.code === 'free' ? 'Get Started Free' : `Start ${plan.name}`,
       popular: plan.isPopular,
-      action: (selectedBillingPeriod) => {
-        if (plan.code === 'free') {
-          navigate('/create-account');
-          return;
-        }
+      action: async (selectedBillingPeriod) => {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
 
-        navigate(`/select-membership?plan=${plan.code}&billing=${selectedBillingPeriod}`);
+        const targetUrl = session?.user
+          ? `/select-membership?plan=${plan.code}&billing=${selectedBillingPeriod}`
+          : `/create-account?plan=${plan.code}&billing=${selectedBillingPeriod}`;
+
+        navigate(targetUrl);
       },
     };
   };
