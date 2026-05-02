@@ -240,7 +240,7 @@ export default function Landing() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-[calc(100dvh-4rem)] px-4 sm:px-6 lg:px-8 pt-20 pb-12 lg:pt-0 lg:pb-0 flex items-center overflow-hidden">
+      <section className="relative min-h-[calc(100dvh-4rem)] px-4 sm:px-6 lg:px-8 pt-20 pb-12 lg:pt-8 lg:pb-0 flex items-center overflow-hidden">
         <div className="absolute inset-x-0 top-0 h-80 bg-gradient-to-b from-teal-50/70 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto w-full text-center relative lg:h-full lg:flex lg:flex-col lg:justify-center">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-5 sm:mb-6 leading-tight">
@@ -351,7 +351,13 @@ export default function Landing() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div
+            className={`mx-auto gap-8 ${
+              plans.length <= 2
+                ? 'grid grid-cols-1 md:grid-cols-2 md:justify-items-center max-w-5xl'
+                : 'grid md:grid-cols-3 max-w-6xl'
+            }`}
+          >
             {isPlansLoading && plans.length === 0 ? (
               [0, 1, 2].map((index) => (
                 <div
@@ -372,7 +378,9 @@ export default function Landing() {
             ) : plans.map((plan, index) => (
               <div
                 key={index}
-                className={`relative bg-white rounded-2xl border-2 p-8 flex flex-col ${
+                className={`relative bg-white rounded-2xl border-2 p-8 flex flex-col w-full ${
+                  plans.length <= 2 ? 'md:max-w-md' : ''
+                } ${
                   plan.popular
                     ? 'border-teal-600 shadow-xl scale-105'
                     : 'border-gray-200'
