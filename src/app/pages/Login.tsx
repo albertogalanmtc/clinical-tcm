@@ -207,7 +207,7 @@ export default function Login() {
                     />
                   </svg>
                   <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                    Sign in with Google
+                    Log in with Google
                   </span>
                 </button>
               )}
