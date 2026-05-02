@@ -240,14 +240,14 @@ export default function Landing() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-[calc(100svh-4rem)] px-4 sm:px-6 lg:px-8 pt-24 pb-14 flex items-center overflow-hidden">
+      <section className="relative min-h-[calc(100dvh-4rem)] px-4 sm:px-6 lg:px-8 pt-20 pb-12 lg:pt-0 lg:pb-0 flex items-center overflow-hidden">
         <div className="absolute inset-x-0 top-0 h-80 bg-gradient-to-b from-teal-50/70 via-transparent to-transparent pointer-events-none" />
-        <div className="max-w-7xl mx-auto w-full text-center relative">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+        <div className="max-w-7xl mx-auto w-full text-center relative lg:h-full lg:flex lg:flex-col lg:justify-center">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-5 sm:mb-6 leading-tight">
             Traditional Chinese Medicine
             <span className="block text-teal-600 mt-2">Made Modern</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-10 sm:mb-12">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8 sm:mb-10">
             Your comprehensive platform for TCM clinical practice. Access extensive herb libraries, 
             formula databases, and build prescriptions with built-in safety protocols.
           </p>
@@ -269,7 +269,7 @@ export default function Landing() {
                 View Pricing
               </button>
           </div>
-          <div className="mt-10 sm:mt-14 flex justify-center">
+          <div className="mt-8 sm:mt-10 lg:mt-12 flex justify-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/80 px-4 py-2 text-sm text-gray-500 shadow-sm backdrop-blur">
               <span className="h-2 w-2 rounded-full bg-teal-500 animate-pulse" />
               Scroll to explore features and pricing
