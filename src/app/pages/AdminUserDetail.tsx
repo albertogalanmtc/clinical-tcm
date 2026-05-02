@@ -1,9 +1,28 @@
+import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ChevronLeft, Calendar, Mail, CreditCard, MapPin, Beaker, Leaf, FlaskConical, ShieldCheck, Users, FileText } from 'lucide-react';
+import {
+  ChevronLeft,
+  Calendar,
+  Mail,
+  CreditCard,
+  MapPin,
+  Beaker,
+  Leaf,
+  FlaskConical,
+  ShieldCheck,
+  Loader2,
+} from 'lucide-react';
 import { Avatar } from '../components/Avatar';
 import { useSwipeBack } from '../hooks/useSwipeBack';
-import { getAllUsers } from '../data/usersManager';
-import { planService } from '../services/planService';
+import {
+  fetchAllAdminUsers,
+  formatPlanName,
+  getAccountStatus,
+  getPlanBadgeClass,
+  getStatusBadgeClass,
+  getUserDisplayName,
+  type AdminUserRecord,
+} from '../services/adminUsersService';
 
 // Helper to get avatar color based on email
 const avatarColors = ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b', '#ec4899', '#06b6d4', '#ef4444', '#14b8a6'];
@@ -16,37 +35,90 @@ function getAvatarColor(email: string): string {
 }
 
 // Mock invoices - will be replaced with Stripe data when connected
-const getMockInvoices = (planCode: string) => {
+const getMockInvoices = (planCode: AdminUserRecord['plan_type']) => {
   if (planCode === 'free') return [];
+
+  const isPractitioner = planCode === 'practitioner' || planCode === 'pro';
+  const amount = isPractitioner ? 9 : 19;
+  const planName = formatPlanName(planCode);
 
   return [
     {
       id: 'INV-2026-003',
       date: 'Feb 12, 2026',
-      description: `${planService.getPlanName(planCode as 'pro' | 'clinic')} Plan - Monthly`,
-      amount: planCode === 'pro' ? 9 : 19,
+      description: `${planName} Plan - Monthly`,
+      amount,
       status: 'paid' as const,
     },
     {
       id: 'INV-2026-002',
       date: 'Jan 12, 2026',
-      description: `${planService.getPlanName(planCode as 'pro' | 'clinic')} Plan - Monthly`,
-      amount: planCode === 'pro' ? 9 : 19,
+      description: `${planName} Plan - Monthly`,
+      amount,
       status: 'paid' as const,
     },
   ];
 };
 
+function formatDate(dateValue: string | null | undefined): string {
+  if (!dateValue) {
+    return 'Not available';
+  }
+
+  const date = new Date(dateValue);
+  if (Number.isNaN(date.getTime())) {
+    return 'Not available';
+  }
+
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+}
+
 export default function AdminUserDetail() {
   const { userId } = useParams();
   const navigate = useNavigate();
+  const [users, setUsers] = useState<AdminUserRecord[]>([]);
+  const [loading, setLoading] = useState(true);
 
   // Enable swipe-to-go-back gesture on mobile
   useSwipeBack();
 
-  // Get all users and find the current one
-  const allUsers = getAllUsers();
-  const user = allUsers.find(u => u.email === userId);
+  useEffect(() => {
+    let cancelled = false;
+
+    const loadUsers = async () => {
+      setLoading(true);
+      const data = await fetchAllAdminUsers();
+
+      if (cancelled) {
+        return;
+      }
+
+      setUsers(data);
+      setLoading(false);
+    };
+
+    void loadUsers();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const user = users.find(u => u.id === userId || u.email === userId);
+
+  if (loading) {
+    return (
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-center justify-center py-16">
+          <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
+        </div>
+      </div>
+    );
+  }
 
   if (!user) {
     return (
@@ -74,10 +146,11 @@ export default function AdminUserDetail() {
     );
   }
 
-  const fullName = `${user.profile.firstName} ${user.profile.lastName}`;
+  const fullName = getUserDisplayName(user);
   const avatarColor = getAvatarColor(user.email);
-  const planName = planService.getPlanName(user.planType);
-  const invoices = getMockInvoices(user.planType);
+  const planName = formatPlanName(user.plan_type);
+  const status = getAccountStatus(user);
+  const invoices = getMockInvoices(user.plan_type);
 
   // Mock usage stats - will come from database when Supabase is connected
   const usageStats = {
@@ -120,10 +193,10 @@ export default function AdminUserDetail() {
                   <Mail className="w-4 h-4" />
                   {user.email}
                 </div>
-                {user.profile.country && (
+                {user.country && (
                   <div className="flex items-center gap-2">
                     <MapPin className="w-4 h-4" />
-                    {user.profile.country}
+                    {user.country}
                   </div>
                 )}
               </div>
@@ -131,18 +204,14 @@ export default function AdminUserDetail() {
           </div>
           <div className="flex gap-2 flex-wrap">
             <span
-              className={`px-3 py-1 text-sm font-medium rounded ${
-                user.planType === 'pro'
-                  ? 'bg-teal-50 text-teal-700'
-                  : user.planType === 'clinic'
-                  ? 'bg-purple-50 text-purple-700'
-                  : 'bg-gray-100 text-gray-600'
-              }`}
+              className={`px-3 py-1 text-sm font-medium rounded ${getPlanBadgeClass(user.plan_type)}`}
             >
               {planName}
             </span>
-            <span className="px-3 py-1 text-sm font-medium rounded bg-green-50 text-green-700">
-              Active
+            <span
+              className={`px-3 py-1 text-sm font-medium rounded ${getStatusBadgeClass(status)}`}
+            >
+              {status}
             </span>
           </div>
         </div>
@@ -151,12 +220,12 @@ export default function AdminUserDetail() {
           <div className="flex items-center gap-2 text-gray-500">
             <Calendar className="w-4 h-4" />
             <span>
-              Joined <span className="text-gray-900">Demo User</span>
+              Joined <span className="text-gray-900">{formatDate(user.created_at)}</span>
             </span>
           </div>
           <div className="flex items-center gap-2 text-gray-500">
             <span>Last active:</span>
-            <span className="text-gray-900">Active now</span>
+            <span className="text-gray-900">{formatDate(user.updated_at)}</span>
           </div>
         </div>
       </div>
@@ -300,11 +369,11 @@ export default function AdminUserDetail() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <div className="text-sm font-medium text-gray-500 mb-1">First Name</div>
-              <div className="text-sm text-gray-900">{user.profile.firstName}</div>
+              <div className="text-sm text-gray-900">{user.first_name || 'Not specified'}</div>
             </div>
             <div>
               <div className="text-sm font-medium text-gray-500 mb-1">Last Name</div>
-              <div className="text-sm text-gray-900">{user.profile.lastName}</div>
+              <div className="text-sm text-gray-900">{user.last_name || 'Not specified'}</div>
             </div>
             <div>
               <div className="text-sm font-medium text-gray-500 mb-1">Email</div>
@@ -312,7 +381,7 @@ export default function AdminUserDetail() {
             </div>
             <div>
               <div className="text-sm font-medium text-gray-500 mb-1">Country</div>
-              <div className="text-sm text-gray-900">{user.profile.country || 'Not specified'}</div>
+              <div className="text-sm text-gray-900">{user.country || 'Not specified'}</div>
             </div>
             <div>
               <div className="text-sm font-medium text-gray-500 mb-1">Role</div>

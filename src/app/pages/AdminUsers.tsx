@@ -1,9 +1,32 @@
 import { useState, useMemo, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Search, Users, CreditCard, Calendar, TrendingUp, Beaker, Leaf, FlaskConical, ArrowUp, ArrowDown, ShieldCheck, Shield } from 'lucide-react';
+import {
+  Search,
+  Users,
+  CreditCard,
+  Calendar,
+  TrendingUp,
+  Beaker,
+  Leaf,
+  FlaskConical,
+  ArrowUp,
+  ArrowDown,
+  ShieldCheck,
+  Shield,
+  Loader2,
+} from 'lucide-react';
 import { Avatar } from '../components/Avatar';
 import { TimeRangeSelector, TimeRange } from '../components/TimeRangeSelector';
-import { getAllUsers, User } from '../data/usersManager';
+import {
+  countActiveSubscriptions,
+  countNewUsers,
+  fetchAllAdminUsers,
+  formatPlanName,
+  getAccountStatus,
+  getTimeRangeBounds,
+  getUserDisplayName,
+  type AdminUserRecord,
+} from '../services/adminUsersService';
 
 // Avatar colors for users
 const avatarColors = ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b', '#ec4899', '#06b6d4', '#ef4444', '#14b8a6'];
@@ -17,23 +40,31 @@ function getAvatarColor(email: string): string {
   return avatarColors[Math.abs(hash) % avatarColors.length];
 }
 
-// Helper to format plan name (reads from planService for dynamic names)
-function formatPlanName(planType: string): string {
-  switch (planType) {
-    case 'free':
-      return 'Free';
-    case 'practitioner':
-    case 'pro':
-      return 'Practitioner';
-    case 'advanced':
-    case 'clinic':
-      return 'Advanced';
-    default:
-      return planType;
+function formatRelativeTime(date: string): string {
+  const then = new Date(date);
+  const now = new Date();
+  const diffMs = now.getTime() - then.getTime();
+  const diffMins = Math.floor(diffMs / 60000);
+  const diffHours = Math.floor(diffMs / 3600000);
+  const diffDays = Math.floor(diffMs / 86400000);
+
+  if (Number.isNaN(then.getTime())) {
+    return 'N/A';
   }
+
+  if (diffMins < 1) return 'Just now';
+  if (diffMins < 60) return `${diffMins} min ago`;
+  if (diffHours < 24) return `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+  if (diffDays < 7) return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+
+  return then.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
 }
 
-// Transform User data to AdminUsers display format
+// Transform real Supabase user data to display format
 interface AdminUserDisplay {
   id: string;
   name: string;
@@ -50,23 +81,21 @@ interface AdminUserDisplay {
   herbsAdded: number;
 }
 
-function transformUserToDisplay(user: User, index: number): AdminUserDisplay {
-  const fullName = `${user.profile.firstName} ${user.profile.lastName}`;
-
+function transformUserToDisplay(user: AdminUserRecord): AdminUserDisplay {
   return {
-    id: user.email, // Using email as unique ID
-    name: fullName,
+    id: user.id,
+    name: getUserDisplayName(user),
     email: user.email,
-    country: user.profile.country || 'N/A',
-    avatarColor: getAvatarColor(user.email), // Will use user's custom color when connected to Supabase
-    avatarImage: null, // Will show user's uploaded image when connected to Supabase
-    plan: formatPlanName(user.planType),
-    status: 'Active', // Default to Active (can be extended later)
+    country: user.country || 'N/A',
+    avatarColor: getAvatarColor(user.email),
+    avatarImage: null,
+    plan: formatPlanName(user.plan_type),
+    status: getAccountStatus(user),
     role: user.role,
-    joinDate: 'N/A', // Will show as N/A for demo users (can be extended later)
-    lastActive: 'Active now', // Default value (can be extended later)
-    formulasCreated: 0, // Default (can be calculated from prescriptions data)
-    herbsAdded: 0, // Default (can be calculated from custom herbs)
+    joinDate: user.created_at,
+    lastActive: formatRelativeTime(user.updated_at),
+    formulasCreated: 0,
+    herbsAdded: 0,
   };
 }
 
@@ -76,41 +105,26 @@ type TimePeriod = 'week' | 'month' | 'year' | 'lastMonth' | 'lastYear';
 // Mock stats by time period (including week, month, year for presets)
 const statsByPeriod = {
   week: {
-    totalUsers: { value: '5', change: '+0%', trend: 'up' as const },
-    activeSubscriptions: { value: '4', change: '+0%', trend: 'up' as const },
-    newUsers: { value: '0', change: '+0%', trend: 'up' as const },
     formulasGenerated: { value: '0', change: '+0%', trend: 'up' as const },
     herbsUsed: { value: '0', change: '+0%', trend: 'up' as const },
     formulasUsed: { value: '0', change: '+0%', trend: 'up' as const },
   },
   month: {
-    totalUsers: { value: '5', change: '+0%', trend: 'up' as const },
-    activeSubscriptions: { value: '4', change: '+0%', trend: 'up' as const },
-    newUsers: { value: '0', change: '+0%', trend: 'up' as const },
     formulasGenerated: { value: '0', change: '+0%', trend: 'up' as const },
     herbsUsed: { value: '0', change: '+0%', trend: 'up' as const },
     formulasUsed: { value: '0', change: '+0%', trend: 'up' as const },
   },
   year: {
-    totalUsers: { value: '5', change: '+0%', trend: 'up' as const },
-    activeSubscriptions: { value: '4', change: '+0%', trend: 'up' as const },
-    newUsers: { value: '5', change: '+0%', trend: 'up' as const },
     formulasGenerated: { value: '0', change: '+0%', trend: 'up' as const },
     herbsUsed: { value: '0', change: '+0%', trend: 'up' as const },
     formulasUsed: { value: '0', change: '+0%', trend: 'up' as const },
   },
   lastMonth: {
-    totalUsers: { value: '5', change: '+0%', trend: 'up' as const },
-    activeSubscriptions: { value: '4', change: '+0%', trend: 'up' as const },
-    newUsers: { value: '0', change: '+0%', trend: 'up' as const },
     formulasGenerated: { value: '0', change: '+0%', trend: 'up' as const },
     herbsUsed: { value: '0', change: '+0%', trend: 'up' as const },
     formulasUsed: { value: '0', change: '+0%', trend: 'up' as const },
   },
   lastYear: {
-    totalUsers: { value: '5', change: '+0%', trend: 'up' as const },
-    activeSubscriptions: { value: '4', change: '+0%', trend: 'up' as const },
-    newUsers: { value: '5', change: '+0%', trend: 'up' as const },
     formulasGenerated: { value: '0', change: '+0%', trend: 'up' as const },
     herbsUsed: { value: '0', change: '+0%', trend: 'up' as const },
     formulasUsed: { value: '0', change: '+0%', trend: 'up' as const },
@@ -122,7 +136,7 @@ export default function AdminUsers() {
   const location = useLocation();
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [filterPlan, setFilterPlan] = useState<'all' | 'Pro' | 'Free' | 'Clinic'>('all');
+  const [filterPlan, setFilterPlan] = useState<'all' | 'Free' | 'Practitioner' | 'Advanced'>('all');
   const [filterStatus, setFilterStatus] = useState<'all' | 'Active' | 'Inactive'>('all');
   const [filterRole, setFilterRole] = useState<'all' | 'user' | 'admin'>('all');
   const [timeRange, setTimeRange] = useState<TimeRange>({
@@ -130,6 +144,8 @@ export default function AdminUsers() {
     startDate: null,
     endDate: null,
   });
+  const [adminUsers, setAdminUsers] = useState<AdminUserRecord[]>([]);
+  const [loadingUsers, setLoadingUsers] = useState(true);
 
   // Handle URL query params for role filter
   useEffect(() => {
@@ -139,6 +155,28 @@ export default function AdminUsers() {
       setFilterRole(roleParam);
     }
   }, [location.search]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const loadUsers = async () => {
+      setLoadingUsers(true);
+      const data = await fetchAllAdminUsers();
+
+      if (cancelled) {
+        return;
+      }
+
+      setAdminUsers(data);
+      setLoadingUsers(false);
+    };
+
+    void loadUsers();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   // Helper function to build URL with time range params
   const buildStatUrl = (path: string) => {
@@ -154,83 +192,79 @@ export default function AdminUsers() {
   // Helper function to get stats based on time range
   const getStatsForTimeRange = (range: TimeRange) => {
     if (range.preset === 'custom' && range.startDate && range.endDate) {
-      // For custom range, return mock custom stats
+      // For custom range, return mock custom stats for non-user metrics
       return {
-        totalUsers: { value: '1,189', change: '+8.7%', trend: 'up' },
-        activeSubscriptions: { value: '856', change: '+5.4%', trend: 'up' },
-        newUsers: { value: '67', change: '+15%', trend: 'up' },
-        formulasGenerated: { value: '5,234', change: '+12.3%', trend: 'up' },
-        herbsUsed: { value: '312', change: '+7.2%', trend: 'up' },
-        formulasUsed: { value: '187', change: '+8.9%', trend: 'up' },
+        formulasGenerated: { value: '5,234', change: '+12.3%', trend: 'up' as const },
+        herbsUsed: { value: '312', change: '+7.2%', trend: 'up' as const },
+        formulasUsed: { value: '187', change: '+8.9%', trend: 'up' as const },
       };
     }
-    // Map preset to old format
+    // Map preset to old format for non-user metrics
     return statsByPeriod[range.preset as TimePeriod] || statsByPeriod.month;
   };
 
-  // Get current period stats
   const currentStats = getStatsForTimeRange(timeRange);
 
-  // Get real users from the system and transform to display format
-  const allUsers = useMemo(() => {
-    const systemUsers = getAllUsers();
-    return systemUsers.map((user, index) => transformUserToDisplay(user, index));
-  }, []);
+  const displayUsers = useMemo(
+    () => adminUsers.map(transformUserToDisplay),
+    [adminUsers]
+  );
 
-  // Build summary stats array with dynamic data
+  const currentBounds = useMemo(
+    () => getTimeRangeBounds(timeRange.preset, timeRange.startDate, timeRange.endDate),
+    [timeRange.preset, timeRange.startDate, timeRange.endDate]
+  );
+
+  const totalUsers = displayUsers.length;
+  const activeSubscriptions = countActiveSubscriptions(adminUsers);
+  const newUsers = countNewUsers(adminUsers, currentBounds);
+
   const summaryStats = [
     {
       label: 'Total users',
-      value: currentStats.totalUsers.value,
-      change: currentStats.totalUsers.change,
-      trend: currentStats.totalUsers.trend,
+      value: loadingUsers ? '—' : totalUsers.toString(),
       icon: Users,
-      path: '/admin/stats/total-users'
+      path: '/admin/stats/total-users',
     },
     {
       label: 'Active subscriptions',
-      value: currentStats.activeSubscriptions.value,
-      change: currentStats.activeSubscriptions.change,
-      trend: currentStats.activeSubscriptions.trend,
+      value: loadingUsers ? '—' : activeSubscriptions.toString(),
       icon: CreditCard,
-      path: '/admin/stats/active-subscriptions'
+      path: '/admin/stats/active-subscriptions',
     },
-    { 
-      label: 'New users', 
-      value: currentStats.newUsers.value,
-      change: currentStats.newUsers.change,
-      trend: currentStats.newUsers.trend,
+    {
+      label: 'New users',
+      value: loadingUsers ? '—' : newUsers.toString(),
       icon: TrendingUp,
-      path: '/admin/stats/new-users'
+      path: '/admin/stats/new-users',
     },
-    { 
-      label: 'Prescriptions generated', 
+    {
+      label: 'Prescriptions generated',
       value: currentStats.formulasGenerated.value,
       change: currentStats.formulasGenerated.change,
       trend: currentStats.formulasGenerated.trend,
       icon: Beaker,
-      path: '/admin/stats/prescriptions-generated'
+      path: '/admin/stats/prescriptions-generated',
     },
-    { 
-      label: 'Herbs used', 
+    {
+      label: 'Herbs used',
       value: currentStats.herbsUsed.value,
       change: currentStats.herbsUsed.change,
       trend: currentStats.herbsUsed.trend,
       icon: Leaf,
-      path: '/admin/stats/herbs-used'
+      path: '/admin/stats/herbs-used',
     },
-    { 
-      label: 'Formulas used', 
+    {
+      label: 'Formulas used',
       value: currentStats.formulasUsed.value,
       change: currentStats.formulasUsed.change,
       trend: currentStats.formulasUsed.trend,
       icon: FlaskConical,
-      path: '/admin/stats/formulas-used'
+      path: '/admin/stats/formulas-used',
     },
   ];
 
-  // Filter users based on search and filters
-  const filteredUsers = allUsers.filter((user) => {
+  const filteredUsers = displayUsers.filter((user) => {
     const matchesSearch =
       user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       user.email.toLowerCase().includes(searchQuery.toLowerCase());
@@ -242,10 +276,9 @@ export default function AdminUsers() {
     return matchesSearch && matchesPlan && matchesStatus && matchesRole;
   });
 
-  // Handler for role toggle
   const handleToggleRole = (email: string) => {
     console.log('Toggle role for user:', email);
-    alert('Esta funcionalidad estará disponible cuando conectes con Supabase.\n\nPor ahora, puedes cambiar roles manualmente en Supabase Dashboard:\n1. Ve a Table Editor → profiles\n2. Busca el usuario por email\n3. Cambia el campo "role" de user a admin o viceversa');
+    alert('Esta funcionalidad estará disponible cuando conectes con Supabase.\n\nPor ahora, puedes cambiar roles manualmente en Supabase Dashboard:\n1. Ve a Table Editor → users\n2. Busca el usuario por email\n3. Cambia el campo "role" de user a admin o viceversa');
   };
 
   return (
@@ -279,19 +312,20 @@ export default function AdminUsers() {
                 <div className="text-2xl font-semibold text-gray-900 leading-tight mb-0 sm:mb-1">{stat.value}</div>
                 <div className="text-sm text-gray-500">
                   {stat.label}
-                  {stat.subLabel && <span className="ml-1">({stat.subLabel})</span>}
                 </div>
               </div>
-              <div className={`flex items-center gap-1 text-xs font-medium flex-shrink-0 sm:absolute sm:top-3 sm:right-3 ${
-                stat.trend === 'up' ? 'text-green-600' : 'text-red-600'
-              }`}>
-                {stat.trend === 'up' ? (
-                  <ArrowUp className="w-3 h-3" />
-                ) : (
-                  <ArrowDown className="w-3 h-3" />
-                )}
-                {stat.change}
-              </div>
+              {stat.change && stat.trend && (
+                <div className={`flex items-center gap-1 text-xs font-medium flex-shrink-0 sm:absolute sm:top-3 sm:right-3 ${
+                  stat.trend === 'up' ? 'text-green-600' : 'text-red-600'
+                }`}>
+                  {stat.trend === 'up' ? (
+                    <ArrowUp className="w-3 h-3" />
+                  ) : (
+                    <ArrowDown className="w-3 h-3" />
+                  )}
+                  {stat.change}
+                </div>
+              )}
             </div>
           </Link>
         ))}
@@ -318,9 +352,9 @@ export default function AdminUsers() {
           className="bg-white px-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
         >
           <option value="all">All plans</option>
-          <option value="Pro">Pro</option>
           <option value="Free">Free</option>
-          <option value="Clinic">Clinic</option>
+          <option value="Practitioner">Practitioner</option>
+          <option value="Advanced">Advanced</option>
         </select>
 
         {/* Status Filter */}
@@ -347,7 +381,11 @@ export default function AdminUsers() {
       </div>
 
       {/* Users List */}
-      {filteredUsers.length > 0 ? (
+      {loadingUsers ? (
+        <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
+          <Loader2 className="w-8 h-8 animate-spin text-teal-600 mx-auto" />
+        </div>
+      ) : filteredUsers.length > 0 ? (
         <div className="bg-white rounded-lg border border-gray-200">
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -443,7 +481,7 @@ export default function AdminUsers() {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center gap-2 text-sm text-gray-500">
                         <Calendar className="w-4 h-4" />
-                        {user.joinDate === 'N/A' ? 'N/A' : new Date(user.joinDate).toLocaleDateString('en-US', {
+                        {new Date(user.joinDate).toLocaleDateString('en-US', {
                           year: 'numeric',
                           month: 'short',
                           day: 'numeric',

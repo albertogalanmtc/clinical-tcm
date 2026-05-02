@@ -5,11 +5,11 @@ import { useState, useEffect } from 'react';
 import { getAllHerbs, isCustomHerb } from '../data/herbsManager';
 import { getAllFormulas, isCustomFormula } from '../data/formulasManager';
 import { getPrescriptionsSync, type Prescription } from '../data/prescriptions';
-import { getAllUsers } from '../data/usersManager';
 import { getPlatformSettings } from '../data/platformSettings';
 import * as Dialog from '@radix-ui/react-dialog';
 import { PrescriptionView } from '../components/PrescriptionView';
 import { fetchRecentAdminActivity, type AdminActivityItem as RecentAdminActivityItem } from '../services/adminActivityService';
+import { fetchAllAdminUsers } from '../services/adminUsersService';
 
 interface ActivityItem {
   event: string;
@@ -40,7 +40,7 @@ export default function AdminDashboard() {
   const [herbCount, setHerbCount] = useState(0);
   const [formulaCount, setFormulaCount] = useState(0);
   const [prescriptionCount, setPrescriptionCount] = useState(0);
-  const [userCount, setUserCount] = useState(0);
+  const [userCount, setUserCount] = useState<number | null>(null);
   const [recentActivity, setRecentActivity] = useState<ActivityItem[]>([]);
   const [designSettings, setDesignSettings] = useState(getPlatformSettings().designSettings);
   const [selectedPrescription, setSelectedPrescription] = useState<Prescription | null>(null);
@@ -63,21 +63,29 @@ export default function AdminDashboard() {
 
   // Load real data
   useEffect(() => {
-    const updateCounts = () => {
-      const allUsers = getAllUsers();
+    let cancelled = false;
+
+    const updateCounts = async () => {
+      const allUsers = await fetchAllAdminUsers();
+
+      if (cancelled) {
+        return;
+      }
+
       setHerbCount(getAllHerbs().length);
       setFormulaCount(getAllFormulas().length);
       setPrescriptionCount(getPrescriptionsSync().length);
       setUserCount(allUsers.length);
     };
 
-    updateCounts();
+    void updateCounts();
 
     // Listen for updates
     window.addEventListener('prescriptions-updated', updateCounts);
     window.addEventListener('storage', updateCounts);
 
     return () => {
+      cancelled = true;
       window.removeEventListener('prescriptions-updated', updateCounts);
       window.removeEventListener('storage', updateCounts);
     };
@@ -136,7 +144,7 @@ export default function AdminDashboard() {
   const kpiData = [
     { 
       label: 'Total users', 
-      value: userCount.toString(), 
+      value: userCount === null ? '—' : userCount.toString(), 
       icon: Users, 
       color: 'bg-blue-50 text-blue-600' 
     },

@@ -94,6 +94,32 @@ export function isActiveSubscription(user: AdminUserRecord): boolean {
   return false;
 }
 
+export function isWithinTimeRange(dateValue: string, bounds: TimeRangeBounds): boolean {
+  const date = new Date(dateValue);
+
+  if (Number.isNaN(date.getTime())) {
+    return false;
+  }
+
+  if (bounds.start && date < bounds.start) {
+    return false;
+  }
+
+  if (bounds.end && date > bounds.end) {
+    return false;
+  }
+
+  return true;
+}
+
+export function countActiveSubscriptions(users: AdminUserRecord[]): number {
+  return users.filter(isActiveSubscription).length;
+}
+
+export function countNewUsers(users: AdminUserRecord[], bounds: TimeRangeBounds): number {
+  return users.filter(user => isWithinTimeRange(user.created_at, bounds)).length;
+}
+
 export function getPlanBadgeClass(planType: string): string {
   switch (planType) {
     case 'free':
