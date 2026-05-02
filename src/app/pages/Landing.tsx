@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Check, Sparkles, Users, BookOpen, Leaf, Heart, ArrowRight, Database, FlaskConical, FileText, ShieldCheck, Search } from 'lucide-react';
 import { getPlatformSettings } from '@/app/data/platformSettings';
 import { planService, type Plan } from '@/app/services/planService';
-import { supabase } from '@/app/lib/supabase';
 
 interface LandingPlanCard {
   id: string;
@@ -135,14 +134,11 @@ export default function Landing() {
       features: plan.membershipDisplay?.customFeatures?.length ? plan.membershipDisplay.customFeatures : buildPlanFeatures(plan),
       cta: plan.code === 'free' ? 'Get Started Free' : `Start ${plan.name}`,
       popular: plan.isPopular,
-      action: async (selectedBillingPeriod) => {
-        const {
-          data: { session },
-        } = await supabase.auth.getSession();
-
-        const targetUrl = session?.user
-          ? `/select-membership?plan=${plan.code}&billing=${selectedBillingPeriod}`
-          : `/create-account?plan=${plan.code}&billing=${selectedBillingPeriod}`;
+      action: (selectedBillingPeriod) => {
+        const targetUrl =
+          plan.code === 'free'
+            ? '/create-account'
+            : `/create-account?plan=${plan.code}&billing=${selectedBillingPeriod}`;
 
         navigate(targetUrl);
       },
@@ -355,18 +351,12 @@ export default function Landing() {
             </div>
           </div>
 
-          <div
-            className={`mx-auto gap-8 ${
-              plans.length <= 2
-                ? 'grid grid-cols-1 md:grid-cols-2 md:justify-items-center max-w-5xl'
-                : 'grid md:grid-cols-3 max-w-6xl'
-            }`}
-          >
+          <div className="flex flex-wrap justify-center gap-6 mx-auto max-w-6xl">
             {isPlansLoading && plans.length === 0 ? (
               [0, 1, 2].map((index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl border-2 border-gray-200 p-8 flex flex-col animate-pulse"
+                  className="relative w-full md:w-80 bg-white rounded-2xl shadow-xl border-2 transition-all p-6 text-left flex flex-col animate-pulse"
                 >
                   <div className="h-6 w-24 bg-gray-100 rounded mb-4" />
                   <div className="h-4 w-48 bg-gray-100 rounded mb-6" />
@@ -382,12 +372,10 @@ export default function Landing() {
             ) : plans.map((plan, index) => (
               <div
                 key={index}
-                className={`relative bg-white rounded-2xl border-2 p-6 sm:p-7 flex flex-col w-full ${
-                  plans.length <= 2 ? 'md:max-w-md' : ''
-                } ${
+                className={`relative w-full md:w-80 bg-white rounded-2xl shadow-xl border-2 transition-all p-6 text-left flex flex-col ${
                   plan.popular
-                    ? 'border-teal-600 shadow-xl scale-105'
-                    : 'border-gray-200'
+                    ? 'border-teal-600 shadow-teal-100'
+                    : 'border-gray-100 hover:border-teal-200 hover:shadow-teal-50'
                 }`}
               >
                 {(() => {
