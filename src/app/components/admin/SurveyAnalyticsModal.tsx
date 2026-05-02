@@ -14,6 +14,8 @@ interface SurveyResponseData {
   user_id: string;
   answers: string[];
   created_at: string;
+  user_name?: string;
+  user_email?: string;
 }
 
 export function SurveyAnalyticsModal({ survey, isOpen, onClose }: SurveyAnalyticsModalProps) {
@@ -40,7 +42,45 @@ export function SurveyAnalyticsModal({ survey, isOpen, onClose }: SurveyAnalytic
         console.error('Error loading survey responses:', error);
         setResponses([]);
       } else {
-        setResponses(data || []);
+        const rawResponses = data || [];
+        const userIds = Array.from(new Set(rawResponses.map(response => response.user_id).filter(Boolean)));
+
+        let userMap = new Map<string, { first_name?: string | null; last_name?: string | null; email?: string | null }>();
+
+        if (userIds.length > 0) {
+          const { data: users, error: usersError } = await supabase
+            .from('users')
+            .select('id, first_name, last_name, email')
+            .in('id', userIds);
+
+          if (usersError) {
+            console.error('Error loading survey user details:', usersError);
+          } else {
+            userMap = new Map(
+              (users || []).map(user => [
+                user.id,
+                {
+                  first_name: user.first_name,
+                  last_name: user.last_name,
+                  email: user.email,
+                },
+              ])
+            );
+          }
+        }
+
+        setResponses(rawResponses.map(response => {
+          const user = userMap.get(response.user_id);
+          const userName = user
+            ? `${user.first_name || ''} ${user.last_name || ''}`.trim()
+            : '';
+
+          return {
+            ...response,
+            user_name: userName || response.user_id,
+            user_email: user?.email || '',
+          };
+        }));
       }
     } catch (error) {
       console.error('Error loading survey responses:', error);
@@ -199,8 +239,13 @@ export function SurveyAnalyticsModal({ survey, isOpen, onClose }: SurveyAnalytic
                       className="bg-white rounded-lg p-4 border border-gray-200"
                     >
                       <div className="flex items-center justify-between mb-2">
-                        <p className="text-sm font-medium text-gray-900 font-mono">
-                          User: {response.user_id.substring(0, 8)}...
+                        <p className="text-sm font-medium text-gray-900">
+                          <span className="font-semibold">{response.user_name || 'Unknown user'}</span>
+                          {response.user_email ? (
+                            <span className="text-gray-500"> · {response.user_email}</span>
+                          ) : (
+                            <span className="text-gray-500 font-mono"> · {response.user_id.substring(0, 8)}...</span>
+                          )}
                         </p>
                         <p className="text-xs text-gray-500">
                           {new Date(response.created_at).toLocaleDateString()}
