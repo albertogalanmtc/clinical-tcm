@@ -3210,7 +3210,7 @@ export default function Builder() {
                                 e.stopPropagation();
                                 addHerb(herb.pinyin_name);
                               }}
-                              className="chip-compact flex items-center gap-1 px-2.5 py-1.5 bg-[#30B852] text-white rounded-full hover:bg-[#28A045] transition-colors text-sm font-medium"
+                              className="chip-compact flex items-center gap-1 px-2.5 py-1.5 bg-[#A8E6C1] text-[#28A045] rounded-full hover:bg-[#8FD9AD] transition-colors text-sm font-medium"
                             >
                               <Plus className="w-3.5 h-3.5" />
                               <Leaf className="w-3.5 h-3.5" />
@@ -3280,7 +3280,7 @@ export default function Builder() {
                                 e.stopPropagation();
                                 addHerb(herb.pinyin_name);
                               }}
-                              className="flex items-center gap-1 px-2.5 py-1.5 bg-[#30B852] text-white rounded-full hover:bg-[#28A045] transition-colors text-sm font-medium"
+                              className="flex items-center gap-1 px-2.5 py-1.5 bg-[#A8E6C1] text-[#28A045] rounded-full hover:bg-[#8FD9AD] transition-colors text-sm font-medium"
                             >
                               <Plus className="w-3.5 h-3.5" />
                               <Leaf className="w-3.5 h-3.5" />
@@ -3367,7 +3367,7 @@ export default function Builder() {
                               e.stopPropagation();
                               openFormulaModal(formula.pinyin_name);
                             }}
-                            className="chip-compact flex items-center gap-1 px-2.5 sm:px-3 py-1.5 bg-amber-500 text-white rounded-full hover:bg-amber-600 transition-colors text-sm font-medium"
+                            className="chip-compact flex items-center gap-1 px-2.5 sm:px-3 py-1.5 bg-[#FECF8B] text-[#D97706] rounded-full hover:bg-[#FDBA5C] transition-colors text-sm font-medium"
                             title="Add as compound"
                           >
                             <Plus className="w-3.5 h-3.5" />
@@ -3378,7 +3378,7 @@ export default function Builder() {
                               e.stopPropagation();
                               openComponentsModal(formula.pinyin_name);
                             }}
-                            className="chip-compact flex items-center gap-1 px-2.5 sm:px-3 py-1.5 bg-[#30B852] text-white rounded-full hover:bg-[#28A045] transition-colors text-sm font-medium"
+                            className="chip-compact flex items-center gap-1 px-2.5 sm:px-3 py-1.5 bg-[#A8E6C1] text-[#28A045] rounded-full hover:bg-[#8FD9AD] transition-colors text-sm font-medium"
                             title="Add as components"
                           >
                             <Plus className="w-3.5 h-3.5" />
@@ -3454,7 +3454,7 @@ export default function Builder() {
                                 e.stopPropagation();
                                 openFormulaModal(formula.pinyin_name);
                               }}
-                              className="chip-compact flex items-center gap-1 px-2 py-0.5 bg-amber-500 text-white rounded-full hover:bg-amber-600 transition-colors text-xs font-medium"
+                              className="chip-compact flex items-center gap-1 px-2 py-0.5 bg-[#FECF8B] text-[#D97706] rounded-full hover:bg-[#FDBA5C] transition-colors text-xs font-medium"
                               title="Add as compound"
                             >
                               <Plus className="w-3.5 h-3.5" />
@@ -3465,7 +3465,7 @@ export default function Builder() {
                                 e.stopPropagation();
                                 openComponentsModal(formula.pinyin_name);
                               }}
-                              className="flex items-center gap-1 px-2.5 py-1.5 bg-[#30B852] text-white rounded-full hover:bg-[#28A045] transition-colors text-sm font-medium"
+                              className="flex items-center gap-1 px-2.5 py-1.5 bg-[#A8E6C1] text-[#28A045] rounded-full hover:bg-[#8FD9AD] transition-colors text-sm font-medium"
                               title="Add as components"
                             >
                               <Plus className="w-3.5 h-3.5" />
@@ -3539,7 +3539,7 @@ export default function Builder() {
                                   e.stopPropagation();
                                   addHerb(herb.pinyin_name);
                                 }}
-                                className="chip-compact flex items-center gap-1 px-2.5 py-1.5 bg-[#30B852] text-white rounded-full active:bg-[#28A045] transition-colors text-sm font-medium"
+                                className="chip-compact flex items-center gap-1 px-2.5 py-1.5 bg-[#A8E6C1] text-[#28A045] rounded-full hover:bg-[#8FD9AD] transition-colors text-sm font-medium"
                               >
                                 <Plus className="w-3.5 h-3.5" />
                                 <Leaf className="w-3.5 h-3.5" />
@@ -3595,7 +3595,7 @@ export default function Builder() {
                                   e.stopPropagation();
                                   openFormulaModal(formula.pinyin_name);
                                 }}
-                                className="chip-compact flex items-center gap-1 px-2.5 py-1.5 bg-amber-500 text-white rounded-full active:bg-amber-600 transition-colors text-sm font-medium"
+                                className="chip-compact flex items-center gap-1 px-2.5 py-1.5 bg-[#FECF8B] text-[#D97706] rounded-full hover:bg-[#FDBA5C] transition-colors text-sm font-medium"
                                 title="Add as compound"
                               >
                                 <Plus className="w-3.5 h-3.5" />
@@ -3606,7 +3606,7 @@ export default function Builder() {
                                   e.stopPropagation();
                                   openComponentsModal(formula.pinyin_name);
                                 }}
-                                className="chip-compact flex items-center gap-1 px-2.5 py-1.5 bg-[#30B852] text-white rounded-full active:bg-[#28A045] transition-colors text-sm font-medium"
+                                className="chip-compact flex items-center gap-1 px-2.5 py-1.5 bg-[#A8E6C1] text-[#28A045] rounded-full hover:bg-[#8FD9AD] transition-colors text-sm font-medium"
                                 title="Add as components"
                               >
                                 <Plus className="w-3.5 h-3.5" />
@@ -3677,7 +3677,7 @@ export default function Builder() {
                                   e.stopPropagation();
                                   addHerb(herb.pinyin_name);
                                 }}
-                                className="flex items-center gap-1 px-2.5 py-1.5 bg-[#30B852] text-white rounded-full hover:bg-[#28A045] transition-colors text-sm font-medium"
+                                className="flex items-center gap-1 px-2.5 py-1.5 bg-[#A8E6C1] text-[#28A045] rounded-full hover:bg-[#8FD9AD] transition-colors text-sm font-medium"
                               >
                                 <Plus className="w-3.5 h-3.5" />
                                 <Leaf className="w-3.5 h-3.5" />
@@ -3733,7 +3733,7 @@ export default function Builder() {
                                   e.stopPropagation();
                                   openFormulaModal(formula.pinyin_name);
                                 }}
-                                className="flex items-center gap-1 px-2.5 py-1.5 bg-amber-500 text-white rounded-full hover:bg-amber-600 transition-colors text-sm font-medium"
+                                className="flex items-center gap-1 px-2.5 py-1.5 bg-[#FECF8B] text-[#D97706] rounded-full hover:bg-[#FDBA5C] transition-colors text-sm font-medium"
                                 title="Add as compound"
                               >
                                 <Plus className="w-3.5 h-3.5" />
@@ -3744,7 +3744,7 @@ export default function Builder() {
                                   e.stopPropagation();
                                   openComponentsModal(formula.pinyin_name);
                                 }}
-                                className="flex items-center gap-1 px-2.5 py-1.5 bg-[#30B852] text-white rounded-full hover:bg-[#28A045] transition-colors text-sm font-medium"
+                                className="flex items-center gap-1 px-2.5 py-1.5 bg-[#A8E6C1] text-[#28A045] rounded-full hover:bg-[#8FD9AD] transition-colors text-sm font-medium"
                                 title="Add as components"
                               >
                                 <Plus className="w-3.5 h-3.5" />
