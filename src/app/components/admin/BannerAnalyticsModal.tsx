@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { X, Loader2 } from 'lucide-react';
 import { supabase } from '@/app/lib/supabase';
-import { fetchAllAdminUsers, getUserDisplayName } from '@/app/services/adminUsersService';
+import { fetchAdminUserIdentities } from '@/app/services/adminUserLookupService';
+import { fetchAllAdminUsers } from '@/app/services/adminUsersService';
+import { getUserDisplayName } from '@/app/services/adminUsersService';
 import type { Banner } from '@/app/services/bannersService';
 
 interface BannerAnalyticsModalProps {
@@ -42,7 +44,14 @@ export function BannerAnalyticsModal({ banner, isOpen, onClose }: BannerAnalytic
         setDismissals([]);
       } else {
         const rawDismissals = data || [];
-        const users = await fetchAllAdminUsers();
+        let users = [];
+        try {
+          users = await fetchAdminUserIdentities(rawDismissals.map(dismissal => dismissal.user_id));
+        } catch (lookupError) {
+          console.error('Error loading banner user details via function:', lookupError);
+          users = await fetchAllAdminUsers();
+        }
+
         const userMap = new Map(users.map(user => [user.id, user]));
 
         setDismissals(rawDismissals.map(dismissal => {

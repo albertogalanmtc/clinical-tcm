@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { X, Loader2, ChevronDown, ChevronUp } from 'lucide-react';
 import { supabase } from '@/app/lib/supabase';
-import { fetchAllAdminUsers, getUserDisplayName } from '@/app/services/adminUsersService';
+import { fetchAdminUserIdentities } from '@/app/services/adminUserLookupService';
+import { fetchAllAdminUsers } from '@/app/services/adminUsersService';
+import { getUserDisplayName } from '@/app/services/adminUsersService';
 import type { Survey } from '@/app/services/surveysService';
 
 interface SurveyAnalyticsModalProps {
@@ -44,7 +46,14 @@ export function SurveyAnalyticsModal({ survey, isOpen, onClose }: SurveyAnalytic
         setResponses([]);
       } else {
         const rawResponses = data || [];
-        const users = await fetchAllAdminUsers();
+        let users = [];
+        try {
+          users = await fetchAdminUserIdentities(rawResponses.map(response => response.user_id));
+        } catch (lookupError) {
+          console.error('Error loading survey user details via function:', lookupError);
+          users = await fetchAllAdminUsers();
+        }
+
         const userMap = new Map(users.map(user => [user.id, user]));
 
         setResponses(rawResponses.map(response => {
