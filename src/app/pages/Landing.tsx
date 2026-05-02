@@ -240,7 +240,7 @@ export default function Landing() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-[calc(100dvh-4rem)] px-4 sm:px-6 lg:px-8 pt-20 pb-12 lg:pt-8 lg:pb-0 flex items-center overflow-hidden">
+      <section className="relative min-h-[calc(100dvh-4rem)] px-4 sm:px-6 lg:px-8 pt-24 pb-12 lg:pt-14 lg:pb-0 flex items-center overflow-hidden">
         <div className="absolute inset-x-0 top-0 h-80 bg-gradient-to-b from-teal-50/70 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto w-full text-center relative lg:h-full lg:flex lg:flex-col lg:justify-center">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-5 sm:mb-6 leading-tight">
@@ -378,7 +378,7 @@ export default function Landing() {
             ) : plans.map((plan, index) => (
               <div
                 key={index}
-                className={`relative bg-white rounded-2xl border-2 p-8 flex flex-col w-full ${
+                className={`relative bg-white rounded-2xl border-2 p-6 sm:p-7 flex flex-col w-full ${
                   plans.length <= 2 ? 'md:max-w-md' : ''
                 } ${
                   plan.popular
@@ -401,8 +401,8 @@ export default function Landing() {
                   </div>
                 )}
 
-                <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                <div className="mb-5">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
                     {plan.name}
                   </h3>
                   <p className="text-gray-600 text-sm mb-4">
@@ -410,13 +410,13 @@ export default function Landing() {
                   </p>
                   {plan.id === 'free' ? (
                     <div className="flex items-baseline gap-2">
-                      <span className="text-5xl font-bold text-gray-900">Free</span>
+                      <span className="text-4xl sm:text-5xl font-bold text-gray-900">Free</span>
                       <span className="text-gray-600">forever</span>
                     </div>
                   ) : billingPeriod === 'monthly' ? (
                     <>
                       <div className="flex items-baseline gap-2">
-                        <span className="text-5xl font-bold text-gray-900">
+                        <span className="text-4xl sm:text-5xl font-bold text-gray-900">
                           ${plan.monthlyOffer?.discountedPrice ?? plan.monthlyPrice ?? 0}
                         </span>
                         {plan.monthlyOffer?.originalPrice ? (
@@ -435,7 +435,7 @@ export default function Landing() {
                   ) : (
                     <>
                       <div className="flex items-baseline gap-2">
-                        <span className="text-5xl font-bold text-gray-900">
+                        <span className="text-4xl sm:text-5xl font-bold text-gray-900">
                           ${plan.yearlyOffer?.discountedPrice ?? plan.yearlyPrice ?? 0}
                         </span>
                         {plan.yearlyOffer?.originalPrice ? (
@@ -463,10 +463,10 @@ export default function Landing() {
                   )}
                 </div>
 
-                <ul className="space-y-4 mb-8 flex-1">
+                <ul className="space-y-3.5 mb-7 flex-1">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
+                      <Check className="w-4.5 h-4.5 text-teal-600 flex-shrink-0 mt-0.5" />
                       <span className="text-gray-700">{feature}</span>
                     </li>
                   ))}
