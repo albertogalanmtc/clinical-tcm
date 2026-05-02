@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { X, Loader2 } from 'lucide-react';
 import { supabase } from '@/app/lib/supabase';
+import { fetchAllAdminUsers, getUserDisplayName } from '@/app/services/adminUsersService';
 import type { Banner } from '@/app/services/bannersService';
 
 interface BannerAnalyticsModalProps {
@@ -13,6 +14,8 @@ interface BannerAnalyticsModalProps {
 interface DismissalData {
   user_id: string;
   dismissed_at: string;
+  user_name?: string;
+  user_email?: string;
 }
 
 export function BannerAnalyticsModal({ banner, isOpen, onClose }: BannerAnalyticsModalProps) {
@@ -38,7 +41,19 @@ export function BannerAnalyticsModal({ banner, isOpen, onClose }: BannerAnalytic
         console.error('Error loading dismissals:', error);
         setDismissals([]);
       } else {
-        setDismissals(data || []);
+        const rawDismissals = data || [];
+        const users = await fetchAllAdminUsers();
+        const userMap = new Map(users.map(user => [user.id, user]));
+
+        setDismissals(rawDismissals.map(dismissal => {
+          const user = userMap.get(dismissal.user_id);
+
+          return {
+            ...dismissal,
+            user_name: user ? getUserDisplayName(user) : dismissal.user_id,
+            user_email: user?.email || '',
+          };
+        }));
       }
     } catch (error) {
       console.error('Error loading dismissals:', error);
@@ -110,8 +125,13 @@ export function BannerAnalyticsModal({ banner, isOpen, onClose }: BannerAnalytic
                       className="bg-white rounded-lg p-4 border border-gray-200 flex items-center justify-between"
                     >
                       <div className="flex-1">
-                        <p className="text-sm font-medium text-gray-900 font-mono">
-                          User: {dismissal.user_id.substring(0, 8)}...
+                        <p className="text-sm font-medium text-gray-900">
+                          <span className="font-semibold">{dismissal.user_name || 'Unknown user'}</span>
+                          {dismissal.user_email ? (
+                            <span className="text-gray-500"> · {dismissal.user_email}</span>
+                          ) : (
+                            <span className="text-gray-500 font-mono"> · {dismissal.user_id.substring(0, 8)}...</span>
+                          )}
                         </p>
                       </div>
                       <div className="text-right">

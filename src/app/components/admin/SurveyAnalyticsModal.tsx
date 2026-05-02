@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { X, Loader2, ChevronDown, ChevronUp } from 'lucide-react';
 import { supabase } from '@/app/lib/supabase';
+import { fetchAllAdminUsers, getUserDisplayName } from '@/app/services/adminUsersService';
 import type { Survey } from '@/app/services/surveysService';
 
 interface SurveyAnalyticsModalProps {
@@ -43,37 +44,12 @@ export function SurveyAnalyticsModal({ survey, isOpen, onClose }: SurveyAnalytic
         setResponses([]);
       } else {
         const rawResponses = data || [];
-        const userIds = Array.from(new Set(rawResponses.map(response => response.user_id).filter(Boolean)));
-
-        let userMap = new Map<string, { first_name?: string | null; last_name?: string | null; email?: string | null }>();
-
-        if (userIds.length > 0) {
-          const { data: users, error: usersError } = await supabase
-            .from('users')
-            .select('id, first_name, last_name, email')
-            .in('id', userIds);
-
-          if (usersError) {
-            console.error('Error loading survey user details:', usersError);
-          } else {
-            userMap = new Map(
-              (users || []).map(user => [
-                user.id,
-                {
-                  first_name: user.first_name,
-                  last_name: user.last_name,
-                  email: user.email,
-                },
-              ])
-            );
-          }
-        }
+        const users = await fetchAllAdminUsers();
+        const userMap = new Map(users.map(user => [user.id, user]));
 
         setResponses(rawResponses.map(response => {
           const user = userMap.get(response.user_id);
-          const userName = user
-            ? `${user.first_name || ''} ${user.last_name || ''}`.trim()
-            : '';
+          const userName = user ? getUserDisplayName(user) : '';
 
           return {
             ...response,
@@ -239,11 +215,11 @@ export function SurveyAnalyticsModal({ survey, isOpen, onClose }: SurveyAnalytic
                       className="bg-white rounded-lg p-4 border border-gray-200"
                     >
                       <div className="flex items-center justify-between mb-2">
-                        <p className="text-sm font-medium text-gray-900">
-                          <span className="font-semibold">{response.user_name || 'Unknown user'}</span>
-                          {response.user_email ? (
-                            <span className="text-gray-500"> · {response.user_email}</span>
-                          ) : (
+                          <p className="text-sm font-medium text-gray-900">
+                            <span className="font-semibold">{response.user_name || 'Unknown user'}</span>
+                            {response.user_email ? (
+                              <span className="text-gray-500"> · {response.user_email}</span>
+                            ) : (
                             <span className="text-gray-500 font-mono"> · {response.user_id.substring(0, 8)}...</span>
                           )}
                         </p>
