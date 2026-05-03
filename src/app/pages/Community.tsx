@@ -219,7 +219,7 @@ function PostCard({ post, onOpenPost, isAdmin, userId }: { post: CommunityPost; 
 
   const timeAgo = getTimeAgo(new Date(post.created_at));
   const user = getCurrentUser();
-  const hasUnread = hasUnreadContent(post.id, userId, post.comment_count);
+  const hasUnread = post.author_id !== userId && hasUnreadContent(post.id, userId, post.comment_count);
 
   return (
     <div className="relative">

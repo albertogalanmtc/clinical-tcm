@@ -1,6 +1,7 @@
 // Community Posts Management - Types and Storage
 import { communityService } from '../services/communityService';
 import { supabase } from '../lib/supabase';
+import { markPostAsRead } from './postVisits';
 
 export type PostCategory = 'help' | 'success' | 'question' | 'discussion';
 
@@ -289,6 +290,7 @@ export function createCommunityPost(
 
   posts.unshift(newPost);
   localStorage.setItem(POSTS_KEY, JSON.stringify(posts));
+  markPostAsRead(uniqueId, user.id, 0);
 
   // Also save to Supabase if user has a real Supabase ID
   console.log('📝 Creating post - User ID:', user.id, 'Name:', user.name);
@@ -307,6 +309,7 @@ export function createCommunityPost(
       if (result) {
         console.log('✅ Post saved to Supabase successfully:', result);
         updateLocalPostSupabaseId(uniqueId, result.id);
+        markPostAsRead(result.id, user.id, 0);
       } else {
         console.error('❌ Post save returned null');
       }
@@ -424,7 +427,7 @@ export function getPostComments(postId: string): CommunityComment[] {
 export function createComment(
   comment: Omit<CommunityComment, 'id' | 'createdAt' | 'upvotes' | 'upvotedBy' | 'authorId' | 'author'>,
   userOverride?: { id: string; name: string; isAdmin: boolean },
-  context?: { postAuthorId?: string; postTitle?: string }
+  context?: { postAuthorId?: string; postTitle?: string; commentCount?: number }
 ): void {
   const comments = getCommunityComments();
   const user = userOverride || getCurrentUser();
@@ -451,6 +454,10 @@ export function createComment(
   if (postIndex !== -1) {
     posts[postIndex].commentCount += 1;
     localStorage.setItem(POSTS_KEY, JSON.stringify(posts));
+    markPostAsRead(comment.postId, user.id, posts[postIndex].commentCount);
+  } else {
+    const fallbackCount = typeof context?.commentCount === 'number' ? context.commentCount + 1 : 0;
+    markPostAsRead(comment.postId, user.id, fallbackCount);
   }
 
   // Also save to Supabase if user has a real Supabase ID

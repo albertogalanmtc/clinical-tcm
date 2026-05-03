@@ -112,7 +112,8 @@ export default function CommunityPostDetail() {
       parentId
     }, userForComment, {
       postAuthorId: post?.authorId,
-      postTitle: post?.title
+      postTitle: post?.title,
+      commentCount: post?.commentCount || comments.length
     });
 
     if (parentId) {
