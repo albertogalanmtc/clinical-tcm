@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AlertCircle, Check, ArrowLeft } from 'lucide-react';
 import AuthLayout from '../components/AuthLayout';
+import { resetPassword } from '@/services/api/authService';
 
 export default function ForgotPassword() {
   const navigate = useNavigate();
@@ -35,10 +36,11 @@ export default function ForgotPassword() {
     setIsLoading(true);
 
     try {
-      // Simulate sending reset email
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const result = await resetPassword(email);
 
-      console.log('Password reset email sent to:', email);
+      if (!result.success) {
+        throw new Error(result.error?.message || 'Failed to send reset email');
+      }
 
       // Show success state
       setIsSuccess(true);
@@ -50,6 +52,7 @@ export default function ForgotPassword() {
 
     } catch (error) {
       console.error('Error sending reset email:', error);
+      setTouched(true);
       setIsLoading(false);
     }
   };

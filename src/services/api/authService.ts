@@ -296,13 +296,21 @@ export async function updateProfile(
  */
 export async function resetPassword(email: string): Promise<ApiResponse<void>> {
   try {
-    // TODO: Replace with Supabase auth.resetPasswordForEmail()
-    // const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    //   redirectTo: `${window.location.origin}/reset-password`,
-    // });
+    const { supabase } = await import('@/app/lib/supabase');
 
-    // Mock implementation - just log
-    console.log(`Password reset email would be sent to: ${email}`);
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+
+    if (error) {
+      return {
+        success: false,
+        error: {
+          message: error.message || 'Failed to send reset email',
+          code: error.code || 'RESET_PASSWORD_ERROR',
+        },
+      };
+    }
 
     return {
       success: true,

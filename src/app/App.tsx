@@ -74,6 +74,7 @@ import SelectMembership from "./pages/SelectMembership";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import CreateAccount from "./pages/CreateAccount";
 import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import PricingPlans from "./pages/PricingPlans";
 import TestSupabase from "./pages/TestSupabase";
 import OnboardingSurvey from "./pages/OnboardingSurvey";
@@ -452,6 +453,10 @@ export default function App() {
           <Route
             path="/forgot-password"
             element={<ForgotPassword />}
+          />
+          <Route
+            path="/reset-password"
+            element={<ResetPassword />}
           />
           <Route
             path="/pricing-plans"
