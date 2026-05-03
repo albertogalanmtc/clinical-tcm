@@ -59,12 +59,16 @@ function QuickActionCard({ action }: { action: QuickActionItem }) {
   const colors = sectionColors[action.section] || { icon: 'text-teal-600', bg: 'bg-teal-50' };
 
   useEffect(() => {
-    const updateCount = () => {
-      const count = getNotificationCount(action.section);
-      setNotificationCount(count);
+    let isMounted = true;
+
+    const updateCount = async () => {
+      const count = await getNotificationCount(action.section);
+      if (isMounted) {
+        setNotificationCount(count);
+      }
     };
 
-    updateCount();
+    void updateCount();
 
     // Listen for updates
     window.addEventListener('section-visits-updated', updateCount);
@@ -72,6 +76,7 @@ function QuickActionCard({ action }: { action: QuickActionItem }) {
     window.addEventListener('storage', updateCount);
 
     return () => {
+      isMounted = false;
       window.removeEventListener('section-visits-updated', updateCount);
       window.removeEventListener('community-posts-updated', updateCount);
       window.removeEventListener('storage', updateCount);
