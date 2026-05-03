@@ -252,7 +252,7 @@ export function PrescriptionPreviewModal({
                                               if (nameType === 'hanzi' && displayConfig.herbs.hanzi && subHerb?.hanzi_name) {
                                                 return (
                                                   <div key={nameType} className={isFirst ? "text-xs font-bold text-gray-900 flex items-center gap-1.5" : "text-xs text-gray-500"}>
-                                                    <span>{subHerb.hanzi_name}</span>
+                                                    <span className="font-hanzi">{subHerb.hanzi_name}</span>
                                                     {isFirst && isHerbBanned(subHerb) && (
                                                       <Ban className="w-3 h-3 text-red-600" />
                                                     )}

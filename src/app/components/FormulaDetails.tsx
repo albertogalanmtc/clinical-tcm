@@ -507,7 +507,7 @@ export function FormulaDetails({
                     return (
                       <div key={nameType} className="flex items-center justify-between gap-4">
                         <div className="flex items-center gap-2">
-                          <h3 className={className}>{content}</h3>
+                          <h3 className={`${className} ${nameType === 'hanzi' ? 'font-hanzi' : ''}`}>{content}</h3>
                           {/* Favorite Star */}
                           <button
                             onClick={(e) => {
@@ -536,7 +536,7 @@ export function FormulaDetails({
                     );
                   }
 
-                  return <div key={nameType} className={className}>{content}</div>;
+                  return <div key={nameType} className={`${className} ${nameType === 'hanzi' ? 'font-hanzi' : ''}`}>{content}</div>;
                 })}
               </>
             );

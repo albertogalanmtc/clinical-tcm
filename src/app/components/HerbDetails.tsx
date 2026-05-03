@@ -276,7 +276,11 @@ export function HerbDetails({
                 else if (firstNameType === 'pharmaceutical') firstName = herb.pharmaceutical_name || '';
                 else if (firstNameType === 'hanzi') firstName = herb.hanzi_name || '';
 
-                return <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">{firstName}</h3>;
+                return (
+                  <h3 className={`text-2xl sm:text-3xl font-bold text-gray-900 ${firstNameType === 'hanzi' ? 'font-hanzi' : ''}`}>
+                    {firstName}
+                  </h3>
+                );
               })()}
               {/* Favorite Star */}
               <button
@@ -332,7 +336,7 @@ export function HerbDetails({
                 className = 'text-base sm:text-xl text-gray-500';
               } else if (nameType === 'hanzi') {
                 name = herb.hanzi_name || '';
-                className = 'text-sm sm:text-base text-gray-400';
+                className = 'text-sm sm:text-base text-gray-400 font-hanzi';
               }
 
               if (!name) return null;

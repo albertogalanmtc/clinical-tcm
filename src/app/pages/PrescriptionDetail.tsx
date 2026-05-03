@@ -652,7 +652,7 @@ export default function PrescriptionDetail() {
                                     if (nameType === 'hanzi' && displayConfig.herbs.hanzi && herb.hanzi_name) {
                                       return (
                                         <div key={nameType} className={isFirst ? "font-medium text-gray-900 text-[16px] flex items-center gap-2" : "text-sm lg:text-xs text-gray-500"}>
-                                          <span>{herb.hanzi_name}</span>
+                                          <span className="font-hanzi">{herb.hanzi_name}</span>
                                           {isFirst && isHerbBanned(herb) && (
                                             <Ban className="w-4 h-4 text-red-600" />
                                           )}
@@ -687,7 +687,7 @@ export default function PrescriptionDetail() {
                                       return <div key={nameType} className={isFirst ? "font-medium text-gray-900 text-[16px]" : "text-sm lg:text-xs text-gray-500"}>{formula.translated_name}</div>;
                                     }
                                     if (nameType === 'hanzi' && displayConfig.formulas.hanzi && formula?.hanzi_name) {
-                                      return <div key={nameType} className={isFirst ? "font-medium text-gray-900 text-[16px]" : "text-sm lg:text-xs text-gray-500"}>{formula.hanzi_name}</div>;
+                                      return <div key={nameType} className={`${isFirst ? "font-medium text-gray-900 text-[16px]" : "text-sm lg:text-xs text-gray-500"} font-hanzi`}>{formula.hanzi_name}</div>;
                                     }
                                     return null;
                                   })}
@@ -755,7 +755,7 @@ export default function PrescriptionDetail() {
                                         if (nameType === 'hanzi' && displayConfig.herbs.hanzi && subHerb?.hanzi_name) {
                                           return (
                                             <div key={nameType} className={isFirst ? "text-xs text-gray-600 flex items-center gap-1.5" : "text-xs text-gray-500"}>
-                                              <span>{subHerb.hanzi_name}</span>
+                                              <span className="font-hanzi">{subHerb.hanzi_name}</span>
                                               {isFirst && isHerbBanned(subHerb) && (
                                                 <Ban className="w-3 h-3 text-red-600" />
                                               )}
