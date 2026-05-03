@@ -24,6 +24,7 @@ function getPostVisits(): PostVisit[] {
 function savePostVisits(visits: PostVisit[]): void {
   try {
     localStorage.setItem(POST_VISITS_KEY, JSON.stringify(visits));
+    window.dispatchEvent(new CustomEvent('section-visits-updated'));
   } catch (error) {
     console.error('Error saving post visits:', error);
   }

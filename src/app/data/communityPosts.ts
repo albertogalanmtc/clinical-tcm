@@ -44,9 +44,12 @@ const COMMENTS_KEY = 'community_comments';
 // This is a fallback for other functions
 export function getCurrentUser() {
   try {
+    const storedUserId = sessionStorage.getItem('supabase_user_id');
     const profileStr = localStorage.getItem('userProfile');
     const profile = profileStr ? JSON.parse(profileStr) : null;
     const userRole = localStorage.getItem('userRole') || 'user';
+    const storedSupabaseUser = localStorage.getItem('supabaseUser');
+    const parsedSupabaseUser = storedSupabaseUser ? JSON.parse(storedSupabaseUser) : null;
 
     const firstName = profile?.firstName || 'User';
     const lastName = profile?.lastName || '';
@@ -55,7 +58,7 @@ export function getCurrentUser() {
     const displayName = title ? `${title} ${fullName}` : fullName;
 
     return {
-      id: 'user-demo',
+      id: storedUserId || parsedSupabaseUser?.id || 'user-demo',
       name: displayName || 'User',
       isAdmin: userRole === 'admin'
     };
@@ -115,6 +118,7 @@ export function markPostAsViewed(postId: string): void {
   }
 
   saveUserInteractions(interactions);
+  window.dispatchEvent(new CustomEvent('section-visits-updated'));
 }
 
 export function toggleHidePost(postId: string): void {
@@ -133,6 +137,7 @@ export function toggleHidePost(postId: string): void {
   }
 
   saveUserInteractions(interactions);
+  window.dispatchEvent(new CustomEvent('section-visits-updated'));
 }
 
 export function isPostViewed(postId: string): boolean {
@@ -394,6 +399,7 @@ export function toggleFollowPost(postId: string): void {
 
     localStorage.setItem(POSTS_KEY, JSON.stringify(posts));
     window.dispatchEvent(new CustomEvent('community-posts-updated'));
+    window.dispatchEvent(new CustomEvent('section-visits-updated'));
   }
 }
 

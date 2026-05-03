@@ -1,7 +1,8 @@
 // Notification badge counts for dashboard cards
 
 import { getNewsPublished } from './newsContent';
-import { getCommunityPosts, isPostViewed, isPostHidden, getCurrentUser } from './communityPosts';
+import { getCommunityPosts, isPostHidden, getCurrentUser } from './communityPosts';
+import { hasUnreadContent } from './postVisits';
 import { isItemViewed } from './itemTracking';
 
 // News section
@@ -17,13 +18,13 @@ export function getCommunityNotificationCount(): number {
   const user = getCurrentUser();
 
   // Count posts that are:
-  // - Not viewed by current user
+  // - Not viewed by current user or have new comments since last view
   // - Not hidden by current user
   // - Not authored by current user
   return posts.filter(post =>
-    !isPostViewed(post.id) &&
     !isPostHidden(post.id) &&
-    post.authorId !== user.id
+    post.authorId !== user.id &&
+    hasUnreadContent(post.id, user.id, post.commentCount)
   ).length;
 }
 
