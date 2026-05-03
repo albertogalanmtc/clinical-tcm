@@ -4,6 +4,7 @@ import { ChevronRight } from 'lucide-react';
 import { getQuickActionsPublished, type QuickActionItem } from '@/app/data/dashboardContent';
 import { useState, useEffect } from 'react';
 import { getNotificationCount } from '@/app/data/notificationCounts';
+import { useUser } from '@/app/contexts/UserContext';
 
 // Color mapping for each section
 const sectionColors: Record<string, { icon: string; bg: string }> = {
@@ -52,8 +53,10 @@ export function QuickActionCards({ isAlone = false }: QuickActionCardsProps) {
 }
 
 function QuickActionCard({ action }: { action: QuickActionItem }) {
+  const userContext = useUser();
   const { IconComponent, customSvg } = useSectionIcon(action.section);
   const [notificationCount, setNotificationCount] = useState(0);
+  const currentUserId = userContext.userId || undefined;
 
   // Get colors for this section
   const colors = sectionColors[action.section] || { icon: 'text-teal-600', bg: 'bg-teal-50' };
@@ -62,9 +65,9 @@ function QuickActionCard({ action }: { action: QuickActionItem }) {
     let isMounted = true;
 
     const updateCount = async () => {
-      const count = await getNotificationCount(action.section);
+      const count = await getNotificationCount(action.section, currentUserId);
       if (isMounted) {
-        setNotificationCount(count);
+        setNotificationCount(typeof count === 'number' ? count : 0);
       }
     };
 
@@ -81,7 +84,7 @@ function QuickActionCard({ action }: { action: QuickActionItem }) {
       window.removeEventListener('community-posts-updated', updateCount);
       window.removeEventListener('storage', updateCount);
     };
-  }, [action.section]);
+  }, [action.section, currentUserId]);
 
   return (
     <Link
