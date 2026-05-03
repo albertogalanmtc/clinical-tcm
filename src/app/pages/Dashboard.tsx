@@ -15,6 +15,7 @@ import {
 import { getActiveBanner, hasUserResponded, recordModalShown, type Banner } from '../data/banners';
 import { getCurrentUser } from '../data/communityPosts';
 import { getDismissedMessages, dismissMessage } from '../services/messageDismissalsService';
+import { useUser } from '../contexts/UserContext';
 
 interface DashboardProps {
   variant?: 'default' | 'fullscreen';
@@ -65,6 +66,7 @@ function isContentVisible(countries?: string[], dateRange?: { start: string; end
 }
 
 export default function Dashboard({ variant = 'default' }: DashboardProps) {
+  const { user } = useUser();
   const [renderedContent, setRenderedContent] = useState<Array<{ type: string; key: string; element: React.ReactNode }>>([]);
   const [dismissedMessages, setDismissedMessages] = useState<Set<string>>(new Set());
   const [showModal, setShowModal] = useState(false);
@@ -88,15 +90,15 @@ export default function Dashboard({ variant = 'default' }: DashboardProps) {
       console.log('⚙️ Dashboard - Carousel settings:', settings);
 
       // Check for modal survey banner
-      const user = getCurrentUser();
-      const modalBanner = getActiveBanner('modal', user.id);
+      const currentUser = user || getCurrentUser();
+      const modalBanner = getActiveBanner('modal', currentUser.id);
 
       if (modalBanner) {
-        const alreadyResponded = hasUserResponded(modalBanner.id, user.id);
+        const alreadyResponded = hasUserResponded(modalBanner.id, currentUser.id);
 
         if (!alreadyResponded) {
           // Record that we're showing a modal to this user today
-          recordModalShown(user.id);
+          recordModalShown(currentUser.id);
           setModalBanner(modalBanner);
           setShowModal(true);
         }
@@ -213,7 +215,7 @@ export default function Dashboard({ variant = 'default' }: DashboardProps) {
       window.removeEventListener('storage', updateContent);
       window.removeEventListener('banners-updated', updateContent);
     };
-  }, []);
+  }, [user?.id]);
 
   const handleDismissMessage = async (messageId: string) => {
     // Optimistically update UI

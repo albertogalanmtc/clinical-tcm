@@ -12,7 +12,7 @@ export function BannerWidget() {
 
   useEffect(() => {
     loadBanner();
-  }, []);
+  }, [user?.id]);
 
   const loadBanner = async () => {
     setLoading(true);

@@ -19,7 +19,7 @@ export function BannersAndSurveysWidget() {
 
   useEffect(() => {
     loadItems();
-  }, []);
+  }, [user?.id]);
 
   const loadItems = async () => {
     setLoading(true);
