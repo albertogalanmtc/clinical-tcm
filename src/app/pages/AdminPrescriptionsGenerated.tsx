@@ -1,10 +1,13 @@
 import { useSearchParams, Link, useNavigate } from 'react-router-dom';
 import { ChevronLeft, Beaker } from 'lucide-react';
 import { useSwipeBack } from '../hooks/useSwipeBack';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function AdminPrescriptionsGenerated() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   
   // Enable swipe-to-go-back gesture on mobile
   useSwipeBack();
@@ -18,11 +21,11 @@ export default function AdminPrescriptionsGenerated() {
       return `${startDate} - ${endDate}`;
     }
     const labels: Record<string, string> = {
-      week: 'This week',
-      month: 'This month',
-      year: 'This year',
+      week: isSpanish ? 'Esta semana' : 'This week',
+      month: isSpanish ? 'Este mes' : 'This month',
+      year: isSpanish ? 'Este año' : 'This year',
     };
-    return labels[preset] || 'This month';
+    return labels[preset] || (isSpanish ? 'Este mes' : 'This month');
   };
 
   // Mock data - in production this would be fetched based on time range
@@ -69,10 +72,14 @@ export default function AdminPrescriptionsGenerated() {
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <h1 className="text-3xl font-bold text-gray-900">Prescriptions generated</h1>
+          <h1 className="text-3xl font-bold text-gray-900">
+            {isSpanish ? 'Prescripciones generadas' : 'Prescriptions generated'}
+          </h1>
         </div>
         <p className="hidden sm:block text-gray-600">
-          All prescriptions created during the selected period
+          {isSpanish
+            ? 'Todas las prescripciones creadas durante el periodo seleccionado'
+            : 'All prescriptions created during the selected period'}
         </p>
       </div>
 
@@ -83,16 +90,16 @@ export default function AdminPrescriptionsGenerated() {
             <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Prescription
+                  {isSpanish ? 'Prescripción' : 'Prescription'}
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Created by
+                  {isSpanish ? 'Creada por' : 'Created by'}
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Ingredients
+                  {isSpanish ? 'Ingredientes' : 'Ingredients'}
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Date
+                  {isSpanish ? 'Fecha' : 'Date'}
                 </th>
               </tr>
             </thead>
@@ -108,11 +115,13 @@ export default function AdminPrescriptionsGenerated() {
                     <div className="text-sm text-gray-500">{prescription.userName}</div>
                   </td>
                   <td className="px-6 py-4">
-                    <span className="text-sm text-gray-500">{prescription.ingredients} herbs</span>
+                    <span className="text-sm text-gray-500">
+                      {prescription.ingredients} {isSpanish ? 'hierbas' : 'herbs'}
+                    </span>
                   </td>
                   <td className="px-6 py-4">
                     <span className="text-sm text-gray-500">
-                      {new Date(prescription.createdDate).toLocaleDateString('en-US', {
+                      {new Date(prescription.createdDate).toLocaleDateString(isSpanish ? 'es-ES' : 'en-US', {
                         year: 'numeric',
                         month: 'short',
                         day: 'numeric',

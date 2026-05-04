@@ -14,6 +14,7 @@ import React from 'react';
 import { useFavorites } from '../hooks/useFavorites';
 import { getHerbCategoryColors, getHerbSubcategoryColors } from '../../lib/categoryColors';
 import { useUser } from '../contexts/UserContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import { planService } from '../services/planService';
 
 // Helper function to get biological mechanisms for a specific herb
@@ -105,6 +106,39 @@ export function HerbDetails({
   const [expandedActions, setExpandedActions] = React.useState<number[]>([]);
   const { toggleHerbFavorite, isHerbFavorite } = useFavorites();
   const { planType, isAdmin } = useUser();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
+  const ui = {
+    properties: isSpanish ? 'Propiedades' : 'Properties',
+    clinicalUse: isSpanish ? 'Uso clínico' : 'Clinical use',
+    safetyAlerts: isSpanish ? 'Seguridad y alertas' : 'Safety & Alerts',
+    research: isSpanish ? 'Investigación' : 'Research',
+    foundIn: isSpanish ? 'Aparece en' : 'Found in',
+    referencesNotes: isSpanish ? 'Referencias y notas' : 'References & Notes',
+    back: isSpanish ? 'Volver' : 'Back',
+    edit: isSpanish ? 'Editar' : 'Edit',
+    delete: isSpanish ? 'Eliminar' : 'Delete',
+    favorite: isSpanish ? 'Favorito' : 'Favorite',
+    toxic: isSpanish ? 'Tóxica' : 'Toxic',
+    tcmActions: isSpanish ? 'Acciones TCM' : 'TCM actions',
+    clinicalIndications: isSpanish ? 'Indicaciones clínicas' : 'Clinical indications',
+    duiYao: isSpanish ? 'Dui Yao' : 'Dui Yao',
+    clinicalApplications: isSpanish ? 'Aplicaciones clínicas' : 'Clinical applications',
+    antagonisms: isSpanish ? 'Antagonismos' : 'Antagonisms',
+    incompatibilities: isSpanish ? 'Incompatibilidades' : 'Incompatibilities',
+    contraindications: isSpanish ? 'Contraindicaciones' : 'Contraindications',
+    cautions: isSpanish ? 'Precauciones' : 'Cautions',
+    herbDrugInteractions: isSpanish ? 'Interacciones hierba-fármaco' : 'Herb-Drug interactions',
+    herbHerbInteractions: isSpanish ? 'Interacciones hierba-hierba' : 'Herb-Herb interactions',
+    allergens: isSpanish ? 'Alérgenos' : 'Allergens',
+    pharmacologicalEffects: isSpanish ? 'Efectos farmacológicos' : 'Pharmacological effects',
+    biologicalMechanisms: isSpanish ? 'Mecanismos biológicos' : 'Biological mechanisms',
+    bioactiveCompounds: isSpanish ? 'Compuestos bioactivos' : 'Bioactive compounds',
+    clinicalStudies: isSpanish ? 'Estudios clínicos e investigación' : 'Clinical studies and research',
+    references: isSpanish ? 'Referencias' : 'References',
+    notes: isSpanish ? 'Notas' : 'Notes',
+    goBack: isSpanish ? 'Volver' : 'Go back',
+  };
 
   // Get plan permissions
   const plan = planType ? planService.getPlanByCode(planType) : null;
@@ -173,12 +207,12 @@ export function HerbDetails({
   const sections = [
     { 
       id: 'properties', 
-      label: 'Properties', 
+      label: ui.properties, 
       show: canView(permissions?.properties) && ((herb.nature && herb.nature.trim()) || (herb.flavor?.length || 0) > 0 || (herb.channels?.length || 0) > 0 || (herb.dose && herb.dose.trim())) 
     },
     {
       id: 'clinical-use',
-      label: 'Clinical use',
+      label: ui.clinicalUse,
       show: (() => {
         const hasActions = canView(permissions?.clinicalUse.actions) && (herb.actions?.length || 0) > 0 && herb.actions?.some(a => {
           if (typeof a === 'string') return a.trim();
@@ -193,7 +227,7 @@ export function HerbDetails({
     },
     {
       id: 'safety',
-      label: 'Safety & Alerts',
+      label: ui.safetyAlerts,
       show: (() => {
         const hasContras = canView(permissions?.safety.contraindications) && (herb.contraindications?.length || 0) > 0 && herb.contraindications?.some(c => typeof c === 'string' && c.trim());
         const hasCautions = canView(permissions?.safety.cautions) && (herb.cautions?.length || 0) > 0 && herb.cautions?.some(c => typeof c === 'string' && c.trim());
@@ -207,7 +241,7 @@ export function HerbDetails({
     },
     {
       id: 'research',
-      label: 'Research',
+      label: ui.research,
       show: (() => {
         const hasPharm = canView(permissions?.research.pharmacologicalEffects) && (herb.pharmacological_effects?.length || 0) > 0 && herb.pharmacological_effects?.some(effect => typeof effect === 'string' && effect.trim());
         const herbMechanisms = getHerbBiologicalMechanisms(herb.pinyin_name);
@@ -219,12 +253,12 @@ export function HerbDetails({
     },
     {
       id: 'found-in',
-      label: 'Found in',
+      label: ui.foundIn,
       show: canView(permissions?.foundIn) && formulasWithThisHerb.length > 0
     },
     {
       id: 'references-notes',
-      label: 'References & Notes',
+      label: ui.referencesNotes,
       show: (() => {
         const hasReferences = canView(permissions?.referencesNotes?.references) && (herb.references?.length || 0) > 0;
         const hasNotes = canView(permissions?.referencesNotes?.notes) && (herb.notes?.length || 0) > 0;
@@ -244,7 +278,7 @@ export function HerbDetails({
         <button
           onClick={onBack}
           className="h-10 w-10 sm:w-11 sm:h-11 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-colors flex-shrink-0 mb-4"
-          title={backLabel || 'Back'}
+          title={backLabel || ui.back}
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
@@ -399,7 +433,7 @@ export function HerbDetails({
       })() && (
         <section id="herb-detail-properties" className="scroll-mt-4">
           <Accordion 
-            title="Properties" 
+            title={ui.properties} 
             defaultOpen={true}
             storageKey="herb-properties-section"
             size="large"
@@ -476,7 +510,7 @@ export function HerbDetails({
                 {herb.toxicology && herb.toxicology.length > 0 && (
                   <div className="inline-flex items-center gap-1.5 text-xs font-medium text-red-700">
                     <Skull className="w-3 h-3 flex-shrink-0" />
-                    <span>Toxic</span>
+                <span>{ui.toxic}</span>
                   </div>
                 )}
               </div>
@@ -512,7 +546,7 @@ export function HerbDetails({
         return (
         <section id="herb-detail-clinical-use" className="scroll-mt-4">
           <Accordion 
-            title="Clinical use" 
+            title={ui.clinicalUse} 
             defaultOpen={true}
             storageKey="herb-clinical-use-section"
             size="large"
@@ -520,7 +554,7 @@ export function HerbDetails({
           <div className="space-y-4">
           {hasActions && (
             <Accordion
-              title="TCM actions"
+              title={ui.tcmActions}
               defaultOpen={true}
               storageKey={`herb-${herb.herb_id}-tcm-actions`}
               size="small"
@@ -674,7 +708,7 @@ export function HerbDetails({
 
           {hasIndications && (
             <Accordion
-              title="Clinical indications"
+              title={ui.clinicalIndications}
               defaultOpen={true}
               storageKey={`herb-${herb.herb_id}-clinical-indications`}
               size="small"
@@ -694,7 +728,7 @@ export function HerbDetails({
 
           {hasClinicalApps && (
             <Accordion
-              title="Clinical applications"
+              title={ui.clinicalApplications}
               defaultOpen={true}
               storageKey={`herb-${herb.herb_id}-clinical-applications`}
               size="small"
@@ -717,7 +751,7 @@ export function HerbDetails({
           {hasDuiYao && (
             <div>
               <Accordion 
-                title="Dui Yao" 
+                title={ui.duiYao} 
                 defaultOpen={true}
                 storageKey={`herb-${herb.herb_id}-dui-yao`}
                 size="small"
@@ -792,7 +826,7 @@ export function HerbDetails({
       })() && (
         <section id="herb-detail-safety" className="scroll-mt-4">
           <Accordion
-            title="Safety & Alerts" 
+            title={ui.safetyAlerts} 
             defaultOpen={true}
             storageKey="herb-safety-section"
             size="large"
@@ -806,7 +840,7 @@ export function HerbDetails({
 
                 return (
                   <Accordion
-                    title="Antagonisms"
+                    title={ui.antagonisms}
                     defaultOpen={false}
                     storageKey={`herb-${herb.herb_id}-antagonisms`}
                     size="small"
@@ -846,7 +880,7 @@ export function HerbDetails({
 
                 return (
                   <Accordion
-                    title="Incompatibilities"
+                    title={ui.incompatibilities}
                     defaultOpen={false}
                     storageKey={`herb-${herb.herb_id}-incompatibilities`}
                     size="small"
@@ -880,7 +914,7 @@ export function HerbDetails({
 
               {canView(permissions?.safety.contraindications) && (herb.contraindications?.length || 0) > 0 && (
                 <Accordion
-                  title="Contraindications"
+                  title={ui.contraindications}
                   defaultOpen={false}
                   storageKey={`herb-${herb.herb_id}-contraindications`}
                   size="small"
@@ -898,7 +932,7 @@ export function HerbDetails({
 
               {canView(permissions?.safety.cautions) && (herb.cautions?.length || 0) > 0 && (
                 <Accordion
-                  title="Cautions"
+                  title={ui.cautions}
                   defaultOpen={false}
                   storageKey={`herb-${herb.herb_id}-cautions`}
                   size="small"
@@ -916,7 +950,7 @@ export function HerbDetails({
 
               {canView(permissions?.safety.drugInteractions) && (herb.herb_drug_interactions?.length || 0) > 0 && (
                 <Accordion
-                  title="Herb-Drug interactions"
+                  title={ui.herbDrugInteractions}
                   defaultOpen={false}
                   storageKey={`herb-${herb.herb_id}-herb-drug-interactions`}
                   size="small"
@@ -934,7 +968,7 @@ export function HerbDetails({
 
               {canView(permissions?.safety.herbInteractions) && (herb.herb_herb_interactions?.length || 0) > 0 && (
                 <Accordion
-                  title="Herb-Herb interactions"
+                  title={ui.herbHerbInteractions}
                   defaultOpen={false}
                   storageKey={`herb-${herb.herb_id}-herb-herb-interactions`}
                   size="small"
@@ -952,7 +986,7 @@ export function HerbDetails({
 
               {canView(permissions?.safety.allergens) && (herb.allergens?.length || 0) > 0 && (
                 <Accordion
-                  title="Allergens"
+                  title={ui.allergens}
                   defaultOpen={false}
                   storageKey={`herb-${herb.herb_id}-allergens`}
                   size="small"
@@ -996,7 +1030,7 @@ export function HerbDetails({
         return (hasPharm || hasMech || hasStudies) && (
           <section id="herb-detail-research" className="scroll-mt-4">
             <Accordion 
-              title="Research" 
+            title={ui.research} 
               defaultOpen={true}
               storageKey="herb-research-section"
               size="large"
@@ -1004,7 +1038,7 @@ export function HerbDetails({
             <div className="space-y-4">
             {canView(permissions?.research.pharmacologicalEffects) && (herb.pharmacological_effects?.length || 0) > 0 && (
               <Accordion 
-                title="Pharmacological effects" 
+                title={ui.pharmacologicalEffects} 
                 defaultOpen={false}
                 storageKey={`herb-${herb.herb_id}-pharmacological-effects`}
                 size="small"
@@ -1027,7 +1061,7 @@ export function HerbDetails({
 
               return (
                 <Accordion
-                  title="Biological mechanisms"
+                  title={ui.biologicalMechanisms}
                   defaultOpen={false}
                   storageKey={`herb-${herb.herb_id}-biological-mechanisms`}
                   size="small"
@@ -1068,7 +1102,7 @@ export function HerbDetails({
                 // Render as chips (simple array of strings)
                 return (
                   <Accordion
-                    title="Bioactive compounds"
+                    title={ui.bioactiveCompounds}
                     defaultOpen={false}
                     storageKey={`herb-${herb.herb_id}-bioactive-compounds`}
                     size="small"
@@ -1089,7 +1123,7 @@ export function HerbDetails({
 
                 return (
                   <Accordion
-                    title="Bioactive compounds"
+                    title={ui.bioactiveCompounds}
                     defaultOpen={false}
                     storageKey={`herb-${herb.herb_id}-bioactive-compounds`}
                     size="small"
@@ -1117,7 +1151,7 @@ export function HerbDetails({
 
             {canView(permissions?.research.clinicalStudies) && (herb.clinical_studies_and_research?.length || 0) > 0 && (
               <Accordion 
-                title="Clinical studies and research" 
+                title={ui.clinicalStudies} 
                 defaultOpen={false}
                 storageKey={`herb-${herb.herb_id}-clinical-studies`}
                 size="small"
@@ -1161,7 +1195,7 @@ export function HerbDetails({
       })() && (
         <section id="herb-detail-found-in" className="scroll-mt-4">
           <Accordion 
-            title="Found in" 
+            title={ui.foundIn} 
             defaultOpen={true}
             storageKey={`herb-${herb.herb_id}-found-in`}
             size="large"
@@ -1190,7 +1224,7 @@ export function HerbDetails({
       })() && (
         <section id="herb-detail-references-notes" className="scroll-mt-4">
           <Accordion 
-            title="References & Notes" 
+            title={ui.referencesNotes} 
             defaultOpen={true}
             storageKey="herb-references-notes-section"
             size="large"
@@ -1198,7 +1232,7 @@ export function HerbDetails({
           <div className="space-y-4">
           {canView(permissions?.referencesNotes?.references) && (herb.references?.length || 0) > 0 && (
             <Accordion 
-              title="References" 
+            title={ui.references} 
               defaultOpen={false}
               storageKey={`herb-${herb.herb_id}-references`}
               size="small"
@@ -1218,7 +1252,7 @@ export function HerbDetails({
 
           {canView(permissions?.referencesNotes?.notes) && (herb.notes?.length || 0) > 0 && (
             <Accordion
-              title="Notes"
+            title={ui.notes}
               defaultOpen={false}
               storageKey={`herb-${herb.herb_id}-notes`}
               size="small"
@@ -1250,7 +1284,7 @@ export function HerbDetails({
                 className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
               >
                 <Pencil className="w-4 h-4" />
-                Edit herb
+                {ui.edit} {isSpanish ? 'hierba' : 'herb'}
               </button>
             )}
             {onDelete && (
@@ -1259,7 +1293,7 @@ export function HerbDetails({
                 className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-600 bg-white border border-red-200 rounded-lg hover:bg-red-50 transition-colors"
               >
                 <Trash2 className="w-4 h-4" />
-                Delete herb
+                {ui.delete} {isSpanish ? 'hierba' : 'herb'}
               </button>
             )}
           </div>
@@ -1278,7 +1312,7 @@ export function HerbDetails({
             <button
               onClick={onBack}
               className="h-11 w-11 rounded-lg border bg-white border-gray-200 hover:bg-gray-100 text-gray-600 hover:text-gray-900 flex items-center justify-center transition-colors"
-              title="Go back"
+              title={ui.goBack}
             >
               <Undo2 className="w-5 h-5" />
             </button>

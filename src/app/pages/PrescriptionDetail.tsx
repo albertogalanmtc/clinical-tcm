@@ -17,6 +17,7 @@ import { useHerbBannedStatus } from '../hooks/useHerbBannedStatus';
 import { useGlobalSettings } from '../hooks/useGlobalSettings';
 import { useModalNavigation } from '../hooks/useModalNavigation';
 import { UnifiedDetailsModal } from '@/app/components/UnifiedDetailsModal';
+import { useLanguage } from '../contexts/LanguageContext';
 import type { HerbAction } from '../data/herbs';
 
 // Helper function to get biological mechanisms from localStorage
@@ -157,6 +158,8 @@ export default function PrescriptionDetail() {
   const navigate = useNavigate();
   const { isHerbBanned } = useHerbBannedStatus();
   const { globalSettings, updateGlobalSettings } = useGlobalSettings();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   
   // Enable swipe-to-go-back gesture on mobile
   useSwipeBack();
@@ -172,6 +175,51 @@ export default function PrescriptionDetail() {
   // Unified settings modal state
   const [showSettingsModal, setShowSettingsModal] = useState(false);
   const [settingsTab, setSettingsTab] = useState<'display' | 'copy'>('display');
+
+  const ui = {
+    prescriptionNotFound: isSpanish ? 'Prescripción no encontrada' : 'Prescription not found',
+    backToPrescriptions: isSpanish ? 'Volver a prescripciones' : 'Back to Prescriptions',
+    copy: isSpanish ? 'Copiar' : 'Copy',
+    copied: isSpanish ? '¡Copiado!' : 'Copied!',
+    components: isSpanish ? 'Componentes' : 'Components',
+    createdOn: isSpanish ? 'Creado el' : 'Created on',
+    patientSafetyProfile: isSpanish ? 'Perfil de seguridad del paciente' : 'Patient Safety Profile',
+    comments: isSpanish ? 'Comentarios' : 'Comments',
+    noComponents: isSpanish ? 'No hay componentes en esta prescripción' : 'No components in this prescription',
+    safetyAlerts: isSpanish ? 'Alertas de seguridad' : 'Safety Alerts',
+    noSafetyAlerts: isSpanish ? 'No hay alertas de seguridad para esta prescripción.' : 'No safety alerts for this prescription.',
+    contraindications: isSpanish ? 'Contraindicaciones' : 'Contraindications',
+    cautions: isSpanish ? 'Precauciones' : 'Cautions',
+    interactions: isSpanish ? 'Interacciones' : 'Interactions',
+    allergens: isSpanish ? 'Alérgenos' : 'Allergens',
+    displayCopySettings: isSpanish ? 'Ajustes de visualización y copia' : 'Display & Copy Settings',
+    displaySettings: isSpanish ? 'Ajustes de visualización' : 'Display Settings',
+    copySettings: isSpanish ? 'Ajustes de copia' : 'Copy Settings',
+    displayDescription: isSpanish ? 'Personaliza cómo se muestran los nombres y la información en pantalla' : 'Customize how names and information are displayed on screen',
+    copyDescription: isSpanish ? 'Elige qué nombres incluir al copiar la prescripción' : 'Choose which names to include when copying the prescription',
+    herbs: isSpanish ? 'Hierbas' : 'Herbs',
+    formulas: isSpanish ? 'Fórmulas' : 'Formulas',
+    showIngredients: isSpanish ? 'Mostrar ingredientes' : 'Show Ingredients',
+    safetyFilters: isSpanish ? 'Filtros de seguridad' : 'Safety Filters',
+    filteredAlerts: isSpanish ? 'Alertas filtradas' : 'Filtered Alerts',
+    filteredAlertsDescription: isSpanish ? 'Mostrar solo las alertas que coincidan con los filtros de seguridad seleccionados' : 'Only show alerts matching selected safety filters',
+    allAlerts: isSpanish ? 'Todas las alertas' : 'All Alerts',
+    allAlertsDescription: isSpanish ? 'Mostrar todas las contraindicaciones, precauciones e interacciones' : 'Show all contraindications, cautions, and interactions',
+    previewDisplay: isSpanish ? 'Vista previa' : 'Preview Display',
+    ingredientIndicators: isSpanish ? 'Indicadores de ingredientes' : 'Ingredient Indicators',
+    natureIndicator: isSpanish ? 'Indicador de naturaleza' : 'Nature Indicator',
+    thermalActionIndicator: isSpanish ? 'Indicador de acción térmica' : 'Thermal Action Indicator',
+    ingredientsLayout: isSpanish ? 'Distribución de ingredientes' : 'Ingredients Layout',
+    twoColumnsGrid: isSpanish ? 'Dos columnas (cuadrícula)' : 'Two Columns (Grid)',
+    twoColumnsGridDescription: isSpanish ? 'Mostrar los ingredientes en una cuadrícula de dos columnas' : 'Display ingredients in a two-column grid layout',
+    orderedListSingleColumn: isSpanish ? 'Lista ordenada (una columna)' : 'Ordered List (Single Column)',
+    orderedListSingleColumnDescription: isSpanish ? 'Mostrar los ingredientes en una lista ordenada de una sola columna' : 'Display ingredients in a single-column ordered list',
+    includeIngredients: isSpanish ? 'Incluir ingredientes' : 'Include Ingredients',
+    other: isSpanish ? 'Otros' : 'Other',
+    includeComments: isSpanish ? 'Incluir comentarios' : 'Include Comments',
+    apply: isSpanish ? 'Aplicar' : 'Apply',
+    close: isSpanish ? 'Cerrar' : 'Close',
+  };
   
   // Use global settings for display and copy configuration
   const displayConfig = globalSettings.prescriptions.display;
@@ -502,11 +550,11 @@ export default function PrescriptionDetail() {
     return (
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Prescription not found</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">{ui.prescriptionNotFound}</h1>
           <Link
             to="/prescriptions"
             className="h-10 w-10 sm:w-11 sm:h-11 bg-white rounded-full border border-gray-200 hover:bg-gray-100 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-colors flex-shrink-0"
-            title="Back to Prescriptions"
+            title={ui.backToPrescriptions}
           >
             <ChevronLeft className="w-5 h-5" />
           </Link>
@@ -524,7 +572,7 @@ export default function PrescriptionDetail() {
             <Link 
               to="/prescriptions" 
               className="h-10 w-10 sm:w-11 sm:h-11 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-colors flex-shrink-0"
-              title="Back to Prescriptions"
+              title={ui.backToPrescriptions}
             >
               <ChevronLeft className="w-5 h-5" />
             </Link>
@@ -541,20 +589,20 @@ export default function PrescriptionDetail() {
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:gap-2 sm:px-4 sm:py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors text-sm sm:text-base h-full"
                 >
                   {copied ? <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : <Copy className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
-                  {copied ? 'Copied!' : 'Copy'}
+                  {copied ? ui.copied : ui.copy}
                 </button>
               </div>
               
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-2">{prescription.name}</h1>
                 <p className="text-sm text-gray-500">
-                  Created on {prescription.createdAt.toLocaleDateString()}
+                  {ui.createdOn} {prescription.createdAt.toLocaleDateString(isSpanish ? 'es-ES' : 'en-US')}
                 </p>
               </div>
             </div>
 
             <div className="mb-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Components</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">{ui.components}</h2>
               <div className={`${(displayConfig.preview?.ingredientsLayout ?? 'grid') === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 gap-2' : 'space-y-2 max-w-md'}`}>
                 {prescription.components.map((component, idx) => {
                   // Use saved subComponents if available, otherwise calculate them
@@ -578,7 +626,11 @@ export default function PrescriptionDetail() {
                                 );
                               }}
                               className="p-1 hover:bg-gray-200 rounded transition-colors flex items-center justify-center flex-shrink-0 mt-0.5"
-                              aria-label={expandedFormulas.includes(idx) ? "Collapse ingredients" : "Expand ingredients"}
+                              aria-label={
+                                expandedFormulas.includes(idx)
+                                  ? (isSpanish ? 'Contraer ingredientes' : 'Collapse ingredients')
+                                  : (isSpanish ? 'Expandir ingredientes' : 'Expand ingredients')
+                              }
                             >
                               {expandedFormulas.includes(idx) ? (
                                 <ChevronUp className="w-3.5 h-3.5 text-gray-600" />
@@ -782,7 +834,7 @@ export default function PrescriptionDetail() {
             {/* Comments section */}
             {prescription.comments && (
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Comments</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">{ui.comments}</h2>
                 <div className="bg-gray-50 rounded-lg p-4">
                   <p className="text-gray-700 whitespace-pre-wrap">{prescription.comments}</p>
                 </div>
@@ -792,24 +844,24 @@ export default function PrescriptionDetail() {
             {/* Patient Safety Profile - Show active filters */}
             {prescription.patientSafetyProfile && Object.values(prescription.patientSafetyProfile).some(v => v) && (
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Patient Safety Profile</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">{ui.patientSafetyProfile}</h2>
                 <div className="bg-amber-50 rounded-lg border border-amber-200 p-4">
                   <div className="flex flex-wrap gap-2">
                     {Object.entries(prescription.patientSafetyProfile)
                       .filter(([_, value]) => value === true)
                       .map(([key, _]) => {
                         const labels: Record<string, string> = {
-                          pregnancy: 'Pregnancy',
-                          breastfeeding: 'Breastfeeding',
-                          pediatric: 'Pediatric',
-                          geriatric: 'Geriatric',
-                          renalImpairment: 'Renal Impairment',
-                          hepaticImpairment: 'Hepatic Impairment',
-                          hypertension: 'Hypertension',
-                          diabetes: 'Diabetes',
-                          anticoagulants: 'Anticoagulants',
-                          immunosuppressants: 'Immunosuppressants',
-                          chemotherapy: 'Chemotherapy',
+                          pregnancy: isSpanish ? 'Embarazo' : 'Pregnancy',
+                          breastfeeding: isSpanish ? 'Lactancia' : 'Breastfeeding',
+                          pediatric: isSpanish ? 'Pediatría' : 'Pediatric',
+                          geriatric: isSpanish ? 'Geriatría' : 'Geriatric',
+                          renalImpairment: isSpanish ? 'Insuficiencia renal' : 'Renal Impairment',
+                          hepaticImpairment: isSpanish ? 'Insuficiencia hepática' : 'Hepatic Impairment',
+                          hypertension: isSpanish ? 'Hipertensión' : 'Hypertension',
+                          diabetes: isSpanish ? 'Diabetes' : 'Diabetes',
+                          anticoagulants: isSpanish ? 'Anticoagulantes' : 'Anticoagulants',
+                          immunosuppressants: isSpanish ? 'Inmunosupresores' : 'Immunosuppressants',
+                          chemotherapy: isSpanish ? 'Quimioterapia' : 'Chemotherapy',
                         };
                         return (
                           <span 
@@ -828,7 +880,7 @@ export default function PrescriptionDetail() {
             {/* Safety Alerts */}
             <div className="mb-6">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold text-gray-900">Safety Alerts</h2>
+                <h2 className="text-2xl font-bold text-gray-900">{ui.safetyAlerts}</h2>
                 
                 {/* Alert Display Mode Toggle */}
                 <div className="flex items-center gap-2 bg-gray-100 rounded-lg p-1">
@@ -840,7 +892,7 @@ export default function PrescriptionDetail() {
                         : 'text-gray-600 hover:text-gray-900'
                     }`}
                   >
-                    Filtered
+                    {isSpanish ? 'Filtradas' : 'Filtered'}
                   </button>
                   <button
                     onClick={() => updateAlertDisplayMode('all')}
@@ -850,21 +902,21 @@ export default function PrescriptionDetail() {
                         : 'text-gray-600 hover:text-gray-900'
                     }`}
                   >
-                    All
+                    {isSpanish ? 'Todas' : 'All'}
                   </button>
                 </div>
               </div>
               
               {alerts.contraindications.length === 0 && alerts.cautions.length === 0 && alerts.interactions.length === 0 && alerts.allergens.length === 0 ? (
                 <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                  <p className="text-green-800 text-sm">No safety alerts for this prescription.</p>
+                  <p className="text-green-800 text-sm">{ui.noSafetyAlerts}</p>
                 </div>
               ) : (
                 <div className="space-y-4">
                   {alerts.contraindications.length > 0 && (
                     <AlertCard
                       type="contraindication"
-                      title="Contraindications"
+                      title={ui.contraindications}
                       items={alerts.contraindications}
                     />
                   )}
@@ -872,7 +924,7 @@ export default function PrescriptionDetail() {
                   {alerts.cautions.length > 0 && (
                     <AlertCard
                       type="caution"
-                      title="Cautions"
+                      title={ui.cautions}
                       items={alerts.cautions}
                     />
                   )}
@@ -880,7 +932,7 @@ export default function PrescriptionDetail() {
                   {alerts.interactions.length > 0 && (
                     <AlertCard
                       type="interaction"
-                      title="Interactions"
+                      title={ui.interactions}
                       items={alerts.interactions}
                     />
                   )}
@@ -888,7 +940,7 @@ export default function PrescriptionDetail() {
                   {alerts.allergens.length > 0 && (
                     <AlertCard
                       type="allergen"
-                      title="Allergens"
+                      title={ui.allergens}
                       items={alerts.allergens}
                     />
                   )}
@@ -966,12 +1018,12 @@ export default function PrescriptionDetail() {
             {/* Header */}
             <div className="flex-shrink-0 flex items-center justify-between px-6 py-4 border-b border-gray-200">
               <Dialog.Title className="text-lg font-bold text-gray-900">
-                Display & Copy Settings
+                {ui.displayCopySettings}
               </Dialog.Title>
               <Dialog.Close asChild>
                 <button
                   className="w-8 h-8 rounded-lg hover:bg-gray-100 flex items-center justify-center text-gray-500 hover:text-gray-900 transition-colors"
-                  aria-label="Close"
+                  aria-label={isSpanish ? 'Cerrar' : 'Close'}
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -988,7 +1040,7 @@ export default function PrescriptionDetail() {
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
               >
-                Display Settings
+                {ui.displaySettings}
               </button>
               <button
                 onClick={() => setSettingsTab('copy')}
@@ -998,7 +1050,7 @@ export default function PrescriptionDetail() {
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
               >
-                Copy Settings
+                {ui.copySettings}
               </button>
             </div>
 
@@ -1008,15 +1060,19 @@ export default function PrescriptionDetail() {
               {settingsTab === 'display' && (
                 <>
                 <Dialog.Description className="text-sm text-gray-600 mb-4">
-                  Customize how names and information are displayed on screen
+                  {ui.displayDescription}
                 </Dialog.Description>
 
                 {/* Herbs Display Options */}
                 <div className="mb-6">
-                  <h3 className="text-sm font-semibold text-gray-900 mb-3">Herbs</h3>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.herbs}</h3>
                   <div className="space-y-2">
                     {displayConfig.herbs.order.map((nameType, index) => {
-                      const labels = { pinyin: 'Pinyin Name', pharmaceutical: 'Pharmaceutical Name', hanzi: 'Hanzi Name' };
+                      const labels = {
+                        pinyin: isSpanish ? 'Nombre en pinyin' : 'Pinyin Name',
+                        pharmaceutical: isSpanish ? 'Nombre farmacéutico' : 'Pharmaceutical Name',
+                        hanzi: isSpanish ? 'Caracteres chinos' : 'Hanzi Name',
+                      };
                       const isFirst = index === 0;
                       const isLast = index === displayConfig.herbs.order.length - 1;
                       
@@ -1107,10 +1163,14 @@ export default function PrescriptionDetail() {
 
                 {/* Formulas Display Options */}
                 <div className="mb-6">
-                  <h3 className="text-sm font-semibold text-gray-900 mb-3">Formulas</h3>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.formulas}</h3>
                   <div className="space-y-2">
                     {displayConfig.formulas.order.map((nameType, index) => {
-                      const labels = { pinyin: 'Pinyin Name', pharmaceutical: 'Pharmaceutical Name', hanzi: 'Hanzi Name' };
+                      const labels = {
+                        pinyin: isSpanish ? 'Nombre en pinyin' : 'Pinyin Name',
+                        pharmaceutical: isSpanish ? 'Nombre traducido' : 'Pharmaceutical Name',
+                        hanzi: isSpanish ? 'Caracteres chinos' : 'Hanzi Name',
+                      };
                       const isFirst = index === 0;
                       const isLast = index === displayConfig.formulas.order.length - 1;
                       
@@ -1207,14 +1267,14 @@ export default function PrescriptionDetail() {
                         })}
                         className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
                       />
-                      <span className="text-sm text-gray-700 flex-1">Show Ingredients</span>
+                      <span className="text-sm text-gray-700 flex-1">{ui.showIngredients}</span>
                     </label>
                   </div>
                 </div>
 
                 {/* Filters Display Options */}
                 <div className="mb-6">
-                  <h3 className="text-sm font-semibold text-gray-900 mb-4">Safety Filters</h3>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-4">{ui.safetyFilters}</h3>
                   
                   {/* Safety Profile Subsection */}
                   <div className="mb-4">
@@ -1228,8 +1288,8 @@ export default function PrescriptionDetail() {
                           className="w-4 h-4 text-teal-600 border-gray-300 focus:ring-teal-500 mt-0.5"
                         />
                         <div className="flex-1">
-                          <span className="text-sm font-medium text-gray-900 block">Filtered Alerts</span>
-                          <span className="text-xs text-gray-500">Only show alerts matching selected safety filters</span>
+                          <span className="text-sm font-medium text-gray-900 block">{ui.filteredAlerts}</span>
+                          <span className="text-xs text-gray-500">{ui.filteredAlertsDescription}</span>
                         </div>
                       </label>
                       
@@ -1242,8 +1302,8 @@ export default function PrescriptionDetail() {
                           className="w-4 h-4 text-teal-600 border-gray-300 focus:ring-teal-500 mt-0.5"
                         />
                         <div className="flex-1">
-                          <span className="text-sm font-medium text-gray-900 block">All Alerts</span>
-                          <span className="text-xs text-gray-500">Show all contraindications, cautions, and interactions</span>
+                          <span className="text-sm font-medium text-gray-900 block">{ui.allAlerts}</span>
+                          <span className="text-xs text-gray-500">{ui.allAlertsDescription}</span>
                         </div>
                       </label>
                     </div>
@@ -1252,11 +1312,11 @@ export default function PrescriptionDetail() {
 
                 {/* Preview Display Options */}
                 <div className="mb-6">
-                  <h3 className="text-sm font-semibold text-gray-900 mb-3">Preview Display</h3>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.previewDisplay}</h3>
                   
                   {/* Ingredient Indicators */}
                   <div className="mb-4">
-                    <h4 className="text-xs font-medium text-gray-700 mb-2">Ingredient Indicators</h4>
+                    <h4 className="text-xs font-medium text-gray-700 mb-2">{ui.ingredientIndicators}</h4>
                     <div className="space-y-2">
                       <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                         <input
@@ -1267,7 +1327,7 @@ export default function PrescriptionDetail() {
                           })}
                           className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
                         />
-                        <span className="text-sm text-gray-700 flex-1">Nature Indicator</span>
+                        <span className="text-sm text-gray-700 flex-1">{ui.natureIndicator}</span>
                       </label>
                       
                       <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
@@ -1279,14 +1339,14 @@ export default function PrescriptionDetail() {
                           })}
                           className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
                         />
-                        <span className="text-sm text-gray-700 flex-1">Thermal Action Indicator</span>
+                        <span className="text-sm text-gray-700 flex-1">{ui.thermalActionIndicator}</span>
                       </label>
                     </div>
                   </div>
                   
                   {/* Ingredients Layout */}
                   <div>
-                    <h4 className="text-xs font-medium text-gray-700 mb-2">Ingredients Layout</h4>
+                    <h4 className="text-xs font-medium text-gray-700 mb-2">{ui.ingredientsLayout}</h4>
                     <div className="space-y-2">
                       <label className="flex items-start gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                         <input
@@ -1299,8 +1359,8 @@ export default function PrescriptionDetail() {
                           className="w-4 h-4 text-teal-600 border-gray-300 focus:ring-teal-500 mt-0.5"
                         />
                         <div className="flex-1">
-                          <span className="text-sm font-medium text-gray-900 block">Two Columns (Grid)</span>
-                          <span className="text-xs text-gray-500">Display ingredients in a two-column grid layout</span>
+                          <span className="text-sm font-medium text-gray-900 block">{ui.twoColumnsGrid}</span>
+                          <span className="text-xs text-gray-500">{ui.twoColumnsGridDescription}</span>
                         </div>
                       </label>
                       
@@ -1315,8 +1375,8 @@ export default function PrescriptionDetail() {
                           className="w-4 h-4 text-teal-600 border-gray-300 focus:ring-teal-500 mt-0.5"
                         />
                         <div className="flex-1">
-                          <span className="text-sm font-medium text-gray-900 block">Ordered List (Single Column)</span>
-                          <span className="text-xs text-gray-500">Display ingredients in a single-column ordered list</span>
+                          <span className="text-sm font-medium text-gray-900 block">{ui.orderedListSingleColumn}</span>
+                          <span className="text-xs text-gray-500">{ui.orderedListSingleColumnDescription}</span>
                         </div>
                       </label>
                     </div>
@@ -1329,15 +1389,19 @@ export default function PrescriptionDetail() {
               {settingsTab === 'copy' && (
                 <>
                 <Dialog.Description className="text-sm text-gray-600 mb-4">
-                  Choose which names to include when copying the prescription
+                  {ui.copyDescription}
                 </Dialog.Description>
 
                 {/* Herbs Copy Options */}
                 <div className="mb-6">
-                  <h3 className="text-sm font-semibold text-gray-900 mb-3">Herbs</h3>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.herbs}</h3>
                   <div className="space-y-2">
                     {copyConfig.herbs.order.map((nameType, index) => {
-                      const labels = { pinyin: 'Pinyin Name', pharmaceutical: 'Pharmaceutical Name', hanzi: 'Hanzi Name' };
+                      const labels = {
+                        pinyin: isSpanish ? 'Nombre en pinyin' : 'Pinyin Name',
+                        pharmaceutical: isSpanish ? 'Nombre farmacéutico' : 'Pharmaceutical Name',
+                        hanzi: isSpanish ? 'Caracteres chinos' : 'Hanzi Name',
+                      };
                       const isFirst = index === 0;
                       const isLast = index === copyConfig.herbs.order.length - 1;
                       
@@ -1428,10 +1492,14 @@ export default function PrescriptionDetail() {
 
                 {/* Formulas Copy Options */}
                 <div className="mb-6">
-                  <h3 className="text-sm font-semibold text-gray-900 mb-3">Formulas</h3>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.formulas}</h3>
                   <div className="space-y-2">
                     {copyConfig.formulas.order.map((nameType, index) => {
-                      const labels = { pinyin: 'Pinyin Name', pharmaceutical: 'Pharmaceutical Name', hanzi: 'Hanzi Name' };
+                      const labels = {
+                        pinyin: isSpanish ? 'Nombre en pinyin' : 'Pinyin Name',
+                        pharmaceutical: isSpanish ? 'Nombre traducido' : 'Pharmaceutical Name',
+                        hanzi: isSpanish ? 'Caracteres chinos' : 'Hanzi Name',
+                      };
                       const isFirst = index === 0;
                       const isLast = index === copyConfig.formulas.order.length - 1;
                       
@@ -1528,14 +1596,14 @@ export default function PrescriptionDetail() {
                         })}
                         className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
                       />
-                      <span className="text-sm text-gray-700 flex-1">Include Ingredients</span>
+                      <span className="text-sm text-gray-700 flex-1">{ui.includeIngredients}</span>
                     </label>
                   </div>
                 </div>
 
                 {/* Comments Option */}
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-900 mb-3">Other</h3>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.other}</h3>
                   <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                     <input
                       type="checkbox"
@@ -1545,7 +1613,7 @@ export default function PrescriptionDetail() {
                       })}
                       className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
                     />
-                    <span className="text-sm text-gray-700 flex-1">Include Comments</span>
+                    <span className="text-sm text-gray-700 flex-1">{ui.includeComments}</span>
                   </label>
                 </div>
                 </>
@@ -1556,7 +1624,7 @@ export default function PrescriptionDetail() {
             <div className="flex-shrink-0 px-6 py-4 border-t border-gray-200 bg-gray-50">
               <Dialog.Close asChild>
                 <button className="w-full px-4 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium">
-                  Apply
+                  {ui.apply}
                 </button>
               </Dialog.Close>
             </div>

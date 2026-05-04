@@ -7,10 +7,60 @@ import { updateFormula, getAllFormulas } from '@/app/data/formulasManager';
 import { Formula } from '@/app/data/formulas';
 import { useSwipeBack } from '../hooks/useSwipeBack';
 import { ThermalActionSelector } from '@/app/components/ui/ThermalActionSelector';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function EditFormula() {
   const navigate = useNavigate();
   const { formulaId } = useParams();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
+  const ui = {
+    back: isSpanish ? 'Volver a la fórmula' : 'Back to Formula',
+    pageTitle: isSpanish ? 'Editar fórmula' : 'Edit Formula',
+    pageDescription: isSpanish ? 'Actualiza la información a continuación' : 'Update the information below',
+    basicInformation: isSpanish ? 'Información básica' : 'Basic information',
+    basicInfo: isSpanish ? 'Información básica' : 'Basic info',
+    composition: isSpanish ? 'Composición' : 'Composition',
+    clinicalUse: isSpanish ? 'Uso clínico' : 'Clinical use',
+    modifications: isSpanish ? 'Modificaciones' : 'Modifications',
+    safetyAlerts: isSpanish ? 'Seguridad y alertas' : 'Safety & alerts',
+    save: isSpanish ? 'Guardar cambios' : 'Save Changes',
+    cancel: isSpanish ? 'Cancelar' : 'Cancel',
+    pinyinName: isSpanish ? 'Nombre en pinyin' : 'Pinyin Name',
+    hanziName: isSpanish ? 'Nombre en hanzi' : 'Hanzi Name',
+    pharmaceuticalName: isSpanish ? 'Nombre farmacéutico' : 'Pharmaceutical Name',
+    alternativeNames: isSpanish ? 'Nombres alternativos' : 'Alternative Names',
+    source: isSpanish ? 'Fuente' : 'Source',
+    thermalAction: isSpanish ? 'Acción térmica' : 'Thermal Action',
+    category: isSpanish ? 'Categoría' : 'Category',
+    subcategory: isSpanish ? 'Subcategoría' : 'Subcategory',
+    ingredients: isSpanish ? 'Ingredientes' : 'Ingredients',
+    dosageInstructions: isSpanish ? 'Instrucciones de dosis' : 'Dosage Instructions',
+    preparation: isSpanish ? 'Preparación' : 'Preparation',
+    administration: isSpanish ? 'Administración' : 'Administration',
+    tcmActions: isSpanish ? 'Acciones TCM' : 'TCM Actions',
+    clinicalManifestations: isSpanish ? 'Manifestaciones clínicas' : 'Clinical Manifestations',
+    clinicalApplications: isSpanish ? 'Aplicaciones clínicas' : 'Clinical Applications',
+    addIngredient: isSpanish ? '+ Añadir ingrediente' : '+ Add ingredient',
+    addDosageInstruction: isSpanish ? '+ Añadir instrucción de dosis' : '+ Add dosage instruction',
+    addPreparationMethod: isSpanish ? '+ Añadir método de preparación' : '+ Add preparation method',
+    addAdministrationMethod: isSpanish ? '+ Añadir método de administración' : '+ Add administration method',
+    addAction: isSpanish ? '+ Añadir acción' : '+ Add action',
+    addManifestation: isSpanish ? '+ Añadir manifestación' : '+ Add manifestation',
+    addApplication: isSpanish ? '+ Añadir aplicación' : '+ Add application',
+    addModification: isSpanish ? '+ Añadir modificación' : '+ Add modification',
+    selectHerbToAdd: isSpanish ? 'Selecciona una hierba para añadir...' : 'Select herb to add...',
+    selectHerbToRemove: isSpanish ? 'Selecciona una hierba para eliminar...' : 'Select herb to remove...',
+    update: isSpanish ? 'Actualizar fórmula' : 'Update Formula',
+    ingredientsPlaceholder: isSpanish ? 'Nombre de la hierba...' : 'Herb name...',
+    dosagePlaceholder: isSpanish ? '9g' : '9g',
+    dosageInstructionPlaceholder: isSpanish ? 'Introduce una instrucción de dosis...' : 'Enter dosage instruction...',
+    preparationPlaceholder: isSpanish ? 'Introduce un método de preparación...' : 'Enter preparation method...',
+    administrationPlaceholder: isSpanish ? 'Introduce un método de administración...' : 'Enter administration method...',
+    actionPlaceholder: isSpanish ? 'Introduce una acción TCM...' : 'Enter TCM action...',
+    manifestationPlaceholder: isSpanish ? 'Introduce una manifestación clínica...' : 'Enter clinical manifestation...',
+    applicationPlaceholder: isSpanish ? 'Introduce una aplicación clínica...' : 'Enter clinical application...',
+  };
   
   // Enable swipe-to-go-back gesture on mobile
   useSwipeBack();
@@ -66,7 +116,7 @@ export default function EditFormula() {
     const formula = formulas.find(f => f.formula_id === decodeURIComponent(formulaId));
 
     if (!formula) {
-      toast.error('Formula not found');
+      toast.error(isSpanish ? 'Fórmula no encontrada' : 'Formula not found');
       navigate('/formulas');
       return;
     }
@@ -218,7 +268,7 @@ export default function EditFormula() {
     e.preventDefault();
     
     if (!pinyinName) {
-      toast.error('Please fill in at least the Pinyin name');
+      toast.error(isSpanish ? 'Rellena al menos el nombre en pinyin' : 'Please fill in at least the Pinyin name');
       return;
     }
 
@@ -274,16 +324,16 @@ export default function EditFormula() {
     };
 
     updateFormula(formulaId!, updatedFormula);
-    toast.success('Formula updated successfully!');
+    toast.success(isSpanish ? 'Fórmula actualizada correctamente' : 'Formula updated successfully!');
     navigate(`/formulas/${encodeURIComponent(formulaId!)}`);
   };
 
   const sections = [
-    { id: 'basic', label: 'Basic info' },
-    { id: 'composition', label: 'Composition' },
-    { id: 'clinical-use', label: 'Clinical use' },
-    { id: 'modifications', label: 'Modifications' },
-    { id: 'safety', label: 'Safety & alerts' }
+    { id: 'basic', label: ui.basicInfo },
+    { id: 'composition', label: ui.composition },
+    { id: 'clinical-use', label: ui.clinicalUse },
+    { id: 'modifications', label: ui.modifications },
+    { id: 'safety', label: ui.safetyAlerts }
   ];
 
   const scrollToSection = (id: string) => {
@@ -295,14 +345,14 @@ export default function EditFormula() {
       <Link 
         to={`/formulas/${encodeURIComponent(formulaId!)}`} 
         className="h-10 w-10 sm:w-11 sm:h-11 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-colors flex-shrink-0"
-        title="Back to Formula"
+        title={ui.back}
       >
         <ChevronLeft className="w-5 h-5" />
       </Link>
 
       <div className="mb-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Edit Formula</h1>
-        <p className="hidden sm:block text-gray-600">Update the information below</p>
+        <h1 className="text-4xl font-bold text-gray-900 mb-2">{ui.pageTitle}</h1>
+        <p className="hidden sm:block text-gray-600">{ui.pageDescription}</p>
       </div>
 
       {/* Jump labels */}
@@ -332,25 +382,25 @@ export default function EditFormula() {
       <form onSubmit={handleSubmit}>
         {/* Basic Info */}
         <section id="basic" className="mb-12 scroll-mt-4">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Basic information</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{ui.basicInformation}</h2>
           <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Pinyin Name <span className="text-red-600">*</span>
+                {ui.pinyinName} <span className="text-red-600">*</span>
               </label>
               <input
                 type="text"
                 value={pinyinName}
                 onChange={(e) => setPinyinName(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                placeholder="e.g., Gui Zhi Tang"
+                placeholder={isSpanish ? 'p. ej., Gui Zhi Tang' : 'e.g., Gui Zhi Tang'}
                 required
               />
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Hanzi Name <span className="text-red-600">*</span>
+                {ui.hanziName} <span className="text-red-600">*</span>
               </label>
               <input
                 type="text"
@@ -364,47 +414,47 @@ export default function EditFormula() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Pharmaceutical Name
+                {ui.pharmaceuticalName}
               </label>
               <input
                 type="text"
                 value={pharmaceuticalName}
                 onChange={(e) => setPharmaceuticalName(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                placeholder="e.g., Cinnamon Twig Decoction"
+                placeholder={isSpanish ? 'p. ej., Decocción de ramita de canela' : 'e.g., Cinnamon Twig Decoction'}
               />
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Alternative Names
+                {ui.alternativeNames}
               </label>
               <input
                 type="text"
                 value={alternativeNames}
                 onChange={(e) => setAlternativeNames(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                placeholder="e.g., Cinnamon Branch Formula, Ramulus Cinnamomi Decoction (comma-separated)"
+                placeholder={isSpanish ? 'p. ej., Cinnamon Branch Formula, Ramulus Cinnamomi Decoction (separados por comas)' : 'e.g., Cinnamon Branch Formula, Ramulus Cinnamomi Decoction (comma-separated)'}
               />
-              <p className="text-xs text-gray-500 mt-1">Separate multiple names with commas</p>
+              <p className="text-xs text-gray-500 mt-1">{isSpanish ? 'Separa varios nombres con comas' : 'Separate multiple names with commas'}</p>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Source
+                {ui.source}
               </label>
               <input
                 type="text"
                 value={source}
                 onChange={(e) => setSource(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                placeholder="e.g., Shang Han Lun"
+                placeholder={isSpanish ? 'p. ej., Shang Han Lun' : 'e.g., Shang Han Lun'}
               />
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Thermal Action
+                {ui.thermalAction}
               </label>
               <ThermalActionSelector
                 value={thermalAction}
@@ -414,27 +464,27 @@ export default function EditFormula() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Category
+                {ui.category}
               </label>
               <input
                 type="text"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                placeholder="e.g., Cardiovascular"
+                placeholder={isSpanish ? 'p. ej., Cardiovascular' : 'e.g., Cardiovascular'}
               />
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Subcategory
+                {ui.subcategory}
               </label>
               <input
                 type="text"
                 value={subcategory}
                 onChange={(e) => setSubcategory(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                placeholder="e.g., Hypertension"
+                placeholder={isSpanish ? 'p. ej., Hipertensión' : 'e.g., Hypertension'}
               />
             </div>
           </div>
@@ -444,11 +494,11 @@ export default function EditFormula() {
 
         {/* Composition */}
         <section id="composition" className="mb-12 scroll-mt-4">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Composition</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{ui.composition}</h2>
           <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Ingredients
+                {ui.ingredients}
               </label>
               {ingredients.map((ingredient, index) => (
                 <div key={index} className="relative mb-2">
@@ -459,7 +509,7 @@ export default function EditFormula() {
                         value={ingredient.herb}
                         onChange={(e) => updateIngredient(index, 'herb', e.target.value)}
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                        placeholder="Herb name..."
+                        placeholder={ui.ingredientsPlaceholder}
                       />
                       {herbSuggestions.length > 0 && activeIngredientIndex === index && (
                         <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-48 overflow-y-auto">
@@ -499,13 +549,13 @@ export default function EditFormula() {
                 onClick={addIngredient}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add ingredient
+                {ui.addIngredient}
               </button>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Dosage Instructions
+                {ui.dosageInstructions}
               </label>
               {dosage.map((item, index) => (
                 <div key={index} className="flex gap-2 mb-2">
@@ -514,7 +564,7 @@ export default function EditFormula() {
                     value={item}
                     onChange={(e) => updateField(dosage, setDosage, index, e.target.value)}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter dosage instruction..."
+                    placeholder={ui.dosageInstructionPlaceholder}
                   />
                   {dosage.length > 1 && (
                     <button
@@ -532,13 +582,13 @@ export default function EditFormula() {
                 onClick={() => addField(dosage, setDosage)}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add dosage instruction
+                {ui.addDosageInstruction}
               </button>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Preparation
+                {ui.preparation}
               </label>
               {preparation.map((item, index) => (
                 <div key={index} className="flex gap-2 mb-2">
@@ -547,7 +597,7 @@ export default function EditFormula() {
                     value={item}
                     onChange={(e) => updateField(preparation, setPreparation, index, e.target.value)}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter preparation method..."
+                    placeholder={ui.preparationPlaceholder}
                   />
                   {preparation.length > 1 && (
                     <button
@@ -565,13 +615,13 @@ export default function EditFormula() {
                 onClick={() => addField(preparation, setPreparation)}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add preparation method
+                {ui.addPreparationMethod}
               </button>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Administration
+                {ui.administration}
               </label>
               {administration.map((item, index) => (
                 <div key={index} className="flex gap-2 mb-2">
@@ -580,7 +630,7 @@ export default function EditFormula() {
                     value={item}
                     onChange={(e) => updateField(administration, setAdministration, index, e.target.value)}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter administration method..."
+                    placeholder={ui.administrationPlaceholder}
                   />
                   {administration.length > 1 && (
                     <button
@@ -598,7 +648,7 @@ export default function EditFormula() {
                 onClick={() => addField(administration, setAdministration)}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add administration method
+                {ui.addAdministrationMethod}
               </button>
             </div>
           </div>
@@ -608,11 +658,11 @@ export default function EditFormula() {
 
         {/* Clinical Use */}
         <section id="clinical-use" className="mb-12 scroll-mt-4">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Clinical use</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{ui.clinicalUse}</h2>
           <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                TCM Actions
+                {ui.tcmActions}
               </label>
               {tcmActions.map((action, index) => (
                 <div key={index} className="flex gap-2 mb-2">
@@ -621,7 +671,7 @@ export default function EditFormula() {
                     value={action}
                     onChange={(e) => updateField(tcmActions, setTcmActions, index, e.target.value)}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter TCM action..."
+                    placeholder={ui.actionPlaceholder}
                   />
                   {tcmActions.length > 1 && (
                     <button
@@ -639,13 +689,13 @@ export default function EditFormula() {
                 onClick={() => addField(tcmActions, setTcmActions)}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add action
+                {ui.addAction}
               </button>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Clinical Manifestations
+                {ui.clinicalManifestations}
               </label>
               {clinicalManifestations.map((item, index) => (
                 <div key={index} className="flex gap-2 mb-2">
@@ -654,7 +704,7 @@ export default function EditFormula() {
                     value={item}
                     onChange={(e) => updateField(clinicalManifestations, setClinicalManifestations, index, e.target.value)}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter clinical manifestation..."
+                    placeholder={ui.manifestationPlaceholder}
                   />
                   {clinicalManifestations.length > 1 && (
                     <button
@@ -672,13 +722,13 @@ export default function EditFormula() {
                 onClick={() => addField(clinicalManifestations, setClinicalManifestations)}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add manifestation
+                {ui.addManifestation}
               </button>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Clinical Applications
+                {ui.clinicalApplications}
               </label>
               {clinicalApplications.map((item, index) => (
                 <div key={index} className="flex gap-2 mb-2">
@@ -687,7 +737,7 @@ export default function EditFormula() {
                     value={item}
                     onChange={(e) => updateField(clinicalApplications, setClinicalApplications, index, e.target.value)}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter clinical application..."
+                    placeholder={ui.applicationPlaceholder}
                   />
                   {clinicalApplications.length > 1 && (
                     <button
@@ -705,7 +755,7 @@ export default function EditFormula() {
                 onClick={() => addField(clinicalApplications, setClinicalApplications)}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add application
+                {ui.addApplication}
               </button>
             </div>
           </div>
@@ -715,7 +765,7 @@ export default function EditFormula() {
 
         {/* Modifications */}
         <section id="modifications" className="mb-12 scroll-mt-4">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Modifications</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{ui.modifications}</h2>
           <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-6">
             {modifications.map((modification, modIndex) => (
               <div key={modIndex} className="border border-gray-200 rounded-lg p-4 space-y-4">
@@ -725,7 +775,7 @@ export default function EditFormula() {
                     onChange={(e) => updateModificationExplanation(modIndex, e.target.value)}
                     rows={2}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    placeholder="For internal heat signs..."
+                    placeholder={isSpanish ? 'Para signos de calor interno...' : 'For internal heat signs...'}
                   />
                   {modifications.length > 1 && (
                     <button
@@ -740,7 +790,7 @@ export default function EditFormula() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Add herbs (green chips)
+                    {isSpanish ? 'Añadir hierbas (chips verdes)' : 'Add herbs (green chips)'}
                   </label>
                   <div className="flex flex-wrap gap-2 mb-2">
                     {modification.add_herbs.map((herb, herbIdx) => (
@@ -765,7 +815,7 @@ export default function EditFormula() {
                     }}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
                   >
-                    <option value="">Select herb to add...</option>
+                    <option value="">{ui.selectHerbToAdd}</option>
                     {herbsData
                       .filter(h => !modification.add_herbs.includes(h.pinyin_name))
                       .map(h => (
@@ -778,7 +828,7 @@ export default function EditFormula() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Remove herbs (red chips)
+                    {isSpanish ? 'Eliminar hierbas (chips rojos)' : 'Remove herbs (red chips)'}
                   </label>
                   <div className="flex flex-wrap gap-2 mb-2">
                     {modification.remove_herbs.map((herb, herbIdx) => (
@@ -803,7 +853,7 @@ export default function EditFormula() {
                     }}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
                   >
-                    <option value="">Select herb to remove...</option>
+                    <option value="">{ui.selectHerbToRemove}</option>
                     {herbsData
                       .filter(h => !modification.remove_herbs.includes(h.pinyin_name))
                       .map(h => (
@@ -815,13 +865,13 @@ export default function EditFormula() {
                 </div>
               </div>
             ))}
-            <button
-              type="button"
-              onClick={addModification}
-              className="text-sm text-teal-600 hover:text-teal-700 font-medium"
-            >
-              + Add modification
-            </button>
+              <button
+                type="button"
+                onClick={addModification}
+                className="text-sm text-teal-600 hover:text-teal-700 font-medium"
+              >
+              {ui.addModification}
+              </button>
           </div>
         </section>
 
@@ -833,14 +883,14 @@ export default function EditFormula() {
             to={`/formulas/${encodeURIComponent(formulaId!)}`}
             className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
           >
-            Cancel
+            {ui.cancel}
           </Link>
           <button
             type="submit"
             className="inline-flex items-center gap-2 px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
           >
             <Save className="w-4 h-4" />
-            Update Formula
+            {ui.update}
           </button>
         </div>
       </form>

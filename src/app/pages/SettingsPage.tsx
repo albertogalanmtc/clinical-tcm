@@ -8,13 +8,16 @@ import { updatePassword } from '@/services/api/authService';
 import { supabase } from '../lib/supabase';
 import { toast } from 'sonner';
 
-const LANGUAGES = [
-  { code: 'en', name: 'English' },
-  { code: 'es', name: 'Spanish' },
-  { code: 'fr', name: 'French' },
-  { code: 'de', name: 'German' },
-  { code: 'zh', name: 'Chinese' },
-];
+const LANGUAGE_OPTIONS = {
+  en: [
+    { code: 'en', name: 'English' },
+    { code: 'es', name: 'Spanish' },
+  ],
+  es: [
+    { code: 'en', name: 'Inglés' },
+    { code: 'es', name: 'Español' },
+  ],
+} as const;
 
 interface NotificationPreferences {
   subscriptionRenewal: boolean;
@@ -38,6 +41,99 @@ export default function SettingsPage() {
   const { email, firstName, lastName, userId } = useUser();
   const { language, setLanguage, t } = useLanguage();
   const navigate = useNavigate();
+  const isSpanish = language === 'es';
+  const ui = {
+    pageTitle: isSpanish ? 'Ajustes' : 'Settings',
+    pageDescription: isSpanish
+      ? 'Gestiona la seguridad, las preferencias y la configuración de tu cuenta'
+      : 'Manage security, preferences, and account settings',
+    securityTitle: isSpanish ? 'Seguridad' : 'Security',
+    securityDescription: isSpanish
+      ? 'Gestiona tu correo, autenticación y contraseña'
+      : 'Manage your email, authentication, and password',
+    emailLabel: isSpanish ? 'Correo electrónico' : 'Email address',
+    changeEmail: isSpanish ? 'Cambiar correo' : 'Change email',
+    emailHelp: isSpanish
+      ? 'Tu correo se usa para iniciar sesión y para notificaciones importantes'
+      : 'Your email is used for login and important notifications',
+    authMethod: isSpanish ? 'Método de autenticación' : 'Authentication method',
+    password: isSpanish ? 'Contraseña' : 'Password',
+    managedByGoogle: isSpanish ? 'Gestionado por Google' : 'Managed by Google',
+    changePassword: isSpanish ? 'Cambiar contraseña' : 'Change password',
+    currentPassword: isSpanish ? 'Contraseña actual' : 'Current Password',
+    newPassword: isSpanish ? 'Nueva contraseña' : 'New Password',
+    confirmPassword: isSpanish ? 'Confirmar nueva contraseña' : 'Confirm New Password',
+    updatePassword: isSpanish ? 'Actualizar contraseña' : 'Update password',
+    latestUpdatesTitle: isSpanish ? 'Últimas novedades' : 'Latest updates',
+    latestUpdatesDescription: isSpanish
+      ? 'Mantente al día de noticias importantes, actualizaciones y anuncios'
+      : 'Stay informed about important news, updates, and announcements',
+    notifications: isSpanish ? 'Notificaciones' : 'Notifications',
+    subscriptionRenewal: isSpanish ? 'Renovación de suscripción' : 'Subscription renewal',
+    subscriptionRenewalDesc: isSpanish
+      ? 'Recibe un aviso antes de que se renueve tu suscripción'
+      : 'Get notified before your subscription renews',
+    communityNotifications: isSpanish ? 'Notificaciones de comunidad' : 'Community notifications',
+    repliesToMyPosts: isSpanish ? 'Respuestas a mis posts' : 'Replies to my posts',
+    repliesToMyPostsDesc: isSpanish
+      ? 'Recibe un email cuando alguien responda a un post que hayas creado'
+      : 'Get an email when someone replies to a post you created',
+    newCommunityPosts: isSpanish ? 'Nuevos posts de la comunidad' : 'New community posts',
+    newCommunityPostsDesc: isSpanish
+      ? 'Recibe emails sobre nuevos posts publicados por otros usuarios'
+      : 'Get emails about new posts shared by other users',
+    dangerZone: isSpanish ? 'Zona de peligro' : 'Danger Zone',
+    dangerZoneSub: isSpanish ? 'Acciones irreversibles' : 'Irreversible actions',
+    deleteAccount: isSpanish ? 'Eliminar cuenta' : 'Delete account',
+    deleteAccountDesc: isSpanish
+      ? 'Elimina de forma permanente tu cuenta y todos los datos asociados. Esta acción no se puede deshacer.'
+      : 'Permanently delete your account and all associated data. This action cannot be undone.',
+    deleteAccountButton: isSpanish ? 'Eliminar cuenta' : 'Delete account',
+    deleteModalTitle: isSpanish ? 'Eliminar cuenta' : 'Delete Account',
+    deleteModalQuestion: isSpanish
+      ? '¿Seguro que quieres eliminar tu cuenta? Esta acción no se puede deshacer.'
+      : 'Are you absolutely sure you want to delete your account? This action cannot be undone.',
+    deleteModalWillDelete: isSpanish ? 'Esto eliminará permanentemente:' : 'This will permanently delete:',
+    deleteModalListPrescriptions: isSpanish ? 'Todas tus prescripciones' : 'All your prescriptions',
+    deleteModalListSettings: isSpanish ? 'Tus ajustes personales' : 'Your personal settings',
+    deleteModalListData: isSpanish ? 'Los datos de tu cuenta' : 'Your account data',
+    enterPasswordToConfirm: isSpanish ? 'Introduce tu contraseña para confirmar' : 'Enter your password to confirm',
+    typeDeleteToConfirm: isSpanish ? 'Escribe DELETE para confirmar' : 'Type DELETE to confirm',
+    passwordPlaceholder: isSpanish ? 'Introduce tu contraseña' : 'Enter your password',
+    deleting: isSpanish ? 'Eliminando...' : 'Deleting...',
+    deleteAccountPermanent: isSpanish ? 'Eliminar cuenta definitivamente' : 'Delete Account',
+    currentEmail: isSpanish ? 'Correo actual' : 'Current email',
+    newEmailAddress: isSpanish ? 'Nuevo correo electrónico' : 'New email address',
+    currentPasswordLabel: isSpanish ? 'Contraseña actual' : 'Current password',
+    currentPasswordHelp: isSpanish
+      ? 'Necesitamos tu contraseña para verificar tu identidad'
+      : 'We need your password to verify your identity',
+    changeEmailTitle: isSpanish ? 'Cambiar correo electrónico' : 'Change Email Address',
+    emailConfirmationSent: isSpanish ? 'Correo de confirmación enviado' : 'Confirmation Email Sent',
+    emailConfirmationHelp: isSpanish
+      ? 'Hemos enviado un correo de confirmación a'
+      : "We've sent a confirmation email to",
+    emailConfirmationHelp2: isSpanish
+      ? 'Por favor revisa tu bandeja y haz clic en el enlace para completar el cambio de correo.'
+      : 'Please check your inbox and click the confirmation link to complete the email change.',
+    saveChanges: isSpanish ? 'Guardar cambios' : 'Save changes',
+    cancel: isSpanish ? 'Cancelar' : 'Cancel',
+    saving: isSpanish ? 'Guardando...' : 'Saving...',
+    changeEmailButton: isSpanish ? 'Cambiar correo' : 'Change Email',
+    confirmDelete: isSpanish ? 'DELETE' : 'DELETE',
+    fillPasswordFields: isSpanish ? 'Rellena todos los campos de contraseña' : 'Please fill in all password fields',
+    passwordsDoNotMatch: isSpanish ? 'Las contraseñas nuevas no coinciden' : 'New passwords do not match',
+    passwordMinLength: isSpanish ? 'La contraseña debe tener al menos 8 caracteres' : 'Password must be at least 8 characters',
+    passwordMustBeDifferent: isSpanish ? 'La nueva contraseña debe ser diferente de la actual' : 'New password must be different from current password',
+    passwordUpdatedSuccessfully: isSpanish ? '¡Contraseña actualizada con éxito!' : 'Password updated successfully!',
+    currentPasswordIncorrect: isSpanish ? 'La contraseña actual es incorrecta' : 'Current password is incorrect',
+    failedUpdatePassword: isSpanish ? 'No se pudo actualizar la contraseña' : 'Failed to update password',
+    unexpectedError: isSpanish ? 'Se ha producido un error inesperado' : 'An unexpected error occurred',
+    pleaseEnterPassword: isSpanish ? 'Introduce tu contraseña para confirmar' : 'Please enter your password to confirm',
+    noActiveSession: isSpanish ? 'No se encontró ninguna sesión activa' : 'No active session found',
+    failedDeleteAccount: isSpanish ? 'No se pudo eliminar la cuenta. Inténtalo de nuevo.' : 'Failed to delete account. Please try again.',
+    errorDeletingAccount: isSpanish ? 'Se ha producido un error al eliminar la cuenta' : 'An error occurred while deleting your account',
+  };
 
   // Auth provider state
   const [authProvider, setAuthProvider] = useState<string>('email');
@@ -182,22 +278,22 @@ export default function SettingsPage() {
   const handleChangePassword = async () => {
     // Validations
     if (!currentPassword || !newPassword || !confirmPassword) {
-      toast.error('Please fill in all password fields');
+      toast.error(ui.fillPasswordFields);
       return;
     }
 
     if (newPassword !== confirmPassword) {
-      toast.error('New passwords do not match');
+      toast.error(ui.passwordsDoNotMatch);
       return;
     }
 
     if (newPassword.length < 8) {
-      toast.error('Password must be at least 8 characters');
+      toast.error(ui.passwordMinLength);
       return;
     }
 
     if (currentPassword === newPassword) {
-      toast.error('New password must be different from current password');
+      toast.error(ui.passwordMustBeDifferent);
       return;
     }
 
@@ -211,17 +307,17 @@ export default function SettingsPage() {
         setNewPassword('');
         setConfirmPassword('');
         setShowPasswordFields(false);
-        toast.success('Password updated successfully!');
+        toast.success(ui.passwordUpdatedSuccessfully);
       } else {
         // Handle error - show more specific message
         if (result.error?.code === 'INVALID_PASSWORD') {
-          toast.error('Current password is incorrect');
+          toast.error(ui.currentPasswordIncorrect);
         } else {
-          toast.error(result.error?.message || 'Failed to update password');
+          toast.error(result.error?.message || ui.failedUpdatePassword);
         }
       }
     } catch (error: any) {
-      toast.error(error.message || 'An unexpected error occurred');
+      toast.error(error.message || ui.unexpectedError);
     }
   };
 
@@ -238,7 +334,7 @@ export default function SettingsPage() {
       });
 
       if (signInError) {
-        setEmailChangeError('Current password is incorrect');
+        setEmailChangeError(ui.currentPasswordIncorrect);
         setEmailChangeLoading(false);
         return;
       }
@@ -266,7 +362,7 @@ export default function SettingsPage() {
         setEmailChangeSuccess(false);
       }, 3000);
     } catch (error: any) {
-      setEmailChangeError('An error occurred. Please try again.');
+      setEmailChangeError(ui.unexpectedError);
       setEmailChangeLoading(false);
     }
   };
@@ -278,7 +374,7 @@ export default function SettingsPage() {
 
     // For Google auth users, don't require password
     if (!isGoogleAuth && !deletePassword) {
-      setDeleteError('Please enter your password to confirm');
+      setDeleteError(ui.pleaseEnterPassword);
       return;
     }
 
@@ -289,7 +385,7 @@ export default function SettingsPage() {
       const { data: { session } } = await supabase.auth.getSession();
 
       if (!session?.user) {
-        setDeleteError('No active session found');
+        setDeleteError(ui.noActiveSession);
         setDeleteLoading(false);
         return;
       }
@@ -302,7 +398,7 @@ export default function SettingsPage() {
         });
 
         if (signInError) {
-          setDeleteError('Incorrect password');
+          setDeleteError(ui.currentPasswordIncorrect);
           setDeleteLoading(false);
           return;
         }
@@ -315,7 +411,7 @@ export default function SettingsPage() {
         .eq('id', session.user.id);
 
       if (deleteError) {
-        setDeleteError('Failed to delete account. Please try again.');
+        setDeleteError(ui.failedDeleteAccount);
         setDeleteLoading(false);
         return;
       }
@@ -338,7 +434,7 @@ export default function SettingsPage() {
       navigate('/login');
     } catch (error: any) {
       console.error('Error deleting account:', error);
-      setDeleteError(error.message || 'An error occurred while deleting your account');
+      setDeleteError(error.message || ui.errorDeletingAccount);
       setDeleteLoading(false);
     }
   };
@@ -347,8 +443,8 @@ export default function SettingsPage() {
     <>
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Settings</h1>
-        <p className="text-gray-600">Manage security, preferences, and account settings</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">{ui.pageTitle}</h1>
+        <p className="text-gray-600">{ui.pageDescription}</p>
       </div>
 
       <div className="space-y-6">
@@ -360,8 +456,8 @@ export default function SettingsPage() {
                 <Shield className="w-5 h-5 text-teal-600" />
               </div>
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">Security</h2>
-                <p className="text-sm text-gray-500">Manage your email, authentication, and password</p>
+                <h2 className="text-lg font-semibold text-gray-900">{ui.securityTitle}</h2>
+                <p className="text-sm text-gray-500">{ui.securityDescription}</p>
               </div>
             </div>
           </div>
@@ -370,7 +466,7 @@ export default function SettingsPage() {
             {/* Email Address */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Email address
+                {ui.emailLabel}
               </label>
               <div className="flex items-center gap-3">
                 <div className="relative flex-1">
@@ -390,36 +486,36 @@ export default function SettingsPage() {
                     className="flex items-center gap-2 px-4 py-2.5 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors"
                   >
                     <Key className="w-4 h-4" />
-                    Change email
+                    {ui.changeEmail}
                   </button>
                 )}
               </div>
               <p className="text-xs text-gray-500 mt-2">
-                Your email is used for login and important notifications
+                {ui.emailHelp}
               </p>
             </div>
 
             {/* Authentication Method */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Authentication method
+                {ui.authMethod}
               </label>
               <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700">
                 <Globe className="w-4 h-4 text-gray-400" />
-                {isGoogleAuth ? 'Google' : 'Email & Password'}
+                {isGoogleAuth ? 'Google' : (isSpanish ? 'Correo y contraseña' : 'Email & Password')}
               </div>
             </div>
 
             {/* Password Section */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Password
+                {ui.password}
               </label>
 
               {isGoogleAuth ? (
                 <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-600">
                   <Lock className="w-4 h-4 text-gray-400" />
-                  Managed by Google
+                  {ui.managedByGoogle}
                 </div>
               ) : (
                 <>
@@ -429,14 +525,14 @@ export default function SettingsPage() {
                       className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors"
                     >
                       <Lock className="w-4 h-4" />
-                      Change password
+                      {ui.changePassword}
                     </button>
                   ) : (
                     <div className="space-y-4 p-4 bg-gray-50 rounded-lg border border-gray-200 max-w-2xl">
                       {/* Current Password */}
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Current Password
+                          {ui.currentPassword}
                         </label>
                         <div className="relative max-w-md">
                           <input
@@ -444,7 +540,7 @@ export default function SettingsPage() {
                             value={currentPassword}
                             onChange={(e) => setCurrentPassword(e.target.value)}
                             className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                            placeholder="Enter current password"
+                            placeholder={ui.currentPassword}
                           />
                           <button
                             type="button"
@@ -459,7 +555,7 @@ export default function SettingsPage() {
                       {/* New Password */}
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          New Password
+                          {ui.newPassword}
                         </label>
                         <div className="relative max-w-md">
                           <input
@@ -467,7 +563,7 @@ export default function SettingsPage() {
                             value={newPassword}
                             onChange={(e) => setNewPassword(e.target.value)}
                             className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                            placeholder="Enter new password (min. 8 characters)"
+                            placeholder={isSpanish ? 'Introduce la nueva contraseña (mín. 8 caracteres)' : 'Enter new password (min. 8 characters)'}
                           />
                           <button
                             type="button"
@@ -482,7 +578,7 @@ export default function SettingsPage() {
                       {/* Confirm Password */}
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Confirm New Password
+                          {ui.confirmPassword}
                         </label>
                         <div className="relative max-w-md">
                           <input
@@ -490,7 +586,7 @@ export default function SettingsPage() {
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                            placeholder="Confirm new password"
+                            placeholder={isSpanish ? 'Confirma la nueva contraseña' : 'Confirm new password'}
                           />
                           <button
                             type="button"
@@ -508,7 +604,7 @@ export default function SettingsPage() {
                           onClick={handleChangePassword}
                           className="px-4 py-2 bg-teal-600 text-white text-sm font-medium rounded-lg hover:bg-teal-700 transition-colors"
                         >
-                          Update password
+                          {ui.updatePassword}
                         </button>
                         <button
                           onClick={() => {
@@ -519,7 +615,7 @@ export default function SettingsPage() {
                           }}
                           className="px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors"
                         >
-                          Cancel
+                          {ui.cancel}
                         </button>
                       </div>
                     </div>
@@ -538,8 +634,8 @@ export default function SettingsPage() {
                 <Globe className="w-5 h-5 text-purple-600" />
               </div>
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">Latest updates</h2>
-                <p className="text-sm text-gray-500">Stay informed about important news, updates, and announcements</p>
+                <h2 className="text-lg font-semibold text-gray-900">{ui.latestUpdatesTitle}</h2>
+                <p className="text-sm text-gray-500">{ui.latestUpdatesDescription}</p>
               </div>
             </div>
           </div>
@@ -555,14 +651,14 @@ export default function SettingsPage() {
                 onChange={(e) => setLanguage(e.target.value as 'en' | 'es')}
                 className="w-full max-w-xs px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white text-gray-900"
               >
-                {LANGUAGES.map(lang => (
+                {LANGUAGE_OPTIONS[language].map(lang => (
                   <option key={lang.code} value={lang.code}>
                     {lang.name}
                   </option>
                 ))}
               </select>
               <p className="text-xs text-gray-500 mt-2">
-                {t('settings.currentEnglishOnly')}
+                {isSpanish ? 'Actualmente solo están disponibles inglés y español.' : 'Currently only English and Spanish are available.'}
               </p>
             </div>
 
@@ -571,7 +667,7 @@ export default function SettingsPage() {
                 <div className="flex items-center gap-2 mb-3">
                   <Bell className="w-4 h-4 text-gray-400" />
                   <label className="text-sm font-medium text-gray-700">
-                    Notifications
+                    {ui.notifications}
                   </label>
                 </div>
 
@@ -579,8 +675,8 @@ export default function SettingsPage() {
                   {/* Subscription Renewal */}
                   <div className="flex items-center justify-between py-2">
                     <div>
-                      <p className="text-sm font-medium text-gray-900">Subscription renewal</p>
-                      <p className="text-xs text-gray-500">Get notified before your subscription renews</p>
+                      <p className="text-sm font-medium text-gray-900">{ui.subscriptionRenewal}</p>
+                      <p className="text-xs text-gray-500">{ui.subscriptionRenewalDesc}</p>
                     </div>
                     <button
                       onClick={() => setNotificationPreferences(prev => ({
@@ -602,8 +698,8 @@ export default function SettingsPage() {
                   {/* Latest Updates */}
                   <div className="flex items-center justify-between py-2">
                     <div>
-                      <p className="text-sm font-medium text-gray-900">Latest updates</p>
-                      <p className="text-xs text-gray-500">Stay informed about important news, updates, and announcements</p>
+                      <p className="text-sm font-medium text-gray-900">{ui.latestUpdatesTitle}</p>
+                      <p className="text-xs text-gray-500">{ui.latestUpdatesDescription}</p>
                     </div>
                     <button
                       onClick={() => setNotificationPreferences(prev => ({
@@ -627,15 +723,15 @@ export default function SettingsPage() {
                     <div className="flex items-center gap-2 mb-3">
                       <MessageCircle className="w-4 h-4 text-gray-400" />
                       <label className="text-sm font-medium text-gray-700">
-                        Community notifications
+                        {ui.communityNotifications}
                       </label>
                     </div>
 
                     <div className="space-y-3">
                       <div className="flex items-center justify-between py-2">
                         <div>
-                          <p className="text-sm font-medium text-gray-900">Replies to my posts</p>
-                          <p className="text-xs text-gray-500">Get an email when someone replies to a post you created</p>
+                          <p className="text-sm font-medium text-gray-900">{ui.repliesToMyPosts}</p>
+                          <p className="text-xs text-gray-500">{ui.repliesToMyPostsDesc}</p>
                         </div>
                         <button
                           onClick={() => setNotificationPreferences(prev => ({
@@ -656,8 +752,8 @@ export default function SettingsPage() {
 
                       <div className="flex items-center justify-between py-2">
                         <div>
-                          <p className="text-sm font-medium text-gray-900">New community posts</p>
-                          <p className="text-xs text-gray-500">Get emails about new posts shared by other users</p>
+                          <p className="text-sm font-medium text-gray-900">{ui.newCommunityPosts}</p>
+                          <p className="text-xs text-gray-500">{ui.newCommunityPostsDesc}</p>
                         </div>
                         <button
                           onClick={() => setNotificationPreferences(prev => ({
@@ -690,8 +786,8 @@ export default function SettingsPage() {
                 <AlertTriangle className="w-5 h-5 text-red-600" />
               </div>
               <div>
-                <h2 className="text-lg font-semibold text-red-900">Danger Zone</h2>
-                <p className="text-sm text-red-700">Irreversible actions</p>
+                <h2 className="text-lg font-semibold text-red-900">{ui.dangerZone}</h2>
+                <p className="text-sm text-red-700">{ui.dangerZoneSub}</p>
               </div>
             </div>
           </div>
@@ -699,9 +795,9 @@ export default function SettingsPage() {
           <div className="px-6 py-5">
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <h3 className="text-sm font-semibold text-gray-900 mb-1">Delete account</h3>
+                <h3 className="text-sm font-semibold text-gray-900 mb-1">{ui.deleteAccount}</h3>
                 <p className="text-sm text-gray-600">
-                  Permanently delete your account and all associated data. This action cannot be undone.
+                  {ui.deleteAccountDesc}
                 </p>
               </div>
               <button
@@ -709,7 +805,7 @@ export default function SettingsPage() {
                 className="ml-4 inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-colors flex-shrink-0"
               >
                 <Trash2 className="w-4 h-4" />
-                Delete account
+                {ui.deleteAccountButton}
               </button>
             </div>
           </div>
@@ -726,7 +822,7 @@ export default function SettingsPage() {
                 <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
                   <AlertTriangle className="w-5 h-5 text-red-600" />
                 </div>
-                <h2 className="text-lg font-semibold text-gray-900">Delete Account</h2>
+                <h2 className="text-lg font-semibold text-gray-900">{ui.deleteModalTitle}</h2>
               </div>
               <button
                 onClick={() => {
@@ -745,17 +841,17 @@ export default function SettingsPage() {
             {/* Content */}
             <div className="px-6 py-5">
               <div className="mb-4">
-                <p className="text-sm text-gray-600 mb-3">
-                  Are you absolutely sure you want to delete your account? This action cannot be undone.
+                  <p className="text-sm text-gray-600 mb-3">
+                  {ui.deleteModalQuestion}
                 </p>
                 <div className="bg-red-50 border border-red-200 rounded-lg p-3">
                   <p className="text-sm text-red-800 font-medium mb-2">
-                    This will permanently delete:
+                    {ui.deleteModalWillDelete}
                   </p>
                   <ul className="text-sm text-red-700 space-y-1 ml-4 list-disc">
-                    <li>All your prescriptions</li>
-                    <li>Your personal settings</li>
-                    <li>Your account data</li>
+                    <li>{ui.deleteModalListPrescriptions}</li>
+                    <li>{ui.deleteModalListSettings}</li>
+                    <li>{ui.deleteModalListData}</li>
                   </ul>
                 </div>
               </div>
@@ -763,13 +859,13 @@ export default function SettingsPage() {
               {!isGoogleAuth && (
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-900 mb-2">
-                    Enter your password to confirm
+                    {ui.enterPasswordToConfirm}
                   </label>
                   <input
                     type="password"
                     value={deletePassword}
                     onChange={(e) => setDeletePassword(e.target.value)}
-                    placeholder="Enter your password"
+                    placeholder={ui.passwordPlaceholder}
                     autoComplete="current-password"
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                   />
@@ -778,13 +874,13 @@ export default function SettingsPage() {
 
               <div className="mb-5">
                 <label className="block text-sm font-medium text-gray-900 mb-2">
-                  Type <span className="font-bold text-red-600">DELETE</span> to confirm
+                  {isSpanish ? 'Escribe ' : 'Type '}<span className="font-bold text-red-600">DELETE</span>{isSpanish ? ' para confirmar' : ' to confirm'}
                 </label>
                 <input
                   type="text"
                   value={deleteConfirmText}
                   onChange={(e) => setDeleteConfirmText(e.target.value)}
-                  placeholder="DELETE"
+                  placeholder={ui.confirmDelete}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                 />
               </div>
@@ -808,7 +904,7 @@ export default function SettingsPage() {
                   disabled={deleteLoading}
                   className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
                 >
-                  Cancel
+                  {ui.cancel}
                 </button>
                 <button
                   onClick={handleDeleteAccount}
@@ -819,7 +915,7 @@ export default function SettingsPage() {
                       : 'bg-gray-300 cursor-not-allowed'
                   }`}
                 >
-                  {deleteLoading ? 'Deleting...' : 'Delete Account'}
+                  {deleteLoading ? ui.deleting : ui.deleteAccountPermanent}
                 </button>
               </div>
             </div>
@@ -838,7 +934,7 @@ export default function SettingsPage() {
                 <div className="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center">
                   <Mail className="w-5 h-5 text-teal-600" />
                 </div>
-                <h2 className="text-lg font-semibold text-gray-900">Change Email Address</h2>
+                <h2 className="text-lg font-semibold text-gray-900">{ui.changeEmailTitle}</h2>
               </div>
               <button
                 onClick={() => {
@@ -861,17 +957,17 @@ export default function SettingsPage() {
                   <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Check className="w-8 h-8 text-teal-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Confirmation Email Sent</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{ui.emailConfirmationSent}</h3>
                   <p className="text-sm text-gray-600">
-                    We've sent a confirmation email to <span className="font-medium">{newEmail}</span>.
-                    Please check your inbox and click the confirmation link to complete the email change.
+                    {ui.emailConfirmationHelp} <span className="font-medium">{newEmail}</span>.
+                    {ui.emailConfirmationHelp2}
                   </p>
                 </div>
               ) : (
                 <>
                   <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Current email
+                      {ui.currentEmail}
                     </label>
                     <input
                       type="email"
@@ -883,31 +979,31 @@ export default function SettingsPage() {
 
                   <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      New email address
+                      {ui.newEmailAddress}
                     </label>
                     <input
                       type="email"
                       value={newEmail}
                       onChange={(e) => setNewEmail(e.target.value)}
-                      placeholder="Enter new email address"
+                      placeholder={ui.newEmailAddress}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                     />
                   </div>
 
                   <div className="mb-5">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Current password
+                      {ui.currentPasswordLabel}
                     </label>
                     <input
                       type="password"
                       value={emailChangePassword}
                       onChange={(e) => setEmailChangePassword(e.target.value)}
-                      placeholder="Enter your current password"
+                      placeholder={ui.currentPasswordLabel}
                       autoComplete="current-password"
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                     />
                     <p className="text-xs text-gray-500 mt-2">
-                      We need your password to verify your identity
+                      {ui.currentPasswordHelp}
                     </p>
                   </div>
 
@@ -930,7 +1026,7 @@ export default function SettingsPage() {
                       disabled={emailChangeLoading}
                       className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
                     >
-                      Cancel
+                      {ui.cancel}
                     </button>
                     <button
                       onClick={handleEmailChange}
@@ -941,7 +1037,7 @@ export default function SettingsPage() {
                           : 'bg-gray-300 cursor-not-allowed'
                       }`}
                     >
-                      {emailChangeLoading ? 'Sending...' : 'Send confirmation'}
+                      {emailChangeLoading ? ui.saving : (isSpanish ? 'Enviar confirmación' : 'Send confirmation')}
                     </button>
                   </div>
                 </>

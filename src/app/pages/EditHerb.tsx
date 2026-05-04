@@ -5,10 +5,70 @@ import { toast } from 'sonner';
 import { updateHerb, getAllHerbs } from '@/app/data/herbsManager';
 import { Herb } from '@/app/data/herbs';
 import { useSwipeBack } from '../hooks/useSwipeBack';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function EditHerb() {
   const navigate = useNavigate();
   const { herbName } = useParams();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
+  const ui = {
+    back: isSpanish ? 'Volver a la hierba' : 'Back to Herb',
+    pageTitle: isSpanish ? 'Editar hierba' : 'Edit Herb',
+    pageDescription: isSpanish ? 'Actualiza la información a continuación' : 'Update the information below',
+    basicInformation: isSpanish ? 'Información básica' : 'Basic information',
+    basicInfo: isSpanish ? 'Información básica' : 'Basic info',
+    properties: isSpanish ? 'Propiedades' : 'Properties',
+    clinicalUse: isSpanish ? 'Uso clínico' : 'Clinical use',
+    safetyAlerts: isSpanish ? 'Seguridad y alertas' : 'Safety & alerts',
+    research: isSpanish ? 'Investigación' : 'Research',
+    save: isSpanish ? 'Guardar cambios' : 'Save Changes',
+    cancel: isSpanish ? 'Cancelar' : 'Cancel',
+    pinyinName: isSpanish ? 'Nombre en pinyin' : 'Pinyin Name',
+    pharmaceuticalName: isSpanish ? 'Nombre farmacéutico' : 'Pharmaceutical Name',
+    chineseCharacters: isSpanish ? 'Caracteres chinos' : 'Chinese Characters',
+    category: isSpanish ? 'Categoría' : 'Category',
+    subcategory: isSpanish ? 'Subcategoría' : 'Subcategory',
+    nature: isSpanish ? 'Naturaleza' : 'Nature',
+    selectNature: isSpanish ? 'Selecciona la naturaleza...' : 'Select nature...',
+    flavors: isSpanish ? 'Sabores' : 'Flavors',
+    channels: isSpanish ? 'Canales' : 'Channels',
+    dosage: isSpanish ? 'Dosis' : 'Dosage',
+    toxicity: isSpanish ? 'Toxicidad' : 'Toxicity',
+    tcmActions: isSpanish ? 'Acciones TCM' : 'TCM Actions',
+    clinicalIndications: isSpanish ? 'Indicaciones clínicas' : 'Clinical Indications',
+    contraindications: isSpanish ? 'Contraindicaciones' : 'Contraindications',
+    cautions: isSpanish ? 'Precauciones' : 'Cautions',
+    toxicology: isSpanish ? 'Toxicología' : 'Toxicology',
+    herbDrugInteractions: isSpanish ? 'Interacciones hierba-fármaco' : 'Herb-Drug Interactions',
+    herbHerbInteractions: isSpanish ? 'Interacciones hierba-hierba' : 'Herb-Herb Interactions',
+    allergens: isSpanish ? 'Alérgenos' : 'Allergens',
+    pharmacologicalEffects: isSpanish ? 'Efectos farmacológicos' : 'Pharmacological Effects',
+    biologicalMechanisms: isSpanish ? 'Mecanismos biológicos' : 'Biological Mechanisms',
+    bioactiveCompounds: isSpanish ? 'Compuestos bioactivos' : 'Bioactive Compounds',
+    detoxification: isSpanish ? 'Desintoxicación' : 'Detoxification',
+    sectionName: isSpanish ? 'Nombre de la sección' : 'Section name',
+    effect: isSpanish ? 'Efecto' : 'Effect',
+    system: isSpanish ? 'Sistema' : 'System',
+    targetAction: isSpanish ? 'Acción objetivo' : 'Target action',
+    chemicalClass: isSpanish ? 'Clase química' : 'Chemical class',
+    compound: isSpanish ? 'Compuesto' : 'Compound',
+    toxinGroup: isSpanish ? 'Grupo tóxico' : 'Toxin group',
+    agent: isSpanish ? 'Agente' : 'Agent',
+    addAction: isSpanish ? '+ Añadir acción' : '+ Add action',
+    addIndication: isSpanish ? '+ Añadir indicación' : '+ Add indication',
+    addContraindication: isSpanish ? '+ Añadir contraindicación' : '+ Add contraindication',
+    addCaution: isSpanish ? '+ Añadir precaución' : '+ Add caution',
+    addToxicology: isSpanish ? '+ Añadir toxicología' : '+ Add toxicology info',
+    addInteraction: isSpanish ? '+ Añadir interacción' : '+ Add interaction',
+    addAllergen: isSpanish ? '+ Añadir alérgeno' : '+ Add allergen',
+    addSection: isSpanish ? '+ Añadir sección' : '+ Add section',
+    addEffect: isSpanish ? '+ Añadir efecto' : '+ Add effect',
+    addTargetAction: isSpanish ? '+ Añadir acción objetivo' : '+ Add target action',
+    addCompound: isSpanish ? '+ Añadir compuesto' : '+ Add compound',
+    addAgent: isSpanish ? '+ Añadir agente' : '+ Add agent',
+    update: isSpanish ? 'Actualizar hierba' : 'Update Herb',
+  };
   
   // Enable swipe-to-go-back gesture on mobile
   useSwipeBack();
@@ -65,7 +125,7 @@ export default function EditHerb() {
     const herb = herbs.find(h => h.pinyin_name === decodeURIComponent(herbName));
 
     if (!herb) {
-      toast.error('Herb not found');
+      toast.error(isSpanish ? 'Hierba no encontrada' : 'Herb not found');
       navigate('/herbs');
       return;
     }
@@ -270,7 +330,7 @@ export default function EditHerb() {
     
     // Basic validation
     if (!pinyinName || !latinName) {
-      toast.error('Please fill in at least Pinyin and Pharmaceutical names');
+      toast.error(isSpanish ? 'Rellena al menos el nombre en pinyin y el nombre farmacéutico' : 'Please fill in at least Pinyin and Pharmaceutical names');
       return;
     }
 
@@ -279,7 +339,7 @@ export default function EditHerb() {
     const originalHerb = herbs.find(h => h.pinyin_name === decodeURIComponent(herbName!));
 
     if (!originalHerb) {
-      toast.error('Herb not found');
+      toast.error(isSpanish ? 'Hierba no encontrada' : 'Herb not found');
       return;
     }
 
@@ -344,16 +404,16 @@ export default function EditHerb() {
     };
 
     updateHerb(originalHerb.herb_id, updatedHerb);
-    toast.success('Herb updated successfully!');
+    toast.success(isSpanish ? 'Hierba actualizada correctamente' : 'Herb updated successfully!');
     navigate(`/herbs/${encodeURIComponent(pinyinName)}`);
   };
 
   const sections = [
-    { id: 'basic', label: 'Basic info' },
-    { id: 'properties', label: 'Properties' },
-    { id: 'clinical-use', label: 'Clinical use' },
-    { id: 'safety', label: 'Safety & alerts' },
-    { id: 'research', label: 'Research' }
+    { id: 'basic', label: ui.basicInfo },
+    { id: 'properties', label: ui.properties },
+    { id: 'clinical-use', label: ui.clinicalUse },
+    { id: 'safety', label: ui.safetyAlerts },
+    { id: 'research', label: ui.research }
   ];
 
   const scrollToSection = (id: string) => {
@@ -365,14 +425,14 @@ export default function EditHerb() {
       <Link 
         to={`/herbs/${encodeURIComponent(herbName)}`} 
         className="h-10 w-10 sm:w-11 sm:h-11 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-colors flex-shrink-0"
-        title="Back to Herb"
+        title={ui.back}
       >
         <ArrowLeft className="w-5 h-5" />
       </Link>
 
       <div className="mb-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Edit Herb</h1>
-        <p className="hidden sm:block text-gray-600">Update the information below</p>
+        <h1 className="text-4xl font-bold text-gray-900 mb-2">{ui.pageTitle}</h1>
+        <p className="hidden sm:block text-gray-600">{ui.pageDescription}</p>
       </div>
 
       {/* Jump labels */}
@@ -402,39 +462,39 @@ export default function EditHerb() {
       <form onSubmit={handleSubmit}>
         {/* Basic Info */}
         <section id="basic" className="mb-12 scroll-mt-4">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Basic information</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{ui.basicInformation}</h2>
           <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Pinyin Name <span className="text-red-600">*</span>
+                {ui.pinyinName} <span className="text-red-600">*</span>
               </label>
               <input
                 type="text"
                 value={pinyinName}
                 onChange={(e) => setPinyinName(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                placeholder="e.g., Huang Qi"
+                placeholder={isSpanish ? 'p. ej., Huang Qi' : 'e.g., Huang Qi'}
                 required
               />
             </div>
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Pharmaceutical Name <span className="text-red-600">*</span>
+                {ui.pharmaceuticalName} <span className="text-red-600">*</span>
               </label>
               <input
                 type="text"
                 value={latinName}
                 onChange={(e) => setLatinName(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                placeholder="e.g., Astragali Radix"
+                placeholder={isSpanish ? 'p. ej., Astragali Radix' : 'e.g., Astragali Radix'}
                 required
               />
             </div>
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Chinese Characters
+                {ui.chineseCharacters}
               </label>
               <input
                 type="text"
@@ -447,27 +507,27 @@ export default function EditHerb() {
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Category
+                {ui.category}
               </label>
               <input
                 type="text"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                placeholder="e.g., Tonify Qi"
+                placeholder={isSpanish ? 'p. ej., Tonificar Qi' : 'e.g., Tonify Qi'}
               />
             </div>
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Subcategory
+                {ui.subcategory}
               </label>
               <input
                 type="text"
                 value={subcategory}
                 onChange={(e) => setSubcategory(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                placeholder="e.g., Tonify Qi and strengthen exterior"
+                placeholder={isSpanish ? 'p. ej., Tonificar Qi y fortalecer el exterior' : 'e.g., Tonify Qi and strengthen exterior'}
               />
             </div>
           </div>
@@ -477,31 +537,31 @@ export default function EditHerb() {
 
         {/* Properties */}
         <section id="properties" className="mb-12 scroll-mt-4">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Properties</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{ui.properties}</h2>
           <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Nature
+                {ui.nature}
               </label>
               <select
                 value={nature}
                 onChange={(e) => setNature(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
               >
-                <option value="">Select nature...</option>
-                <option value="Very Hot">Very Hot</option>
-                <option value="Hot">Hot</option>
-                <option value="Warm">Warm</option>
-                <option value="Neutral">Neutral</option>
-                <option value="Cool">Cool</option>
-                <option value="Cold">Cold</option>
-                <option value="Very Cold">Very Cold</option>
+                <option value="">{ui.selectNature}</option>
+                <option value="Very Hot">{isSpanish ? 'Muy caliente' : 'Very Hot'}</option>
+                <option value="Hot">{isSpanish ? 'Caliente' : 'Hot'}</option>
+                <option value="Warm">{isSpanish ? 'Templado' : 'Warm'}</option>
+                <option value="Neutral">{isSpanish ? 'Neutra' : 'Neutral'}</option>
+                <option value="Cool">{isSpanish ? 'Fresca' : 'Cool'}</option>
+                <option value="Cold">{isSpanish ? 'Fría' : 'Cold'}</option>
+                <option value="Very Cold">{isSpanish ? 'Muy fría' : 'Very Cold'}</option>
               </select>
             </div>
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Flavors
+                {ui.flavors}
               </label>
               <div className="flex flex-wrap gap-2">
                 {[
@@ -531,7 +591,7 @@ export default function EditHerb() {
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Channels
+                {ui.channels}
               </label>
               <div className="flex flex-wrap gap-2">
                 {[
@@ -566,27 +626,27 @@ export default function EditHerb() {
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Dosage
+                {ui.dosage}
               </label>
               <input
                 type="text"
                 value={dosage}
                 onChange={(e) => setDosage(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                placeholder="e.g., 9-30g"
+                placeholder={isSpanish ? 'p. ej., 9-30g' : 'e.g., 9-30g'}
               />
             </div>
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Toxicity
+                {ui.toxicity}
               </label>
               <input
                 type="text"
                 value={toxic}
                 onChange={(e) => setToxic(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                placeholder="e.g., Non-toxic"
+                placeholder={isSpanish ? 'p. ej., No tóxica' : 'e.g., Non-toxic'}
               />
             </div>
           </div>
@@ -596,11 +656,11 @@ export default function EditHerb() {
 
         {/* Clinical Use */}
         <section id="clinical-use" className="mb-12 scroll-mt-4">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Clinical use</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{ui.clinicalUse}</h2>
           <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-6">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                TCM Actions
+                {ui.tcmActions}
               </label>
               {tcmActions.map((action, index) => (
                 <div key={index} className="flex gap-2 mb-2">
@@ -609,7 +669,7 @@ export default function EditHerb() {
                     value={action}
                     onChange={(e) => updateField(tcmActions, setTcmActions, index, e.target.value)}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter TCM action..."
+                    placeholder={isSpanish ? 'Introduce una acción TCM...' : 'Enter TCM action...'}
                   />
                   {tcmActions.length > 1 && (
                     <button
@@ -627,13 +687,13 @@ export default function EditHerb() {
                 onClick={() => addField(tcmActions, setTcmActions)}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add action
+                {ui.addAction}
               </button>
             </div>
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Clinical Indications
+                {ui.clinicalIndications}
               </label>
               {clinicalIndications.map((indication, index) => (
                 <div key={index} className="flex gap-2 mb-2">
@@ -642,7 +702,7 @@ export default function EditHerb() {
                     value={indication}
                     onChange={(e) => updateField(clinicalIndications, setClinicalIndications, index, e.target.value)}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter clinical indication..."
+                    placeholder={isSpanish ? 'Introduce una indicación clínica...' : 'Enter clinical indication...'}
                   />
                   {clinicalIndications.length > 1 && (
                     <button
@@ -660,7 +720,7 @@ export default function EditHerb() {
                 onClick={() => addField(clinicalIndications, setClinicalIndications)}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add indication
+                {ui.addIndication}
               </button>
             </div>
           </div>
@@ -670,11 +730,11 @@ export default function EditHerb() {
 
         {/* Safety & Alerts */}
         <section id="safety" className="mb-12 scroll-mt-4">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Safety & alerts</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{ui.safetyAlerts}</h2>
           <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-6">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Contraindications
+                {ui.contraindications}
               </label>
               {contraindications.map((item, index) => (
                 <div key={index} className="flex gap-2 mb-2">
@@ -683,7 +743,7 @@ export default function EditHerb() {
                     value={item}
                     onChange={(e) => updateField(contraindications, setContraindications, index, e.target.value)}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter contraindication..."
+                    placeholder={isSpanish ? 'Introduce una contraindicación...' : 'Enter contraindication...'}
                   />
                   {contraindications.length > 1 && (
                     <button
@@ -701,13 +761,13 @@ export default function EditHerb() {
                 onClick={() => addField(contraindications, setContraindications)}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add contraindication
+                {ui.addContraindication}
               </button>
             </div>
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Cautions
+                {ui.cautions}
               </label>
               {cautions.map((item, index) => (
                 <div key={index} className="flex gap-2 mb-2">
@@ -716,7 +776,7 @@ export default function EditHerb() {
                     value={item}
                     onChange={(e) => updateField(cautions, setCautions, index, e.target.value)}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter caution..."
+                    placeholder={isSpanish ? 'Introduce una precaución...' : 'Enter caution...'}
                   />
                   {cautions.length > 1 && (
                     <button
@@ -734,13 +794,13 @@ export default function EditHerb() {
                 onClick={() => addField(cautions, setCautions)}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add caution
+                {ui.addCaution}
               </button>
             </div>
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Toxicology
+                {ui.toxicology}
               </label>
               {toxicology.map((item, index) => (
                 <div key={index} className="flex gap-2 mb-2">
@@ -749,7 +809,7 @@ export default function EditHerb() {
                     value={item}
                     onChange={(e) => updateField(toxicology, setToxicology, index, e.target.value)}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter toxicology information..."
+                    placeholder={isSpanish ? 'Introduce información toxicológica...' : 'Enter toxicology information...'}
                   />
                   {toxicology.length > 1 && (
                     <button
@@ -767,13 +827,13 @@ export default function EditHerb() {
                 onClick={() => addField(toxicology, setToxicology)}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add toxicology info
+                {ui.addToxicology}
               </button>
             </div>
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Herb-Drug Interactions
+                {ui.herbDrugInteractions}
               </label>
               {herbDrugInteractions.map((item, index) => (
                 <div key={index} className="flex gap-2 mb-2">
@@ -782,7 +842,7 @@ export default function EditHerb() {
                     value={item}
                     onChange={(e) => updateField(herbDrugInteractions, setHerbDrugInteractions, index, e.target.value)}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter herb-drug interaction..."
+                    placeholder={isSpanish ? 'Introduce una interacción hierba-fármaco...' : 'Enter herb-drug interaction...'}
                   />
                   {herbDrugInteractions.length > 1 && (
                     <button
@@ -800,13 +860,13 @@ export default function EditHerb() {
                 onClick={() => addField(herbDrugInteractions, setHerbDrugInteractions)}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add interaction
+                {ui.addInteraction}
               </button>
             </div>
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Herb-Herb Interactions
+                {ui.herbHerbInteractions}
               </label>
               {herbHerbInteractions.map((item, index) => (
                 <div key={index} className="flex gap-2 mb-2">
@@ -815,7 +875,7 @@ export default function EditHerb() {
                     value={item}
                     onChange={(e) => updateField(herbHerbInteractions, setHerbHerbInteractions, index, e.target.value)}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter herb-herb interaction..."
+                    placeholder={isSpanish ? 'Introduce una interacción hierba-hierba...' : 'Enter herb-herb interaction...'}
                   />
                   {herbHerbInteractions.length > 1 && (
                     <button
@@ -833,13 +893,13 @@ export default function EditHerb() {
                 onClick={() => addField(herbHerbInteractions, setHerbHerbInteractions)}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add interaction
+                {ui.addInteraction}
               </button>
             </div>
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">
-                Allergens
+                {ui.allergens}
               </label>
               {allergens.map((item, index) => (
                 <div key={index} className="flex gap-2 mb-2">
@@ -848,7 +908,7 @@ export default function EditHerb() {
                     value={item}
                     onChange={(e) => updateField(allergens, setAllergens, index, e.target.value)}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter allergen..."
+                    placeholder={isSpanish ? 'Introduce un alérgeno...' : 'Enter allergen...'}
                   />
                   {allergens.length > 1 && (
                     <button
@@ -866,7 +926,7 @@ export default function EditHerb() {
                 onClick={() => addField(allergens, setAllergens)}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add allergen
+                {ui.addAllergen}
               </button>
             </div>
           </div>
@@ -876,11 +936,11 @@ export default function EditHerb() {
 
         {/* Research */}
         <section id="research" className="mb-12 scroll-mt-4">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Research</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{ui.research}</h2>
           <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-6">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-3">
-                Pharmacological Effects
+                {ui.pharmacologicalEffects}
               </label>
               {pharmacologicalEffects.map((pharmaSection, sectionIndex) => (
                 <div key={sectionIndex} className="space-y-4 mb-6">
@@ -890,7 +950,7 @@ export default function EditHerb() {
                       value={pharmaSection.section}
                       onChange={(e) => updatePharmacologicalSection(sectionIndex, e.target.value)}
                       className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      placeholder="Enter section name (e.g., Cardiovascular system)..."
+                      placeholder={isSpanish ? 'Introduce el nombre de la sección (p. ej., sistema cardiovascular)...' : 'Enter section name (e.g., Cardiovascular system)...'}
                     />
                     {pharmacologicalEffects.length > 1 && (
                       <button
@@ -911,7 +971,7 @@ export default function EditHerb() {
                           value={effect}
                           onChange={(e) => updatePharmacologicalEffect(sectionIndex, effectIndex, e.target.value)}
                           className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                          placeholder="Enter effect..."
+                          placeholder={isSpanish ? 'Introduce un efecto...' : 'Enter effect...'}
                         />
                         {pharmaSection.effects.length > 1 && (
                           <button
@@ -929,7 +989,7 @@ export default function EditHerb() {
                       onClick={() => addPharmacologicalEffect(sectionIndex)}
                       className="text-sm text-teal-600 hover:text-teal-700 font-medium"
                     >
-                      + Add effect
+                      {ui.addEffect}
                     </button>
                   </div>
                 </div>
@@ -939,13 +999,13 @@ export default function EditHerb() {
                 onClick={addPharmacologicalSection}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add section
+                {ui.addSection}
               </button>
             </div>
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-3">
-                Biological Mechanisms
+                {ui.biologicalMechanisms}
               </label>
               {biologicalEffects.map((bioMechanism, systemIndex) => (
                 <div key={systemIndex} className="space-y-4 mb-6">
@@ -955,7 +1015,7 @@ export default function EditHerb() {
                       value={bioMechanism.system}
                       onChange={(e) => updateBiologicalSystem(systemIndex, e.target.value)}
                       className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      placeholder="Enter system (e.g., Immune system)..."
+                      placeholder={isSpanish ? 'Introduce un sistema (p. ej., sistema inmune)...' : 'Enter system (e.g., Immune system)...'}
                     />
                     {biologicalEffects.length > 1 && (
                       <button
@@ -976,7 +1036,7 @@ export default function EditHerb() {
                           value={action}
                           onChange={(e) => updateBiologicalTargetAction(systemIndex, actionIndex, e.target.value)}
                           className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                          placeholder="Enter target action..."
+                          placeholder={isSpanish ? 'Introduce una acción objetivo...' : 'Enter target action...'}
                         />
                         {bioMechanism.target_actions.length > 1 && (
                           <button
@@ -994,7 +1054,7 @@ export default function EditHerb() {
                       onClick={() => addBiologicalTargetAction(systemIndex)}
                       className="text-sm text-teal-600 hover:text-teal-700 font-medium"
                     >
-                      + Add target action
+                      {ui.addTargetAction}
                     </button>
                   </div>
                 </div>
@@ -1004,13 +1064,13 @@ export default function EditHerb() {
                 onClick={addBiologicalMechanism}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add system
+                {ui.addSection}
               </button>
             </div>
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-3">
-                Bioactive Compounds
+                {ui.bioactiveCompounds}
               </label>
               {bioactiveCompounds.map((bioCompound, sectionIndex) => (
                 <div key={sectionIndex} className="space-y-4 mb-6">
@@ -1020,7 +1080,7 @@ export default function EditHerb() {
                       value={bioCompound.chemical_class}
                       onChange={(e) => updateBioactiveCompoundSection(sectionIndex, e.target.value)}
                       className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      placeholder="Enter chemical class (e.g., Flavonoids)..."
+                      placeholder={isSpanish ? 'Introduce una clase química (p. ej., flavonoides)...' : 'Enter chemical class (e.g., Flavonoids)...'}
                     />
                     {bioactiveCompounds.length > 1 && (
                       <button
@@ -1041,7 +1101,7 @@ export default function EditHerb() {
                           value={compound}
                           onChange={(e) => updateBioactiveCompound(sectionIndex, compoundIndex, e.target.value)}
                           className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                          placeholder="Enter compound..."
+                          placeholder={isSpanish ? 'Introduce un compuesto...' : 'Enter compound...'}
                         />
                         {bioCompound.compounds.length > 1 && (
                           <button
@@ -1059,7 +1119,7 @@ export default function EditHerb() {
                       onClick={() => addBioactiveCompound(sectionIndex)}
                       className="text-sm text-teal-600 hover:text-teal-700 font-medium"
                     >
-                      + Add compound
+                      {ui.addCompound}
                     </button>
                   </div>
                 </div>
@@ -1069,13 +1129,13 @@ export default function EditHerb() {
                 onClick={addBioactiveCompoundSection}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add section
+                {ui.addSection}
               </button>
             </div>
 
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-3">
-                Detoxification
+                {ui.detoxification}
               </label>
               {detoxification.map((detoxSection, sectionIndex) => (
                 <div key={sectionIndex} className="space-y-4 mb-6">
@@ -1085,7 +1145,7 @@ export default function EditHerb() {
                       value={detoxSection.toxin_group}
                       onChange={(e) => updateDetoxificationSection(sectionIndex, e.target.value)}
                       className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      placeholder="Enter toxin group (e.g., Mycotoxins)..."
+                      placeholder={isSpanish ? 'Introduce un grupo tóxico (p. ej., micotoxinas)...' : 'Enter toxin group (e.g., Mycotoxins)...'}
                     />
                     {detoxification.length > 1 && (
                       <button
@@ -1106,7 +1166,7 @@ export default function EditHerb() {
                           value={agent}
                           onChange={(e) => updateDetoxificationAgent(sectionIndex, agentIndex, e.target.value)}
                           className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                          placeholder="Enter agent..."
+                          placeholder={isSpanish ? 'Introduce un agente...' : 'Enter agent...'}
                         />
                         {detoxSection.agents.length > 1 && (
                           <button
@@ -1124,7 +1184,7 @@ export default function EditHerb() {
                       onClick={() => addDetoxificationAgent(sectionIndex)}
                       className="text-sm text-teal-600 hover:text-teal-700 font-medium"
                     >
-                      + Add agent
+                      {ui.addAgent}
                     </button>
                   </div>
                 </div>
@@ -1134,7 +1194,7 @@ export default function EditHerb() {
                 onClick={addDetoxificationSection}
                 className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
-                + Add section
+                {ui.addSection}
               </button>
             </div>
           </div>
@@ -1146,14 +1206,14 @@ export default function EditHerb() {
             to={`/herbs/${encodeURIComponent(herbName!)}`}
             className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
           >
-            Cancel
+            {ui.cancel}
           </Link>
           <button
             type="submit"
             className="inline-flex items-center gap-2 px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
           >
             <Save className="w-4 h-4" />
-            Update Herb
+            {ui.update}
           </button>
         </div>
       </form>

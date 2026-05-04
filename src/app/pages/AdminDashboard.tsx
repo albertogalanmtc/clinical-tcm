@@ -10,6 +10,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { PrescriptionView } from '../components/PrescriptionView';
 import { fetchRecentAdminActivity, type AdminActivityItem as RecentAdminActivityItem } from '../services/adminActivityService';
 import { fetchAllAdminUsers } from '../services/adminUsersService';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface ActivityItem {
   event: string;
@@ -21,7 +22,7 @@ interface ActivityItem {
   data?: any;
 }
 
-function formatRelativeTime(date: Date | string): string {
+function formatRelativeTime(date: Date | string, language: 'en' | 'es'): string {
   const now = new Date();
   const then = typeof date === 'string' ? new Date(date) : date;
   const diffMs = now.getTime() - then.getTime();
@@ -29,14 +30,17 @@ function formatRelativeTime(date: Date | string): string {
   const diffHours = Math.floor(diffMs / 3600000);
   const diffDays = Math.floor(diffMs / 86400000);
 
-  if (diffMins < 1) return 'Just now';
-  if (diffMins < 60) return `${diffMins} min ago`;
-  if (diffHours < 24) return `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
-  if (diffDays < 7) return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
-  return new Date(then).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  const isSpanish = language === 'es';
+  if (diffMins < 1) return isSpanish ? 'Ahora mismo' : 'Just now';
+  if (diffMins < 60) return isSpanish ? `hace ${diffMins} min` : `${diffMins} min ago`;
+  if (diffHours < 24) return isSpanish ? `hace ${diffHours} hora${diffHours > 1 ? 's' : ''}` : `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+  if (diffDays < 7) return isSpanish ? `hace ${diffDays} día${diffDays > 1 ? 's' : ''}` : `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+  return new Date(then).toLocaleDateString(isSpanish ? 'es-ES' : 'en-US', { month: 'short', day: 'numeric' });
 }
 
 export default function AdminDashboard() {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [herbCount, setHerbCount] = useState(0);
   const [formulaCount, setFormulaCount] = useState(0);
   const [prescriptionCount, setPrescriptionCount] = useState(0);
@@ -101,15 +105,15 @@ export default function AdminDashboard() {
         return;
       }
 
-      setRecentActivity(
-        activityItems.map(activity => ({
-          event: activity.event,
-          detail: activity.detail,
-          user: activity.user,
-          time: formatRelativeTime(activity.time),
-          type: activity.type,
-          clickable: activity.clickable,
-          data: activity.data
+        setRecentActivity(
+          activityItems.map(activity => ({
+            event: activity.event,
+            detail: activity.detail,
+            user: activity.user,
+            time: formatRelativeTime(activity.time, language),
+            type: activity.type,
+            clickable: activity.clickable,
+            data: activity.data
         }))
       );
     };
@@ -143,25 +147,25 @@ export default function AdminDashboard() {
 
   const kpiData = [
     { 
-      label: 'Total users', 
+      label: isSpanish ? 'Usuarios totales' : 'Total users', 
       value: userCount === null ? '—' : userCount.toString(), 
       icon: Users, 
       color: 'bg-blue-50 text-blue-600' 
     },
     { 
-      label: 'Herbs in library', 
+      label: isSpanish ? 'Hierbas en la biblioteca' : 'Herbs in library', 
       value: herbCount.toString(), 
       icon: HerbIcon, 
       color: 'bg-green-50 text-green-600' 
     },
     { 
-      label: 'Formulas in library',
+      label: isSpanish ? 'Fórmulas en la biblioteca' : 'Formulas in library',
       value: formulaCount.toString(), 
       icon: FormulaIcon, 
       color: 'bg-teal-50 text-teal-600' 
     },
     { 
-      label: 'Prescriptions',
+      label: isSpanish ? 'Prescripciones' : 'Prescriptions',
       value: prescriptionCount.toString(), 
       icon: PrescriptionIcon, 
       color: 'bg-purple-50 text-purple-600' 
@@ -172,8 +176,8 @@ export default function AdminDashboard() {
     <>
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Dashboard</h1>
-        <p className="text-gray-600">Platform overview</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">{isSpanish ? 'Panel de admin' : 'Admin Dashboard'}</h1>
+        <p className="text-gray-600">{isSpanish ? 'Resumen de la plataforma' : 'Platform overview'}</p>
       </div>
 
       {/* KPI Cards */}
@@ -198,7 +202,7 @@ export default function AdminDashboard() {
       {/* Recent Activity */}
       <div className="bg-white rounded-lg border border-gray-200">
         <div className="px-6 py-4 border-b border-gray-200">
-          <h2 className="text-lg font-semibold text-gray-900">Recent activity</h2>
+          <h2 className="text-lg font-semibold text-gray-900">{isSpanish ? 'Actividad reciente' : 'Recent activity'}</h2>
         </div>
         {recentActivity.length > 0 ? (
           <div className="divide-y divide-gray-200">
@@ -241,7 +245,7 @@ export default function AdminDashboard() {
           </div>
         ) : (
           <div className="px-6 py-12 text-center text-sm text-gray-500">
-            No recent activity
+            {isSpanish ? 'No hay actividad reciente' : 'No recent activity'}
           </div>
         )}
       </div>
@@ -251,8 +255,8 @@ export default function AdminDashboard() {
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[70]" />
           <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:left-1/2 sm:top-1/2 sm:right-auto sm:bottom-auto sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-2xl sm:rounded-lg sm:max-w-4xl w-full sm:max-h-[90vh] overflow-hidden z-[80] flex flex-col">
-            <Dialog.Description className="sr-only">
-              Prescription details
+              <Dialog.Description className="sr-only">
+              {isSpanish ? 'Detalles de la prescripción' : 'Prescription details'}
             </Dialog.Description>
 
             {/* Header */}

@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { Avatar } from '../components/Avatar';
 import { TimeRangeSelector, TimeRange } from '../components/TimeRangeSelector';
+import { useLanguage } from '../contexts/LanguageContext';
 import {
   countActiveSubscriptions,
   countNewUsers,
@@ -134,6 +135,8 @@ const statsByPeriod = {
 export default function AdminUsers() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
 
   const [searchQuery, setSearchQuery] = useState('');
   const [filterPlan, setFilterPlan] = useState<'all' | 'Free' | 'Practitioner' | 'Advanced'>('all');
@@ -219,27 +222,68 @@ export default function AdminUsers() {
   const activeSubscriptions = countActiveSubscriptions(adminUsers);
   const newUsers = countNewUsers(adminUsers, currentBounds);
 
+  const ui = {
+    pageTitle: isSpanish ? 'Usuarios' : 'Users',
+    pageDescription: isSpanish ? 'Gestiona las cuentas, roles y métricas de actividad de los usuarios' : 'Manage user accounts, roles, and view activity metrics',
+    totalUsers: isSpanish ? 'Usuarios totales' : 'Total users',
+    activeSubscriptions: isSpanish ? 'Suscripciones activas' : 'Active subscriptions',
+    newUsers: isSpanish ? 'Usuarios nuevos' : 'New users',
+    prescriptionsGenerated: isSpanish ? 'Prescripciones generadas' : 'Prescriptions generated',
+    herbsUsed: isSpanish ? 'Hierbas usadas' : 'Herbs used',
+    formulasUsed: isSpanish ? 'Fórmulas usadas' : 'Formulas used',
+    searchPlaceholder: isSpanish ? 'Buscar por nombre o correo...' : 'Search by name or email...',
+    allPlans: isSpanish ? 'Todos los planes' : 'All plans',
+    allStatuses: isSpanish ? 'Todos los estados' : 'All statuses',
+    allRoles: isSpanish ? 'Todos los roles' : 'All roles',
+    name: isSpanish ? 'Nombre' : 'Name',
+    email: isSpanish ? 'Correo' : 'Email',
+    country: isSpanish ? 'País' : 'Country',
+    plan: isSpanish ? 'Plan' : 'Plan',
+    role: isSpanish ? 'Rol' : 'Role',
+    status: isSpanish ? 'Estado' : 'Status',
+    joinDate: isSpanish ? 'Fecha de alta' : 'Join date',
+    lastActive: isSpanish ? 'Última actividad' : 'Last active',
+    prescriptions: isSpanish ? 'Prescripciones' : 'Prescriptions',
+    actions: isSpanish ? 'Acciones' : 'Actions',
+    user: isSpanish ? 'Usuario' : 'User',
+    admin: isSpanish ? 'Admin' : 'Admin',
+    noUsersFound: isSpanish ? 'No se encontraron usuarios que coincidan con tus filtros' : 'No users found matching your filters',
+    makeAdmin: isSpanish ? 'Hacer admin' : 'Make Admin',
+    revokeAdmin: isSpanish ? 'Quitar admin' : 'Revoke Admin',
+    prescriptionsUnit: isSpanish ? 'prescripciones' : 'prescriptions',
+    roleManagement: isSpanish ? 'Gestión de roles' : 'Role management',
+    roleManagementHelp: isSpanish
+      ? 'Los cambios de roles requieren que el usuario cierre sesión y vuelva a iniciar sesión para que surtan efecto.'
+      : 'Role changes require the user to log out and sign back in to take effect.',
+    roleManagementHelp2: isSpanish
+      ? 'Cuando conectes con Supabase, podrás cambiar roles directamente desde esta interfaz haciendo clic en "Make Admin" o "Revoke Admin".'
+      : 'When connected to Supabase, you will be able to change roles directly from this interface by clicking "Make Admin" or "Revoke Admin".',
+    toggleRoleUnavailable: isSpanish
+      ? 'Esta funcionalidad estará disponible cuando conectes con Supabase.\n\nPor ahora, puedes cambiar roles manualmente en Supabase Dashboard:\n1. Ve a Table Editor → users\n2. Busca el usuario por email\n3. Cambia el campo "role" de user a admin o viceversa'
+      : 'This functionality will be available when you connect Supabase.\n\nFor now, you can change roles manually in Supabase Dashboard:\n1. Go to Table Editor → users\n2. Find the user by email\n3. Change the "role" field from user to admin or vice versa',
+  };
+
   const summaryStats = [
     {
-      label: 'Total users',
+      label: ui.totalUsers,
       value: loadingUsers ? '—' : totalUsers.toString(),
       icon: Users,
       path: '/admin/stats/total-users',
     },
     {
-      label: 'Active subscriptions',
+      label: ui.activeSubscriptions,
       value: loadingUsers ? '—' : activeSubscriptions.toString(),
       icon: CreditCard,
       path: '/admin/stats/active-subscriptions',
     },
     {
-      label: 'New users',
+      label: ui.newUsers,
       value: loadingUsers ? '—' : newUsers.toString(),
       icon: TrendingUp,
       path: '/admin/stats/new-users',
     },
     {
-      label: 'Prescriptions generated',
+      label: ui.prescriptionsGenerated,
       value: currentStats.formulasGenerated.value,
       change: currentStats.formulasGenerated.change,
       trend: currentStats.formulasGenerated.trend,
@@ -247,7 +291,7 @@ export default function AdminUsers() {
       path: '/admin/stats/prescriptions-generated',
     },
     {
-      label: 'Herbs used',
+      label: ui.herbsUsed,
       value: currentStats.herbsUsed.value,
       change: currentStats.herbsUsed.change,
       trend: currentStats.herbsUsed.trend,
@@ -255,7 +299,7 @@ export default function AdminUsers() {
       path: '/admin/stats/herbs-used',
     },
     {
-      label: 'Formulas used',
+      label: ui.formulasUsed,
       value: currentStats.formulasUsed.value,
       change: currentStats.formulasUsed.change,
       trend: currentStats.formulasUsed.trend,
@@ -278,15 +322,15 @@ export default function AdminUsers() {
 
   const handleToggleRole = (email: string) => {
     console.log('Toggle role for user:', email);
-    alert('Esta funcionalidad estará disponible cuando conectes con Supabase.\n\nPor ahora, puedes cambiar roles manualmente en Supabase Dashboard:\n1. Ve a Table Editor → users\n2. Busca el usuario por email\n3. Cambia el campo "role" de user a admin o viceversa');
+    alert(ui.toggleRoleUnavailable);
   };
 
   return (
     <>
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Users</h1>
-        <p className="hidden sm:block text-gray-600">Manage user accounts, roles, and view activity metrics</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">{ui.pageTitle}</h1>
+        <p className="hidden sm:block text-gray-600">{ui.pageDescription}</p>
       </div>
 
       {/* Time Range Selector */}
@@ -338,7 +382,7 @@ export default function AdminUsers() {
           <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
           <input
             type="text"
-            placeholder="Search by name or email..."
+            placeholder={ui.searchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
@@ -351,7 +395,7 @@ export default function AdminUsers() {
           onChange={(e) => setFilterPlan(e.target.value as any)}
           className="bg-white px-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
         >
-          <option value="all">All plans</option>
+          <option value="all">{ui.allPlans}</option>
           <option value="Free">Free</option>
           <option value="Practitioner">Practitioner</option>
           <option value="Advanced">Advanced</option>
@@ -363,7 +407,7 @@ export default function AdminUsers() {
           onChange={(e) => setFilterStatus(e.target.value as any)}
           className="bg-white px-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
         >
-          <option value="all">All statuses</option>
+          <option value="all">{ui.allStatuses}</option>
           <option value="Active">Active</option>
           <option value="Inactive">Inactive</option>
         </select>
@@ -374,9 +418,9 @@ export default function AdminUsers() {
           onChange={(e) => setFilterRole(e.target.value as any)}
           className="bg-white px-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
         >
-          <option value="all">All roles</option>
-          <option value="user">Users</option>
-          <option value="admin">Admins</option>
+          <option value="all">{ui.allRoles}</option>
+          <option value="user">{ui.user}</option>
+          <option value="admin">{ui.admin}</option>
         </select>
       </div>
 
@@ -392,34 +436,34 @@ export default function AdminUsers() {
               <thead className="bg-gray-50 border-b border-gray-200">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Name
+                    {ui.name}
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Email
+                    {ui.email}
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Country
+                    {ui.country}
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Plan
+                    {ui.plan}
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Role
+                    {ui.role}
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Status
+                    {ui.status}
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Join date
+                    {ui.joinDate}
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Last active
+                    {ui.lastActive}
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Prescriptions
+                    {ui.prescriptions}
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Actions
+                    {ui.actions}
                   </th>
                 </tr>
               </thead>
@@ -458,12 +502,12 @@ export default function AdminUsers() {
                       {user.role === 'admin' ? (
                         <span className="inline-flex items-center gap-1 px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">
                           <ShieldCheck className="w-3 h-3" />
-                          Admin
+                          {ui.admin}
                         </span>
                       ) : (
                         <span className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">
                           <Users className="w-3 h-3" />
-                          User
+                          {ui.user}
                         </span>
                       )}
                     </td>
@@ -481,7 +525,7 @@ export default function AdminUsers() {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center gap-2 text-sm text-gray-500">
                         <Calendar className="w-4 h-4" />
-                        {new Date(user.joinDate).toLocaleDateString('en-US', {
+                        {new Date(user.joinDate).toLocaleDateString(isSpanish ? 'es-ES' : 'en-US', {
                           year: 'numeric',
                           month: 'short',
                           day: 'numeric',
@@ -493,7 +537,7 @@ export default function AdminUsers() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-gray-500">
-                        <span className="font-medium text-gray-900">{user.formulasCreated}</span> prescriptions
+                        <span className="font-medium text-gray-900">{user.formulasCreated}</span> {ui.prescriptionsUnit}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -502,7 +546,7 @@ export default function AdminUsers() {
                         className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-teal-700 hover:text-teal-800 hover:bg-teal-50 rounded-lg transition-colors"
                       >
                         <Shield className="w-4 h-4" />
-                        {user.role === 'admin' ? 'Revoke Admin' : 'Make Admin'}
+                        {user.role === 'admin' ? ui.revokeAdmin : ui.makeAdmin}
                       </button>
                     </td>
                   </tr>
@@ -514,7 +558,7 @@ export default function AdminUsers() {
       ) : (
         <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
           <Users className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-          <p className="text-gray-500">No users found matching your filters</p>
+          <p className="text-gray-500">{ui.noUsersFound}</p>
         </div>
       )}
 
@@ -523,10 +567,11 @@ export default function AdminUsers() {
         <div className="flex items-start gap-3">
           <Shield className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
           <div className="text-sm text-blue-800">
-            <p className="font-medium mb-1">Gestión de Roles</p>
+            <p className="font-medium mb-1">{ui.roleManagement}</p>
             <p>
-              Los cambios de roles requieren que el usuario cierre sesión y vuelva a iniciar sesión para que surtan efecto.
-              Cuando conectes con Supabase, podrás cambiar roles directamente desde esta interfaz haciendo clic en "Make Admin" o "Revoke Admin".
+              {ui.roleManagementHelp}
+              {' '}
+              {ui.roleManagementHelp2}
             </p>
           </div>
         </div>

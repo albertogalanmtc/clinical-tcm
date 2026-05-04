@@ -12,6 +12,7 @@ import React from 'react';
 import { useFavorites } from '../hooks/useFavorites';
 import { getFormulaCategoryColors, getFormulaSubcategoryColors } from '../../lib/categoryColors';
 import { useUser } from '../contexts/UserContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import { planService } from '../services/planService';
 
 // Types for expanded ingredients
@@ -162,6 +163,40 @@ export function FormulaDetails({
   const [expandedFormulas, setExpandedFormulas] = useState<Set<number>>(new Set());
   const { toggleFormulaFavorite, isFormulaFavorite } = useFavorites();
   const { planType } = useUser();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
+  const ui = {
+    composition: isSpanish ? 'Composición' : 'Composition',
+    clinicalUse: isSpanish ? 'Uso clínico' : 'Clinical use',
+    modifications: isSpanish ? 'Modificaciones' : 'Modifications',
+    safetyAlerts: isSpanish ? 'Seguridad y alertas' : 'Safety & Alerts',
+    back: isSpanish ? 'Volver' : 'Back',
+    edit: isSpanish ? 'Editar' : 'Edit',
+    delete: isSpanish ? 'Eliminar' : 'Delete',
+    ingredients: isSpanish ? 'Ingredientes' : 'Ingredients',
+    source: isSpanish ? 'Fuente' : 'Source',
+    thermalAction: isSpanish ? 'Acción térmica' : 'Thermal action',
+    ingredientFunctions: isSpanish ? 'Funciones de los ingredientes' : 'Ingredient Functions',
+    dosage: isSpanish ? 'Dosis' : 'Dosage',
+    preparation: isSpanish ? 'Preparación' : 'Preparation',
+    administration: isSpanish ? 'Administración' : 'Administration',
+    tcmActions: isSpanish ? 'Acciones TCM' : 'TCM actions',
+    clinicalManifestations: isSpanish ? 'Manifestaciones clínicas' : 'Clinical manifestations',
+    clinicalApplications: isSpanish ? 'Aplicaciones clínicas' : 'Clinical applications',
+    contraindications: isSpanish ? 'Contraindicaciones' : 'Contraindications',
+    cautions: isSpanish ? 'Precauciones' : 'Cautions',
+    drugInteractions: isSpanish ? 'Interacciones con fármacos' : 'Drug interactions',
+    herbInteractions: isSpanish ? 'Interacciones con hierbas' : 'Herb interactions',
+    allergens: isSpanish ? 'Alérgenos' : 'Allergens',
+    toxicology: isSpanish ? 'Toxicología' : 'Toxicology',
+    pharmacologicalEffects: isSpanish ? 'Efectos farmacológicos' : 'Pharmacological effects',
+    biologicalMechanisms: isSpanish ? 'Mecanismos biológicos' : 'Biological mechanisms',
+    clinicalStudies: isSpanish ? 'Estudios clínicos e investigación' : 'Clinical studies and research',
+    authorsComments: isSpanish ? 'Comentarios de los autores' : "Authors' comments",
+    referencesNotes: isSpanish ? 'Referencias y notas' : 'References & Notes',
+    references: isSpanish ? 'Referencias' : 'References',
+    notes: isSpanish ? 'Notas' : 'Notes',
+  };
 
   // Get plan permissions
   const plan = planType ? planService.getPlanByCode(planType) : null;
@@ -232,7 +267,7 @@ export function FormulaDetails({
   const sections = [
     { 
       id: 'composition', 
-      label: 'Composition', 
+      label: ui.composition, 
       show: (formula.composition?.length || 0) > 0 && formula.composition?.some(c => {
         if (typeof c === 'string') return c.trim();
         if (typeof c === 'object' && 'herb_pinyin' in c) return c.herb_pinyin && c.herb_pinyin.trim();
@@ -241,7 +276,7 @@ export function FormulaDetails({
     },
     {
       id: 'clinical-use',
-      label: 'Clinical use',
+      label: ui.clinicalUse,
       show: (() => {
         const hasTcmActions = canView(permissions?.clinicalUse.actions) && (formula.tcm_actions?.length || 0) > 0 && formula.tcm_actions?.some(a => typeof a === 'string' && a.trim());
         const hasManifestations = canView(permissions?.clinicalUse.indications) && (formula.clinical_manifestations?.length || 0) > 0 && formula.clinical_manifestations?.some(m => typeof m === 'string' && m.trim());
@@ -251,12 +286,12 @@ export function FormulaDetails({
     },
     {
       id: 'modifications',
-      label: 'Modifications',
+      label: ui.modifications,
       show: canView(permissions?.clinicalUse.modifications) && (formula.modifications?.length || 0) > 0 && formula.modifications?.some(m => m.pattern && m.pattern.trim())
     },
     {
       id: 'safety',
-      label: 'Safety & Alerts',
+      label: ui.safetyAlerts,
       show: (() => {
         const hasContras = canView(permissions?.safety.contraindications) && (formula.contraindications?.length || 0) > 0 && formula.contraindications?.some(c => typeof c === 'string' && c.trim());
         const hasCautions = canView(permissions?.safety.cautions) && (formula.cautions?.length || 0) > 0 && formula.cautions?.some(c => typeof c === 'string' && c.trim());
@@ -269,7 +304,7 @@ export function FormulaDetails({
     },
     {
       id: 'research',
-      label: 'Research',
+      label: isSpanish ? 'Investigación' : 'Research',
       show: (() => {
         const hasPharm = canView(permissions?.research.pharmacologicalEffects) && (formula.pharmacological_effects?.length || 0) > 0 && formula.pharmacological_effects?.some(effect => typeof effect === 'string' && effect.trim());
         const hasMech = canView(permissions?.research.biologicalMechanisms) && (formula.biological_mechanisms?.length || 0) > 0 && formula.biological_mechanisms?.some(m => m.system && m.system.trim() && m.target_action);
@@ -279,7 +314,7 @@ export function FormulaDetails({
     },
     {
       id: 'references-notes',
-      label: 'References & Notes',
+      label: isSpanish ? 'Referencias y notas' : 'References & Notes',
       show: (canView(permissions?.referencesNotes?.references) && (formula.reference?.length || 0) > 0 && formula.reference?.some(r => typeof r === 'string' && r.trim())) || (canView(permissions?.referencesNotes?.notes) && (formula.notes?.length || 0) > 0 && formula.notes?.some(n => typeof n === 'string' && n.trim()))
     }
   ].filter(s => s.show);
@@ -560,7 +595,7 @@ export function FormulaDetails({
         
         {formula.source && formula.source.trim() && (
           <div className="text-sm sm:text-base text-gray-600 mt-3">
-            <span className="font-medium">Source: </span>
+            <span className="font-medium">{ui.source}: </span>
             {formula.source}
           </div>
         )}
@@ -596,14 +631,14 @@ export function FormulaDetails({
       {hasComposition && (
         <section id="formula-detail-composition" className="scroll-mt-4">
           <Accordion 
-            title="Composition" 
+            title={ui.composition} 
             defaultOpen={true}
             storageKey="formula-composition-section"
             size="large"
           >
           <div className="space-y-4">
             <Accordion
-              title="Ingredients"
+              title={ui.ingredients}
               defaultOpen={true}
               storageKey={`formula-${formula.formula_id}-ingredients`}
               size="small"
@@ -767,7 +802,7 @@ export function FormulaDetails({
 
             {showThermalActionIndicator && formula.thermal_action && formula.thermal_action.trim() && (
               <Accordion
-                title="Thermal action"
+                title={ui.thermalAction}
                 defaultOpen={false}
                 storageKey={`formula-${formula.formula_id}-thermal-action`}
                 size="small"
@@ -789,7 +824,7 @@ export function FormulaDetails({
 
               return (
                 <Accordion
-                  title="Ingredient Functions"
+                  title={ui.ingredientFunctions}
                   defaultOpen={false}
                   storageKey={`formula-${formula.formula_id}-ingredient-functions`}
                   size="small"
@@ -851,7 +886,7 @@ export function FormulaDetails({
 
             {(formula.dosage?.length || 0) > 0 && (
               <Accordion
-                title="Dosage"
+                title={ui.dosage}
                 defaultOpen={false}
                 storageKey={`formula-${formula.formula_id}-dosage`}
                 size="small"
@@ -871,7 +906,7 @@ export function FormulaDetails({
 
             {(formula.preparation?.length || 0) > 0 && (
               <Accordion
-                title="Preparation"
+                title={ui.preparation}
                 defaultOpen={false}
                 storageKey={`formula-${formula.formula_id}-preparation`}
                 size="small"
@@ -891,7 +926,7 @@ export function FormulaDetails({
 
             {(formula.administration?.length || 0) > 0 && (
               <Accordion
-                title="Administration"
+                title={ui.administration}
                 defaultOpen={false}
                 storageKey={`formula-${formula.formula_id}-administration`}
                 size="small"
@@ -933,7 +968,7 @@ export function FormulaDetails({
         return (
         <section id="formula-detail-clinical-use" className="scroll-mt-4">
           <Accordion 
-            title="Clinical use" 
+            title={ui.clinicalUse} 
             defaultOpen={true}
             storageKey="formula-clinical-use-section"
             size="large"
@@ -941,7 +976,7 @@ export function FormulaDetails({
           <div className="space-y-4">
           {hasTcmActions && (
             <Accordion
-              title="TCM actions"
+              title={ui.tcmActions}
               defaultOpen={true}
               storageKey={`formula-${formula.formula_id}-tcm-actions`}
               size="small"
@@ -961,7 +996,7 @@ export function FormulaDetails({
 
           {hasManifestations && (
             <Accordion
-              title="Clinical manifestations"
+              title={ui.clinicalManifestations}
               defaultOpen={false}
               storageKey={`formula-${formula.formula_id}-clinical-manifestations`}
               size="small"
@@ -981,7 +1016,7 @@ export function FormulaDetails({
 
           {hasClinicalApps && (
             <Accordion
-              title="Clinical applications"
+              title={ui.clinicalApplications}
               defaultOpen={false}
               storageKey={`formula-${formula.formula_id}-clinical-applications`}
               size="small"
@@ -1021,7 +1056,7 @@ export function FormulaDetails({
       {hasModifications && (
         <section id="formula-detail-modifications" className="scroll-mt-4">
           <Accordion 
-            title="Modifications" 
+            title={ui.modifications} 
             defaultOpen={true}
             storageKey="formula-modifications-section"
             size="large"
@@ -1112,7 +1147,7 @@ export function FormulaDetails({
       {hasSafety && (
         <section id="formula-detail-safety" className="scroll-mt-4">
           <Accordion
-            title="Safety & Alerts" 
+            title={ui.safetyAlerts} 
             defaultOpen={true}
             storageKey="formula-safety-section"
             size="large"
@@ -1120,7 +1155,7 @@ export function FormulaDetails({
           <div className="space-y-4">
             {hasContras && (
               <Accordion 
-                title="Contraindications" 
+                title={ui.contraindications} 
                 defaultOpen={false}
                 storageKey={`formula-${formula.formula_id}-contraindications`}
                 size="small"
@@ -1135,7 +1170,7 @@ export function FormulaDetails({
             )}
             {hasCautions && (
               <Accordion 
-                title="Cautions" 
+                title={ui.cautions} 
                 defaultOpen={false}
                 storageKey={`formula-${formula.formula_id}-cautions`}
                 size="small"
@@ -1150,7 +1185,7 @@ export function FormulaDetails({
             )}
             {hasDrugInt && (
               <Accordion 
-                title="Drug interactions" 
+                title={ui.drugInteractions} 
                 defaultOpen={false}
                 storageKey={`formula-${formula.formula_id}-drug-interactions`}
                 size="small"
@@ -1165,7 +1200,7 @@ export function FormulaDetails({
             )}
             {hasHerbInt && (
               <Accordion 
-                title="Herb interactions" 
+                title={ui.herbInteractions} 
                 defaultOpen={false}
                 storageKey={`formula-${formula.formula_id}-herb-interactions`}
                 size="small"
@@ -1180,7 +1215,7 @@ export function FormulaDetails({
             )}
             {hasAllergens && (
               <Accordion 
-                title="Allergens" 
+                title={ui.allergens} 
                 defaultOpen={false}
                 storageKey={`formula-${formula.formula_id}-allergens`}
                 size="small"
@@ -1195,7 +1230,7 @@ export function FormulaDetails({
             )}
             {hasToxicology && (
               <Accordion 
-                title="Toxicology" 
+                title={ui.toxicology} 
                 defaultOpen={false}
                 storageKey={`formula-${formula.formula_id}-toxicology`}
                 size="small"
@@ -1230,7 +1265,7 @@ export function FormulaDetails({
       {hasResearch && (
         <section id="formula-detail-research" className="scroll-mt-4">
           <Accordion 
-            title="Research" 
+            title={ui.research} 
             defaultOpen={true}
             storageKey="formula-research-section"
             size="large"
@@ -1238,7 +1273,7 @@ export function FormulaDetails({
           <div className="space-y-4">
           {hasPharm && (
             <Accordion
-              title="Pharmacological effects"
+              title={ui.pharmacologicalEffects}
               defaultOpen={true}
               storageKey={`formula-${formula.formula_id}-pharmacological-effects`}
               size="small"
@@ -1255,7 +1290,7 @@ export function FormulaDetails({
 
           {hasMech && (
             <Accordion
-              title="Biological mechanisms"
+              title={ui.biologicalMechanisms}
               defaultOpen={false}
               storageKey={`formula-${formula.formula_id}-biological-mechanisms`}
               size="small"
@@ -1291,7 +1326,7 @@ export function FormulaDetails({
 
           {hasStudies && (
             <Accordion
-              title="Clinical studies and research"
+              title={ui.clinicalStudies}
               defaultOpen={false}
               storageKey={`formula-${formula.formula_id}-clinical-studies`}
               size="small"
@@ -1311,7 +1346,7 @@ export function FormulaDetails({
 
           {(formula.notes?.length || 0) > 0 && (
             <Accordion
-              title="Authors' comments"
+              title={ui.authorsComments}
               defaultOpen={false}
               storageKey={`formula-${formula.formula_id}-authors-comments`}
               size="small"
@@ -1351,7 +1386,7 @@ export function FormulaDetails({
       {hasReferences && (
         <section id="formula-detail-references-notes" className="scroll-mt-4">
           <Accordion 
-            title="References & Notes" 
+            title={ui.referencesNotes} 
             defaultOpen={true}
             storageKey="formula-references-notes-section"
             size="large"
@@ -1359,7 +1394,7 @@ export function FormulaDetails({
           <div className="space-y-4">
           {hasReference && (
             <Accordion
-              title="References"
+              title={ui.references}
               defaultOpen={true}
               storageKey={`formula-${formula.formula_id}-references`}
               size="small"
@@ -1379,7 +1414,7 @@ export function FormulaDetails({
 
           {hasNotes && (
             <Accordion
-              title="Notes"
+              title={ui.notes}
               defaultOpen={false}
               storageKey={`formula-${formula.formula_id}-notes`}
               size="small"
@@ -1410,7 +1445,7 @@ export function FormulaDetails({
                 className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
               >
                 <Pencil className="w-4 h-4" />
-                Edit formula
+                {ui.edit} {isSpanish ? 'fórmula' : 'formula'}
               </button>
             )}
             {onDelete && (
@@ -1419,7 +1454,7 @@ export function FormulaDetails({
                 className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-600 bg-white border border-red-200 rounded-lg hover:bg-red-50 transition-colors"
               >
                 <Trash2 className="w-4 h-4" />
-                Delete formula
+                {ui.delete} {isSpanish ? 'fórmula' : 'formula'}
               </button>
             )}
           </div>
@@ -1438,7 +1473,7 @@ export function FormulaDetails({
             <button
               onClick={onBack}
               className="h-11 w-11 rounded-lg border bg-white border-gray-200 hover:bg-gray-100 text-gray-600 hover:text-gray-900 flex items-center justify-center transition-colors"
-              title="Go back"
+              title={ui.back}
             >
               <Undo2 className="w-5 h-5" />
             </button>

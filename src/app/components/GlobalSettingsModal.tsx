@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Tabs from '@radix-ui/react-tabs';
 import { X, ChevronUp, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 // ============================================================================
 // TYPES
@@ -199,6 +200,8 @@ export function GlobalSettingsModal({
   onUpdateSettings,
   defaultTab = 'herbs',
 }: GlobalSettingsModalProps) {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [activeTab, setActiveTab] = React.useState<'herbs' | 'formulas' | 'prescriptions' | 'builder'>(defaultTab);
   const [initialSettings, setInitialSettings] = React.useState<GlobalSettings>(settings);
 
@@ -244,7 +247,7 @@ export function GlobalSettingsModal({
           {/* Header */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 flex-shrink-0">
             <Dialog.Title className="text-lg font-semibold text-gray-900">
-              Display Settings
+              {isSpanish ? 'Ajustes de visualización' : 'Display Settings'}
             </Dialog.Title>
             <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg flex items-center justify-center">
               <X className="w-5 h-5" />
@@ -259,25 +262,25 @@ export function GlobalSettingsModal({
                 value="herbs"
                 className="flex-1 px-4 py-2 text-sm font-medium rounded-md transition-colors data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=active]:shadow-sm data-[state=inactive]:text-gray-600 hover:text-gray-900 whitespace-nowrap"
               >
-                Herbs
+                {isSpanish ? 'Hierbas' : 'Herbs'}
               </Tabs.Trigger>
               <Tabs.Trigger
                 value="formulas"
                 className="flex-1 px-4 py-2 text-sm font-medium rounded-md transition-colors data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=active]:shadow-sm data-[state=inactive]:text-gray-600 hover:text-gray-900 whitespace-nowrap"
               >
-                Formulas
+                {isSpanish ? 'Fórmulas' : 'Formulas'}
               </Tabs.Trigger>
               <Tabs.Trigger
                 value="prescriptions"
                 className="flex-1 px-4 py-2 text-sm font-medium rounded-md transition-colors data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=active]:shadow-sm data-[state=inactive]:text-gray-600 hover:text-gray-900 whitespace-nowrap"
               >
-                Prescriptions
+                {isSpanish ? 'Prescripciones' : 'Prescriptions'}
               </Tabs.Trigger>
               <Tabs.Trigger
                 value="builder"
                 className="flex-1 px-4 py-2 text-sm font-medium rounded-md transition-colors data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=active]:shadow-sm data-[state=inactive]:text-gray-600 hover:text-gray-900 whitespace-nowrap"
               >
-                Builder
+                {isSpanish ? 'Constructor' : 'Builder'}
               </Tabs.Trigger>
             </Tabs.List>
 
@@ -331,13 +334,13 @@ export function GlobalSettingsModal({
                 disabled={!hasChanges}
                 className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
               >
-                Cancel
+                {isSpanish ? 'Cancelar' : 'Cancel'}
               </button>
               <Dialog.Close
                 disabled={!hasChanges}
                 className="flex-1 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
               >
-                Apply
+                {isSpanish ? 'Aplicar' : 'Apply'}
               </Dialog.Close>
             </div>
           </div>
@@ -360,6 +363,8 @@ interface HerbsLibraryTabProps {
 }
 
 function HerbsLibraryTab({ settings, onUpdate }: HerbsLibraryTabProps) {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [viewMode, setViewMode] = React.useState<'list' | 'detail'>('list');
 
   const labels = {
@@ -389,7 +394,7 @@ function HerbsLibraryTab({ settings, onUpdate }: HerbsLibraryTabProps) {
                 : 'border-transparent text-gray-600 hover:text-gray-900'
             }`}
           >
-            List Display
+            {isSpanish ? 'Vista de lista' : 'List Display'}
           </button>
           <button
             onClick={() => setViewMode('detail')}
@@ -399,7 +404,7 @@ function HerbsLibraryTab({ settings, onUpdate }: HerbsLibraryTabProps) {
                 : 'border-transparent text-gray-600 hover:text-gray-900'
             }`}
           >
-            Detail View
+            {isSpanish ? 'Vista detallada' : 'Detail View'}
           </button>
         </div>
       </div>
@@ -409,7 +414,7 @@ function HerbsLibraryTab({ settings, onUpdate }: HerbsLibraryTabProps) {
         <div className="space-y-4">
             {/* Fields Section */}
             <div>
-              <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">Fields</h4>
+              <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">{isSpanish ? 'Campos' : 'Fields'}</h4>
               <div className="space-y-2">
                 {settings.order.map((columnType, index) => {
                   const isFirst = index === 0;
@@ -512,14 +517,14 @@ function HerbsLibraryTab({ settings, onUpdate }: HerbsLibraryTabProps) {
                     onChange={(e) => onUpdate({ natureIndicator: e.target.checked })}
                     className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
                   />
-                  <span className="text-sm text-gray-700 flex-1">Nature Indicator</span>
+                  <span className="text-sm text-gray-700 flex-1">{isSpanish ? 'Indicador de naturaleza' : 'Nature Indicator'}</span>
                 </label>
               </div>
             </div>
 
             {/* Sort Order Section */}
             <div>
-              <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">Sort Order</h4>
+              <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">{isSpanish ? 'Orden' : 'Sort Order'}</h4>
               <div className="space-y-2">
                 <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                   <input
@@ -528,7 +533,7 @@ function HerbsLibraryTab({ settings, onUpdate }: HerbsLibraryTabProps) {
                     onChange={() => onUpdate({ sortOrder: 'alphabetical' })}
                     className="w-4 h-4 text-teal-600 border-gray-300 focus:ring-teal-500"
                   />
-                  <span className="text-sm text-gray-700 flex-1">Alphabetical</span>
+                  <span className="text-sm text-gray-700 flex-1">{isSpanish ? 'Alfabético' : 'Alphabetical'}</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                   <input
@@ -537,7 +542,7 @@ function HerbsLibraryTab({ settings, onUpdate }: HerbsLibraryTabProps) {
                     onChange={() => onUpdate({ sortOrder: 'categorical' })}
                     className="w-4 h-4 text-teal-600 border-gray-300 focus:ring-teal-500"
                   />
-                  <span className="text-sm text-gray-700 flex-1">Categorical</span>
+                  <span className="text-sm text-gray-700 flex-1">{isSpanish ? 'Categórico' : 'Categorical'}</span>
                 </label>
               </div>
             </div>
@@ -549,16 +554,16 @@ function HerbsLibraryTab({ settings, onUpdate }: HerbsLibraryTabProps) {
         <div className="space-y-4">
           {/* Name Order Section */}
           <div>
-            <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">Names</h4>
+            <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">{isSpanish ? 'Nombres' : 'Names'}</h4>
             <div className="space-y-2">
               {(settings.detailViewNameOrder || ['pinyin', 'pharmaceutical', 'hanzi']).map((nameType, index) => {
                 const isFirst = index === 0;
                 const isLast = index === (settings.detailViewNameOrder || ['pinyin', 'pharmaceutical', 'hanzi']).length - 1;
 
                 const nameLabels: { [key: string]: string } = {
-                  pinyin: 'Pinyin Name',
-                  pharmaceutical: 'Pharmaceutical Name',
-                  hanzi: 'Hanzi Name',
+                  pinyin: isSpanish ? 'Nombre en pinyin' : 'Pinyin Name',
+                  pharmaceutical: isSpanish ? 'Nombre farmacéutico' : 'Pharmaceutical Name',
+                  hanzi: isSpanish ? 'Caracteres chinos' : 'Hanzi Name',
                 };
 
                 // Get checkbox state for each name type
@@ -663,7 +668,7 @@ function HerbsLibraryTab({ settings, onUpdate }: HerbsLibraryTabProps) {
 
           {/* Chips Display Section */}
           <div>
-            <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">Chips Display</h4>
+            <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">{isSpanish ? 'Chips' : 'Chips Display'}</h4>
             <div className="space-y-2">
               <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                 <input
@@ -672,7 +677,7 @@ function HerbsLibraryTab({ settings, onUpdate }: HerbsLibraryTabProps) {
                   onChange={(e) => onUpdate({ detailViewChipsNature: e.target.checked })}
                   className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
                 />
-                <span className="text-sm text-gray-700 flex-1">Show Nature</span>
+                <span className="text-sm text-gray-700 flex-1">{isSpanish ? 'Mostrar naturaleza' : 'Show Nature'}</span>
               </label>
             </div>
           </div>
@@ -691,6 +696,8 @@ interface FormulasLibraryTabProps {
 }
 
 function FormulasLibraryTab({ settings, onUpdate }: FormulasLibraryTabProps) {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [viewMode, setViewMode] = React.useState<'list' | 'detail'>('list');
 
   const labels = {
@@ -732,7 +739,7 @@ function FormulasLibraryTab({ settings, onUpdate }: FormulasLibraryTabProps) {
                 : 'border-transparent text-gray-600 hover:text-gray-900'
             }`}
           >
-            List Display
+            {isSpanish ? 'Vista de lista' : 'List Display'}
           </button>
           <button
             onClick={() => setViewMode('detail')}
@@ -742,7 +749,7 @@ function FormulasLibraryTab({ settings, onUpdate }: FormulasLibraryTabProps) {
                 : 'border-transparent text-gray-600 hover:text-gray-900'
             }`}
           >
-            Detail View
+            {isSpanish ? 'Vista detallada' : 'Detail View'}
           </button>
         </div>
       </div>
@@ -752,7 +759,7 @@ function FormulasLibraryTab({ settings, onUpdate }: FormulasLibraryTabProps) {
         <div className="space-y-4">
             {/* Fields Section */}
             <div>
-              <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">Fields</h4>
+              <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">{isSpanish ? 'Campos' : 'Fields'}</h4>
               <div className="space-y-2">
                 {settings.order.map((columnType, index) => {
                   const isFirst = index === 0;
@@ -855,14 +862,14 @@ function FormulasLibraryTab({ settings, onUpdate }: FormulasLibraryTabProps) {
                     onChange={(e) => onUpdate({ thermalActionIndicator: e.target.checked })}
                     className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
                   />
-                  <span className="text-sm text-gray-700 flex-1">Thermal Action Indicator</span>
+                  <span className="text-sm text-gray-700 flex-1">{isSpanish ? 'Indicador de acción térmica' : 'Thermal Action Indicator'}</span>
                 </label>
               </div>
             </div>
 
             {/* Sort Order Section */}
             <div>
-              <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">Sort Order</h4>
+              <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">{isSpanish ? 'Orden' : 'Sort Order'}</h4>
               <div className="space-y-2">
                 <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                   <input
@@ -871,7 +878,7 @@ function FormulasLibraryTab({ settings, onUpdate }: FormulasLibraryTabProps) {
                     onChange={() => onUpdate({ sortOrder: 'alphabetical' })}
                     className="w-4 h-4 text-teal-600 border-gray-300 focus:ring-teal-500"
                   />
-                  <span className="text-sm text-gray-700 flex-1">Alphabetical</span>
+                  <span className="text-sm text-gray-700 flex-1">{isSpanish ? 'Alfabético' : 'Alphabetical'}</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                   <input
@@ -880,7 +887,7 @@ function FormulasLibraryTab({ settings, onUpdate }: FormulasLibraryTabProps) {
                     onChange={() => onUpdate({ sortOrder: 'categorical' })}
                     className="w-4 h-4 text-teal-600 border-gray-300 focus:ring-teal-500"
                   />
-                  <span className="text-sm text-gray-700 flex-1">Categorical</span>
+                  <span className="text-sm text-gray-700 flex-1">{isSpanish ? 'Categórico' : 'Categorical'}</span>
                 </label>
               </div>
             </div>
@@ -890,18 +897,18 @@ function FormulasLibraryTab({ settings, onUpdate }: FormulasLibraryTabProps) {
       {/* Detail View Section */}
       {viewMode === 'detail' && (
         <div className="space-y-4">
-            {/* Names subsection */}
-            <div>
-              <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">Names</h4>
+          {/* Names subsection */}
+          <div>
+            <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">{isSpanish ? 'Nombres' : 'Names'}</h4>
               <div className="space-y-2">
                 {(settings.detailViewNameOrder || ['pinyin', 'pharmaceutical', 'alternative', 'hanzi']).map((nameType, index) => {
                   const isFirst = index === 0;
                   const isLast = index === (settings.detailViewNameOrder || ['pinyin', 'pharmaceutical', 'alternative', 'hanzi']).length - 1;
                   const nameLabels = {
-                    pinyin: 'Pinyin Name',
-                    pharmaceutical: 'Translated Name',
-                    alternative: 'Alternative Names',
-                    hanzi: 'Hanzi Name'
+                    pinyin: isSpanish ? 'Nombre en pinyin' : 'Pinyin Name',
+                    pharmaceutical: isSpanish ? 'Nombre traducido' : 'Translated Name',
+                    alternative: isSpanish ? 'Nombres alternativos' : 'Alternative Names',
+                    hanzi: isSpanish ? 'Caracteres chinos' : 'Hanzi Name'
                   };
 
                   let checked = false;
@@ -1013,14 +1020,14 @@ function FormulasLibraryTab({ settings, onUpdate }: FormulasLibraryTabProps) {
 
             {/* Ingredients > Herbs subsection */}
             <div>
-              <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">Ingredients</h4>
+              <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">{isSpanish ? 'Ingredientes' : 'Ingredients'}</h4>
               <div className="ml-2 mb-3">
-                <h5 className="text-xs font-semibold text-gray-700 mb-2">Herbs</h5>
+                <h5 className="text-xs font-semibold text-gray-700 mb-2">{isSpanish ? 'Hierbas' : 'Herbs'}</h5>
                 <div className="space-y-2">
                   {(settings.ingredientsHerbOrder || ['pinyin', 'latin', 'hanzi']).map((nameType, index) => {
                     const isFirst = index === 0;
                     const isLast = index === (settings.ingredientsHerbOrder || ['pinyin', 'latin', 'hanzi']).length - 1;
-                    const nameLabels = { pinyin: 'Pinyin Name', latin: 'Pharmaceutical Name', hanzi: 'Hanzi Name' };
+                    const nameLabels = { pinyin: isSpanish ? 'Nombre en pinyin' : 'Pinyin Name', latin: isSpanish ? 'Nombre farmacéutico' : 'Pharmaceutical Name', hanzi: isSpanish ? 'Caracteres chinos' : 'Hanzi Name' };
                     const { checked, key } = getHerbNameSetting(nameType);
 
                     return (
@@ -1119,19 +1126,19 @@ function FormulasLibraryTab({ settings, onUpdate }: FormulasLibraryTabProps) {
                       onChange={(e) => onUpdate({ ingredientsNatureIndicator: e.target.checked })}
                       className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
                     />
-                    <span className="text-sm text-gray-700 flex-1">Nature Indicator</span>
+                    <span className="text-sm text-gray-700 flex-1">{isSpanish ? 'Indicador de naturaleza' : 'Nature Indicator'}</span>
                   </label>
                 </div>
               </div>
 
               {/* Formulas subsection */}
               <div className="ml-2 mb-3">
-                <h5 className="text-xs font-semibold text-gray-700 mb-2">Formulas</h5>
+                <h5 className="text-xs font-semibold text-gray-700 mb-2">{isSpanish ? 'Fórmulas' : 'Formulas'}</h5>
                 <div className="space-y-2">
                   {(settings.ingredientsFormulaOrder || ['pinyin', 'pharmaceutical', 'hanzi']).map((nameType, index) => {
                     const isFirst = index === 0;
                     const isLast = index === (settings.ingredientsFormulaOrder || ['pinyin', 'pharmaceutical', 'hanzi']).length - 1;
-                    const nameLabels = { pinyin: 'Pinyin Name', pharmaceutical: 'Translated Name', hanzi: 'Hanzi Name' };
+                    const nameLabels = { pinyin: isSpanish ? 'Nombre en pinyin' : 'Pinyin Name', pharmaceutical: isSpanish ? 'Nombre traducido' : 'Translated Name', hanzi: isSpanish ? 'Caracteres chinos' : 'Hanzi Name' };
                     const { checked, key } = getFormulaNameSetting(nameType);
 
                     return (
@@ -1230,7 +1237,7 @@ function FormulasLibraryTab({ settings, onUpdate }: FormulasLibraryTabProps) {
                       onChange={(e) => onUpdate({ ingredientsThermalIndicator: e.target.checked })}
                       className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
                     />
-                    <span className="text-sm text-gray-700 flex-1">Thermal Action Indicator</span>
+                    <span className="text-sm text-gray-700 flex-1">{isSpanish ? 'Indicador de acción térmica' : 'Thermal Action Indicator'}</span>
                   </label>
                   <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                     <input
@@ -1239,7 +1246,7 @@ function FormulasLibraryTab({ settings, onUpdate }: FormulasLibraryTabProps) {
                       onChange={(e) => onUpdate({ ingredientsShowFormulas: e.target.checked })}
                       className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
                     />
-                    <span className="text-sm text-gray-700 flex-1">Show Ingredients (when ingredient is a formula)</span>
+                    <span className="text-sm text-gray-700 flex-1">{isSpanish ? 'Mostrar ingredientes (cuando el ingrediente es una fórmula)' : 'Show Ingredients (when ingredient is a formula)'}</span>
                   </label>
                 </div>
               </div>
@@ -1247,7 +1254,7 @@ function FormulasLibraryTab({ settings, onUpdate }: FormulasLibraryTabProps) {
 
             {/* Ingredients Layout subsection */}
             <div>
-              <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">Layout</h4>
+              <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">{isSpanish ? 'Diseño' : 'Layout'}</h4>
               <div className="space-y-2">
                 <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                   <input
@@ -1256,7 +1263,7 @@ function FormulasLibraryTab({ settings, onUpdate }: FormulasLibraryTabProps) {
                     onChange={() => onUpdate({ ingredientsLayout: 'grid' })}
                     className="w-4 h-4 text-teal-600 border-gray-300 focus:ring-teal-500"
                   />
-                  <span className="text-sm text-gray-700 flex-1">Two Columns (Grid)</span>
+                  <span className="text-sm text-gray-700 flex-1">{isSpanish ? 'Dos columnas (cuadrícula)' : 'Two Columns (Grid)'}</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                   <input
@@ -1265,14 +1272,14 @@ function FormulasLibraryTab({ settings, onUpdate }: FormulasLibraryTabProps) {
                     onChange={() => onUpdate({ ingredientsLayout: 'list' })}
                     className="w-4 h-4 text-teal-600 border-gray-300 focus:ring-teal-500"
                   />
-                  <span className="text-sm text-gray-700 flex-1">Ordered List (Single Column)</span>
+                  <span className="text-sm text-gray-700 flex-1">{isSpanish ? 'Lista ordenada (una columna)' : 'Ordered List (Single Column)'}</span>
                 </label>
               </div>
             </div>
 
             {/* Chips Display subsection */}
             <div>
-              <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">Chips Display</h4>
+            <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">{isSpanish ? 'Chips' : 'Chips Display'}</h4>
               <div className="space-y-2">
                 <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                   <input
@@ -1281,7 +1288,7 @@ function FormulasLibraryTab({ settings, onUpdate }: FormulasLibraryTabProps) {
                     onChange={(e) => onUpdate({ detailViewChipsThermalAction: e.target.checked })}
                     className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
                   />
-                  <span className="text-sm text-gray-700 flex-1">Show Thermal Action</span>
+                  <span className="text-sm text-gray-700 flex-1">{isSpanish ? 'Mostrar acción térmica' : 'Show Thermal Action'}</span>
                 </label>
               </div>
             </div>
@@ -1300,11 +1307,18 @@ interface PrescriptionsTabProps {
 }
 
 function PrescriptionsTab({ settings, onUpdate }: PrescriptionsTabProps) {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [subTab, setSubTab] = React.useState<'list' | 'detail' | 'copy'>('list');
+  const ui = {
+    listDisplay: isSpanish ? 'Vista de lista' : 'List Display',
+    detailView: isSpanish ? 'Vista detallada' : 'Detail View',
+    copySettings: isSpanish ? 'Ajustes de copia' : 'Copy Settings',
+  };
 
   return (
     <>
-      {/* Toggle between List Display, Detail View and Copy Settings */}
+      {/* Toggle between list, detail and copy settings */}
       <div className="mb-6">
         <div className="flex border-b border-gray-200">
           <button
@@ -1315,7 +1329,7 @@ function PrescriptionsTab({ settings, onUpdate }: PrescriptionsTabProps) {
                 : 'border-transparent text-gray-600 hover:text-gray-900'
             }`}
           >
-            List Display
+            {ui.listDisplay}
           </button>
           <button
             onClick={() => setSubTab('detail')}
@@ -1325,7 +1339,7 @@ function PrescriptionsTab({ settings, onUpdate }: PrescriptionsTabProps) {
                 : 'border-transparent text-gray-600 hover:text-gray-900'
             }`}
           >
-            Detail View
+            {ui.detailView}
           </button>
           <button
             onClick={() => setSubTab('copy')}
@@ -1335,7 +1349,7 @@ function PrescriptionsTab({ settings, onUpdate }: PrescriptionsTabProps) {
                 : 'border-transparent text-gray-600 hover:text-gray-900'
             }`}
           >
-            Copy Settings
+            {ui.copySettings}
           </button>
         </div>
       </div>
@@ -1354,14 +1368,22 @@ function PrescriptionsListDisplay({
   settings: PrescriptionsSettings;
   onUpdate: (update: Partial<PrescriptionsSettings>) => void;
 }) {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const updateList = (update: Partial<PrescriptionsSettings['list']>) => {
     onUpdate({ list: { ...settings.list, ...update } });
+  };
+
+  const ui = {
+    fields: isSpanish ? 'Campos' : 'Fields',
+    ingredients: isSpanish ? 'Ingredientes' : 'Ingredients',
+    comments: isSpanish ? 'Comentarios' : 'Comments',
   };
 
   return (
     <div className="space-y-4">
       <div>
-        <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">Fields</h4>
+        <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">{ui.fields}</h4>
         <div className="space-y-2">
           <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <input
@@ -1370,7 +1392,7 @@ function PrescriptionsListDisplay({
               onChange={(e) => updateList({ ingredients: e.target.checked })}
               className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
             />
-            <span className="text-sm text-gray-700 flex-1">Ingredients</span>
+            <span className="text-sm text-gray-700 flex-1">{ui.ingredients}</span>
           </label>
           <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <input
@@ -1379,7 +1401,7 @@ function PrescriptionsListDisplay({
               onChange={(e) => updateList({ comments: e.target.checked })}
               className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
             />
-            <span className="text-sm text-gray-700 flex-1">Comments</span>
+            <span className="text-sm text-gray-700 flex-1">{ui.comments}</span>
           </label>
         </div>
       </div>
@@ -1394,8 +1416,26 @@ function PrescriptionsDetailView({
   settings: PrescriptionsSettings;
   onUpdate: (update: Partial<PrescriptionsSettings>) => void;
 }) {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const updateDisplay = (update: Partial<PrescriptionsSettings['display']>) => {
     onUpdate({ display: { ...settings.display, ...update } });
+  };
+
+  const ui = {
+    ingredients: isSpanish ? 'Ingredientes' : 'Ingredients',
+    herbs: isSpanish ? 'Hierbas' : 'Herbs',
+    formulas: isSpanish ? 'Fórmulas' : 'Formulas',
+    pinyinName: isSpanish ? 'Nombre en pinyin' : 'Pinyin Name',
+    pharmaceuticalName: isSpanish ? 'Nombre farmacéutico' : 'Pharmaceutical Name',
+    translatedName: isSpanish ? 'Nombre traducido' : 'Translated Name',
+    hanziName: isSpanish ? 'Caracteres chinos' : 'Hanzi Name',
+    natureIndicator: isSpanish ? 'Indicador de naturaleza' : 'Nature Indicator',
+    showIngredients: isSpanish ? 'Mostrar ingredientes' : 'Show Ingredients',
+    thermalActionIndicator: isSpanish ? 'Indicador de acción térmica' : 'Thermal Action Indicator',
+    ingredientsLayout: isSpanish ? 'Diseño de ingredientes' : 'Ingredients Layout',
+    twoColumnsGrid: isSpanish ? 'Dos columnas (cuadrícula)' : 'Two Columns (Grid)',
+    orderedListSingleColumn: isSpanish ? 'Lista ordenada (una columna)' : 'Ordered List (Single Column)',
   };
 
   // Ensure order arrays exist, fallback to default order
@@ -1430,19 +1470,19 @@ function PrescriptionsDetailView({
     <div className="space-y-6">
       {/* Ingredients Section */}
       <div>
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Ingredients</h3>
+        <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.ingredients}</h3>
         
         {/* Herbs Subsection */}
         <div className="mb-4">
-          <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">Herbs</h4>
+          <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">{ui.herbs}</h4>
           <div className="space-y-2">
             {herbsOrder.map((nameType, index) => {
               const isFirst = index === 0;
               const isLast = index === herbsOrder.length - 1;
               const labels: Record<string, string> = {
-                pinyin: 'Pinyin Name',
-                latin: 'Pharmaceutical Name',
-                hanzi: 'Hanzi Name',
+                pinyin: ui.pinyinName,
+                latin: ui.pharmaceuticalName,
+                hanzi: ui.hanziName,
               };
 
               return (
@@ -1528,22 +1568,22 @@ function PrescriptionsDetailView({
                 }
                 className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
               />
-              <span className="text-sm text-gray-700 flex-1">Nature Indicator</span>
+              <span className="text-sm text-gray-700 flex-1">{ui.natureIndicator}</span>
             </label>
           </div>
         </div>
 
         {/* Formulas Subsection */}
         <div className="mb-4">
-          <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">Formulas</h4>
+          <h4 className="text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">{ui.formulas}</h4>
           <div className="space-y-2">
             {formulasOrder.map((nameType, index) => {
               const isFirst = index === 0;
               const isLast = index === formulasOrder.length - 1;
               const labels = {
-                pinyin: 'Pinyin Name',
-                pharmaceutical: 'Translated Name',
-                hanzi: 'Hanzi Name',
+                pinyin: ui.pinyinName,
+                pharmaceutical: ui.translatedName,
+                hanzi: ui.hanziName,
               };
 
               return (
@@ -1629,9 +1669,9 @@ function PrescriptionsDetailView({
                 }
                 className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
               />
-              <span className="text-sm text-gray-700 flex-1">Show Ingredients</span>
-            </label>
-            <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+            <span className="text-sm text-gray-700 flex-1">{ui.showIngredients}</span>
+          </label>
+          <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
               <input
                 type="checkbox"
                 checked={settings.display.preview.thermalActionIndicator}
@@ -1642,7 +1682,7 @@ function PrescriptionsDetailView({
                 }
                 className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
               />
-              <span className="text-sm text-gray-700 flex-1">Thermal Action Indicator</span>
+              <span className="text-sm text-gray-700 flex-1">{ui.thermalActionIndicator}</span>
             </label>
           </div>
         </div>
@@ -1650,7 +1690,7 @@ function PrescriptionsDetailView({
 
       {/* Ingredients Layout */}
       <div>
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Ingredients Layout</h3>
+        <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.ingredientsLayout}</h3>
         <div className="space-y-2">
           <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <input
@@ -1663,7 +1703,7 @@ function PrescriptionsDetailView({
               }
               className="w-4 h-4 text-teal-600 border-gray-300 focus:ring-teal-500"
             />
-            <span className="text-sm text-gray-700 flex-1">Two Columns (Grid)</span>
+            <span className="text-sm text-gray-700 flex-1">{ui.twoColumnsGrid}</span>
           </label>
           <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <input
@@ -1676,7 +1716,7 @@ function PrescriptionsDetailView({
               }
               className="w-4 h-4 text-teal-600 border-gray-300 focus:ring-teal-500"
             />
-            <span className="text-sm text-gray-700 flex-1">Ordered List (Single Column)</span>
+            <span className="text-sm text-gray-700 flex-1">{ui.orderedListSingleColumn}</span>
           </label>
         </div>
       </div>
@@ -1692,6 +1732,8 @@ function PrescriptionsDisplaySettings({
   settings: PrescriptionsSettings;
   onUpdate: (update: Partial<PrescriptionsSettings>) => void;
 }) {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const updateDisplay = (update: Partial<PrescriptionsSettings['display']>) => {
     onUpdate({ display: { ...settings.display, ...update } });
   };
@@ -1724,19 +1766,35 @@ function PrescriptionsDisplaySettings({
     }
   };
 
+  const ui = {
+    ingredients: isSpanish ? 'Ingredientes' : 'Ingredients',
+    herbs: isSpanish ? 'Hierbas' : 'Herbs',
+    formulas: isSpanish ? 'Fórmulas' : 'Formulas',
+    pinyinName: isSpanish ? 'Nombre en pinyin' : 'Pinyin Name',
+    pharmaceuticalName: isSpanish ? 'Nombre farmacéutico' : 'Pharmaceutical Name',
+    translatedName: isSpanish ? 'Nombre traducido' : 'Translated Name',
+    hanziName: isSpanish ? 'Caracteres chinos' : 'Hanzi Name',
+    natureIndicator: isSpanish ? 'Indicador de naturaleza' : 'Nature Indicator',
+    showIngredients: isSpanish ? 'Mostrar ingredientes' : 'Show Ingredients',
+    thermalActionIndicator: isSpanish ? 'Indicador de acción térmica' : 'Thermal Action Indicator',
+    ingredientsLayout: isSpanish ? 'Diseño de ingredientes' : 'Ingredients Layout',
+    twoColumnsGrid: isSpanish ? 'Dos columnas (cuadrícula)' : 'Two Columns (Grid)',
+    orderedListSingleColumn: isSpanish ? 'Lista ordenada (una columna)' : 'Ordered List (Single Column)',
+  };
+
   return (
     <>
       {/* Herbs Display */}
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Herbs</h3>
+        <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.herbs}</h3>
         <div className="space-y-2">
           {herbsOrder.map((nameType, index) => {
             const isFirst = index === 0;
             const isLast = index === herbsOrder.length - 1;
             const labels: Record<string, string> = {
-              pinyin: 'Pinyin Name',
-              latin: 'Pharmaceutical Name',
-              hanzi: 'Hanzi Name',
+              pinyin: ui.pinyinName,
+              latin: ui.pharmaceuticalName,
+              hanzi: ui.hanziName,
             };
 
             return (
@@ -1816,15 +1874,15 @@ function PrescriptionsDisplaySettings({
 
       {/* Formulas Display */}
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Formulas</h3>
+        <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.formulas}</h3>
         <div className="space-y-2">
           {formulasOrder.map((nameType, index) => {
             const isFirst = index === 0;
             const isLast = index === formulasOrder.length - 1;
             const labels = {
-              pinyin: 'Pinyin Name',
-              pharmaceutical: 'Translated Name',
-              hanzi: 'Hanzi Name',
+              pinyin: ui.pinyinName,
+              pharmaceutical: ui.translatedName,
+              hanzi: ui.hanziName,
             };
 
             return (
@@ -1910,14 +1968,14 @@ function PrescriptionsDisplaySettings({
               }
               className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
             />
-            <span className="text-sm text-gray-700 flex-1">Show Ingredients</span>
+            <span className="text-sm text-gray-700 flex-1">{ui.showIngredients}</span>
           </label>
         </div>
       </div>
 
       {/* Safety Filters */}
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Safety Filters</h3>
+        <h3 className="text-sm font-semibold text-gray-900 mb-3">{isSpanish ? 'Filtros de seguridad' : 'Safety Filters'}</h3>
         <div className="space-y-2">
           <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <input
@@ -1942,8 +2000,12 @@ function PrescriptionsDisplaySettings({
 
       {/* Preview Display */}
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Preview Display</h3>
-        <p className="text-xs text-gray-600 mb-3">Configure how components appear in the prescription detail view</p>
+        <h3 className="text-sm font-semibold text-gray-900 mb-3">{isSpanish ? 'Vista previa' : 'Preview Display'}</h3>
+        <p className="text-xs text-gray-600 mb-3">
+          {isSpanish
+            ? 'Configura cómo aparecen los componentes en la vista de detalle de la prescripción'
+            : 'Configure how components appear in the prescription detail view'}
+        </p>
         <div className="space-y-2">
           <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <input
@@ -1956,7 +2018,9 @@ function PrescriptionsDisplaySettings({
               }
               className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
             />
-            <span className="text-sm text-gray-700 flex-1">Nature Indicator (Herbs)</span>
+            <span className="text-sm text-gray-700 flex-1">
+              {isSpanish ? 'Indicador de naturaleza (hierbas)' : 'Nature Indicator (Herbs)'}
+            </span>
           </label>
           <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <input
@@ -1969,14 +2033,16 @@ function PrescriptionsDisplaySettings({
               }
               className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
             />
-            <span className="text-sm text-gray-700 flex-1">Thermal Action Indicator (Formulas)</span>
+            <span className="text-sm text-gray-700 flex-1">
+              {isSpanish ? 'Indicador de acción térmica (fórmulas)' : 'Thermal Action Indicator (Formulas)'}
+            </span>
           </label>
         </div>
       </div>
 
       {/* Ingredients Layout */}
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Ingredients Layout</h3>
+        <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.ingredientsLayout}</h3>
         <div className="space-y-2">
           <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <input
@@ -1989,7 +2055,7 @@ function PrescriptionsDisplaySettings({
               }
               className="w-4 h-4 text-teal-600 border-gray-300 focus:ring-teal-500"
             />
-            <span className="text-sm text-gray-700 flex-1">Two Columns (Grid)</span>
+            <span className="text-sm text-gray-700 flex-1">{ui.twoColumnsGrid}</span>
           </label>
           <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <input
@@ -2002,7 +2068,7 @@ function PrescriptionsDisplaySettings({
               }
               className="w-4 h-4 text-teal-600 border-gray-300 focus:ring-teal-500"
             />
-            <span className="text-sm text-gray-700 flex-1">Ordered List (Single Column)</span>
+            <span className="text-sm text-gray-700 flex-1">{ui.orderedListSingleColumn}</span>
           </label>
         </div>
       </div>
@@ -2017,6 +2083,8 @@ function PrescriptionsCopySettings({
   settings: PrescriptionsSettings;
   onUpdate: (update: Partial<PrescriptionsSettings>) => void;
 }) {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const updateCopy = (update: Partial<PrescriptionsSettings['copy']>) => {
     onUpdate({ copy: { ...settings.copy, ...update } });
   };
@@ -2060,19 +2128,37 @@ function PrescriptionsCopySettings({
     }
   };
 
+  const ui = {
+    herbs: isSpanish ? 'Hierbas' : 'Herbs',
+    formulas: isSpanish ? 'Fórmulas' : 'Formulas',
+    pinyinName: isSpanish ? 'Nombre en pinyin' : 'Pinyin Name',
+    pharmaceuticalName: isSpanish ? 'Nombre farmacéutico' : 'Pharmaceutical Name',
+    translatedName: isSpanish ? 'Nombre traducido' : 'Translated Name',
+    hanziName: isSpanish ? 'Caracteres chinos' : 'Hanzi Name',
+    showIngredients: isSpanish ? 'Mostrar ingredientes' : 'Show Ingredients',
+    sectionOrder: isSpanish ? 'Orden de secciones' : 'Section Order',
+    sectionOrderDesc: isSpanish
+      ? 'Organiza el orden de las secciones al copiar prescripciones'
+      : 'Organize the order of sections when copying prescriptions',
+    prescriptionName: isSpanish ? 'Nombre de la prescripción' : 'Prescription Name',
+    components: isSpanish ? 'Componentes (hierbas y fórmulas)' : 'Components (Herbs & Formulas)',
+    safetyFilters: isSpanish ? 'Filtros de seguridad' : 'Safety Filters',
+    comments: isSpanish ? 'Comentarios' : 'Comments',
+  };
+
   return (
     <>
       {/* Herbs Copy Format */}
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Herbs</h3>
+        <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.herbs}</h3>
         <div className="space-y-2">
           {herbsOrder.map((nameType, index) => {
             const isFirst = index === 0;
             const isLast = index === herbsOrder.length - 1;
             const labels = {
-              pinyin: 'Pinyin Name',
-              latin: 'Pharmaceutical Name',
-              hanzi: 'Hanzi Name',
+              pinyin: ui.pinyinName,
+              latin: ui.pharmaceuticalName,
+              hanzi: ui.hanziName,
             };
 
             return (
@@ -2152,15 +2238,15 @@ function PrescriptionsCopySettings({
 
       {/* Formulas Copy Format */}
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Formulas</h3>
+        <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.formulas}</h3>
         <div className="space-y-2">
           {formulasOrder.map((nameType, index) => {
             const isFirst = index === 0;
             const isLast = index === formulasOrder.length - 1;
             const labels = {
-              pinyin: 'Pinyin Name',
-              pharmaceutical: 'Translated Name',
-              hanzi: 'Hanzi Name',
+              pinyin: ui.pinyinName,
+              pharmaceutical: ui.translatedName,
+              hanzi: ui.hanziName,
             };
 
             return (
@@ -2246,24 +2332,24 @@ function PrescriptionsCopySettings({
               }
               className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
             />
-            <span className="text-sm text-gray-700 flex-1">Show Ingredients</span>
+            <span className="text-sm text-gray-700 flex-1">{ui.showIngredients}</span>
           </label>
         </div>
       </div>
 
       {/* Section Order */}
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Section Order</h3>
-        <p className="text-xs text-gray-500 mb-3">Organize the order of sections when copying prescriptions</p>
+        <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.sectionOrder}</h3>
+        <p className="text-xs text-gray-500 mb-3">{ui.sectionOrderDesc}</p>
         <div className="space-y-2">
           {sectionOrder.map((section, index) => {
             const isFirst = index === 0;
             const isLast = index === sectionOrder.length - 1;
             const labels = {
-              name: 'Prescription Name',
-              components: 'Components (Herbs & Formulas)',
-              filters: 'Safety Filters',
-              comments: 'Comments',
+              name: ui.prescriptionName,
+              components: ui.components,
+              filters: ui.safetyFilters,
+              comments: ui.comments,
             };
 
             const checkboxMap = {
@@ -2365,7 +2451,13 @@ interface BuilderTabProps {
 }
 
 function BuilderTab({ settings, onUpdate, prescriptionsSettings, onUpdatePrescriptions }: BuilderTabProps) {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [subTab, setSubTab] = React.useState<'list' | 'builder'>('list');
+  const ui = {
+    listDisplay: isSpanish ? 'Vista de lista' : 'List Display',
+    builderDisplay: isSpanish ? 'Vista del constructor' : 'Prescription Builder Display',
+  };
 
   const updateHerbsList = (update: Partial<BuilderSettings['herbsList']>) => {
     onUpdate({ herbsList: { ...settings.herbsList, ...update } });
@@ -2464,7 +2556,7 @@ function BuilderTab({ settings, onUpdate, prescriptionsSettings, onUpdatePrescri
                 : 'border-transparent text-gray-600 hover:text-gray-900'
             }`}
           >
-            List Display
+            {ui.listDisplay}
           </button>
           <button
             onClick={() => setSubTab('builder')}
@@ -2474,7 +2566,7 @@ function BuilderTab({ settings, onUpdate, prescriptionsSettings, onUpdatePrescri
                 : 'border-transparent text-gray-600 hover:text-gray-900'
             }`}
           >
-            Prescription Builder Display
+            {ui.builderDisplay}
           </button>
         </div>
       </div>
@@ -2500,6 +2592,8 @@ function BuilderListDisplay({
   settings: BuilderSettings;
   onUpdate: (update: Partial<BuilderSettings>) => void;
 }) {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const updateHerbsList = (update: Partial<BuilderSettings['herbsList']>) => {
     onUpdate({ herbsList: { ...settings.herbsList, ...update } });
   };
@@ -2526,19 +2620,30 @@ function BuilderListDisplay({
     }
   };
 
+  const ui = {
+    herbsListDisplay: isSpanish ? 'Vista de lista de hierbas' : 'Herbs List Display',
+    formulasListDisplay: isSpanish ? 'Vista de lista de fórmulas' : 'Formulas List Display',
+    pinyinName: isSpanish ? 'Nombre en pinyin' : 'Pinyin Name',
+    pharmaceuticalName: isSpanish ? 'Nombre farmacéutico' : 'Pharmaceutical Name',
+    translatedName: isSpanish ? 'Nombre traducido' : 'Translated Name',
+    hanziName: isSpanish ? 'Caracteres chinos' : 'Hanzi Name',
+    natureIndicator: isSpanish ? 'Indicador de naturaleza' : 'Nature Indicator',
+    thermalActionIndicator: isSpanish ? 'Indicador de acción térmica' : 'Thermal Action Indicator',
+  };
+
   return (
     <>
       {/* Herbs List Display */}
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Herbs List Display</h3>
+        <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.herbsListDisplay}</h3>
         <div className="space-y-2">
           {settings.herbsList.order.map((nameType, index) => {
             const isFirst = index === 0;
             const isLast = index === settings.herbsList.order.length - 1;
             const labels: Record<string, string> = {
-              pinyin: 'Pinyin Name',
-              latin: 'Pharmaceutical Name',
-              hanzi: 'Hanzi Name',
+              pinyin: ui.pinyinName,
+              latin: ui.pharmaceuticalName,
+              hanzi: ui.hanziName,
             };
 
             return (
@@ -2620,22 +2725,22 @@ function BuilderListDisplay({
               onChange={(e) => updateHerbsList({ natureIndicator: e.target.checked })}
               className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
             />
-            <span className="text-sm text-gray-700 flex-1">Nature Indicator</span>
+            <span className="text-sm text-gray-700 flex-1">{ui.natureIndicator}</span>
           </label>
         </div>
       </div>
 
       {/* Formulas List Display */}
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Formulas List Display</h3>
+        <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.formulasListDisplay}</h3>
         <div className="space-y-2">
           {settings.formulasList.order.map((nameType, index) => {
             const isFirst = index === 0;
             const isLast = index === settings.formulasList.order.length - 1;
             const labels = {
-              pinyin: 'Pinyin Name',
-              pharmaceutical: 'Translated Name',
-              hanzi: 'Hanzi Name',
+              pinyin: ui.pinyinName,
+              pharmaceutical: ui.translatedName,
+              hanzi: ui.hanziName,
             };
 
             return (
@@ -2717,7 +2822,7 @@ function BuilderListDisplay({
               onChange={(e) => updateFormulasList({ thermalActionIndicator: e.target.checked })}
               className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
             />
-            <span className="text-sm text-gray-700 flex-1">Thermal Action Indicator</span>
+            <span className="text-sm text-gray-700 flex-1">{ui.thermalActionIndicator}</span>
           </label>
         </div>
       </div>
@@ -2737,6 +2842,8 @@ function BuilderPrescriptionDisplay({
   prescriptionsSettings: PrescriptionsSettings;
   onUpdatePrescriptions: (update: Partial<PrescriptionsSettings>) => void;
 }) {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const updatePrescriptionBuilder = (update: Partial<BuilderSettings['prescriptionBuilder']>) => {
     onUpdate({ prescriptionBuilder: { ...settings.prescriptionBuilder, ...update } });
   };
@@ -2763,19 +2870,36 @@ function BuilderPrescriptionDisplay({
     }
   };
 
+  const ui = {
+    herbs: isSpanish ? 'Hierbas' : 'Herbs',
+    formulas: isSpanish ? 'Fórmulas' : 'Formulas',
+    pinyinName: isSpanish ? 'Nombre en pinyin' : 'Pinyin Name',
+    pharmaceuticalName: isSpanish ? 'Nombre farmacéutico' : 'Pharmaceutical Name',
+    translatedName: isSpanish ? 'Nombre traducido' : 'Translated Name',
+    hanziName: isSpanish ? 'Caracteres chinos' : 'Hanzi Name',
+    showIngredients: isSpanish ? 'Mostrar ingredientes' : 'Show Ingredients',
+    defaultComments: isSpanish ? 'Comentarios predeterminados' : 'Default Comments',
+    commentsPlaceholder: isSpanish
+      ? 'Introduce el texto de comentarios predeterminado (deja vacío si no quieres uno)...'
+      : 'Enter default comments text (leave empty for no default)...',
+    commentsHelp: isSpanish
+      ? 'Este texto se añadirá automáticamente al campo de comentarios al crear nuevas prescripciones. Déjalo vacío para no usar comentarios predeterminados.'
+      : 'This text will be automatically added to the comments field when creating new prescriptions. Leave empty to have no default comments.',
+  };
+
   return (
     <>
       {/* Herbs */}
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Herbs</h3>
+        <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.herbs}</h3>
         <div className="space-y-2">
               {settings.prescriptionBuilder.herbs.order.map((nameType, index) => {
                 const isFirst = index === 0;
                 const isLast = index === settings.prescriptionBuilder.herbs.order.length - 1;
                 const labels: Record<string, string> = {
-                  pinyin: 'Pinyin Name',
-                  latin: 'Pharmaceutical Name',
-                  hanzi: 'Hanzi Name',
+                  pinyin: ui.pinyinName,
+                  latin: ui.pharmaceuticalName,
+                  hanzi: ui.hanziName,
                 };
 
                 return (
@@ -2855,15 +2979,15 @@ function BuilderPrescriptionDisplay({
 
       {/* Formulas */}
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Formulas</h3>
+        <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.formulas}</h3>
         <div className="space-y-2">
           {settings.prescriptionBuilder.formulas.order.map((nameType, index) => {
             const isFirst = index === 0;
             const isLast = index === settings.prescriptionBuilder.formulas.order.length - 1;
             const labels = {
-              pinyin: 'Pinyin Name',
-              pharmaceutical: 'Translated Name',
-              hanzi: 'Hanzi Name',
+              pinyin: ui.pinyinName,
+              pharmaceutical: ui.translatedName,
+              hanzi: ui.hanziName,
             };
 
             return (
@@ -2949,24 +3073,24 @@ function BuilderPrescriptionDisplay({
               }
               className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
             />
-            <span className="text-sm text-gray-700 flex-1">Show Ingredients</span>
+            <span className="text-sm text-gray-700 flex-1">{ui.showIngredients}</span>
           </label>
         </div>
       </div>
 
       {/* Default Commentary */}
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Default Comments</h3>
+        <h3 className="text-sm font-semibold text-gray-900 mb-3">{ui.defaultComments}</h3>
         <div className="space-y-2">
           <textarea
             value={prescriptionsSettings.defaultCommentary || ''}
             onChange={(e) => onUpdatePrescriptions({ defaultCommentary: e.target.value })}
-            placeholder="Enter default comments text (leave empty for no default)..."
+            placeholder={ui.commentsPlaceholder}
             rows={4}
             className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm text-gray-900 placeholder:text-gray-400"
           />
           <p className="text-xs text-gray-500">
-            This text will be automatically added to the comments field when creating new prescriptions. Leave empty to have no default comments.
+            {ui.commentsHelp}
           </p>
         </div>
       </div>
