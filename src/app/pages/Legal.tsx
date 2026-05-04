@@ -5,6 +5,7 @@ import { getPlatformSettings } from '../data/platformSettings';
 import type { LegalDocument } from '../data/platformSettings';
 import { LegalDocumentModal } from '../components/LegalDocumentModal';
 import { CookiePreferencesModal } from '../components/CookiePreferencesModal';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface LegalCard {
   id: string;
@@ -18,6 +19,8 @@ interface LegalCard {
 
 export default function Legal() {
   const location = useLocation();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [settings, setSettings] = useState(() => getPlatformSettings());
   const [selectedDocument, setSelectedDocument] = useState<LegalDocument | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -88,7 +91,7 @@ export default function Legal() {
           <Link
             to="/account-hub"
             className="h-10 w-10 sm:w-11 sm:h-11 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-colors flex-shrink-0"
-            title="Back to Account"
+            title={isSpanish ? 'Volver a la cuenta' : 'Back to Account'}
           >
             <ArrowLeft className="w-5 h-5" />
           </Link>
@@ -96,9 +99,13 @@ export default function Legal() {
 
         {/* Page Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Legal & Policies</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            {isSpanish ? 'Legal y políticas' : 'Legal & Policies'}
+          </h1>
           <p className="text-gray-600">
-            Important legal information and policies for using our platform
+            {isSpanish
+              ? 'Información legal y políticas importantes para usar la plataforma'
+              : 'Important legal information and policies for using our platform'}
           </p>
         </div>
 
@@ -115,14 +122,16 @@ export default function Legal() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-base font-semibold text-gray-900 mb-1 flex items-center gap-2">
-                    Cookie Preferences
+                    {isSpanish ? 'Preferencias de cookies' : 'Cookie Preferences'}
                     <SettingsIcon className="w-4 h-4 text-teal-600" />
                   </h3>
                   <p className="text-sm text-gray-600 mb-2">
-                    Manage your cookie consent preferences. Control which types of cookies we can use to improve your experience.
+                    {isSpanish
+                      ? 'Gestiona tus preferencias de consentimiento de cookies. Controla qué tipos de cookies podemos usar para mejorar tu experiencia.'
+                      : 'Manage your cookie consent preferences. Control which types of cookies we can use to improve your experience.'}
                   </p>
                   <p className="text-xs text-teal-700 font-medium">
-                    Click to customize your preferences
+                    {isSpanish ? 'Haz clic para personalizar tus preferencias' : 'Click to customize your preferences'}
                   </p>
                 </div>
               </div>

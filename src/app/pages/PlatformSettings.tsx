@@ -32,10 +32,13 @@ import {
 } from '../data/platformSettings';
 import { AuthenticationSection } from '../components/AuthenticationSettings';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
 
 type TabType = 'legal' | 'help' | 'company' | 'branding' | 'authentication' | 'compliance';
 
 export default function PlatformSettings() {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [activeTab, setActiveTab] = useState<TabType>('legal');
   const [settings, setSettings] = useState(() => getPlatformSettings());
   const [saveStatus, setSaveStatus] = useState<{ [key: string]: boolean }>({});
@@ -63,21 +66,25 @@ export default function PlatformSettings() {
   };
 
   const tabs = [
-    { id: 'legal' as TabType, label: 'Legal & Policies', icon: FileText },
-    { id: 'help' as TabType, label: 'Help & Support', icon: HelpCircle },
-    { id: 'company' as TabType, label: 'Company Info', icon: Building },
-    { id: 'branding' as TabType, label: 'Branding', icon: Palette },
-    { id: 'authentication' as TabType, label: 'Authentication', icon: KeyRound },
-    { id: 'compliance' as TabType, label: 'Compliance', icon: Shield }
+    { id: 'legal' as TabType, label: isSpanish ? 'Legal y políticas' : 'Legal & Policies', icon: FileText },
+    { id: 'help' as TabType, label: isSpanish ? 'Ayuda y soporte' : 'Help & Support', icon: HelpCircle },
+    { id: 'company' as TabType, label: isSpanish ? 'Información de la empresa' : 'Company Info', icon: Building },
+    { id: 'branding' as TabType, label: isSpanish ? 'Marca' : 'Branding', icon: Palette },
+    { id: 'authentication' as TabType, label: isSpanish ? 'Autenticación' : 'Authentication', icon: KeyRound },
+    { id: 'compliance' as TabType, label: isSpanish ? 'Cumplimiento' : 'Compliance', icon: Shield }
   ];
 
   return (
     <>
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Platform Settings</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          {isSpanish ? 'Ajustes de la plataforma' : 'Platform Settings'}
+        </h1>
         <p className="hidden sm:block text-gray-600">
-          Manage institutional configuration, legal content, and platform branding
+          {isSpanish
+            ? 'Gestiona la configuración institucional, el contenido legal y la marca de la plataforma'
+            : 'Manage institutional configuration, legal content, and platform branding'}
         </p>
       </div>
 
@@ -90,12 +97,12 @@ export default function PlatformSettings() {
           {saveStatus[activeTab] ? (
             <>
               <Check className="w-4 h-4" />
-              <span>Saved</span>
+              <span>{isSpanish ? 'Guardado' : 'Saved'}</span>
             </>
           ) : (
             <>
               <Save className="w-4 h-4" />
-              <span>Save Changes</span>
+              <span>{isSpanish ? 'Guardar cambios' : 'Save Changes'}</span>
             </>
           )}
         </button>
