@@ -2,41 +2,10 @@ import { useState, useEffect } from 'react';
 import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { User, Settings, CreditCard, BarChart3, X, Menu, LogOut, HelpCircle, Scale, ChevronLeft } from 'lucide-react';
 import { checkUnsavedChanges } from '@/app/hooks/useUnsavedChanges';
-
-const accountMenuItems = [
-  {
-    path: '/account/profile',
-    label: 'Profile',
-    icon: User,
-  },
-  {
-    path: '/account/membership',
-    label: 'Membership & Billing',
-    icon: CreditCard,
-  },
-  {
-    path: '/account/usage',
-    label: 'Usage & Analytics',
-    icon: BarChart3,
-  },
-  {
-    path: '/account/settings',
-    label: 'Settings',
-    icon: Settings,
-  },
-  {
-    path: '/account/help',
-    label: 'Help & Support',
-    icon: HelpCircle,
-  },
-  {
-    path: '/account/legal',
-    label: 'Legal & Policies',
-    icon: Scale,
-  },
-];
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 export default function AccountLayout() {
+  const { t } = useLanguage();
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -49,8 +18,15 @@ export default function AccountLayout() {
 
   // Get current page title based on route
   const getCurrentPageTitle = () => {
-    const currentItem = accountMenuItems.find(item => item.path === location.pathname);
-    return currentItem?.label || 'Account';
+    const titles: Record<string, string> = {
+      '/account/profile': t('accountMenu.profile'),
+      '/account/membership': t('accountMenu.membership'),
+      '/account/usage': t('accountMenu.usage'),
+      '/account/settings': t('accountMenu.settings'),
+      '/account/help': t('accountMenu.help'),
+      '/account/legal': t('accountMenu.legal'),
+    };
+    return titles[location.pathname] || t('layouts.account');
   };
 
   const handleLogout = () => {
@@ -119,7 +95,7 @@ export default function AccountLayout() {
             <ChevronLeft className="w-5 h-5" />
           </button>
           <h1 className="text-base font-semibold text-gray-900">
-            {isAccountIndex ? 'Account' : getCurrentPageTitle()}
+            {isAccountIndex ? t('layouts.account') : getCurrentPageTitle()}
           </h1>
           <div className="w-8" /> {/* Spacer for centering */}
         </div>
@@ -157,7 +133,7 @@ export default function AccountLayout() {
           >
             {/* Desktop Header */}
             <div className="hidden lg:block px-6 pt-6 pb-4">
-              <h2 className="text-lg font-semibold text-gray-900">Account</h2>
+              <h2 className="text-lg font-semibold text-gray-900">{t('layouts.account')}</h2>
             </div>
 
             {/* Mobile Header - hidden since we have the new mobile header */}
@@ -174,7 +150,14 @@ export default function AccountLayout() {
             {/* Menu Items */}
             <nav className="flex-1 overflow-y-auto overscroll-none lg:overscroll-auto px-4 pt-4 lg:py-2">
               <div className="space-y-1 -mt-1 lg:mt-0">
-                {accountMenuItems.map((item) => {
+                {[
+                  { path: '/account/profile', label: t('accountMenu.profile'), icon: User },
+                  { path: '/account/membership', label: t('accountMenu.membership'), icon: CreditCard },
+                  { path: '/account/usage', label: t('accountMenu.usage'), icon: BarChart3 },
+                  { path: '/account/settings', label: t('accountMenu.settings'), icon: Settings },
+                  { path: '/account/help', label: t('accountMenu.help'), icon: HelpCircle },
+                  { path: '/account/legal', label: t('accountMenu.legal'), icon: Scale },
+                ].map((item) => {
                   const Icon = item.icon;
                   return (
                     <NavLink
@@ -206,7 +189,7 @@ export default function AccountLayout() {
                 className="flex items-center gap-3 px-3 py-2 lg:px-4 lg:py-3 lg:rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors w-full rounded-lg min-h-[54px] lg:min-h-0"
               >
                 <LogOut className="w-5 h-5 text-gray-400" />
-                <span>Log out</span>
+                <span>{t('menus.logOut')}</span>
               </button>
             </div>
           </aside>
@@ -220,7 +203,7 @@ export default function AccountLayout() {
                   className="flex items-center gap-3 px-0 pr-0 pl-4 py-2.5 lg:px-4 lg:rounded-lg text-gray-700 hover:bg-gray-50 transition-colors text-sm font-medium -mx-2 lg:mx-0 w-full"
                 >
                   <LogOut className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                  <span>Log out</span>
+                  <span>{t('menus.logOut')}</span>
                 </button>
               </div>
             </div>
@@ -254,20 +237,20 @@ export default function AccountLayout() {
             aria-describedby="logout-modal-description"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 id="logout-modal-title" className="text-lg font-semibold text-gray-900 mb-2">Cerrar sesión</h3>
-            <p id="logout-modal-description" className="text-gray-600 mb-6">¿Estás seguro de que quieres cerrar sesión?</p>
+            <h3 id="logout-modal-title" className="text-lg font-semibold text-gray-900 mb-2">{t('menus.logOut')}</h3>
+            <p id="logout-modal-description" className="text-gray-600 mb-6">{t('dialogs.confirmLogout')}</p>
             <div className="flex gap-3 justify-end">
               <button
                 onClick={() => setShowLogoutModal(false)}
                 className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
               >
-                Cancelar
+                {t('dialogs.cancel')}
               </button>
               <button
                 onClick={handleLogout}
                 className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors"
               >
-                Cerrar sesión
+                {t('menus.logOut')}
               </button>
             </div>
           </div>

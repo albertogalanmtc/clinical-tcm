@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { Shield, Lock, Globe, Bell, Trash2, AlertTriangle, Eye, EyeOff, X, Mail, Key, Check, AlertCircle, MessageCircle } from 'lucide-react';
 import { useUser } from '../contexts/UserContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import { updatePassword } from '@/services/api/authService';
 import { supabase } from '../lib/supabase';
 import { toast } from 'sonner';
@@ -35,6 +36,7 @@ function getNotificationPreferencesKey(email: string): string {
 
 export default function SettingsPage() {
   const { email, firstName, lastName, userId } = useUser();
+  const { language, setLanguage, t } = useLanguage();
   const navigate = useNavigate();
 
   // Auth provider state
@@ -66,7 +68,6 @@ export default function SettingsPage() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   // Preferences
-  const [language, setLanguage] = useState('en');
   const [notificationPreferences, setNotificationPreferences] = useState<NotificationPreferences>(DEFAULT_NOTIFICATION_PREFERENCES);
   const [preferencesLoaded, setPreferencesLoaded] = useState(false);
 
@@ -547,13 +548,12 @@ export default function SettingsPage() {
             {/* Language */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Interface Language
+                {t('settings.interfaceLanguage')}
               </label>
               <select
                 value={language}
-                onChange={(e) => setLanguage(e.target.value)}
-                disabled
-                className="w-full max-w-xs px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-gray-50 text-gray-500 cursor-not-allowed"
+                onChange={(e) => setLanguage(e.target.value as 'en' | 'es')}
+                className="w-full max-w-xs px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white text-gray-900"
               >
                 {LANGUAGES.map(lang => (
                   <option key={lang.code} value={lang.code}>
@@ -562,7 +562,7 @@ export default function SettingsPage() {
                 ))}
               </select>
               <p className="text-xs text-gray-500 mt-2">
-                Currently only English is available. More languages coming soon.
+                {t('settings.currentEnglishOnly')}
               </p>
             </div>
 

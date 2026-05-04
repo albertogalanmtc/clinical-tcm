@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserProvider } from "./contexts/UserContext";
+import { LanguageProvider } from "./contexts/LanguageContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { CookieBanner } from "./components/CookieBanner";
 import Layout from "./components/Layout";
@@ -423,8 +424,9 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <AppErrorBoundary>
-        <UserProvider>
-          <Routes>
+        <LanguageProvider>
+          <UserProvider>
+            <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/landing" element={<Landing />} />
 
@@ -743,8 +745,9 @@ export default function App() {
             <Route path="legal" element={<Legal />} />
             <Route path="*" element={<NotFound />} />
           </Route>
-          </Routes>
-        </UserProvider>
+            </Routes>
+          </UserProvider>
+        </LanguageProvider>
       </AppErrorBoundary>
         <CookieBanner />
     </BrowserRouter>

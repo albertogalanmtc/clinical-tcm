@@ -12,6 +12,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { toast } from 'sonner';
 import { NewFormulaModal } from '@/app/components/NewFormulaModal';
 import { UnifiedDetailsModal } from '@/app/components/UnifiedDetailsModal';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 import { useSectionIcon } from '../hooks/useSectionIcon';
 import { usePlanFeatures } from '../hooks/usePlanFeatures';
 import { useGlobalSettings } from '../hooks/useGlobalSettings';
@@ -39,6 +40,7 @@ interface DisplayColumns {
 }
 
 export default function Formulas() {
+  const { t } = useLanguage();
   const { IconComponent: FormulaIcon, customSvg: formulaCustomSvg } = useSectionIcon('formulas');
   const { getLibraryAccess, hasFeature } = usePlanFeatures();
   const navigate = useNavigate();
@@ -477,7 +479,7 @@ export default function Formulas() {
       {/* Mobile Header - Hidden (moved to search bar) */}
       <div className="hidden flex-shrink-0">
         <div className="flex items-center justify-between gap-2">
-          <h1 className="text-2xl font-bold text-gray-900">Formulas</h1>
+          <h1 className="text-2xl font-bold text-gray-900">{t('nav.formulas')}</h1>
           {hasFeature('customContent') && (
           <button
             onClick={() => { setEditingFormula(null); setShowNewFormulaModal(true); }}
@@ -513,7 +515,7 @@ export default function Formulas() {
                   onClick={() => setExpandedFilters(prev => ({ ...prev, formulaFilters: !prev.formulaFilters }))}
                   className="flex items-center justify-between w-full text-left mb-3"
                 >
-                  <h2 className="text-lg font-semibold text-gray-900">Formula Filters</h2>
+                  <h2 className="text-lg font-semibold text-gray-900">{t('filters.formulaFilters')}</h2>
                   <div className="flex items-center gap-2">
                     {(categoryFilters.length > 0 || subcategoryFilters.length > 0) && (
                       <span
@@ -524,7 +526,7 @@ export default function Formulas() {
                         }}
                         className="text-xs text-teal-600 hover:text-teal-700 font-medium cursor-pointer"
                       >
-                        Clear
+                        {t('filters.clear')}
                       </span>
                     )}
                     <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${expandedFilters.formulaFilters ? 'rotate-180' : ''}`} />
@@ -542,7 +544,7 @@ export default function Formulas() {
                           className="flex items-center justify-between w-full text-left mb-3"
                         >
                           <div className="flex items-center gap-2">
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Categories</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.categories')}</h3>
                             {categoryFilters.length > 0 && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                                 {categoryFilters.length}
@@ -609,7 +611,7 @@ export default function Formulas() {
                   onClick={() => setExpandedFilters(prev => ({ ...prev, advanced: !prev.advanced }))}
                   className="flex items-center justify-between w-full text-left mb-3"
                 >
-                  <h2 className="text-base sm:text-lg font-semibold text-gray-900">Advanced Filters</h2>
+                  <h2 className="text-base sm:text-lg font-semibold text-gray-900">{t('filters.advancedFilters')}</h2>
                   <div className="flex items-center gap-2">
                     {hasActiveAdvancedFilters && (
                       <span
@@ -619,7 +621,7 @@ export default function Formulas() {
                         }}
                         className="text-xs text-teal-600 hover:text-teal-700 font-medium cursor-pointer"
                       >
-                        Clear
+                        {t('filters.clear')}
                       </span>
                     )}
                     <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${expandedFilters.advanced ? 'rotate-180' : ''}`} />
@@ -636,7 +638,7 @@ export default function Formulas() {
                           className="flex items-center justify-between w-full text-left mb-3 hover:bg-gray-50 p-2 -mx-2 rounded-lg transition-colors"
                         >
                         <div className="flex items-center gap-2">
-                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Pharmacological Effects</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.pharmacologicalEffects')}</h3>
                           {pharmacologicalFiltersCount > 0 && (
                             <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                               {pharmacologicalFiltersCount}
@@ -655,7 +657,7 @@ export default function Formulas() {
                           className="flex items-center justify-between w-full text-left mb-3 hover:bg-gray-50 p-2 -mx-2 rounded-lg transition-colors"
                         >
                           <div className="flex items-center gap-2">
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Biological Mechanisms</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.biologicalMechanisms')}</h3>
                             {biologicalFiltersCount > 0 && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                                 {biologicalFiltersCount}
@@ -674,12 +676,12 @@ export default function Formulas() {
               {/* Active Filters */}
               {hasActiveFilters && (
                 <div className="mt-6 pt-6 border-t border-gray-200">
-                  <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Active Filters</h3>
+                  <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">{t('filters.activeFilters')}</h3>
                   <div className="space-y-3">
                     {/* Category Filters */}
                     {categoryFilters.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Categories</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.categories')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {categoryFilters.map(category => (
                             <button
@@ -698,7 +700,7 @@ export default function Formulas() {
                     {/* Subcategory Filters */}
                     {subcategoryFilters.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Subcategories</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.subcategories')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {subcategoryFilters.map(subcategory => (
                             <button
@@ -717,7 +719,7 @@ export default function Formulas() {
                     {/* Pharmacological Filters */}
                     {pharmacologicalFiltersCount > 0 && hasFeature('pharmacologicalEffectsFilter') && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Pharmacological Effects</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.pharmacologicalEffects')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {pharmacologicalFilters.map(effect => (
                             <button
@@ -738,7 +740,7 @@ export default function Formulas() {
                     {/* Biological Mechanisms Filters */}
                     {biologicalFiltersCount > 0 && hasFeature('biologicalMechanismsFilter') && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Biological Mechanisms</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.biologicalMechanisms')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {Object.entries(biologicalFilters).flatMap(([mechanism, targets]) =>
                             (targets || []).map(target => (
@@ -777,7 +779,7 @@ export default function Formulas() {
                     onClick={clearAllFilters}
                     className="w-full px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium rounded-lg transition-colors"
                   >
-                    Clear All Filters
+                    {t('filters.clearAllFilters')}
                   </button>
                 </div>
               )}
@@ -794,7 +796,7 @@ export default function Formulas() {
                 <SearchBar
                   value={searchQuery}
                   onChange={setSearchQuery}
-                  placeholder="Search formulas..."
+                  placeholder={t('filters.searchFormulas')}
                   className="w-full sm:w-[400px]"
                   showFavoriteButton={true}
                   onFavoriteClick={() => setShowOnlyFavorites(!showOnlyFavorites)}
@@ -806,7 +808,7 @@ export default function Formulas() {
                 <button
                   onClick={() => { setEditingFormula(null); setShowNewFormulaModal(true); }}
                   className="sm:hidden flex items-center justify-center gap-2 w-10 h-10 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors whitespace-nowrap flex-shrink-0"
-                  title="Add New Formula"
+                  title={t('filters.addNewFormula')}
                 >
                   <Plus className="w-[18px] h-[18px]" />
                 </button>
@@ -817,7 +819,7 @@ export default function Formulas() {
               <button
                 onClick={() => setShowMobileFilters(true)}
                 className="h-10 w-10 bg-transparent border-0 sm:w-auto sm:h-11 sm:px-3 sm:bg-white sm:border sm:border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 sm:hover:bg-gray-50 transition-colors flex items-center justify-center"
-                title="Filters"
+                title={t('filters.filtersComingSoonMobile')}
               >
                 <Filter className="w-[18px] h-[18px] sm:w-5 sm:h-5" />
                 {(() => {
@@ -840,7 +842,7 @@ export default function Formulas() {
             <button
               onClick={() => { setEditingFormula(null); setShowNewFormulaModal(true); }}
               className="hidden sm:flex items-center justify-center gap-2 px-4 w-auto h-10 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors whitespace-nowrap flex-shrink-0"
-              title="Add New Formula"
+              title={t('filters.addNewFormula')}
             >
               <Plus className="w-4 h-4" />
               {formulaCustomSvg ? (
@@ -863,7 +865,7 @@ export default function Formulas() {
                     ? 'bg-white text-gray-700 shadow-sm'
                     : 'text-gray-500 hover:text-gray-700'
                 }`}
-                title="List view"
+                title={t('filters.listView')}
               >
                 <LayoutList className="w-5 h-5" />
               </button>
@@ -874,7 +876,7 @@ export default function Formulas() {
                     ? 'bg-white text-gray-700 shadow-sm'
                     : 'text-gray-500 hover:text-gray-700'
                 }`}
-                title="Grid view"
+                title={t('filters.gridView')}
               >
                 <LayoutGrid className="w-5 h-5" />
               </button>
@@ -887,7 +889,7 @@ export default function Formulas() {
             <div className="flex-1 bg-white rounded-lg border border-gray-200 p-8 sm:p-12 flex items-center justify-center">
               <EmptyState
                 icon={Search}
-                title="No formulas found"
+                title={t('filters.noFormulasFound')}
                 description="Try adjusting your search query or filters"
               />
             </div>
@@ -1206,8 +1208,8 @@ export default function Formulas() {
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
           <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:inset-x-4 sm:top-1/2 sm:-translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:bottom-auto bg-white sm:rounded-lg sm:max-w-4xl sm:max-h-[85vh] overflow-hidden z-50 flex flex-col rounded-t-2xl sm:rounded-b-lg">
-            <Dialog.Title className="sr-only">Pharmacological Effects</Dialog.Title>
-            <Dialog.Description className="sr-only">Filter formulas by their pharmacological effects</Dialog.Description>
+            <Dialog.Title className="sr-only">{t('filters.selectPharmacologicalEffects')}</Dialog.Title>
+            <Dialog.Description className="sr-only">{t('filters.filterFormulasByPharmacologicalEffects')}</Dialog.Description>
             {/* Header */}
             <div className="flex-shrink-0 px-4 sm:px-6 py-4 border-b border-gray-200">
               <div className="flex items-center justify-between mb-3">
@@ -1218,7 +1220,7 @@ export default function Formulas() {
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <h2 className="text-lg font-semibold text-gray-900 flex-1 text-center">
-                  Pharmacological Effects
+                  {t('filters.pharmacologicalEffects')}
                 </h2>
                 <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg flex items-center justify-center">
                   <X className="w-5 h-5" />
@@ -1232,7 +1234,7 @@ export default function Formulas() {
                   type="text"
                   value={pharmacologicalSearch}
                   onChange={(e) => setPharmacologicalSearch(e.target.value)}
-                  placeholder="Search pharmacological effects..."
+                  placeholder={t('filters.searchPharmacologicalEffects')}
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm"
                   autoFocus
                 />
@@ -1274,14 +1276,14 @@ export default function Formulas() {
                   disabled={pharmacologicalFilters.length === 0}
                   className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
                 >
-                  Clear
+                  {t('filters.clear')}
                 </button>
                 <button
                   onClick={() => setShowPharmacologicalModal(false)}
                   disabled={pharmacologicalFilters.length === 0}
                   className="flex-1 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
                 >
-                  Apply
+                  {t('filters.apply')}
                 </button>
               </div>
             </div>
@@ -1294,8 +1296,8 @@ export default function Formulas() {
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
           <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:inset-x-4 sm:top-1/2 sm:-translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:bottom-auto bg-white sm:rounded-lg sm:max-w-4xl sm:max-h-[85vh] overflow-hidden z-50 flex flex-col rounded-t-2xl sm:rounded-b-lg">
-            <Dialog.Title className="sr-only">Biological Mechanisms</Dialog.Title>
-            <Dialog.Description className="sr-only">Filter formulas by their biological mechanisms</Dialog.Description>
+            <Dialog.Title className="sr-only">{t('filters.selectBiologicalMechanisms')}</Dialog.Title>
+            <Dialog.Description className="sr-only">{t('filters.filterFormulasByBiologicalMechanisms')}</Dialog.Description>
             {/* Header */}
             <div className="flex-shrink-0 px-4 sm:px-6 py-4 border-b border-gray-200">
               <div className="flex items-center justify-between mb-3">
@@ -1306,7 +1308,7 @@ export default function Formulas() {
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <h2 className="text-lg font-semibold text-gray-900 flex-1 text-center">
-                  Biological Mechanisms
+                  {t('filters.biologicalMechanisms')}
                 </h2>
                 <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg flex items-center justify-center">
                   <X className="w-5 h-5" />
@@ -1320,7 +1322,7 @@ export default function Formulas() {
                   type="text"
                   value={biologicalSearch}
                   onChange={(e) => setBiologicalSearch(e.target.value)}
-                  placeholder="Search biological mechanisms..."
+                  placeholder={t('filters.searchSystemsOrTargets')}
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm"
                   autoFocus
                 />
@@ -1342,7 +1344,7 @@ export default function Formulas() {
                         : 'text-gray-600 hover:text-gray-900'
                     }`}
                   >
-                    Categories
+                    {t('filters.categories')}
                   </button>
                   <button
                     onClick={() => setBiologicalViewMode('all')}
@@ -1352,7 +1354,7 @@ export default function Formulas() {
                         : 'text-gray-600 hover:text-gray-900'
                     }`}
                   >
-                    All
+                    {t('filters.all')}
                   </button>
                 </div>
               </div>
@@ -1361,7 +1363,7 @@ export default function Formulas() {
             {/* Scrollable Content */}
             <div className="flex-1 overflow-y-auto px-6 py-4">
               <div className="space-y-2">
-                <p className="text-sm text-gray-500 italic px-3">No biological mechanisms data for formulas yet.</p>
+                <p className="text-sm text-gray-500 italic px-3">{t('filters.noBiologicalMechanismsData')}</p>
               </div>
             </div>
 
@@ -1373,14 +1375,14 @@ export default function Formulas() {
                   disabled={Object.keys(biologicalFilters).length === 0}
                   className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
                 >
-                  Clear
+                  {t('filters.clear')}
                 </button>
                 <button
                   onClick={() => setShowBiologicalModal(false)}
                   disabled={Object.keys(biologicalFilters).length === 0}
                   className="flex-1 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
                 >
-                  Apply
+                  {t('filters.apply')}
                 </button>
               </div>
             </div>
@@ -1393,14 +1395,14 @@ export default function Formulas() {
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
           <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:top-[15vh] sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 bg-white sm:rounded-lg sm:max-w-md sm:max-h-[85vh] overflow-hidden z-50 flex flex-col rounded-t-2xl sm:rounded-b-lg">
-            <Dialog.Description className="sr-only">Filter formulas by type, nature, and other properties</Dialog.Description>
+            <Dialog.Description className="sr-only">{t('filters.filterFormulasByTypeNatureAndOtherProperties')}</Dialog.Description>
             {/* Header */}
             <div className="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-gray-200 flex-shrink-0">
               <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg flex items-center justify-center order-2">
                 <X className="w-5 h-5" />
               </Dialog.Close>
               <Dialog.Title className="text-lg sm:text-xl font-semibold text-gray-900 order-1">
-                Filters
+                {t('filters.filtersPanel')}
               </Dialog.Title>
             </div>
 
@@ -1413,7 +1415,7 @@ export default function Formulas() {
                     onClick={() => setMobileExpandedFilters(prev => ({ ...prev, formulaFilters: !prev.formulaFilters }))}
                     className="flex items-center justify-between w-full text-left mb-3"
                   >
-                    <h2 className="text-base sm:text-lg font-semibold text-gray-900">Formula Filters</h2>
+                    <h2 className="text-base sm:text-lg font-semibold text-gray-900">{t('filters.formulaFilters')}</h2>
                     <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${mobileExpandedFilters.formulaFilters ? 'rotate-180' : ''}`} />
                   </button>
                   
@@ -1427,7 +1429,7 @@ export default function Formulas() {
                             onClick={() => setMobileExpandedFilters(prev => ({ ...prev, categories: !prev.categories }))}
                             className="flex items-center justify-between w-full text-left mb-3"
                           >
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Categories</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.categories')}</h3>
                             <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${mobileExpandedFilters.categories ? 'rotate-180' : ''}`} />
                           </button>
                           {mobileExpandedFilters.categories && (
@@ -1488,7 +1490,7 @@ export default function Formulas() {
                     onClick={() => setMobileExpandedFilters(prev => ({ ...prev, advanced: !prev.advanced }))}
                     className="flex items-center justify-between w-full text-left mb-3"
                   >
-                    <h2 className="text-base sm:text-lg font-semibold text-gray-900">Advanced Filters</h2>
+                    <h2 className="text-base sm:text-lg font-semibold text-gray-900">{t('filters.advancedFilters')}</h2>
                     <div className="flex items-center gap-2">
                       {hasActiveAdvancedFilters && (
                         <span
@@ -1507,7 +1509,7 @@ export default function Formulas() {
                           }}
                           className="text-xs text-teal-600 hover:text-teal-700 font-medium cursor-pointer"
                         >
-                          Clear
+                          {t('filters.clear')}
                         </span>
                       )}
                       <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${mobileExpandedFilters.advanced ? 'rotate-180' : ''}`} />
@@ -1524,7 +1526,7 @@ export default function Formulas() {
                             className="flex items-center justify-between w-full text-left mb-3 hover:bg-gray-50 p-2 -mx-2 rounded-lg transition-colors"
                           >
                             <div className="flex items-center gap-2">
-                              <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Pharmacological Effects</h3>
+                              <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.pharmacologicalEffects')}</h3>
                               {pharmacologicalFiltersCount > 0 && (
                                 <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                                   {pharmacologicalFiltersCount}
@@ -1543,7 +1545,7 @@ export default function Formulas() {
                             className="flex items-center justify-between w-full text-left mb-3 hover:bg-gray-50 p-2 -mx-2 rounded-lg transition-colors"
                           >
                             <div className="flex items-center gap-2">
-                              <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Biological Mechanisms</h3>
+                              <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.biologicalMechanisms')}</h3>
                               {biologicalFiltersCount > 0 && (
                                 <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                                   {biologicalFiltersCount}
@@ -1564,12 +1566,12 @@ export default function Formulas() {
                   <>
                     <div className="border-t border-gray-200 my-4"></div>
                     <div>
-                      <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Active Filters</h3>
+                      <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">{t('filters.activeFilters')}</h3>
                       <div className="space-y-3">
                         {/* Category Filters */}
                         {categoryFilters.length > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Categories</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.categories')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {categoryFilters.map(category => (
                                 <button
@@ -1588,7 +1590,7 @@ export default function Formulas() {
                         {/* Subcategory Filters */}
                         {subcategoryFilters.length > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Subcategories</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.subcategories')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {subcategoryFilters.map(subcategory => (
                                 <button
@@ -1607,7 +1609,7 @@ export default function Formulas() {
                         {/* Pharmacological Filters */}
                         {pharmacologicalFiltersCount > 0 && hasFeature('pharmacologicalEffectsFilter') && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Pharmacological Effects</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.pharmacologicalEffects')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {pharmacologicalFilters.map(effect => (
                                 <button
@@ -1628,7 +1630,7 @@ export default function Formulas() {
                         {/* Biological Mechanisms Filters */}
                         {biologicalFiltersCount > 0 && hasFeature('biologicalMechanismsFilter') && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Biological Mechanisms</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.biologicalMechanisms')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {Object.entries(biologicalFilters).flatMap(([mechanism, targets]) =>
                                 (targets || []).map(target => (
@@ -1672,10 +1674,10 @@ export default function Formulas() {
                       onClick={clearAllFilters}
                       className="flex-1 px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-colors font-medium"
                     >
-                      Clear All
+                    {t('filters.clearAllFilters')}
                     </button>
                     <Dialog.Close className="flex-1 px-4 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium">
-                      Apply
+                      {t('filters.apply')}
                     </Dialog.Close>
                   </>
                 )}
@@ -1773,7 +1775,7 @@ export default function Formulas() {
           <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
           <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-6 w-full max-w-md z-50 shadow-xl">
             <Dialog.Title className="text-xl font-bold text-gray-900 mb-2">
-              Delete Formula
+              {t('dialogs.deleteFormula')}
             </Dialog.Title>
             <Dialog.Description className="text-gray-600 mb-6">
               Are you sure you want to delete <span className="font-semibold">{deletingFormula?.pinyin_name}</span>? This action cannot be undone.
@@ -1783,7 +1785,7 @@ export default function Formulas() {
                 onClick={() => setDeletingFormula(null)}
                 className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
               >
-                Cancel
+                {t('dialogs.cancel')}
               </button>
               <button
                 onClick={() => {
@@ -1797,7 +1799,7 @@ export default function Formulas() {
                 }}
                 className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors"
               >
-                Delete
+                {t('dialogs.delete')}
               </button>
             </div>
           </Dialog.Content>

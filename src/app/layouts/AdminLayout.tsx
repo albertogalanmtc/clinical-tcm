@@ -2,61 +2,10 @@ import { useState, useEffect } from 'react';
 import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { Database, Users, DollarSign, Filter, Type, BarChart3, Layout, Settings, X, Menu, LogOut, LayoutDashboard, ChevronLeft, MessageCircle } from 'lucide-react';
 import { checkUnsavedChanges } from '@/app/hooks/useUnsavedChanges';
-
-const adminMenuItems = [
-  {
-    path: '/admin/dashboard',
-    label: 'Admin Dashboard',
-    icon: LayoutDashboard,
-  },
-  {
-    path: '/admin/content',
-    label: 'Content',
-    icon: Database,
-  },
-  {
-    path: '/admin/users',
-    label: 'Users',
-    icon: Users,
-  },
-  {
-    path: '/admin/community',
-    label: 'Community',
-    icon: MessageCircle,
-  },
-  {
-    path: '/admin/plan-management',
-    label: 'Plan Management',
-    icon: DollarSign,
-  },
-  {
-    path: '/admin/advanced-filters',
-    label: 'Safety Categories',
-    icon: Filter,
-  },
-  {
-    path: '/admin/design-settings',
-    label: 'Design Settings',
-    icon: Type,
-  },
-  {
-    path: '/admin/usage-analytics',
-    label: 'Usage Analytics',
-    icon: BarChart3,
-  },
-  {
-    path: '/admin/dashboard-content',
-    label: 'Dashboard Content',
-    icon: Layout,
-  },
-  {
-    path: '/admin/settings',
-    label: 'Platform Settings',
-    icon: Settings,
-  },
-];
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 export default function AdminLayout() {
+  const { t } = useLanguage();
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -69,8 +18,19 @@ export default function AdminLayout() {
 
   // Get current page title based on route
   const getCurrentPageTitle = () => {
-    const currentItem = adminMenuItems.find(item => item.path === location.pathname);
-    return currentItem?.label || 'Admin Panel';
+    const titles: Record<string, string> = {
+      '/admin/dashboard': t('adminMenu.dashboard'),
+      '/admin/content': t('adminMenu.content'),
+      '/admin/users': t('adminMenu.users'),
+      '/admin/community': t('adminMenu.community'),
+      '/admin/plan-management': t('adminMenu.planManagement'),
+      '/admin/advanced-filters': t('adminMenu.safetyCategories'),
+      '/admin/design-settings': t('adminMenu.designSettings'),
+      '/admin/usage-analytics': t('adminMenu.usageAnalytics'),
+      '/admin/dashboard-content': t('adminMenu.dashboardContent'),
+      '/admin/settings': t('adminMenu.platformSettings'),
+    };
+    return titles[location.pathname] || t('layouts.admin');
   };
 
   const handleLogout = () => {
@@ -151,7 +111,7 @@ export default function AdminLayout() {
             <ChevronLeft className="w-5 h-5" />
           </button>
           <h1 className="text-base font-semibold text-gray-900">
-            {isAdminIndex ? 'Admin Panel' : getCurrentPageTitle()}
+            {isAdminIndex ? t('layouts.admin') : getCurrentPageTitle()}
           </h1>
           <div className="w-8" /> {/* Spacer for centering */}
         </div>
@@ -189,7 +149,7 @@ export default function AdminLayout() {
           >
             {/* Desktop Header */}
             <div className="hidden lg:block px-6 pt-6 pb-4">
-              <h2 className="text-lg font-semibold text-gray-900">Admin Panel</h2>
+              <h2 className="text-lg font-semibold text-gray-900">{t('layouts.admin')}</h2>
             </div>
 
             {/* Mobile Header - hidden since we have the new mobile header */}
@@ -206,7 +166,18 @@ export default function AdminLayout() {
             {/* Menu Items */}
             <nav className="flex-1 overflow-y-auto overscroll-none lg:overscroll-auto px-4 pt-4 lg:py-2">
               <div className="space-y-1 -mt-1 lg:mt-0">
-                {adminMenuItems.map((item) => {
+                {[
+                  { path: '/admin/dashboard', label: t('adminMenu.dashboard'), icon: LayoutDashboard },
+                  { path: '/admin/content', label: t('adminMenu.content'), icon: Database },
+                  { path: '/admin/users', label: t('adminMenu.users'), icon: Users },
+                  { path: '/admin/community', label: t('adminMenu.community'), icon: MessageCircle },
+                  { path: '/admin/plan-management', label: t('adminMenu.planManagement'), icon: DollarSign },
+                  { path: '/admin/advanced-filters', label: t('adminMenu.safetyCategories'), icon: Filter },
+                  { path: '/admin/design-settings', label: t('adminMenu.designSettings'), icon: Type },
+                  { path: '/admin/usage-analytics', label: t('adminMenu.usageAnalytics'), icon: BarChart3 },
+                  { path: '/admin/dashboard-content', label: t('adminMenu.dashboardContent'), icon: Layout },
+                  { path: '/admin/settings', label: t('adminMenu.platformSettings'), icon: Settings },
+                ].map((item) => {
                   const Icon = item.icon;
                   return (
                     <NavLink
@@ -238,7 +209,7 @@ export default function AdminLayout() {
                 className="flex items-center gap-3 px-3 py-2 lg:px-4 lg:py-3 lg:rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors w-full rounded-lg min-h-[54px] lg:min-h-0"
               >
                 <LogOut className="w-5 h-5 text-gray-400" />
-                <span>Log out</span>
+                <span>{t('menus.logOut')}</span>
               </button>
             </div>
           </aside>
@@ -252,7 +223,7 @@ export default function AdminLayout() {
                   className="flex items-center gap-3 px-0 pr-0 pl-4 py-2.5 lg:px-4 lg:rounded-lg text-gray-700 hover:bg-gray-50 transition-colors text-sm font-medium -mx-2 lg:mx-0 w-full"
                 >
                   <LogOut className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                  <span>Log out</span>
+                  <span>{t('menus.logOut')}</span>
                 </button>
               </div>
             </div>
@@ -286,20 +257,20 @@ export default function AdminLayout() {
             aria-describedby="logout-modal-description"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 id="logout-modal-title" className="text-lg font-semibold text-gray-900 mb-2">Cerrar sesión</h3>
-            <p id="logout-modal-description" className="text-gray-600 mb-6">¿Estás seguro de que quieres cerrar sesión?</p>
+            <h3 id="logout-modal-title" className="text-lg font-semibold text-gray-900 mb-2">{t('menus.logOut')}</h3>
+            <p id="logout-modal-description" className="text-gray-600 mb-6">{t('dialogs.confirmLogout')}</p>
             <div className="flex gap-3 justify-end">
               <button
                 onClick={() => setShowLogoutModal(false)}
                 className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
               >
-                Cancelar
+                {t('dialogs.cancel')}
               </button>
               <button
                 onClick={handleLogout}
                 className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors"
               >
-                Cerrar sesión
+                {t('menus.logOut')}
               </button>
             </div>
           </div>

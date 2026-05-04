@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Avatar } from './Avatar';
 import { PlanBadge } from './PlanBadge';
 import { useUser } from '../contexts/UserContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import { useState, useRef, useEffect } from 'react';
 import { getPlatformSettings } from '@/app/data/platformSettings';
 import { checkUnsavedChanges } from '@/app/hooks/useUnsavedChanges';
@@ -23,6 +24,7 @@ const getIconComponent = (iconName: string) => {
 
 export function Navigation({ onToggleNotes, isNotesVisible, onOpenGlobalSettings }: NavigationProps) {
   const { name, avatarColor, avatarImage, isAdmin, title, firstName, lastName, planType } = useUser();
+  const { t } = useLanguage();
 
   console.log('🎯 Navigation render - isAdmin:', isAdmin, 'planType:', planType);
 
@@ -70,10 +72,10 @@ export function Navigation({ onToggleNotes, isNotesVisible, onOpenGlobalSettings
 
   // Build navItems dynamically from design settings
   const navItems = [
-    { to: '/herbs', label: 'Herbs', icon: getIconComponent(designSettings.navigationIcons.herbs), customSvg: designSettings.customSvgs?.herbs },
-    { to: '/formulas', label: 'Formulas', icon: getIconComponent(designSettings.navigationIcons.formulas), customSvg: designSettings.customSvgs?.formulas },
-    { to: '/prescriptions', label: 'Prescriptions', icon: getIconComponent(designSettings.navigationIcons.prescriptions), customSvg: designSettings.customSvgs?.prescriptions },
-    { to: '/builder', label: 'Builder', icon: getIconComponent(designSettings.navigationIcons.builder), customSvg: designSettings.customSvgs?.builder },
+    { to: '/herbs', label: t('nav.herbs'), icon: getIconComponent(designSettings.navigationIcons.herbs), customSvg: designSettings.customSvgs?.herbs },
+    { to: '/formulas', label: t('nav.formulas'), icon: getIconComponent(designSettings.navigationIcons.formulas), customSvg: designSettings.customSvgs?.formulas },
+    { to: '/prescriptions', label: t('nav.prescriptions'), icon: getIconComponent(designSettings.navigationIcons.prescriptions), customSvg: designSettings.customSvgs?.prescriptions },
+    { to: '/builder', label: t('nav.builder'), icon: getIconComponent(designSettings.navigationIcons.builder), customSvg: designSettings.customSvgs?.builder },
   ];
 
   // Default logo URL
@@ -203,14 +205,14 @@ export function Navigation({ onToggleNotes, isNotesVisible, onOpenGlobalSettings
               title="Toggle Notes"
             >
               <StickyNote className="w-4 h-4" />
-              <span className="hidden sm:inline">Notes</span>
+              <span className="hidden sm:inline">{t('nav.notes')}</span>
             </button>
 
             {onOpenGlobalSettings && (
               <button
                 onClick={() => onOpenGlobalSettings(getTabFromRoute())}
                 className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap"
-                title="Display Settings"
+                title={t('menus.displaySettings')}
               >
                 <Eye className="w-[18px] h-[18px]" />
               </button>
@@ -220,7 +222,7 @@ export function Navigation({ onToggleNotes, isNotesVisible, onOpenGlobalSettings
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className="flex items-center justify-center sm:justify-start gap-2 hover:opacity-80 transition-opacity"
-                title="Account menu"
+                title={t('menus.account')}
               >
                 <Avatar name={name} size="sm" color={avatarColor} image={avatarImage} />
                 <span className="hidden sm:inline text-sm font-medium text-gray-700">
@@ -233,7 +235,7 @@ export function Navigation({ onToggleNotes, isNotesVisible, onOpenGlobalSettings
                   {/* User Plan Badge - Only show for non-admin users */}
                   {!isAdmin && (
                     <div className="px-4 py-3 bg-gray-50 border-b border-gray-200">
-                      <p className="text-xs text-gray-500 mb-1">Current Plan</p>
+                      <p className="text-xs text-gray-500 mb-1">{t('menus.currentPlan')}</p>
                       <PlanBadge />
                     </div>
                   )}
@@ -245,9 +247,9 @@ export function Navigation({ onToggleNotes, isNotesVisible, onOpenGlobalSettings
                         navigate('/account');
                       }}
                       className="w-full px-4 py-2.5 text-left text-sm text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2"
-                    >
+                      >
                       <User className="w-4 h-4" />
-                      Account
+                      {t('menus.account')}
                     </button>
                     {isAdmin && (
                       <button
@@ -256,9 +258,9 @@ export function Navigation({ onToggleNotes, isNotesVisible, onOpenGlobalSettings
                           navigate('/admin');
                         }}
                         className="w-full px-4 py-2.5 text-left text-sm text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2"
-                      >
+                        >
                         <ShieldCheck className="w-4 h-4" />
-                        Admin Panel
+                        {t('menus.adminPanel')}
                       </button>
                     )}
                   </div>
@@ -268,7 +270,7 @@ export function Navigation({ onToggleNotes, isNotesVisible, onOpenGlobalSettings
                       className="w-full px-4 py-2.5 text-left text-sm text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2"
                     >
                       <LogOut className="w-4 h-4" />
-                      Log out
+                      {t('menus.logOut')}
                     </button>
                   </div>
                 </div>

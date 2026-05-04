@@ -14,6 +14,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { toast } from 'sonner';
 import { NewHerbModal } from '@/app/components/NewHerbModal';
 import { UnifiedDetailsModal } from '@/app/components/UnifiedDetailsModal';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 import { useHerbBannedStatus } from '../hooks/useHerbBannedStatus';
 import { useSectionIcon } from '../hooks/useSectionIcon';
 import { usePlanFeatures } from '../hooks/usePlanFeatures';
@@ -39,6 +40,7 @@ interface HerbsDisplayColumns {
 }
 
 export default function Herbs() {
+  const { t } = useLanguage();
   const { isHerbBanned } = useHerbBannedStatus();
   const { IconComponent: HerbIcon, customSvg: herbCustomSvg } = useSectionIcon('herbs');
   const { getLibraryAccess, hasFeature } = usePlanFeatures();
@@ -615,7 +617,7 @@ export default function Herbs() {
       {/* Mobile Header - Hidden: moved to search bar line */}
       <div className="hidden">
         <div className="flex items-center justify-between gap-2">
-          <h1 className="text-2xl font-bold text-gray-900">Materia Medica</h1>
+          <h1 className="text-2xl font-bold text-gray-900">{t('nav.herbs')}</h1>
           {hasFeature('customContent') && (
           <button
             onClick={() => setShowNewHerbModal(true)}
@@ -651,7 +653,7 @@ export default function Herbs() {
                   onClick={() => setExpandedCategories({ ...expandedCategories, herbFilters: !expandedCategories.herbFilters })}
                   className="flex items-center justify-between w-full text-left mb-3 cursor-pointer"
                 >
-                  <h2 className="text-lg font-semibold text-gray-900">Herb Filters</h2>
+                  <h2 className="text-lg font-semibold text-gray-900">{t('filters.herbFilters')}</h2>
                   <div className="flex items-center gap-2">
                     {hasActiveBasicFilters && (
                       <button
@@ -665,7 +667,7 @@ export default function Herbs() {
                         }}
                         className="text-xs text-teal-600 hover:text-teal-700 font-medium"
                       >
-                        Clear
+                        {t('filters.clear')}
                       </button>
                     )}
                     <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${expandedCategories.herbFilters ? 'rotate-180' : ''}`} />
@@ -683,7 +685,7 @@ export default function Herbs() {
                           className="flex items-center justify-between w-full text-left mb-3"
                         >
                           <div className="flex items-center gap-2">
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Categories</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.categories')}</h3>
                             {categoryFilters.length > 0 && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                                 {categoryFilters.length}
@@ -742,7 +744,7 @@ export default function Herbs() {
                           className="flex items-center justify-between w-full text-left mb-3"
                         >
                           <div className="flex items-center gap-2">
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Natures</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.natures')}</h3>
                             {natureFilters.length > 0 && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                                 {natureFilters.length}
@@ -777,7 +779,7 @@ export default function Herbs() {
                           className="flex items-center justify-between w-full text-left mb-3"
                         >
                           <div className="flex items-center gap-2">
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Flavors</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.flavors')}</h3>
                             {flavorFilters.length > 0 && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                                 {flavorFilters.length}
@@ -812,7 +814,7 @@ export default function Herbs() {
                           className="flex items-center justify-between w-full text-left mb-3"
                         >
                           <div className="flex items-center gap-2">
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Channels</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.channels')}</h3>
                             {channelFilters.length > 0 && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                                 {channelFilters.length}
@@ -856,7 +858,7 @@ export default function Herbs() {
                   onClick={() => setExpandedCategories({ ...expandedCategories, advanced: !expandedCategories.advanced })}
                   className="flex items-center justify-between w-full text-left mb-3 cursor-pointer"
                 >
-                  <h2 className="text-lg font-semibold text-gray-900 text-[18px]">Advanced Filters</h2>
+                  <h2 className="text-lg font-semibold text-gray-900 text-[18px]">{t('filters.advancedFilters')}</h2>
                   <div className="flex items-center gap-2">
                     {hasActiveAdvancedFilters && (
                       <button
@@ -866,7 +868,7 @@ export default function Herbs() {
                         }}
                         className="text-xs text-teal-600 hover:text-teal-700 font-medium"
                       >
-                        Clear
+                        {t('filters.clear')}
                       </button>
                     )}
                     <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${expandedCategories.advanced ? 'rotate-180' : ''}`} />
@@ -883,7 +885,7 @@ export default function Herbs() {
                           className="flex items-center justify-between w-full text-left mb-3 hover:bg-gray-50 p-2 -mx-2 rounded-lg transition-colors"
                         >
                           <div className="flex items-center gap-2">
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Pharmacological Effects</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.pharmacologicalEffects')}</h3>
                             {pharmacologicalFilters.length > 0 && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                                 {pharmacologicalFilters.length}
@@ -902,7 +904,7 @@ export default function Herbs() {
                           className="flex items-center justify-between w-full text-left mb-3 hover:bg-gray-50 p-2 -mx-2 rounded-lg transition-colors"
                         >
                           <div className="flex items-center gap-2">
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Biological Mechanisms</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.biologicalMechanisms')}</h3>
                             {biologicalFiltersCount > 0 && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                                 {biologicalFiltersCount}
@@ -921,7 +923,7 @@ export default function Herbs() {
                         className="flex items-center justify-between w-full text-left mb-3 hover:bg-gray-50 p-2 -mx-2 rounded-lg transition-colors"
                       >
                         <div className="flex items-center gap-2">
-                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Bioactive Compounds</h3>
+                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.bioactiveCompounds')}</h3>
                           {bioactiveCompoundsCount > 0 && (
                             <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                               {bioactiveCompoundsCount}
@@ -940,12 +942,12 @@ export default function Herbs() {
               {/* Active Filters */}
               {(hasActiveBasicFilters || hasActiveAdvancedFilters) && (
                 <div className="mt-6 pt-6 border-t border-gray-200">
-                  <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Active Filters</h3>
+                  <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">{t('filters.activeFilters')}</h3>
                   <div className="space-y-3">
                     {/* Category Filters */}
                     {categoryFilters.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Categories</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.categories')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {categoryFilters.map(category => (
                             <button
@@ -964,7 +966,7 @@ export default function Herbs() {
                     {/* Subcategory Filters */}
                     {subcategoryFilters.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Subcategories</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.subcategories')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {subcategoryFilters.map(subcategory => (
                             <button
@@ -983,7 +985,7 @@ export default function Herbs() {
                     {/* Nature Filters */}
                     {natureFilters.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Natures</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.natures')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {natureFilters.map(nature => (
                             <button
@@ -1002,7 +1004,7 @@ export default function Herbs() {
                     {/* Flavor Filters */}
                     {flavorFilters.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Flavors</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.flavors')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {flavorFilters.map(flavor => (
                             <button
@@ -1021,7 +1023,7 @@ export default function Herbs() {
                     {/* Channel Filters */}
                     {channelFilters.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Channels</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.channels')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {channelFilters.map(channel => (
                             <button
@@ -1040,7 +1042,7 @@ export default function Herbs() {
                     {/* Pharmacological Filters */}
                     {pharmacologicalFiltersCount > 0 && hasFeature('pharmacologicalEffectsFilter') && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Pharmacological Effects</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.pharmacologicalEffects')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {pharmacologicalFilters.map(effect => (
                             <button
@@ -1061,7 +1063,7 @@ export default function Herbs() {
                     {/* Biological Mechanisms Filters */}
                     {biologicalFiltersCount > 0 && hasFeature('biologicalMechanismsFilter') && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Biological Mechanisms</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.biologicalMechanisms')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {Object.entries(biologicalFilters).flatMap(([mechanism, targets]) =>
                             (targets || []).map(target => (
@@ -1093,7 +1095,7 @@ export default function Herbs() {
                     {/* Bioactive Compounds Filters */}
                     {bioactiveCompoundsCount > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Bioactive Compounds</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.bioactiveCompounds')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {Object.entries(bioactiveCompoundsFilters).flatMap(([chemicalClass, compounds]) =>
                             (compounds || []).map(compound => (
@@ -1132,7 +1134,7 @@ export default function Herbs() {
                     onClick={clearAllFilters}
                     className="w-full px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium rounded-lg transition-colors"
                   >
-                    Clear All Filters
+                    {t('filters.clearAllFilters')}
                   </button>
                 </div>
               )}
@@ -1148,7 +1150,7 @@ export default function Herbs() {
             <SearchBar
               value={searchQuery}
               onChange={setSearchQuery}
-              placeholder="Search herbs..."
+              placeholder={t('filters.searchHerbs')}
               className="w-full sm:w-[400px]"
               showFavoriteButton={true}
               onFavoriteClick={() => setShowOnlyFavorites(!showOnlyFavorites)}
@@ -1160,7 +1162,7 @@ export default function Herbs() {
             <button
               onClick={() => setShowNewHerbModal(true)}
               className="sm:hidden flex items-center justify-center gap-2 w-10 h-10 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors whitespace-nowrap flex-shrink-0"
-              title="Add New Herb"
+              title={t('filters.addNewHerb')}
             >
               <Plus className="w-[18px] h-[18px]" />
             </button>
@@ -1171,7 +1173,7 @@ export default function Herbs() {
               <button
                 onClick={() => setShowMobileFilters(true)}
                 className="h-10 w-10 bg-transparent border-0 sm:w-auto sm:h-11 sm:px-3 sm:bg-white sm:border sm:border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 sm:hover:bg-gray-50 transition-colors flex items-center justify-center"
-                title="Filters"
+              title={t('filters.filtersComingSoonMobile')}
               >
                 <Filter className="w-[18px] h-[18px] sm:w-5 sm:h-5" />
                 {(hasActiveBasicFilters || hasActiveAdvancedFilters) && (
@@ -1190,7 +1192,7 @@ export default function Herbs() {
         <button
           onClick={() => setShowNewHerbModal(true)}
           className="hidden sm:flex items-center justify-center gap-2 px-4 w-auto h-10 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors whitespace-nowrap flex-shrink-0"
-          title="Add New Herb"
+          title={t('filters.addNewHerb')}
         >
           <Plus className="w-4 h-4" />
           <Leaf className="w-4 h-4" />
@@ -1206,7 +1208,7 @@ export default function Herbs() {
                     ? 'bg-white text-gray-700 shadow-sm'
                     : 'text-gray-500 hover:text-gray-700'
                 }`}
-                title="List view"
+                title={t('filters.listView')}
               >
                 <LayoutList className="w-5 h-5" />
               </button>
@@ -1217,7 +1219,7 @@ export default function Herbs() {
                     ? 'bg-white text-gray-700 shadow-sm'
                     : 'text-gray-500 hover:text-gray-700'
                 }`}
-                title="Grid view"
+                title={t('filters.gridView')}
               >
                 <LayoutGrid className="w-5 h-5" />
               </button>
@@ -1229,7 +1231,7 @@ export default function Herbs() {
             <div className="flex-1 bg-white rounded-lg border border-gray-200 p-8 sm:p-12 flex items-center justify-center">
               <EmptyState
                 icon={Search}
-                title="No herbs found"
+                title={t('filters.noHerbsFound')}
                 description="Try adjusting your search query or filters"
               />
             </div>
@@ -1645,8 +1647,8 @@ export default function Herbs() {
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
           <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:inset-x-4 sm:top-1/2 sm:-translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:bottom-auto bg-white sm:rounded-lg sm:max-w-4xl sm:max-h-[85vh] overflow-hidden z-50 flex flex-col rounded-t-2xl sm:rounded-b-lg">
-            <Dialog.Title className="sr-only">Pharmacological Effects</Dialog.Title>
-            <Dialog.Description className="sr-only">Filter herbs by their pharmacological effects</Dialog.Description>
+            <Dialog.Title className="sr-only">{t('filters.selectPharmacologicalEffects')}</Dialog.Title>
+            <Dialog.Description className="sr-only">{t('filters.pharmacologicalEffects')}</Dialog.Description>
             {/* Header */}
             <div className="flex-shrink-0 px-4 sm:px-6 py-4 border-b border-gray-200">
               <div className="flex items-center justify-between mb-3">
@@ -1657,7 +1659,7 @@ export default function Herbs() {
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <h2 className="text-lg font-semibold text-gray-900 flex-1 text-center">
-                  Pharmacological Effects
+                  {t('filters.pharmacologicalEffects')}
                 </h2>
                 <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg flex items-center justify-center">
                   <X className="w-5 h-5" />
@@ -1671,7 +1673,7 @@ export default function Herbs() {
                   type="text"
                   value={pharmacologicalSearch}
                   onChange={(e) => setPharmacologicalSearch(e.target.value)}
-                  placeholder="Search pharmacological effects..."
+                  placeholder={t('filters.searchPharmacologicalEffects')}
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm"
                   autoFocus
                 />
@@ -1717,14 +1719,14 @@ export default function Herbs() {
                   disabled={pharmacologicalFilters.length === 0}
                   className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
                 >
-                  Clear
+                  {t('filters.clear')}
                 </button>
                 <button
                   onClick={() => setShowPharmacologicalModal(false)}
                   disabled={pharmacologicalFilters.length === 0}
                   className="flex-1 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
                 >
-                  Apply
+                  {t('filters.apply')}
                 </button>
               </div>
             </div>
@@ -1737,8 +1739,8 @@ export default function Herbs() {
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
           <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:inset-x-4 sm:top-1/2 sm:-translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:bottom-auto bg-white sm:rounded-lg sm:max-w-4xl sm:max-h-[85vh] overflow-hidden z-50 flex flex-col rounded-t-2xl sm:rounded-b-lg">
-            <Dialog.Title className="sr-only">Biological Mechanisms</Dialog.Title>
-            <Dialog.Description className="sr-only">Filter herbs by their biological mechanisms</Dialog.Description>
+            <Dialog.Title className="sr-only">{t('filters.selectBiologicalMechanisms')}</Dialog.Title>
+            <Dialog.Description className="sr-only">{t('filters.biologicalMechanisms')}</Dialog.Description>
             {/* Header */}
             <div className="flex-shrink-0 px-4 sm:px-6 py-4 border-b border-gray-200">
               <div className="flex items-center justify-between mb-3">
@@ -1749,7 +1751,7 @@ export default function Herbs() {
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <h2 className="text-lg font-semibold text-gray-900 flex-1 text-center">
-                  Biological Mechanisms
+                  {t('filters.biologicalMechanisms')}
                 </h2>
                 <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg flex items-center justify-center">
                   <X className="w-5 h-5" />
@@ -1763,7 +1765,7 @@ export default function Herbs() {
                   type="text"
                   value={biologicalSearch}
                   onChange={(e) => setBiologicalSearch(e.target.value)}
-                  placeholder="Search biological mechanisms..."
+                  placeholder={t('filters.searchSystemsOrTargets')}
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm"
                   autoFocus
                 />
@@ -1785,7 +1787,7 @@ export default function Herbs() {
                         : 'text-gray-600 hover:text-gray-900'
                     }`}
                   >
-                    Categories
+                    {t('filters.categories')}
                   </button>
                   <button
                     onClick={() => setBiologicalViewMode('all')}
@@ -1795,7 +1797,7 @@ export default function Herbs() {
                         : 'text-gray-600 hover:text-gray-900'
                     }`}
                   >
-                    All
+                    {t('filters.all')}
                   </button>
                 </div>
               </div>
@@ -1830,7 +1832,7 @@ export default function Herbs() {
                               onChange={() => toggleAllBiologicalSystem(system, targetActions)}
                               onClick={(e) => e.stopPropagation()}
                               className="w-4 h-4 flex-shrink-0 text-teal-600 border-gray-300 rounded focus:ring-teal-500 mt-0.5"
-                              title="Select all target actions in this system"
+                              title={t('filters.selectAllTargetActions')}
                             />
 
                             {/* Expandable header */}
@@ -1935,14 +1937,14 @@ export default function Herbs() {
                   disabled={Object.keys(biologicalFilters).length === 0}
                   className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
                 >
-                  Clear
+                  {t('filters.clear')}
                 </button>
                 <button
                   onClick={() => setShowBiologicalModal(false)}
                   disabled={Object.keys(biologicalFilters).length === 0}
                   className="flex-1 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
                 >
-                  Apply
+                  {t('filters.apply')}
                 </button>
               </div>
             </div>
@@ -1958,8 +1960,8 @@ export default function Herbs() {
             className="fixed left-0 right-0 bottom-0 top-[10vh] sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-2xl sm:rounded-lg sm:w-full sm:max-w-md sm:max-h-[85vh] overflow-hidden z-50 flex flex-col"
             onPointerDownOutside={() => setShowBioactiveCompoundsModal(false)}
           >
-            <Dialog.Title className="sr-only">Select Bioactive Compounds</Dialog.Title>
-            <Dialog.Description className="sr-only">Choose bioactive compounds to filter herbs</Dialog.Description>
+            <Dialog.Title className="sr-only">{t('filters.selectBioactiveCompounds')}</Dialog.Title>
+            <Dialog.Description className="sr-only">{t('filters.bioactiveCompounds')}</Dialog.Description>
 
             {/* Header */}
             <div className="flex-shrink-0 px-6 py-4 border-b border-gray-200">
@@ -1970,7 +1972,7 @@ export default function Herbs() {
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
-                <h2 className="text-lg font-semibold text-gray-900 flex-1 text-center">Bioactive Compounds</h2>
+                <h2 className="text-lg font-semibold text-gray-900 flex-1 text-center">{t('filters.bioactiveCompounds')}</h2>
                 <button
                   onClick={() => setShowBioactiveCompoundsModal(false)}
                   className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -1986,7 +1988,7 @@ export default function Herbs() {
                   type="text"
                   value={bioactiveCompoundsSearch}
                   onChange={(e) => setBioactiveCompoundsSearch(e.target.value)}
-                  placeholder="Search compounds or classes..."
+                  placeholder={t('filters.searchCompoundsOrClasses')}
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm"
                   autoFocus
                 />
@@ -2018,7 +2020,7 @@ export default function Herbs() {
                         : 'text-gray-600 hover:text-gray-900'
                     }`}
                   >
-                    All
+                    {t('filters.all')}
                   </button>
                 </div>
               </div>
@@ -2080,7 +2082,7 @@ export default function Herbs() {
                               }}
                               onClick={(e) => e.stopPropagation()}
                               className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
-                              title="Select all compounds in this chemical class"
+                              title={t('filters.selectAllCompounds')}
                             />
 
                             {/* Expandable header */}
@@ -2252,14 +2254,14 @@ export default function Herbs() {
                   disabled={bioactiveCompoundsCount === 0}
                   className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
                 >
-                  Clear
+                  {t('filters.clear')}
                 </button>
                 <button
                   onClick={() => setShowBioactiveCompoundsModal(false)}
                   disabled={bioactiveCompoundsCount === 0}
                   className="flex-1 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
                 >
-                  Apply
+                  {t('filters.apply')}
                 </button>
               </div>
             </div>
@@ -2272,14 +2274,14 @@ export default function Herbs() {
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
           <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:top-[15vh] sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 bg-white sm:rounded-lg sm:max-w-md sm:max-h-[85vh] overflow-hidden z-50 flex flex-col rounded-t-2xl sm:rounded-b-lg">
-            <Dialog.Description className="sr-only">Filter herbs by category, nature, flavor, and other properties</Dialog.Description>
+            <Dialog.Description className="sr-only">{t('filters.filterHerbsByCategoryNatureFlavorAndOtherProperties')}</Dialog.Description>
             {/* Header */}
             <div className="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-gray-200 flex-shrink-0">
               <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg flex items-center justify-center order-2">
                 <X className="w-5 h-5" />
               </Dialog.Close>
               <Dialog.Title className="text-lg sm:text-xl font-semibold text-gray-900 order-1">
-                Filters
+                {t('filters.filtersPanel')}
               </Dialog.Title>
             </div>
 
@@ -2292,7 +2294,7 @@ export default function Herbs() {
                     onClick={() => setExpandedCategories({ ...expandedCategories, herbFilters: !expandedCategories.herbFilters })}
                     className="flex items-center justify-between w-full text-left mb-3"
                   >
-                    <h2 className="text-base sm:text-lg font-semibold text-gray-900">Herb Filters</h2>
+                    <h2 className="text-base sm:text-lg font-semibold text-gray-900">{t('filters.herbFilters')}</h2>
                     <div className="flex items-center gap-2">
                       {hasActiveBasicFilters && (
                         <span
@@ -2317,7 +2319,7 @@ export default function Herbs() {
                           }}
                           className="text-xs text-teal-600 hover:text-teal-700 font-medium cursor-pointer"
                         >
-                          Clear
+                          {t('filters.clear')}
                         </span>
                       )}
                       <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${expandedCategories.herbFilters ? 'rotate-180' : ''}`} />
@@ -2334,7 +2336,7 @@ export default function Herbs() {
                             onClick={() => setExpandedCategories({ ...expandedCategories, category: !expandedCategories.category })}
                             className="flex items-center justify-between w-full text-left mb-3"
                           >
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Categories</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.categories')}</h3>
                             <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${expandedCategories.category ? 'rotate-180' : ''}`} />
                           </button>
                           {expandedCategories.category && (
@@ -2386,7 +2388,7 @@ export default function Herbs() {
                             onClick={() => setExpandedCategories({ ...expandedCategories, nature: !expandedCategories.nature })}
                             className="flex items-center justify-between w-full text-left mb-3"
                           >
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Natures</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.natures')}</h3>
                             <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${expandedCategories.nature ? 'rotate-180' : ''}`} />
                           </button>
                           {expandedCategories.nature && (
@@ -2414,7 +2416,7 @@ export default function Herbs() {
                             onClick={() => setExpandedCategories({ ...expandedCategories, flavor: !expandedCategories.flavor })}
                             className="flex items-center justify-between w-full text-left mb-3"
                           >
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Flavors</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.flavors')}</h3>
                             <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${expandedCategories.flavor ? 'rotate-180' : ''}`} />
                           </button>
                           {expandedCategories.flavor && (
@@ -2442,7 +2444,7 @@ export default function Herbs() {
                             onClick={() => setExpandedCategories({ ...expandedCategories, channels: !expandedCategories.channels })}
                             className="flex items-center justify-between w-full text-left mb-3"
                           >
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Channels</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.channels')}</h3>
                             <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${expandedCategories.channels ? 'rotate-180' : ''}`} />
                           </button>
                           {expandedCategories.channels && (
@@ -2479,7 +2481,7 @@ export default function Herbs() {
                     onClick={() => setExpandedCategories({ ...expandedCategories, advanced: !expandedCategories.advanced })}
                     className="flex items-center justify-between w-full text-left mb-3"
                   >
-                    <h2 className="text-base sm:text-lg font-semibold text-gray-900">Advanced Filters</h2>
+                    <h2 className="text-base sm:text-lg font-semibold text-gray-900">{t('filters.advancedFilters')}</h2>
                     <div className="flex items-center gap-2">
                       {hasActiveAdvancedFilters && (
                         <span
@@ -2498,7 +2500,7 @@ export default function Herbs() {
                           }}
                           className="text-xs text-teal-600 hover:text-teal-700 font-medium cursor-pointer"
                         >
-                          Clear
+                          {t('filters.clear')}
                         </span>
                       )}
                       <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${expandedCategories.advanced ? 'rotate-180' : ''}`} />
@@ -2514,7 +2516,7 @@ export default function Herbs() {
                             onClick={() => setShowPharmacologicalModal(true)}
                             className="flex items-center justify-between w-full text-left px-4 py-2.5 hover:bg-gray-50 rounded-lg transition-colors"
                           >
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Pharmacological Effects</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.pharmacologicalEffects')}</h3>
                             <div className="flex items-center gap-2">
                               {pharmacologicalFilters.length > 0 && (
                                 <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
@@ -2534,7 +2536,7 @@ export default function Herbs() {
                             onClick={() => setShowBiologicalModal(true)}
                             className="flex items-center justify-between w-full text-left px-4 py-2.5 hover:bg-gray-50 rounded-lg transition-colors"
                           >
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Biological Mechanisms</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.biologicalMechanisms')}</h3>
                             <div className="flex items-center gap-2">
                               {biologicalFiltersCount > 0 && (
                                 <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
@@ -2554,7 +2556,7 @@ export default function Herbs() {
                           onClick={() => setShowBioactiveCompoundsModal(true)}
                           className="flex items-center justify-between w-full text-left px-4 py-2.5 hover:bg-gray-50 rounded-lg transition-colors"
                         >
-                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Bioactive Compounds</h3>
+                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.bioactiveCompounds')}</h3>
                           <div className="flex items-center gap-2">
                             {bioactiveCompoundsCount > 0 && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
@@ -2576,12 +2578,12 @@ export default function Herbs() {
                   <>
                     <div className="border-t border-gray-200 my-4"></div>
                     <div>
-                      <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Active Filters</h3>
+                      <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">{t('filters.activeFilters')}</h3>
                       <div className="space-y-3">
                         {/* Category Filters */}
                         {categoryFilters.length > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Categories</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.categories')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {categoryFilters.map(category => (
                                 <button
@@ -2600,7 +2602,7 @@ export default function Herbs() {
                         {/* Nature Filters */}
                         {natureFilters.length > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Natures</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.natures')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {natureFilters.map(nature => (
                                 <button
@@ -2619,7 +2621,7 @@ export default function Herbs() {
                         {/* Flavor Filters */}
                         {flavorFilters.length > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Flavors</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.flavors')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {flavorFilters.map(flavor => (
                                 <button
@@ -2638,7 +2640,7 @@ export default function Herbs() {
                         {/* Channel Filters */}
                         {channelFilters.length > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Channels</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.channels')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {channelFilters.map(channel => (
                                 <button
@@ -2657,7 +2659,7 @@ export default function Herbs() {
                         {/* Pharmacological Filters */}
                         {pharmacologicalFiltersCount > 0 && hasFeature('pharmacologicalEffectsFilter') && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Pharmacological Effects</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.pharmacologicalEffects')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {pharmacologicalFilters.map(effect => (
                                 <button
@@ -2678,7 +2680,7 @@ export default function Herbs() {
                         {/* Biological Mechanisms Filters */}
                         {biologicalFiltersCount > 0 && hasFeature('biologicalMechanismsFilter') && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Biological Mechanisms</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.biologicalMechanisms')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {Object.entries(biologicalFilters).flatMap(([mechanism, targets]) =>
                                 (targets || []).map(target => (
@@ -2710,7 +2712,7 @@ export default function Herbs() {
                         {/* Bioactive Compounds Filters */}
                         {bioactiveCompoundsCount > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Bioactive Compounds</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.bioactiveCompounds')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {Object.entries(bioactiveCompoundsFilters).flatMap(([chemicalClass, compounds]) =>
                                 (compounds || []).map(compound => (
@@ -2754,10 +2756,10 @@ export default function Herbs() {
                       onClick={clearAllFilters}
                       className="flex-1 px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-colors font-medium"
                     >
-                      Clear All
+                      {t('filters.clearAllFilters')}
                     </button>
                     <Dialog.Close className="flex-1 px-4 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium">
-                      Apply
+                      {t('filters.apply')}
                     </Dialog.Close>
                   </>
                 )}
@@ -2849,7 +2851,7 @@ export default function Herbs() {
                 onClick={() => setDeletingHerb(null)}
                 className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
               >
-                Cancel
+                {t('dialogs.cancel')}
               </button>
               <button
                 onClick={() => {

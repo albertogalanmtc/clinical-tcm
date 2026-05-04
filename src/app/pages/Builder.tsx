@@ -32,6 +32,7 @@ import { CLINICAL_CONDITIONS } from '@/app/data/clinicalConditions';
 import { ClinicalApplicationsModals } from '@/app/components/builder/ClinicalApplicationsModals';
 import { UnifiedDetailsModal } from '@/app/components/UnifiedDetailsModal';
 import { useModalNavigation } from '@/app/hooks/useModalNavigation';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 import type { HerbAction } from '@/app/data/herbs';
 import { getDisplayName, getActiveSafetyCategories, type SafetyCategory } from '@/app/data/safetyCategoriesManager';
 
@@ -326,6 +327,7 @@ function matchesSafetyCategoryInArray(textArray: string[] | undefined, category:
 }
 
 export default function Builder() {
+  const { t } = useLanguage();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { isHerbBanned } = useHerbBannedStatus();
@@ -2033,7 +2035,7 @@ export default function Builder() {
               onClick={() => setExpandedCategories({ ...expandedCategories, herb_filters_section: !expandedCategories.herb_filters_section })}
               className="flex items-center justify-between w-full text-left mb-3"
             >
-              <h2 className="text-lg font-semibold text-gray-900">Herb Filters</h2>
+              <h2 className="text-lg font-semibold text-gray-900">{t('filters.herbFilters')}</h2>
               <div className="flex items-center gap-2">
                 {hasActiveHerbFilters && (
                   <span
@@ -2043,7 +2045,7 @@ export default function Builder() {
                     }}
                     className="text-xs text-teal-600 hover:text-teal-700 font-medium cursor-pointer"
                   >
-                    Clear
+                      {t('filters.clear')}
                   </span>
                 )}
                 <ChevronDown className={`w-4 h-4 text-gray-700 transition-transform ${expandedCategories.herb_filters_section ? 'rotate-180' : ''}`} />
@@ -2060,7 +2062,7 @@ export default function Builder() {
                     className="flex items-center justify-between w-full text-left mb-3"
                   >
                     <div className="flex items-center gap-2">
-                      <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Categories</h3>
+                      <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.categories')}</h3>
                       {categoryFilters.length > 0 && (
                         <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                           {categoryFilters.length}
@@ -2117,7 +2119,7 @@ export default function Builder() {
                     className="flex items-center justify-between w-full text-left mb-3"
                   >
                     <div className="flex items-center gap-2">
-                      <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Natures</h3>
+                      <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.natures')}</h3>
                       {natureFilters.length > 0 && (
                         <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                           {natureFilters.length}
@@ -2152,7 +2154,7 @@ export default function Builder() {
                     className="flex items-center justify-between w-full text-left mb-3"
                   >
                     <div className="flex items-center gap-2">
-                      <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Flavors</h3>
+                      <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.flavors')}</h3>
                       {flavorFilters.length > 0 && (
                         <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                           {flavorFilters.length}
@@ -2187,7 +2189,7 @@ export default function Builder() {
                     className="flex items-center justify-between w-full text-left mb-3"
                   >
                     <div className="flex items-center gap-2">
-                      <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Channels</h3>
+                      <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.channels')}</h3>
                       {channelFilters.length > 0 && (
                         <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                           {channelFilters.length}
@@ -2226,7 +2228,7 @@ export default function Builder() {
                   onClick={() => setExpandedCategories({ ...expandedCategories, formula_filters_section: !expandedCategories.formula_filters_section })}
                   className="flex items-center justify-between w-full text-left mb-3"
                 >
-                  <h2 className="text-lg font-semibold text-gray-900">Formula Filters</h2>
+                  <h2 className="text-lg font-semibold text-gray-900">{t('filters.formulaFilters')}</h2>
                   <div className="flex items-center gap-2">
                     {hasActiveFormulaFilters && (
                       <span
@@ -2236,7 +2238,7 @@ export default function Builder() {
                         }}
                         className="text-xs text-teal-600 hover:text-teal-700 font-medium cursor-pointer"
                       >
-                        Clear
+                        {t('filters.clear')}
                       </span>
                     )}
                     <ChevronDown className={`w-4 h-4 text-gray-700 transition-transform ${expandedCategories.formula_filters_section ? 'rotate-180' : ''}`} />
@@ -2253,7 +2255,7 @@ export default function Builder() {
                     className="flex items-center justify-between w-full text-left mb-3"
                   >
                     <div className="flex items-center gap-2">
-                      <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Categories</h3>
+                        <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.categories')}</h3>
                       {formulaCategoryFilters.length > 0 && (
                         <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                           {formulaCategoryFilters.length}
@@ -2316,7 +2318,7 @@ export default function Builder() {
                   onClick={() => setExpandedCategories({ ...expandedCategories, clinical_filters_section: !expandedCategories.clinical_filters_section })}
                   className="flex items-center justify-between w-full text-left mb-3"
                 >
-                  <h2 className="text-lg font-semibold text-gray-900">Clinical Use Filters</h2>
+                  <h2 className="text-lg font-semibold text-gray-900">{t('filters.clinicalUseFilters')}</h2>
                   <div className="flex items-center gap-2">
                     {(clinicalUseFilters?.clinicalApplications && clinicalUseFilters.clinicalApplications.length > 0) && (
                       <span
@@ -2326,7 +2328,7 @@ export default function Builder() {
                         }}
                         className="text-xs text-teal-600 hover:text-teal-700 font-medium cursor-pointer"
                       >
-                        Clear
+                        {t('filters.clear')}
                       </span>
                     )}
                     <ChevronDown className={`w-4 h-4 text-gray-700 transition-transform ${expandedCategories.clinical_filters_section ? 'rotate-180' : ''}`} />
@@ -2343,7 +2345,7 @@ export default function Builder() {
                     className="flex items-center justify-between w-full text-left mb-3 hover:bg-gray-50 p-2 -mx-2 rounded-lg transition-colors"
                   >
                     <div className="flex items-center gap-2">
-                      <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Clinical Applications</h3>
+                      <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.clinicalApplications')}</h3>
                       {(clinicalUseFilters?.clinicalApplications && clinicalUseFilters.clinicalApplications.length > 0) && (
                         <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                           {clinicalUseFilters.clinicalApplications.length}
@@ -2373,7 +2375,7 @@ export default function Builder() {
                   onClick={() => setExpandedCategories({ ...expandedCategories, safety_profile_section: !expandedCategories.safety_profile_section })}
                   className="flex items-center justify-between w-full text-left mb-3"
                 >
-                  <h2 className="text-lg font-semibold text-gray-900">Safety Profile</h2>
+                  <h2 className="text-lg font-semibold text-gray-900">{t('filters.safetyProfile')}</h2>
                   <div className="flex items-center gap-2">
                     {hasActivePatientSafetyFilters && (
                       <span
@@ -2383,7 +2385,7 @@ export default function Builder() {
                         }}
                         className="text-xs text-teal-600 hover:text-teal-700 font-medium cursor-pointer"
                       >
-                        Clear
+                        {t('filters.clear')}
                       </span>
                     )}
                     <ChevronDown className={`w-4 h-4 text-gray-700 transition-transform ${expandedCategories.safety_profile_section ? 'rotate-180' : ''}`} />
@@ -2398,7 +2400,7 @@ export default function Builder() {
                   className="flex items-center justify-between w-full text-left mb-3 hover:bg-gray-50 p-2 -mx-2 rounded-lg transition-colors"
                 >
                   <div className="flex items-center gap-2">
-                    <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">General Conditions</h3>
+                    <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.generalConditions')}</h3>
                     {getGeneralConditionsCount() > 0 && (
                       <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                         {getGeneralConditionsCount()}
@@ -2417,7 +2419,7 @@ export default function Builder() {
                   className="flex items-center justify-between w-full text-left mb-3 hover:bg-gray-50 p-2 -mx-2 rounded-lg transition-colors"
                 >
                   <div className="flex items-center gap-2">
-                    <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Medications</h3>
+                    <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.medications')}</h3>
                     {getMedicationsCount() > 0 && (
                       <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                         {getMedicationsCount()}
@@ -2436,7 +2438,7 @@ export default function Builder() {
                   className="flex items-center justify-between w-full text-left mb-3 hover:bg-gray-50 p-2 -mx-2 rounded-lg transition-colors"
                 >
                   <div className="flex items-center gap-2">
-                    <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Allergies</h3>
+                    <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.allergies')}</h3>
                     {getAllergiesCount() > 0 && (
                       <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                         {getAllergiesCount()}
@@ -2455,7 +2457,7 @@ export default function Builder() {
                   className="flex items-center justify-between w-full text-left mb-3 hover:bg-gray-50 p-2 -mx-2 rounded-lg transition-colors"
                 >
                   <div className="flex items-center gap-2">
-                    <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">TCM Risk Patterns</h3>
+                    <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.tcmRiskPatterns')}</h3>
                     {getTcmRiskPatternsCount() > 0 && (
                       <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                         {getTcmRiskPatternsCount()}
@@ -2483,7 +2485,7 @@ export default function Builder() {
                   onClick={() => setExpandedCategories({ ...expandedCategories, advanced_filters_section: !expandedCategories.advanced_filters_section })}
                   className="flex items-center justify-between w-full text-left mb-3"
                 >
-                  <h2 className="text-lg font-semibold text-gray-900">Advanced Filters</h2>
+                  <h2 className="text-lg font-semibold text-gray-900">{t('filters.advancedFilters')}</h2>
                   <div className="flex items-center gap-2">
                     {hasActiveAdvancedFilters && (
                       <span
@@ -2493,7 +2495,7 @@ export default function Builder() {
                         }}
                         className="text-xs text-teal-600 hover:text-teal-700 font-medium cursor-pointer"
                       >
-                        Clear
+                        {t('filters.clear')}
                       </span>
                     )}
                     <ChevronDown className={`w-4 h-4 text-gray-700 transition-transform ${expandedCategories.advanced_filters_section ? 'rotate-180' : ''}`} />
@@ -2508,7 +2510,7 @@ export default function Builder() {
                   className="flex items-center justify-between w-full text-left mb-3 hover:bg-gray-50 p-2 -mx-2 rounded-lg transition-colors"
                 >
                   <div className="flex items-center gap-2">
-                    <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Pharmacological Effects</h3>
+                    <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.pharmacologicalEffects')}</h3>
                     {pharmacologicalFiltersCount > 0 && (
                       <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                         {pharmacologicalFiltersCount}
@@ -2527,7 +2529,7 @@ export default function Builder() {
                   className="flex items-center justify-between w-full text-left mb-3 hover:bg-gray-50 p-2 -mx-2 rounded-lg transition-colors"
                 >
                   <div className="flex items-center gap-2">
-                    <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Biological Mechanisms</h3>
+                    <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.biologicalMechanisms')}</h3>
                     {biologicalMechanismsCount > 0 && (
                       <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                         {biologicalMechanismsCount}
@@ -2546,7 +2548,7 @@ export default function Builder() {
                   className="flex items-center justify-between w-full text-left mb-3 hover:bg-gray-50 p-2 -mx-2 rounded-lg transition-colors"
                 >
                   <div className="flex items-center gap-2">
-                    <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Bioactive Compounds</h3>
+                    <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.bioactiveCompounds')}</h3>
                     {bioactiveCompoundsCount > 0 && (
                       <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
                         {bioactiveCompoundsCount}
@@ -2564,12 +2566,12 @@ export default function Builder() {
               {/* Active Filters Summary */}
               {hasAnyActiveFilter && (
                 <div className="mt-6 pt-6 border-t border-gray-200">
-                  <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Active Filters</h3>
+                  <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">{t('filters.activeFilters')}</h3>
                   <div className="space-y-3">
                     {/* Herb Filters */}
                     {categoryFilters.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Categories</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.categories')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {categoryFilters.map(category => (
                             <button
@@ -2587,7 +2589,7 @@ export default function Builder() {
 
                     {subcategoryFilters.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Subcategories</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.subcategories')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {subcategoryFilters.map(subcategory => (
                             <button
@@ -2605,7 +2607,7 @@ export default function Builder() {
 
                     {natureFilters.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Natures</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.natures')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {natureFilters.map(nature => (
                             <button
@@ -2623,7 +2625,7 @@ export default function Builder() {
 
                     {flavorFilters.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Flavors</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.flavors')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {flavorFilters.map(flavor => (
                             <button
@@ -2641,7 +2643,7 @@ export default function Builder() {
 
                     {channelFilters.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Channels</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.channels')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {channelFilters.map(channel => (
                             <button
@@ -2660,7 +2662,7 @@ export default function Builder() {
                     {/* Formula Filters */}
                     {formulaCategoryFilters.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Formula Categories</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.formulaCategories')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {formulaCategoryFilters.map(category => (
                             <button
@@ -2678,7 +2680,7 @@ export default function Builder() {
 
                     {formulaSubcategoryFilters.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Formula Subcategories</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.subcategories')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {formulaSubcategoryFilters.map(subcategory => (
                             <button
@@ -2698,7 +2700,7 @@ export default function Builder() {
                     {/* Clinical Applications: Conditions + Patterns */}
                     {(clinicalUseFilters?.clinicalApplications && clinicalUseFilters.clinicalApplications.length > 0) && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Clinical Applications</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.clinicalApplications')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {clinicalUseFilters.clinicalApplications.map((app, index) => (
                             <div key={`app-${index}`} className="flex flex-wrap gap-1.5">
@@ -2761,7 +2763,7 @@ export default function Builder() {
 
                     {(clinicalUseFilters?.western_medical_dx?.length || 0) > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Western Medical Dx</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.westernMedicalDx')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {clinicalUseFilters?.western_medical_dx?.map((dx: string) => (
                             <button
@@ -2785,7 +2787,7 @@ export default function Builder() {
                     {/* Safety Profile Filters */}
                     {getGeneralConditionsCount() > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">General Conditions</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.generalConditions')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {['pregnancy', 'breastfeeding', 'insomnia', 'epilepsy', 'bleeding_disorders', 'liver_disease', 'kidney_disease']
                             .filter(field => patientSafetyProfile?.[field as keyof typeof patientSafetyProfile])
@@ -2810,7 +2812,7 @@ export default function Builder() {
 
                     {getMedicationsCount() > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Medications</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.medications')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {['anticoagulants', 'antihypertensives', 'hypoglycemics', 'immunosuppressants', 'antidepressants', 'antiplatelets', 'beta_blockers', 'diuretics', 'corticosteroids', 'sedatives']
                             .filter(field => patientSafetyProfile?.[field as keyof typeof patientSafetyProfile])
@@ -2835,7 +2837,7 @@ export default function Builder() {
 
                     {getAllergiesCount() > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Allergies</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.allergies')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {['shellfish', 'gluten', 'nuts', 'dairy', 'soy', 'asteraceae', 'apiaceae']
                             .filter(field => patientSafetyProfile?.[field as keyof typeof patientSafetyProfile])
@@ -2860,7 +2862,7 @@ export default function Builder() {
 
                     {getTcmRiskPatternsCount() > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">TCM Risk Patterns</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.tcmRiskPatterns')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {['qi_deficiency', 'blood_deficiency', 'blood_stasis', 'yin_deficiency', 'yin_deficiency_heat', 'yang_deficiency', 'dampness', 'heat', 'liver_yang_rising', 'phlegm_damp', 'damp_heat', 'internal_wind']
                             .filter(field => patientSafetyProfile?.[field as keyof typeof patientSafetyProfile])
@@ -2886,7 +2888,7 @@ export default function Builder() {
                     {/* Advanced Filters */}
                     {pharmacologicalFiltersCount > 0 && hasFeature('pharmacologicalEffectsFilter') && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Pharmacological Effects</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.pharmacologicalEffects')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {pharmacologicalFilters.map(effect => (
                             <button
@@ -2906,7 +2908,7 @@ export default function Builder() {
 
                     {biologicalMechanismsCount > 0 && hasFeature('biologicalMechanismsFilter') && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Biological Mechanisms</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.biologicalMechanisms')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {Object.entries(biologicalMechanisms || {}).flatMap(([mechanism, targets]) =>
                             (targets || []).map(target => (
@@ -2937,7 +2939,7 @@ export default function Builder() {
 
                     {bioactiveCompoundsCount > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-1.5">Bioactive Compounds</p>
+                        <p className="text-xs text-gray-500 mb-1.5">{t('filters.bioactiveCompounds')}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {Object.entries(bioactiveCompounds || {}).flatMap(([chemicalClass, compounds]) =>
                             (compounds || []).map(compound => (
@@ -2976,7 +2978,7 @@ export default function Builder() {
                     onClick={clearAllBuilderFilters}
                     className="w-full px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium rounded-lg transition-colors"
                   >
-                    Clear All Filters
+                    {t('filters.clearAllFilters')}
                   </button>
                 </div>
               )}
@@ -3000,7 +3002,7 @@ export default function Builder() {
           <button
             onClick={() => setShowMobileFilters(true)}
             className="relative h-10 w-10 bg-transparent border-0 text-gray-700 hover:bg-gray-100 transition-colors flex items-center justify-center shrink-0 rounded-lg"
-            title="Filters"
+            title={t('filters.filtersPanel')}
           >
             <Filter className="w-[18px] h-[18px]" />
             {hasAnyActiveFilter && (() => {
@@ -3043,7 +3045,7 @@ export default function Builder() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              All
+              {t('filters.all')}
             </button>
             <button
               onClick={() => setActiveTab('herbs')}
@@ -3053,7 +3055,7 @@ export default function Builder() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Herbs
+              {t('filters.herbs')}
             </button>
             <button
               onClick={() => setActiveTab('formulas')}
@@ -3063,13 +3065,13 @@ export default function Builder() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Formulas
+              {t('filters.formulas')}
             </button>
           </div>
           <button
             onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
             className="p-2 flex items-center"
-            title="Toggle favorites"
+            title={t('filters.toggleFavorites')}
           >
             <Star className={`w-5 h-5 ${showFavoritesOnly ? 'fill-yellow-400 text-yellow-400' : 'text-gray-400'}`} />
           </button>
@@ -3089,7 +3091,7 @@ export default function Builder() {
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                All
+                {t('filters.all')}
               </button>
               <button
                 onClick={() => setActiveTab('herbs')}
@@ -3099,7 +3101,7 @@ export default function Builder() {
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                Herbs
+                {t('filters.herbs')}
               </button>
               <button
                 onClick={() => setActiveTab('formulas')}
@@ -3109,23 +3111,23 @@ export default function Builder() {
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                Formulas
+                {t('filters.formulas')}
               </button>
             </div>
             <button
               onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
               className="p-2 flex items-center"
-              title="Toggle favorites"
+              title={t('filters.toggleFavorites')}
             >
               <Star className={`w-5 h-5 ${showFavoritesOnly ? 'fill-yellow-400 text-yellow-400' : 'text-gray-400'}`} />
             </button>
             {/* Filters button - visible only on mobile */}
             <button
               onClick={() => {
-                toast.info('Filters panel coming soon for mobile');
+                toast.info(t('filters.filtersComingSoonMobile'));
               }}
               className="lg:hidden ml-auto w-8 h-8 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors flex items-center justify-center shrink-0"
-              title="Filters"
+              title={t('filters.filtersPanel')}
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
@@ -3146,7 +3148,7 @@ export default function Builder() {
               {/* Mobile: rounded corners pattern */}
               <div className="lg:hidden divide-y divide-gray-200 border-b border-gray-200">
                 {filteredHerbs.length === 0 ? (
-                  <p className="text-center text-gray-500 py-8">No herbs found</p>
+                  <p className="text-center text-gray-500 py-8">{t('filters.noHerbsFound')}</p>
                 ) : (
                   filteredHerbs.map(herb => {
                     const warnings = getHerbWarnings(herb.pinyin_name);
@@ -3201,7 +3203,7 @@ export default function Builder() {
                                 modalNav.reset({ name: herb.pinyin_name, type: 'herb' });
                               }}
                               className="hidden sm:flex p-1.5 text-gray-400 hover:text-teal-600 hover:bg-teal-50 rounded-md transition-colors"
-                              title="View details"
+                              title={t('filters.viewDetails')}
                             >
                               <Info className="w-4 h-4" />
                             </button>
@@ -3226,7 +3228,7 @@ export default function Builder() {
               {/* Desktop: original pattern */}
               <div className="hidden lg:block divide-y divide-gray-200 border-b border-gray-200">
                 {filteredHerbs.length === 0 ? (
-                  <p className="text-center text-gray-500 py-8">No herbs found</p>
+                  <p className="text-center text-gray-500 py-8">{t('filters.noHerbsFound')}</p>
                 ) : (
                   filteredHerbs.map(herb => {
                     const warnings = getHerbWarnings(herb.pinyin_name);
@@ -3299,7 +3301,7 @@ export default function Builder() {
               <div className="lg:hidden divide-y divide-gray-200 border-b border-gray-200">
                 {filteredFormulas.length === 0 ? (
                   <div className="text-center text-gray-500 py-8 px-4">
-                    <p className="mb-2">No formulas found</p>
+                    <p className="mb-2">{t('filters.noFormulasFound')}</p>
                     {clinicalUseFilters?.condition && (
                       <p className="text-xs text-gray-400">
                         {clinicalUseFilters.pattern 
@@ -3358,7 +3360,7 @@ export default function Builder() {
                               modalNav.reset({ name: formula.pinyin_name, type: 'formula' });
                             }}
                             className="hidden sm:flex p-1.5 text-gray-400 hover:text-teal-600 hover:bg-teal-50 rounded-md transition-colors"
-                            title="View details"
+                            title={t('filters.viewDetails')}
                           >
                             <Info className="w-4 h-4" />
                           </button>
@@ -3368,7 +3370,7 @@ export default function Builder() {
                               openFormulaModal(formula.pinyin_name);
                             }}
                             className="chip-compact flex items-center gap-1 px-2.5 sm:px-3 py-1.5 bg-[#FECF8B] text-[#D97706] rounded-full hover:bg-[#FDBA5C] transition-colors text-sm font-medium"
-                            title="Add as compound"
+                            title={t('filters.addAsCompound')}
                           >
                             <Plus className="w-3.5 h-3.5" />
                             <Pill className="w-3.5 h-3.5" />
@@ -3379,7 +3381,7 @@ export default function Builder() {
                               openComponentsModal(formula.pinyin_name);
                             }}
                             className="chip-compact flex items-center gap-1 px-2.5 sm:px-3 py-1.5 bg-[#A8E6C1] text-[#28A045] rounded-full hover:bg-[#8FD9AD] transition-colors text-sm font-medium"
-                            title="Add as components"
+                            title={t('filters.addAsComponents')}
                           >
                             <Plus className="w-3.5 h-3.5" />
                             <Leaf className="w-3.5 h-3.5" />
@@ -3395,7 +3397,7 @@ export default function Builder() {
               <div className="hidden lg:block">
                 {filteredFormulas.length === 0 ? (
                   <div className="text-center text-gray-500 py-8 px-4">
-                    <p className="mb-2">No formulas found</p>
+                    <p className="mb-2">{t('filters.noFormulasFound')}</p>
                     {clinicalUseFilters?.condition && (
                       <p className="text-xs text-gray-400">
                         {clinicalUseFilters.pattern 
@@ -3455,7 +3457,7 @@ export default function Builder() {
                                 openFormulaModal(formula.pinyin_name);
                               }}
                               className="chip-compact flex items-center gap-1 px-2 py-0.5 bg-[#FECF8B] text-[#D97706] rounded-full hover:bg-[#FDBA5C] transition-colors text-xs font-medium"
-                              title="Add as compound"
+                              title={t('filters.addAsCompound')}
                             >
                               <Plus className="w-3.5 h-3.5" />
                               <Pill className="w-3.5 h-3.5" />
@@ -3466,7 +3468,7 @@ export default function Builder() {
                                 openComponentsModal(formula.pinyin_name);
                               }}
                               className="flex items-center gap-1 px-2.5 py-1.5 bg-[#A8E6C1] text-[#28A045] rounded-full hover:bg-[#8FD9AD] transition-colors text-sm font-medium"
-                              title="Add as components"
+                              title={t('filters.addAsComponents')}
                             >
                               <Plus className="w-3.5 h-3.5" />
                               <Leaf className="w-3.5 h-3.5" />
@@ -3485,7 +3487,7 @@ export default function Builder() {
               {/* Mobile: ALL view */}
               <div className="lg:hidden divide-y divide-gray-200 border-b border-gray-200">
                 {combinedItems.length === 0 ? (
-                  <p className="text-center text-gray-500 py-8">No items found</p>
+                  <p className="text-center text-gray-500 py-8">{t('filters.noItemsFound')}</p>
                 ) : (
                   combinedItems.map(item => {
                     if (item.type === 'herb') {
@@ -3596,7 +3598,7 @@ export default function Builder() {
                                   openFormulaModal(formula.pinyin_name);
                                 }}
                                 className="chip-compact flex items-center gap-1 px-2.5 py-1.5 bg-[#FECF8B] text-[#D97706] rounded-full hover:bg-[#FDBA5C] transition-colors text-sm font-medium"
-                                title="Add as compound"
+                                title={t('filters.addAsCompound')}
                               >
                                 <Plus className="w-3.5 h-3.5" />
                                 <Pill className="w-3.5 h-3.5" />
@@ -3607,7 +3609,7 @@ export default function Builder() {
                                   openComponentsModal(formula.pinyin_name);
                                 }}
                                 className="chip-compact flex items-center gap-1 px-2.5 py-1.5 bg-[#A8E6C1] text-[#28A045] rounded-full hover:bg-[#8FD9AD] transition-colors text-sm font-medium"
-                                title="Add as components"
+                                title={t('filters.addAsComponents')}
                               >
                                 <Plus className="w-3.5 h-3.5" />
                                 <Leaf className="w-3.5 h-3.5" />
@@ -3624,7 +3626,7 @@ export default function Builder() {
               {/* Desktop: ALL view */}
               <div className="hidden lg:block divide-y divide-gray-200 border-b border-gray-200">
                 {combinedItems.length === 0 ? (
-                  <p className="text-center text-gray-500 py-8">No items found</p>
+                  <p className="text-center text-gray-500 py-8">{t('filters.noItemsFound')}</p>
                 ) : (
                   combinedItems.map(item => {
                     if (item.type === 'herb') {
@@ -3734,7 +3736,7 @@ export default function Builder() {
                                   openFormulaModal(formula.pinyin_name);
                                 }}
                                 className="flex items-center gap-1 px-2.5 py-1.5 bg-[#FECF8B] text-[#D97706] rounded-full hover:bg-[#FDBA5C] transition-colors text-sm font-medium"
-                                title="Add as compound"
+                                title={t('filters.addAsCompound')}
                               >
                                 <Plus className="w-3.5 h-3.5" />
                                 <Pill className="w-3.5 h-3.5" />
@@ -3745,7 +3747,7 @@ export default function Builder() {
                                   openComponentsModal(formula.pinyin_name);
                                 }}
                                 className="flex items-center gap-1 px-2.5 py-1.5 bg-[#A8E6C1] text-[#28A045] rounded-full hover:bg-[#8FD9AD] transition-colors text-sm font-medium"
-                                title="Add as components"
+                                title={t('filters.addAsComponents')}
                               >
                                 <Plus className="w-3.5 h-3.5" />
                                 <Leaf className="w-3.5 h-3.5" />
@@ -3767,21 +3769,21 @@ export default function Builder() {
       <div className="lg:flex-1 bg-white rounded-lg border border-gray-200 flex h-full min-h-0 flex-col overflow-hidden self-stretch">
         <div className="flex-shrink-0 px-4 sm:px-6 py-4 sm:py-6 border-b border-gray-200 relative">
           <div className="mb-3">
-            <h2 className="text-lg font-semibold text-gray-900">Prescription Builder</h2>
+            <h2 className="text-lg font-semibold text-gray-900">{t('filters.prescriptionBuilder')}</h2>
           </div>
           <input
             type="text"
             value={formulaName}
             onChange={(e) => setFormulaName(e.target.value)}
             className={`w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent ${formulaName ? 'bg-white placeholder:text-gray-400' : 'bg-teal-50 placeholder:text-teal-600'}`}
-            placeholder="Formula name"
+            placeholder={t('filters.formulaName')}
             required
           />
         </div>
 
         <div className="flex-1 lg:overflow-y-auto px-4 sm:px-6 py-6 lg:max-h-none">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="font-semibold text-gray-900">Selected components</h3>
+            <h3 className="font-semibold text-gray-900">{t('filters.selectedComponents')}</h3>
             {selectedComponents && selectedComponents.length > 0 && (
               <span
                 onClick={(e) => {
@@ -3790,13 +3792,13 @@ export default function Builder() {
                 }}
                 className="text-xs text-teal-600 hover:text-teal-700 font-medium cursor-pointer"
               >
-                Clear
+                {t('filters.clear')}
               </span>
             )}
           </div>
           
           {!selectedComponents || selectedComponents.length === 0 ? (
-            <p className="text-sm text-gray-500 italic">No components added yet</p>
+            <p className="text-sm text-gray-500 italic">{t('filters.noComponentsAddedYet')}</p>
           ) : (
             <div className="space-y-2">
               {selectedComponents.map(comp => {
@@ -3835,7 +3837,7 @@ export default function Builder() {
                               <span className="font-medium text-gray-900 text-base lg:text-sm flex items-center gap-1">
                                 <span>{comp.name}</span>
                                 {hasPregnancyWarning(comp.name) && (
-                                  <span className="text-amber-600" title="Pregnancy warning">⚠️</span>
+                                  <span className="text-amber-600" title={t('filters.pregnancyWarning')}>⚠️</span>
                                 )}
                               </span>
                             );
@@ -3846,7 +3848,7 @@ export default function Builder() {
                               <span className="font-medium text-gray-900 text-base lg:text-sm flex items-center gap-1">
                                 <span className="text-[16px]">{activeNames[0]!.italic ? <em>{activeNames[0]!.value}</em> : activeNames[0]!.value}</span>
                                 {hasPregnancyWarning(comp.name) && (
-                                  <span className="text-amber-600" title="Pregnancy warning">⚠️</span>
+                                  <span className="text-amber-600" title={t('filters.pregnancyWarning')}>⚠️</span>
                                 )}
                               </span>
                               {activeNames.slice(1).map((name, idx) => (
@@ -3873,7 +3875,7 @@ export default function Builder() {
                               <span className="font-medium text-gray-900 text-base lg:text-sm flex items-center gap-1">
                                 <span>{comp.name}</span>
                                 {formulaHasPregnancyWarning(comp.name) && (
-                                  <span className="text-amber-600" title="Pregnancy warning">⚠️</span>
+                                  <span className="text-amber-600" title={t('filters.pregnancyWarning')}>⚠️</span>
                                 )}
                               </span>
                             );
@@ -3884,7 +3886,7 @@ export default function Builder() {
                               <span className="font-medium text-gray-900 text-base lg:text-sm flex items-center gap-1">
                                 <span className="text-[16px]">{activeNames[0]!.value}</span>
                                 {formulaHasPregnancyWarning(comp.name) && (
-                                  <span className="text-amber-600" title="Pregnancy warning">⚠️</span>
+                                  <span className="text-amber-600" title={t('filters.pregnancyWarning')}>⚠️</span>
                                 )}
                               </span>
                               {activeNames.slice(1).map((name, idx) => (
@@ -3977,7 +3979,7 @@ export default function Builder() {
                                     <div className="flex items-center gap-1.5">
                                       <span className="flex-shrink-0">{sub?.name}</span>
                                       {hasPregnancyWarning(sub?.name || '') && (
-                                        <span className="text-amber-600 text-xs" title="Pregnancy warning">⚠️</span>
+                                        <span className="text-amber-600 text-xs" title={t('filters.pregnancyWarning')}>⚠️</span>
                                       )}
                                       {isBanned && (
                                         <Ban className="w-3 h-3 text-red-600 flex-shrink-0" />
@@ -3993,7 +3995,7 @@ export default function Builder() {
                                         {activeNames[0]!.italic ? <em>{activeNames[0]!.value}</em> : activeNames[0]!.value}
                                       </span>
                                       {hasPregnancyWarning(sub.name) && (
-                                        <span className="text-amber-600 text-xs" title="Pregnancy warning">⚠️</span>
+                                        <span className="text-amber-600 text-xs" title={t('filters.pregnancyWarning')}>⚠️</span>
                                       )}
                                       {isBanned && (
                                         <Ban className="w-3 h-3 text-red-600 flex-shrink-0" />
@@ -4026,20 +4028,20 @@ export default function Builder() {
           )}
 
           <div className="mt-6">
-            <h3 className="font-semibold text-gray-900 mb-3">Comments</h3>
+            <h3 className="font-semibold text-gray-900 mb-3">{t('filters.comments')}</h3>
             <textarea
               value={comments}
               onChange={(e) => setComments(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-y h-20 lg:h-auto"
               rows={4}
-              placeholder="Clinical notes..."
+              placeholder={t('filters.clinicalNotes')}
             />
           </div>
 
           {/* Active Safety Filters Section */}
           {Object.values(patientSafetyProfile).some(v => v) && (
             <div className="mt-6">
-              <h3 className="font-semibold text-gray-900 mb-3">Active Safety Filters</h3>
+              <h3 className="font-semibold text-gray-900 mb-3">{t('filters.safetyProfile')}</h3>
               <div className="bg-amber-50 rounded-lg p-3 border border-amber-200">
                 <div className="flex flex-wrap gap-2">
                   {Object.entries(patientSafetyProfile).map(([key, value]) => 
@@ -4057,7 +4059,7 @@ export default function Builder() {
           {/* Safety Display Section */}
           <div className="mt-6">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="font-semibold text-gray-900">Safety Display</h3>
+              <h3 className="font-semibold text-gray-900">{t('filters.safetyProfile')}</h3>
               
               {/* Toggle Filtered/All */}
               <div className="inline-flex items-center gap-1 bg-gray-100 rounded-lg p-0.5">
@@ -4069,7 +4071,7 @@ export default function Builder() {
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  Filtered
+                  {t('filters.filtered')}
                 </button>
                 <button
                   onClick={() => setAlertMode('all')}
@@ -4079,7 +4081,7 @@ export default function Builder() {
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  All
+                  {t('filters.all')}
                 </button>
               </div>
             </div>
@@ -4091,7 +4093,7 @@ export default function Builder() {
                   <AlertCard
                     key="toxic"
                     type="toxic"
-                    title="Toxic"
+                    title={t('filters.safetyProfile')}
                     items={safetyAlerts.toxic}
                   />
                 )}
@@ -4099,7 +4101,7 @@ export default function Builder() {
                   <AlertCard
                     key="antagonism"
                     type="antagonism"
-                    title="Antagonisms"
+                    title={t('filters.safetyProfile')}
                     items={safetyAlerts.antagonism}
                   />
                 )}
@@ -4107,7 +4109,7 @@ export default function Builder() {
                   <AlertCard
                     key="incompatibility"
                     type="incompatibility"
-                    title="Incompatibilities"
+                    title={t('filters.safetyProfile')}
                     items={safetyAlerts.incompatibility}
                   />
                 )}
@@ -4115,7 +4117,7 @@ export default function Builder() {
                   <AlertCard
                     key="pregnancy"
                     type="caution"
-                    title="Pregnancy"
+                    title={t('filters.pregnancyWarning')}
                     items={safetyAlerts.pregnancy}
                   />
                 )}
@@ -4123,7 +4125,7 @@ export default function Builder() {
                   <AlertCard
                     key="contraindication"
                     type="contraindication"
-                    title="Contraindications"
+                    title={t('filters.safetyProfile')}
                     items={safetyAlerts.contraindication}
                   />
                 )}
@@ -4131,7 +4133,7 @@ export default function Builder() {
                   <AlertCard
                     key="caution"
                     type="caution"
-                    title="Cautions"
+                    title={t('filters.safetyProfile')}
                     items={safetyAlerts.caution}
                   />
                 )}
@@ -4139,7 +4141,7 @@ export default function Builder() {
                   <AlertCard
                     key="interaction"
                     type="interaction"
-                    title="Interactions"
+                    title={t('filters.safetyProfile')}
                     items={safetyAlerts.interaction}
                   />
                 )}
@@ -4150,7 +4152,7 @@ export default function Builder() {
             {alertMode === 'filtered' && !Object.values(patientSafetyProfile).some(v => v) && 
              safetyAlerts.toxic.length === 0 && safetyAlerts.antagonism.length === 0 && safetyAlerts.incompatibility.length === 0 && (
               <div className="text-sm text-gray-500 italic mt-4">
-                No safety filters selected. Select filters in the Patient Safety Profile to see filtered alerts.
+                {t('filters.noSafetyFiltersSelected')}
               </div>
             )}
           </div>
@@ -4164,7 +4166,7 @@ export default function Builder() {
                 className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
               >
                 <Trash2 className="w-4 h-4" />
-                Discard
+                {t('dialogs.discard')}
               </button>
             )}
             <button
@@ -4172,7 +4174,7 @@ export default function Builder() {
               className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium"
             >
               <Save className="w-4 h-4" />
-              Save
+              {t('dialogs.save')}
             </button>
           </div>
         </div>
@@ -4186,7 +4188,7 @@ export default function Builder() {
             className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
           >
             <Trash2 className="w-4 h-4" />
-            Discard
+            {t('dialogs.discard')}
           </button>
         )}
         <button
@@ -4194,7 +4196,7 @@ export default function Builder() {
           className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium"
         >
           <Save className="w-4 h-4" />
-          Save
+          {t('dialogs.save')}
         </button>
       </div>
 
@@ -4204,15 +4206,15 @@ export default function Builder() {
           <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
           <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-6 w-full max-w-md z-50" aria-describedby="discard-description">
             <Dialog.Title className="text-xl font-semibold text-gray-900 mb-2">
-              Discard Prescription Draft?
+              {t('dialogs.discardPrescriptionDraft')}
             </Dialog.Title>
             <Dialog.Description id="discard-description" className="text-sm text-gray-600 mb-6">
-              Are you sure you want to discard this prescription draft? This action cannot be undone.
+              {t('dialogs.discardPrescriptionDraft')}
             </Dialog.Description>
 
             <div className="flex gap-3">
               <Dialog.Close className="flex-1 px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium">
-                Cancel
+                {t('dialogs.cancel')}
               </Dialog.Close>
               <button
                 onClick={() => {
@@ -4226,7 +4228,7 @@ export default function Builder() {
                 }}
                 className="flex-1 px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium"
               >
-                Discard
+                {t('dialogs.discard')}
               </button>
             </div>
           </Dialog.Content>
@@ -4239,10 +4241,10 @@ export default function Builder() {
           <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
           <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-6 w-full max-w-md z-50">
             <Dialog.Title className="text-xl font-semibold text-gray-900 mb-4">
-              Add as Compound
+              {t('filters.addAsCompound')}
             </Dialog.Title>
             <Dialog.Description className="text-sm text-gray-600 mb-4">
-              Enter total dosage for <strong>{pendingFormula}</strong>
+              {t('filters.enterTotalDosage')} <strong>{pendingFormula}</strong>
             </Dialog.Description>
 
             <input
@@ -4256,13 +4258,13 @@ export default function Builder() {
 
             <div className="flex gap-2">
               <Dialog.Close className="flex-1 px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
-                Cancel
+                {t('dialogs.cancel')}
               </Dialog.Close>
               <button
                 onClick={confirmAddFormula}
                 className="flex-1 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
               >
-                Add
+                {t('filters.add')}
               </button>
             </div>
           </Dialog.Content>
@@ -4275,10 +4277,10 @@ export default function Builder() {
           <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
           <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-6 w-full max-w-md z-50">
             <Dialog.Title className="text-xl font-semibold text-gray-900 mb-4">
-              Add as Components
+              {t('filters.addAsComponents')}
             </Dialog.Title>
             <Dialog.Description className="text-sm text-gray-600 mb-4">
-              Enter total dosage for <strong>{pendingFormula}</strong> to distribute proportionally among herbs
+              {t('filters.enterTotalDosage')} <strong>{pendingFormula}</strong> to distribute proportionally among herbs
             </Dialog.Description>
 
             <input
@@ -4292,13 +4294,13 @@ export default function Builder() {
 
             <div className="flex gap-2">
               <Dialog.Close className="flex-1 px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
-                Cancel
+                {t('dialogs.cancel')}
               </Dialog.Close>
               <button
                 onClick={confirmAddFormulaAsComponents}
                 className="flex-1 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
               >
-                Add
+                {t('filters.add')}
               </button>
             </div>
           </Dialog.Content>
@@ -4313,8 +4315,8 @@ export default function Builder() {
             className="fixed left-0 right-0 bottom-0 top-[10vh] sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-2xl sm:rounded-lg sm:w-full sm:max-w-md sm:max-h-[85vh] overflow-hidden z-50 flex flex-col" 
             onPointerDownOutside={() => setShowPharmacologicalModal(false)}
           >
-            <Dialog.Title className="sr-only">Select Pharmacological Effects</Dialog.Title>
-            <Dialog.Description className="sr-only">Choose pharmacological effects to filter herbs and formulas</Dialog.Description>
+            <Dialog.Title className="sr-only">{t('filters.selectPharmacologicalEffects')}</Dialog.Title>
+            <Dialog.Description className="sr-only">{t('filters.pharmacologicalEffects')}</Dialog.Description>
 
             {/* Header */}
             <div className="flex-shrink-0 px-6 py-4 border-b border-gray-200">
@@ -4325,7 +4327,7 @@ export default function Builder() {
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
-                <h2 className="text-lg font-semibold text-gray-900 flex-1 text-center">Pharmacological Effects</h2>
+                <h2 className="text-lg font-semibold text-gray-900 flex-1 text-center">{t('filters.pharmacologicalEffects')}</h2>
                 <button
                   onClick={() => setShowPharmacologicalModal(false)}
                   className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -4341,7 +4343,7 @@ export default function Builder() {
                   type="text"
                   value={pharmacologicalSearch}
                   onChange={(e) => setPharmacologicalSearch(e.target.value)}
-                  placeholder="Search pharmacological effects..."
+                  placeholder={t('filters.searchPharmacologicalEffects')}
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm"
                   autoFocus
                 />
@@ -4387,14 +4389,14 @@ export default function Builder() {
                   disabled={pharmacologicalFilters.length === 0}
                   className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
                 >
-                  Clear
+                  {t('filters.clear')}
                 </button>
                 <button
                   onClick={() => setShowPharmacologicalModal(false)}
                   disabled={pharmacologicalFilters.length === 0}
                   className="flex-1 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
                 >
-                  Apply
+                  {t('filters.apply')}
                 </button>
               </div>
             </div>
@@ -4410,8 +4412,8 @@ export default function Builder() {
             className="fixed left-0 right-0 bottom-0 top-[10vh] sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-2xl sm:rounded-lg sm:w-full sm:max-w-md sm:max-h-[85vh] overflow-hidden z-50 flex flex-col" 
             onPointerDownOutside={() => setShowBiologicalModal(false)}
           >
-            <Dialog.Title className="sr-only">Select Biological Mechanisms</Dialog.Title>
-            <Dialog.Description className="sr-only">Choose biological mechanisms to filter herbs and formulas</Dialog.Description>
+            <Dialog.Title className="sr-only">{t('filters.selectBiologicalMechanisms')}</Dialog.Title>
+            <Dialog.Description className="sr-only">{t('filters.biologicalMechanisms')}</Dialog.Description>
 
             {/* Header */}
             <div className="flex-shrink-0 px-6 py-4 border-b border-gray-200">
@@ -4422,7 +4424,7 @@ export default function Builder() {
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
-                <h2 className="text-lg font-semibold text-gray-900 flex-1 text-center">Biological Mechanisms</h2>
+                <h2 className="text-lg font-semibold text-gray-900 flex-1 text-center">{t('filters.biologicalMechanisms')}</h2>
                 <button
                   onClick={() => setShowBiologicalModal(false)}
                   className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -4438,7 +4440,7 @@ export default function Builder() {
                   type="text"
                   value={biologicalSearch}
                   onChange={(e) => setBiologicalSearch(e.target.value)}
-                  placeholder="Search systems or targets..."
+                  placeholder={t('filters.searchSystemsOrTargets')}
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm"
                   autoFocus
                 />
@@ -4460,7 +4462,7 @@ export default function Builder() {
                         : 'text-gray-600 hover:text-gray-900'
                     }`}
                   >
-                    Categories
+                    {t('filters.categories')}
                   </button>
                   <button
                     onClick={() => setBiologicalViewMode('all')}
@@ -4470,7 +4472,7 @@ export default function Builder() {
                         : 'text-gray-600 hover:text-gray-900'
                     }`}
                   >
-                    All
+                    {t('filters.all')}
                   </button>
                 </div>
               </div>
@@ -4513,7 +4515,7 @@ export default function Builder() {
                               onChange={() => toggleAllSystemTargets(system, filteredTargetActions)}
                               onClick={(e) => e.stopPropagation()}
                               className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
-                              title="Select all target actions in this system"
+                              title={t('filters.selectAllTargetActions')}
                             />
                             
                             {/* Expandable header */}
@@ -4582,7 +4584,7 @@ export default function Builder() {
                     
                     return biologicalSearch && !hasResults && (
                       <div className="text-center py-8 text-gray-500">
-                        <p className="text-xs">No systems or target actions found matching "{biologicalSearch}"</p>
+                        <p className="text-xs">{t('filters.noSystemsOrTargetActionsFound')} "{biologicalSearch}"</p>
                       </div>
                     );
                   })()}
@@ -4633,7 +4635,7 @@ export default function Builder() {
                       allTargetActions
                     ) : biologicalSearch ? (
                       <div className="text-center py-8 text-gray-500">
-                        <p className="text-xs">No systems or target actions found matching "{biologicalSearch}"</p>
+                        <p className="text-xs">{t('filters.noSystemsOrTargetActionsFound')} "{biologicalSearch}"</p>
                       </div>
                     ) : null;
                   })()}
@@ -4649,14 +4651,14 @@ export default function Builder() {
                   disabled={biologicalMechanismsCount === 0}
                   className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
                 >
-                  Clear
+                  {t('filters.clear')}
                 </button>
                 <button
                   onClick={() => setShowBiologicalModal(false)}
                   disabled={biologicalMechanismsCount === 0}
                   className="flex-1 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
                 >
-                  Apply
+                  {t('filters.apply')}
                 </button>
               </div>
             </div>
@@ -4672,8 +4674,8 @@ export default function Builder() {
             className="fixed left-0 right-0 bottom-0 top-[10vh] sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-2xl sm:rounded-lg sm:w-full sm:max-w-md sm:max-h-[85vh] overflow-hidden z-50 flex flex-col"
             onPointerDownOutside={() => setShowBioactiveCompoundsModal(false)}
           >
-            <Dialog.Title className="sr-only">Select Bioactive Compounds</Dialog.Title>
-            <Dialog.Description className="sr-only">Choose bioactive compounds to filter herbs and formulas</Dialog.Description>
+            <Dialog.Title className="sr-only">{t('filters.selectBioactiveCompounds')}</Dialog.Title>
+            <Dialog.Description className="sr-only">{t('filters.bioactiveCompounds')}</Dialog.Description>
 
             {/* Header */}
             <div className="flex-shrink-0 px-6 py-4 border-b border-gray-200">
@@ -4684,7 +4686,7 @@ export default function Builder() {
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
-                <h2 className="text-lg font-semibold text-gray-900 flex-1 text-center">Bioactive Compounds</h2>
+                <h2 className="text-lg font-semibold text-gray-900 flex-1 text-center">{t('filters.bioactiveCompounds')}</h2>
                 <button
                   onClick={() => setShowBioactiveCompoundsModal(false)}
                   className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -4700,7 +4702,7 @@ export default function Builder() {
                   type="text"
                   value={bioactiveCompoundsSearch}
                   onChange={(e) => setBioactiveCompoundsSearch(e.target.value)}
-                  placeholder="Search compounds or classes..."
+                  placeholder={t('filters.searchCompoundsOrClasses')}
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm"
                   autoFocus
                 />
@@ -4722,7 +4724,7 @@ export default function Builder() {
                         : 'text-gray-600 hover:text-gray-900'
                     }`}
                   >
-                    Categories
+                    {t('filters.categories')}
                   </button>
                   <button
                     onClick={() => setBioactiveCompoundsViewMode('all')}
@@ -4732,7 +4734,7 @@ export default function Builder() {
                         : 'text-gray-600 hover:text-gray-900'
                     }`}
                   >
-                    All
+                    {t('filters.all')}
                   </button>
                 </div>
               </div>
@@ -4794,7 +4796,7 @@ export default function Builder() {
                               }}
                               onClick={(e) => e.stopPropagation()}
                               className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
-                              title="Select all compounds in this chemical class"
+                              title={t('filters.selectAllCompounds')}
                             />
 
                             {/* Expandable header */}
@@ -4881,7 +4883,7 @@ export default function Builder() {
 
                     return bioactiveCompoundsSearch && !hasResults && (
                       <div className="text-center py-8 text-gray-500">
-                        <p className="text-xs">No chemical classes or compounds found matching "{bioactiveCompoundsSearch}"</p>
+                        <p className="text-xs">{t('filters.noChemicalClassesOrCompoundsFound')} "{bioactiveCompoundsSearch}"</p>
                       </div>
                     );
                   })()}
@@ -4950,7 +4952,7 @@ export default function Builder() {
                       allCompounds
                     ) : bioactiveCompoundsSearch ? (
                       <div className="text-center py-8 text-gray-500">
-                        <p className="text-xs">No chemical classes or compounds found matching "{bioactiveCompoundsSearch}"</p>
+                        <p className="text-xs">{t('filters.noChemicalClassesOrCompoundsFound')} "{bioactiveCompoundsSearch}"</p>
                       </div>
                     ) : null;
                   })()}
@@ -4966,14 +4968,14 @@ export default function Builder() {
                   disabled={bioactiveCompoundsCount === 0}
                   className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
                 >
-                  Clear
+                  {t('filters.clear')}
                 </button>
                 <button
                   onClick={() => setShowBioactiveCompoundsModal(false)}
                   disabled={bioactiveCompoundsCount === 0}
                   className="flex-1 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium disabled:opacity-0 disabled:cursor-default"
                 >
-                  Apply
+                  {t('filters.apply')}
                 </button>
               </div>
             </div>
@@ -5022,7 +5024,7 @@ export default function Builder() {
             <div className="flex-shrink-0 px-4 py-4 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <Dialog.Title className="text-lg font-semibold text-gray-900">
-                  Filters
+                  {t('filters.filtersPanel')}
                 </Dialog.Title>
                 <Dialog.Description className="sr-only">Filter herbs and formulas by category, nature, and other properties</Dialog.Description>
                 <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors">
@@ -5040,7 +5042,7 @@ export default function Builder() {
                     onClick={() => setMobileExpandedFilters(prev => ({ ...prev, herbFilters: !prev.herbFilters }))}
                     className="flex items-center justify-between w-full text-left mb-3"
                   >
-                    <h2 className="text-base font-semibold text-gray-900">Herb Filters</h2>
+                    <h2 className="text-base font-semibold text-gray-900">{t('filters.herbFilters')}</h2>
                     <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${mobileExpandedFilters.herbFilters ? 'rotate-180' : ''}`} />
                   </button>
                   
@@ -5053,7 +5055,7 @@ export default function Builder() {
                             onClick={() => setMobileExpandedFilters(prev => ({ ...prev, herbCategories: !prev.herbCategories }))}
                             className="flex items-center justify-between w-full text-left mb-3"
                           >
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Categories</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.categories')}</h3>
                             <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${mobileExpandedFilters.herbCategories ? 'rotate-180' : ''}`} />
                           </button>
                           {mobileExpandedFilters.herbCategories && (
@@ -5103,7 +5105,7 @@ export default function Builder() {
                             onClick={() => setMobileExpandedFilters(prev => ({ ...prev, herbNature: !prev.herbNature }))}
                             className="flex items-center justify-between w-full text-left mb-3"
                           >
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Nature</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.natures')}</h3>
                             <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${mobileExpandedFilters.herbNature ? 'rotate-180' : ''}`} />
                           </button>
                           {mobileExpandedFilters.herbNature && (
@@ -5131,7 +5133,7 @@ export default function Builder() {
                             onClick={() => setMobileExpandedFilters(prev => ({ ...prev, herbFlavor: !prev.herbFlavor }))}
                             className="flex items-center justify-between w-full text-left mb-3"
                           >
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Flavor</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.flavors')}</h3>
                             <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${mobileExpandedFilters.herbFlavor ? 'rotate-180' : ''}`} />
                           </button>
                           {mobileExpandedFilters.herbFlavor && (
@@ -5159,7 +5161,7 @@ export default function Builder() {
                             onClick={() => setMobileExpandedFilters(prev => ({ ...prev, herbChannels: !prev.herbChannels }))}
                             className="flex items-center justify-between w-full text-left mb-3"
                           >
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Channels</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.channels')}</h3>
                             <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${mobileExpandedFilters.herbChannels ? 'rotate-180' : ''}`} />
                           </button>
                           {mobileExpandedFilters.herbChannels && (
@@ -5192,7 +5194,7 @@ export default function Builder() {
                     onClick={() => setMobileExpandedFilters(prev => ({ ...prev, formulaFilters: !prev.formulaFilters }))}
                     className="flex items-center justify-between w-full text-left mb-3"
                   >
-                    <h2 className="text-base font-semibold text-gray-900">Formula Filters</h2>
+                    <h2 className="text-base font-semibold text-gray-900">{t('filters.formulaFilters')}</h2>
                     <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${mobileExpandedFilters.formulaFilters ? 'rotate-180' : ''}`} />
                   </button>
                   
@@ -5205,7 +5207,7 @@ export default function Builder() {
                             onClick={() => setMobileExpandedFilters(prev => ({ ...prev, formulaCategories: !prev.formulaCategories }))}
                             className="flex items-center justify-between w-full text-left mb-3"
                           >
-                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Categories</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.categories')}</h3>
                             <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${mobileExpandedFilters.formulaCategories ? 'rotate-180' : ''}`} />
                           </button>
                           {mobileExpandedFilters.formulaCategories && (
@@ -5260,7 +5262,7 @@ export default function Builder() {
                     onClick={() => setMobileExpandedFilters(prev => ({ ...prev, clinicalUse: !prev.clinicalUse }))}
                     className="flex items-center justify-between w-full text-left mb-3"
                   >
-                    <h2 className="text-base font-semibold text-gray-900">Clinical Use Filters</h2>
+                    <h2 className="text-base font-semibold text-gray-900">{t('filters.clinicalUseFilters')}</h2>
                     <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${mobileExpandedFilters.clinicalUse ? 'rotate-180' : ''}`} />
                   </button>
                   
@@ -5272,7 +5274,7 @@ export default function Builder() {
                           onClick={() => setShowConditionModal(true)}
                           className="flex items-center justify-between w-full text-left px-4 py-2.5 hover:bg-gray-50 rounded-lg transition-colors"
                         >
-                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Clinical Applications</h3>
+                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.clinicalApplications')}</h3>
                           <div className="flex items-center gap-2">
                             {clinicalUseFilters?.condition && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
@@ -5300,7 +5302,7 @@ export default function Builder() {
                     onClick={() => setMobileExpandedFilters(prev => ({ ...prev, safetyProfile: !prev.safetyProfile }))}
                     className="flex items-center justify-between w-full text-left mb-3"
                   >
-                    <h2 className="text-base font-semibold text-gray-900">Safety Profile</h2>
+                    <h2 className="text-base font-semibold text-gray-900">{t('filters.safetyProfile')}</h2>
                     <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${mobileExpandedFilters.safetyProfile ? 'rotate-180' : ''}`} />
                   </button>
                   
@@ -5313,7 +5315,7 @@ export default function Builder() {
                           onClick={() => setShowGeneralConditionsModal(true)}
                           className="flex items-center justify-between w-full text-left px-4 py-2.5 hover:bg-gray-50 rounded-lg transition-colors"
                         >
-                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">General Conditions</h3>
+                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.generalConditions')}</h3>
                           <div className="flex items-center gap-2">
                             {Object.values(patientSafetyProfile).filter((v, i) => i < 7 && v === true).length > 0 && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
@@ -5333,7 +5335,7 @@ export default function Builder() {
                           onClick={() => setShowMedicationsModal(true)}
                           className="flex items-center justify-between w-full text-left px-4 py-2.5 hover:bg-gray-50 rounded-lg transition-colors"
                         >
-                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Medications</h3>
+                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.medications')}</h3>
                           <div className="flex items-center gap-2">
                             {[patientSafetyProfile.anticoagulants, patientSafetyProfile.antihypertensives, patientSafetyProfile.hypoglycemics, patientSafetyProfile.immunosuppressants, patientSafetyProfile.chemotherapy, patientSafetyProfile.antiplatelets, patientSafetyProfile.beta_blockers, patientSafetyProfile.diuretics, patientSafetyProfile.corticosteroids, patientSafetyProfile.sedatives].filter(v => v === true).length > 0 && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
@@ -5353,7 +5355,7 @@ export default function Builder() {
                           onClick={() => setShowAllergiesModal(true)}
                           className="flex items-center justify-between w-full text-left px-4 py-2.5 hover:bg-gray-50 rounded-lg transition-colors"
                         >
-                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Allergies</h3>
+                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.allergies')}</h3>
                           <div className="flex items-center gap-2">
                             {[patientSafetyProfile.shellfish, patientSafetyProfile.gluten, patientSafetyProfile.nuts, patientSafetyProfile.dairy, patientSafetyProfile.soy, patientSafetyProfile.asteraceae, patientSafetyProfile.apiaceae].filter(v => v === true).length > 0 && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
@@ -5373,7 +5375,7 @@ export default function Builder() {
                           onClick={() => setShowTcmRiskPatternsModal(true)}
                           className="flex items-center justify-between w-full text-left px-4 py-2.5 hover:bg-gray-50 rounded-lg transition-colors"
                         >
-                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">TCM Risk Patterns</h3>
+                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.tcmRiskPatterns')}</h3>
                           <div className="flex items-center gap-2">
                             {[patientSafetyProfile.qi_deficiency, patientSafetyProfile.blood_deficiency, patientSafetyProfile.blood_stasis, patientSafetyProfile.yin_deficiency, patientSafetyProfile.yin_deficiency_heat, patientSafetyProfile.yang_deficiency, patientSafetyProfile.dampness, patientSafetyProfile.phlegm, patientSafetyProfile.heat, patientSafetyProfile.cold, patientSafetyProfile.wind, patientSafetyProfile.internal_wind].filter(v => v === true).length > 0 && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
@@ -5402,7 +5404,7 @@ export default function Builder() {
                     onClick={() => setMobileExpandedFilters(prev => ({ ...prev, advanced: !prev.advanced }))}
                     className="flex items-center justify-between w-full text-left mb-3"
                   >
-                    <h2 className="text-base font-semibold text-gray-900">Advanced Filters</h2>
+                    <h2 className="text-base font-semibold text-gray-900">{t('filters.advancedFilters')}</h2>
                     <div className="flex items-center gap-2">
                       {hasActiveAdvancedFilters && (
                         <span
@@ -5436,7 +5438,7 @@ export default function Builder() {
                           onClick={() => setShowPharmacologicalModal(true)}
                           className="flex items-center justify-between w-full text-left px-4 py-2.5 hover:bg-gray-50 rounded-lg transition-colors"
                         >
-                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Pharmacological Effects</h3>
+                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.pharmacologicalEffects')}</h3>
                           <div className="flex items-center gap-2">
                             {pharmacologicalFiltersCount > 0 && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
@@ -5454,7 +5456,7 @@ export default function Builder() {
                           onClick={() => setShowBiologicalModal(true)}
                           className="flex items-center justify-between w-full text-left px-4 py-2.5 hover:bg-gray-50 rounded-lg transition-colors"
                         >
-                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Biological Mechanisms</h3>
+                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.biologicalMechanisms')}</h3>
                           <div className="flex items-center gap-2">
                             {biologicalMechanismsCount > 0 && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
@@ -5472,7 +5474,7 @@ export default function Builder() {
                           onClick={() => setShowBioactiveCompoundsModal(true)}
                           className="flex items-center justify-between w-full text-left px-4 py-2.5 hover:bg-gray-50 rounded-lg transition-colors"
                         >
-                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Bioactive Compounds</h3>
+                          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">{t('filters.bioactiveCompounds')}</h3>
                           <div className="flex items-center gap-2">
                             {bioactiveCompoundsCount > 0 && (
                               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-medium bg-green-100 text-green-700">
@@ -5493,12 +5495,12 @@ export default function Builder() {
                   <>
                     <div className="border-t border-gray-200 my-4"></div>
                     <div>
-                      <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Active Filters</h3>
+                      <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">{t('filters.activeFilters')}</h3>
                       <div className="space-y-3">
                         {/* Herb Filters */}
                         {categoryFilters.length > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Categories</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.categories')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {categoryFilters.map(category => (
                                 <button
@@ -5516,7 +5518,7 @@ export default function Builder() {
 
                         {subcategoryFilters.length > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Subcategories</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.subcategories')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {subcategoryFilters.map(subcategory => (
                                 <button
@@ -5534,7 +5536,7 @@ export default function Builder() {
 
                         {natureFilters.length > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Natures</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.natures')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {natureFilters.map(nature => (
                                 <button
@@ -5552,7 +5554,7 @@ export default function Builder() {
 
                         {flavorFilters.length > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Flavors</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.flavors')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {flavorFilters.map(flavor => (
                                 <button
@@ -5570,7 +5572,7 @@ export default function Builder() {
 
                         {channelFilters.length > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Channels</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.channels')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {channelFilters.map(channel => (
                                 <button
@@ -5589,7 +5591,7 @@ export default function Builder() {
                         {/* Formula Filters */}
                         {formulaCategoryFilters.length > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Formula Categories</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.formulaCategories')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {formulaCategoryFilters.map(category => (
                                 <button
@@ -5607,7 +5609,7 @@ export default function Builder() {
 
                         {formulaSubcategoryFilters.length > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Formula Subcategories</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.subcategories')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {formulaSubcategoryFilters.map(subcategory => (
                                 <button
@@ -5627,7 +5629,7 @@ export default function Builder() {
                         {/* Clinical Applications: Conditions + Patterns */}
                         {(clinicalUseFilters?.clinicalApplications && clinicalUseFilters.clinicalApplications.length > 0) && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Clinical Applications</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.clinicalApplications')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {clinicalUseFilters.clinicalApplications.map((app, index) => (
                                 <div key={`app-${index}`} className="flex flex-wrap gap-1.5">
@@ -5690,7 +5692,7 @@ export default function Builder() {
 
                         {(clinicalUseFilters?.western_medical_dx?.length || 0) > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Western Medical Dx</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.westernMedicalDx')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {clinicalUseFilters?.western_medical_dx?.map((dx: string) => (
                                 <button
@@ -5714,7 +5716,7 @@ export default function Builder() {
                         {/* Safety Profile Filters */}
                         {getGeneralConditionsCount() > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">General Conditions</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.generalConditions')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {['pregnancy', 'breastfeeding', 'insomnia', 'epilepsy', 'bleeding_disorders', 'liver_disease', 'kidney_disease']
                                 .filter(field => patientSafetyProfile?.[field as keyof typeof patientSafetyProfile])
@@ -5739,7 +5741,7 @@ export default function Builder() {
 
                         {getMedicationsCount() > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Medications</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.medications')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {['anticoagulants', 'antihypertensives', 'hypoglycemics', 'immunosuppressants', 'antidepressants', 'antiplatelets', 'beta_blockers', 'diuretics', 'corticosteroids', 'sedatives']
                                 .filter(field => patientSafetyProfile?.[field as keyof typeof patientSafetyProfile])
@@ -5764,7 +5766,7 @@ export default function Builder() {
 
                         {getAllergiesCount() > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Allergies</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.allergies')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {['shellfish', 'gluten', 'nuts', 'dairy', 'soy', 'asteraceae', 'apiaceae']
                                 .filter(field => patientSafetyProfile?.[field as keyof typeof patientSafetyProfile])
@@ -5789,7 +5791,7 @@ export default function Builder() {
 
                         {getTcmRiskPatternsCount() > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">TCM Risk Patterns</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.tcmRiskPatterns')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {['qi_deficiency', 'blood_deficiency', 'blood_stasis', 'yin_deficiency', 'yin_deficiency_heat', 'yang_deficiency', 'dampness', 'heat', 'liver_yang_rising', 'phlegm_damp', 'damp_heat', 'internal_wind']
                                 .filter(field => patientSafetyProfile?.[field as keyof typeof patientSafetyProfile])
@@ -5815,7 +5817,7 @@ export default function Builder() {
                         {/* Advanced Filters */}
                         {pharmacologicalFiltersCount > 0 && hasFeature('pharmacologicalEffectsFilter') && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Pharmacological Effects</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.pharmacologicalEffects')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {pharmacologicalFilters.map(effect => (
                                 <button
@@ -5835,7 +5837,7 @@ export default function Builder() {
 
                         {biologicalMechanismsCount > 0 && hasFeature('biologicalMechanismsFilter') && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Biological Mechanisms</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.biologicalMechanisms')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {Object.entries(biologicalMechanisms || {}).flatMap(([mechanism, targets]) =>
                                 (targets || []).map(target => (
@@ -5866,7 +5868,7 @@ export default function Builder() {
 
                         {bioactiveCompoundsCount > 0 && (
                           <div>
-                            <p className="text-xs text-gray-500 mb-1.5">Bioactive Compounds</p>
+                            <p className="text-xs text-gray-500 mb-1.5">{t('filters.bioactiveCompounds')}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {Object.entries(bioactiveCompounds || {}).flatMap(([chemicalClass, compounds]) =>
                                 (compounds || []).map(compound => (
@@ -5910,10 +5912,10 @@ export default function Builder() {
                       onClick={clearAllMobileFilters}
                       className="flex-1 px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-colors font-medium"
                     >
-                      Clear All
+                      {t('filters.clearAllFilters')}
                     </button>
                     <Dialog.Close className="flex-1 px-4 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium">
-                      Apply
+                      {t('filters.apply')}
                     </Dialog.Close>
                   </>
                 )}
@@ -5981,10 +5983,10 @@ export default function Builder() {
           <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
           <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-6 w-full max-w-md z-50 shadow-xl">
             <Dialog.Title className="text-xl font-semibold text-gray-900 mb-2">
-              Save Prescription
+              {t('dialogs.savePrescription')}
             </Dialog.Title>
             <Dialog.Description className="text-sm text-gray-600 mb-6">
-              Would you like to update the existing prescription or save as a new one?
+              {t('dialogs.savePrescription')}
             </Dialog.Description>
 
             <div className="flex gap-2">
@@ -5992,14 +5994,14 @@ export default function Builder() {
                 disabled={isSaving}
                 className="flex-1 px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Cancel
+                {t('dialogs.cancel')}
               </Dialog.Close>
               <button
                 onClick={saveAsNew}
                 disabled={isSaving}
                 className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-white border-2 border-teal-600 text-teal-600 rounded-lg hover:bg-teal-50 transition-colors font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Save New
+                {t('dialogs.saveNew')}
               </button>
               <button
                 onClick={saveAsUpdate}
@@ -6007,7 +6009,7 @@ export default function Builder() {
                 className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Save className="w-4 h-4" />
-                Update
+                {t('dialogs.update')}
               </button>
             </div>
           </Dialog.Content>
