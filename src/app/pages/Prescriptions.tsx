@@ -15,6 +15,7 @@ import { useGlobalSettings } from '../hooks/useGlobalSettings';
 import { useModalNavigation } from '../hooks/useModalNavigation';
 import { UnifiedDetailsModal } from '../components/UnifiedDetailsModal';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
 
 // Get current user identifier (email if logged in, or persistent browser ID)
 function getCurrentUserId(): string {
@@ -68,6 +69,8 @@ export default function Prescriptions() {
   const modalNav = useModalNavigation();
   const navigate = useNavigate();
   const location = useLocation();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
 
   const [prescriptions, setPrescriptions] = useState(getUserPrescriptionsSync());
   const [searchQuery, setSearchQuery] = useState('');
@@ -75,6 +78,29 @@ export default function Prescriptions() {
   const [isLoading, setIsLoading] = useState(true);
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [prescriptionToDelete, setPrescriptionToDelete] = useState<{ id: string; name: string } | null>(null);
+
+  const ui = {
+    searchPlaceholder: isSpanish ? 'Buscar prescripciones...' : 'Search prescriptions...',
+    newPrescription: isSpanish ? 'Nueva prescripción' : 'New Prescription',
+    listView: isSpanish ? 'Vista de lista' : 'List view',
+    gridView: isSpanish ? 'Vista de cuadrícula' : 'Grid view',
+    noPrescriptionsYet: isSpanish ? 'Todavía no hay prescripciones' : 'No prescriptions yet',
+    createFirstPrescription: isSpanish ? 'Crea tu primera prescripción usando el constructor' : 'Create your first prescription using the Builder',
+    createPrescription: isSpanish ? 'Crear prescripción' : 'Create Prescription',
+    noPrescriptionsFound: isSpanish ? 'No se encontraron prescripciones' : 'No prescriptions found',
+    tryAdjustingSearchQuery: isSpanish ? 'Prueba ajustando tu búsqueda' : 'Try adjusting your search query',
+    deletePrescription: isSpanish ? 'Eliminar prescripción' : 'Delete prescription',
+    deletePrescriptionTitle: isSpanish ? 'Eliminar prescripción' : 'Delete prescription',
+    deletePrescriptionDescription: isSpanish
+      ? `¿Seguro que quieres eliminar "${prescriptionToDelete?.name}"? Esta acción no se puede deshacer.`
+      : `Are you sure you want to delete "${prescriptionToDelete?.name}"? This action cannot be undone.`,
+    cancel: isSpanish ? 'Cancelar' : 'Cancel',
+    delete: isSpanish ? 'Eliminar' : 'Delete',
+    prescriptionDeleted: isSpanish ? 'Prescripción eliminada' : 'Prescription deleted',
+    prescriptionLibraryDescription: isSpanish
+      ? 'Guarda y gestiona tus prescripciones. Accede al historial y reutiliza fórmulas que hayan funcionado.'
+      : 'Save and manage your prescriptions. Access your prescription history and reuse successful formulations.',
+  };
 
   // Load prescriptions from Supabase on mount
   useEffect(() => {
@@ -161,7 +187,7 @@ export default function Prescriptions() {
     setPrescriptions(updated);
     setDeleteConfirmOpen(false);
     setPrescriptionToDelete(null);
-    toast.success('Prescription deleted');
+    toast.success(ui.prescriptionDeleted);
   };
 
   const filteredPrescriptions = prescriptions.filter(prescription =>
@@ -174,7 +200,7 @@ export default function Prescriptions() {
       <div className="flex-1 p-6 overflow-y-auto">
         <UpgradePrompt
           feature="Prescription Library"
-          description="Save and manage your prescriptions. Access your prescription history and reuse successful formulations."
+          description={ui.prescriptionLibraryDescription}
           requiredPlan="practitioner"
         />
       </div>
@@ -191,7 +217,7 @@ export default function Prescriptions() {
             <SearchBar
               value={searchQuery}
               onChange={setSearchQuery}
-              placeholder="Search prescriptions..."
+              placeholder={ui.searchPlaceholder}
               className="w-full sm:w-[400px]"
             />
             
@@ -199,7 +225,7 @@ export default function Prescriptions() {
             <Link
               to="/builder"
               className="sm:hidden flex items-center justify-center gap-2 w-10 h-10 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors whitespace-nowrap flex-shrink-0"
-              title="New Prescription"
+              title={ui.newPrescription}
             >
               <Plus className="w-[18px] h-[18px]" />
             </Link>
@@ -211,7 +237,7 @@ export default function Prescriptions() {
             <Link
               to="/builder"
               className="hidden sm:flex items-center justify-center gap-2 px-4 h-10 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors whitespace-nowrap flex-shrink-0"
-              title="New Prescription"
+              title={ui.newPrescription}
             >
               <Plus className="w-4 h-4" />
               <FileText className="w-4 h-4" />
@@ -226,7 +252,7 @@ export default function Prescriptions() {
                     ? 'bg-white text-gray-700 shadow-sm'
                     : 'text-gray-500 hover:text-gray-700'
                 }`}
-                title="List view"
+                title={ui.listView}
               >
                 <LayoutList className="w-5 h-5" />
               </button>
@@ -237,7 +263,7 @@ export default function Prescriptions() {
                     ? 'bg-white text-gray-700 shadow-sm'
                     : 'text-gray-500 hover:text-gray-700'
                 }`}
-                title="Grid view"
+                title={ui.gridView}
               >
                 <LayoutGrid className="w-5 h-5" />
               </button>
@@ -249,15 +275,15 @@ export default function Prescriptions() {
           <div className="bg-white rounded-lg border border-gray-200 p-8 sm:p-12">
             <EmptyState
               icon={PrescriptionIcon}
-              title="No prescriptions yet"
-              description="Create your first prescription using the Builder"
+              title={ui.noPrescriptionsYet}
+              description={ui.createFirstPrescription}
               action={
                 <Link
                   to="/builder"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
                 >
                   <Plus className="w-4 h-4" />
-                  Create Prescription
+                  {ui.createPrescription}
                 </Link>
               }
             />
@@ -266,8 +292,8 @@ export default function Prescriptions() {
           <div className="bg-white rounded-lg border border-gray-200 p-8 sm:p-12">
             <EmptyState
               icon={Search}
-              title="No prescriptions found"
-              description="Try adjusting your search query"
+              title={ui.noPrescriptionsFound}
+              description={ui.tryAdjustingSearchQuery}
             />
           </div>
         ) : viewMode === 'list' ? (
@@ -295,7 +321,7 @@ export default function Prescriptions() {
                           <button
                             onClick={(e) => handleDelete(e, prescription.id, prescription.name)}
                             className="hidden sm:block opacity-0 group-hover:opacity-100 transition-opacity p-1.5 sm:p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded"
-                            title="Delete prescription"
+                            title={ui.deletePrescription}
                           >
                             <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                           </button>
@@ -356,7 +382,7 @@ export default function Prescriptions() {
                     <button
                       onClick={(e) => handleDelete(e, prescription.id, prescription.name)}
                       className="absolute top-3 sm:top-4 right-3 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity p-1.5 sm:p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded"
-                      title="Delete prescription"
+                      title={ui.deletePrescription}
                     >
                       <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </button>
@@ -436,22 +462,22 @@ export default function Prescriptions() {
           <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[100]" />
           <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-xl max-w-md w-full p-6 z-[100]">
             <Dialog.Title className="text-lg font-semibold text-gray-900 mb-2">
-              Confirmar eliminación
+              {ui.deletePrescriptionTitle}
             </Dialog.Title>
             <Dialog.Description className="text-gray-600 mb-6">
-              ¿Estás seguro de que quieres eliminar "{prescriptionToDelete?.name}"? Esta acción no se puede deshacer.
+              {ui.deletePrescriptionDescription}
             </Dialog.Description>
             <div className="flex gap-3 justify-end">
               <Dialog.Close asChild>
                 <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                  Cancelar
+                  {ui.cancel}
                 </button>
               </Dialog.Close>
               <button
                 onClick={confirmDelete}
                 className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors"
               >
-                Eliminar
+                {ui.delete}
               </button>
             </div>
           </Dialog.Content>

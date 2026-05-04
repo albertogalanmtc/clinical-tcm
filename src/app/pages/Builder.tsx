@@ -327,7 +327,8 @@ function matchesSafetyCategoryInArray(textArray: string[] | undefined, category:
 }
 
 export default function Builder() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const isSpanish = language === 'es';
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { isHerbBanned } = useHerbBannedStatus();
@@ -404,6 +405,22 @@ export default function Builder() {
   // View modes for modals
   const [biologicalViewMode, setBiologicalViewMode] = useState<'categories' | 'all'>('categories');
   const [bioactiveCompoundsViewMode, setBioactiveCompoundsViewMode] = useState<'categories' | 'all'>('categories');
+
+  const searchPlaceholder =
+    activeTab === 'herbs'
+      ? t('filters.searchHerbs')
+      : activeTab === 'formulas'
+        ? t('filters.searchFormulas')
+        : t('filters.searchBuilder');
+
+  const ui = {
+    builderAccessDescription: isSpanish
+      ? 'Crea prescripciones personalizadas con nuestra herramienta avanzada. Selecciona hierbas y fórmulas, gestiona las dosis y genera informes completos de seguridad.'
+      : 'Create custom prescriptions with our advanced builder tool. Select herbs and formulas, manage dosages, and generate comprehensive safety reports.',
+    prescriptionUpdateFailed: isSpanish ? 'No se pudo actualizar la prescripción' : 'Failed to update prescription',
+    prescriptionUpdated: isSpanish ? 'Prescripción actualizada correctamente' : 'Prescription updated successfully',
+    prescriptionSaved: isSpanish ? 'Prescripción guardada correctamente' : 'Prescription saved successfully',
+  };
   
   // Clinical Use and Safety Profile modals
   const [showClinicalModal, setShowClinicalModal] = useState(false);
@@ -1962,12 +1979,12 @@ export default function Builder() {
     
     const prescription = updatePrescription(prescriptionId!, prescriptionData);
     if (!prescription) {
-      toast.error('Failed to update prescription');
+      toast.error(ui.prescriptionUpdateFailed);
       setIsSaving(false);
       return;
     }
     
-    toast.success('Prescription updated successfully');
+    toast.success(ui.prescriptionUpdated);
     setHasUnsavedChanges(false);
     localStorage.removeItem(BUILDER_STATE_KEY);
     setShowSaveDialog(false);
@@ -1994,7 +2011,7 @@ export default function Builder() {
     };
     
     const prescription = savePrescription(prescriptionData);
-    toast.success('Prescription saved successfully');
+    toast.success(ui.prescriptionSaved);
 
     setHasUnsavedChanges(false);
     localStorage.removeItem(BUILDER_STATE_KEY);
@@ -2015,7 +2032,7 @@ export default function Builder() {
       <div className="flex-1 p-6 overflow-y-auto">
         <UpgradePrompt
           feature="Prescription Builder"
-          description="Create custom prescriptions with our advanced builder tool. Select herbs and formulas, manage dosages, and generate comprehensive safety reports."
+          description={ui.builderAccessDescription}
           requiredPlan="practitioner"
         />
       </div>
@@ -2994,7 +3011,7 @@ export default function Builder() {
           <SearchBar
             value={searchQuery}
             onChange={setSearchQuery}
-            placeholder={`Search ${activeTab}...`}
+            placeholder={searchPlaceholder}
             className="flex-1"
           />
           
@@ -3137,7 +3154,7 @@ export default function Builder() {
           <SearchBar
             value={searchQuery}
             onChange={setSearchQuery}
-            placeholder={`Search ${activeTab}...`}
+            placeholder={searchPlaceholder}
             className="flex-1"
           />
         </div>

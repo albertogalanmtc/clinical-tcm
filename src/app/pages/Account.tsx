@@ -31,6 +31,7 @@ export default function Account() {
   };
 
   const userEmail = getUserEmail();
+  const deleteConfirmationText = isSpanish ? 'ELIMINAR' : 'DELETE';
   const ui = {
     backToAccount: isSpanish ? 'Volver a la cuenta' : 'Back to Account',
     pageTitle: isSpanish ? 'Ajustes de cuenta' : 'Account Settings',
@@ -40,7 +41,7 @@ export default function Account() {
     deleteAccountDescription: isSpanish ? 'Elimina de forma permanente tu cuenta y todos los datos asociados.' : 'Permanently delete your account and all associated data.',
     deleteMyAccount: isSpanish ? 'Eliminar mi cuenta' : 'Delete my account',
     deleteYourAccount: isSpanish ? '¿Eliminar tu cuenta?' : 'Delete your account?',
-    confirmDeletionDescription: isSpanish ? 'Confirma la eliminación de tu cuenta escribiendo tu correo y DELETE' : 'Confirm account deletion by entering your email and typing DELETE',
+    confirmDeletionDescription: isSpanish ? 'Confirma la eliminación de tu cuenta escribiendo tu correo y ELIMINAR' : 'Confirm account deletion by entering your email and typing DELETE',
     accountDeleted: isSpanish ? 'Cuenta eliminada' : 'Account deleted',
     accountDeletedMessage: isSpanish ? 'Tu cuenta ha sido eliminada permanentemente. Redirigiendo...' : 'Your account has been permanently deleted. Redirecting...',
     permanentAction: isSpanish ? 'Esta acción es permanente y no se puede deshacer' : 'This action is permanent and cannot be undone',
@@ -50,7 +51,7 @@ export default function Account() {
     confirmEmailAddress: isSpanish ? 'Confirma tu dirección de correo electrónico' : 'Confirm your email address',
     typeEmailToConfirm: isSpanish ? 'Escribe' : 'Type',
     toConfirm: isSpanish ? 'para confirmar' : 'to confirm',
-    confirmTextLabel: isSpanish ? 'Escribe DELETE para confirmar' : 'Type DELETE to confirm',
+    confirmTextLabel: isSpanish ? 'Escribe ELIMINAR para confirmar' : 'Type DELETE to confirm',
     understandPermanent: isSpanish ? 'Entiendo que esta acción es' : 'I understand that this action is',
     permanentAndIrreversible: isSpanish ? 'permanente e irreversible' : 'permanent and irreversible',
     cancel: isSpanish ? 'Cancelar' : 'Cancel',
@@ -102,7 +103,7 @@ export default function Account() {
   };
 
   const isDeleteEnabled =
-    confirmText === 'DELETE' &&
+    confirmText === deleteConfirmationText &&
     confirmEmail.toLowerCase() === userEmail.toLowerCase() &&
     isChecked &&
     !isDeleting &&
@@ -253,7 +254,7 @@ export default function Account() {
                       type="text"
                       value={confirmText}
                       onChange={(e) => setConfirmText(e.target.value.toUpperCase())}
-                      placeholder="DELETE"
+                      placeholder={deleteConfirmationText}
                       disabled={isDeleting}
                       className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent disabled:bg-gray-50 disabled:text-gray-500 uppercase"
                     />
