@@ -1,5 +1,5 @@
 import { useMemo, useState, type ElementType } from 'react';
-import { Navigate, useLocation, useParams } from 'react-router-dom';
+import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import {
@@ -16,6 +16,7 @@ import {
   UserRound,
   UtensilsCrossed,
   Pencil,
+  ChevronLeft,
 } from 'lucide-react';
 import {
   CartesianGrid,
@@ -148,14 +149,23 @@ export default function PatientDetail() {
         <div className="grid gap-6 xl:grid-cols-[360px_minmax(0,1fr)] xl:items-stretch">
           <Card className="h-full rounded-lg overflow-hidden border-gray-200 shadow-sm">
             <CardContent className="flex h-full flex-col p-0">
-              <div className="border-b border-gray-200 p-6">
-                <h2 className="text-2xl font-semibold text-gray-900">{patient.name}</h2>
-                <p className="mt-2 text-sm text-gray-500">
-                  {patient.age} · {patient.sex === 'female' ? (isSpanish ? 'Mujer' : 'Female') : (isSpanish ? 'Hombre' : 'Male')}
-                </p>
+              <div className="border-b border-gray-200 px-6 py-6">
+                <div className="flex items-center gap-4">
+                  <Avatar
+                    name={patient.name}
+                    size="lg"
+                    color={patient.sex === 'female' ? '#0f766e' : '#2563eb'}
+                  />
+                  <div className="min-w-0">
+                    <h2 className="truncate text-2xl font-semibold text-gray-900">{patient.name}</h2>
+                    <p className="mt-1 text-sm text-gray-500">
+                      {patient.age} · {patient.sex === 'female' ? (isSpanish ? 'Mujer' : 'Female') : (isSpanish ? 'Hombre' : 'Male')}
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="space-y-2 border-b border-gray-200 p-5">
+              <nav className="flex-1 overflow-y-auto overscroll-none px-4 py-4">
                 {sectionTabs.map((tab) => {
                   const Icon = tab.icon;
                   const isActive = activeTab === tab.id;
@@ -164,17 +174,26 @@ export default function PatientDetail() {
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`flex w-full items-center gap-3 rounded-2xl border px-4 py-3 text-left text-sm font-medium transition-colors ${
+                      className={`flex w-full items-center gap-3 px-0 pr-4 py-3 lg:px-4 lg:rounded-lg text-sm font-medium transition-colors -mx-4 lg:mx-0 pl-4 text-left ${
                         isActive
-                          ? 'border-teal-200 bg-teal-50 text-teal-700'
-                          : 'border-gray-200 bg-white text-gray-700 hover:border-teal-200 hover:bg-teal-50/50'
+                          ? 'bg-teal-50 text-teal-700'
+                          : 'text-gray-700 hover:bg-gray-50'
                       }`}
                     >
-                      <Icon className={`h-4 w-4 ${isActive ? 'text-teal-600' : 'text-gray-400'}`} />
+                      <Icon className={`h-5 w-5 ${isActive ? 'text-teal-600' : 'text-gray-400'}`} />
                       <span className="flex-1">{tab.label}</span>
                     </button>
                   );
                 })}
+              </nav>
+
+              <div className="hidden lg:block px-2 py-2 lg:p-4 border-t border-gray-200">
+                <Button asChild variant="outline" className="w-full justify-start gap-3 rounded-lg border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50">
+                  <Link to={basePath}>
+                    <ChevronLeft className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                    <span>{isSpanish ? 'Atrás' : 'Back'}</span>
+                  </Link>
+                </Button>
               </div>
             </CardContent>
           </Card>
