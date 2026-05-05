@@ -1,10 +1,9 @@
 import { useMemo, useState, type ElementType } from 'react';
-import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
+import { Navigate, useLocation, useParams } from 'react-router-dom';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import {
   Activity,
-  ArrowLeft,
   BarChart3,
   CalendarClock,
   ClipboardList,
@@ -146,23 +145,6 @@ export default function PatientDetail() {
   return (
     <div className="flex h-full flex-col overflow-hidden">
       <div className="flex-1 min-h-0 overflow-hidden p-4 pb-[86px] sm:pb-4 lg:p-6 lg:pb-6">
-        <div className="mb-6">
-          <Button asChild variant="ghost" className="h-10 w-10 rounded-lg border border-gray-200 bg-white p-0 text-gray-600 hover:bg-gray-100 hover:text-gray-900">
-            <Link to={basePath}>
-              <ArrowLeft className="h-5 w-5" />
-            </Link>
-          </Button>
-        </div>
-
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">{patient.name}</h1>
-          <p className="text-gray-600">
-            {isSpanish
-              ? 'Ficha clínica visual con anamnesis, evaluaciones, gráficas y agenda.'
-              : 'Visual clinical file with anamnesis, evaluations, charts, and appointments.'}
-          </p>
-        </div>
-
         <div className="grid gap-6 xl:grid-cols-[360px_minmax(0,1fr)] xl:items-stretch">
           <Card className="h-full rounded-lg overflow-hidden border-gray-200 shadow-sm">
             <CardContent className="flex h-full flex-col p-0">
