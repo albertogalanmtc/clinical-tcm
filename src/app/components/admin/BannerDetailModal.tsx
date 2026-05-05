@@ -1,6 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { X, Edit2, Trash2 } from 'lucide-react';
 import { updateBanner, type Banner } from '@/app/data/banners';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 interface BannerDetailModalProps {
   banner: Banner;
@@ -11,6 +12,31 @@ interface BannerDetailModalProps {
 }
 
 export function BannerDetailModal({ banner, isOpen, onClose, onEdit, onDelete }: BannerDetailModalProps) {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
+  const ui = {
+    description: isSpanish ? 'Detalles y estadísticas del banner' : 'Banner details and statistics',
+    modal: isSpanish ? 'Modal' : 'Modal',
+    widget: isSpanish ? 'Widget' : 'Widget',
+    clickDisable: isSpanish ? 'Pulsa para desactivar' : 'Click to disable',
+    clickEnable: isSpanish ? 'Pulsa para activar' : 'Click to enable',
+    active: isSpanish ? 'activo' : 'active',
+    inactive: isSpanish ? 'inactivo' : 'inactive',
+    questions: isSpanish ? 'Preguntas' : 'Questions',
+    delete: isSpanish ? 'Eliminar' : 'Delete',
+    edit: isSpanish ? 'Editar' : 'Edit',
+    close: isSpanish ? 'Cerrar' : 'Close',
+    survey: isSpanish ? 'Encuesta' : 'Survey',
+    announcement: isSpanish ? 'Anuncio' : 'Announcement',
+    priority: isSpanish ? 'Prioridad' : 'Priority',
+    high: isSpanish ? 'Alta' : 'High',
+    low: isSpanish ? 'Baja' : 'Low',
+    normal: isSpanish ? 'Normal' : 'Normal',
+    highPriorityTitle: isSpanish ? 'Alta prioridad:' : 'High Priority:',
+    lowPriorityTitle: isSpanish ? 'Baja prioridad:' : 'Low Priority:',
+    highPriorityBody: isSpanish ? 'Este banner puede saltarse los tiempos de espera del usuario y se mostrará aunque el usuario haya interactuado recientemente con otro banner.' : 'This banner can bypass user cooldowns and will be shown even if the user recently interacted with another banner.',
+    lowPriorityBody: isSpanish ? 'Este banner solo se mostrará cuando no haya banners de mayor prioridad activos.' : 'This banner will only be shown when no higher priority banners are active.',
+  };
   // Helper to convert URLs in text to clickable links
   const renderTextWithLinks = (text: string) => {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -40,7 +66,7 @@ export function BannerDetailModal({ banner, isOpen, onClose, onEdit, onDelete }:
         <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[70]" />
         <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:left-1/2 sm:top-1/2 sm:right-auto sm:bottom-auto sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-2xl sm:rounded-lg sm:max-w-3xl w-full sm:max-h-[90vh] overflow-hidden z-[80] flex flex-col">
           <Dialog.Description className="sr-only">
-            Survey banner details and statistics
+            {ui.description}
           </Dialog.Description>
 
           {/* Header */}
@@ -54,7 +80,7 @@ export function BannerDetailModal({ banner, isOpen, onClose, onEdit, onDelete }:
                   ? 'bg-purple-100 text-purple-700'
                   : 'bg-blue-100 text-blue-700'
               }`}>
-                {banner.displayMode === 'modal' ? 'Modal' : 'Widget'}
+                {banner.displayMode === 'modal' ? ui.modal : ui.widget}
               </span>
               <button
                 onClick={() => {
@@ -65,12 +91,12 @@ export function BannerDetailModal({ banner, isOpen, onClose, onEdit, onDelete }:
                     ? 'bg-green-100 text-green-700 hover:bg-green-200'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
-                title={banner.enabled ? 'Click to disable' : 'Click to enable'}
+                title={banner.enabled ? ui.clickDisable : ui.clickEnable}
               >
-                {banner.enabled ? 'active' : 'inactive'}
+                {banner.enabled ? ui.active : ui.inactive}
               </button>
             </div>
-            <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg">
+            <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100" aria-label={ui.close}>
               <X className="w-5 h-5" />
             </Dialog.Close>
           </div>
@@ -100,7 +126,7 @@ export function BannerDetailModal({ banner, isOpen, onClose, onEdit, onDelete }:
                   ? 'bg-teal-100 text-teal-700'
                   : 'bg-purple-100 text-purple-700'
               }`}>
-                {banner.type === 'survey' ? 'Survey' : 'Announcement'}
+                {banner.type === 'survey' ? ui.survey : ui.announcement}
               </span>
               <span className={`px-3 py-1.5 rounded text-sm font-medium ${
                 banner.priority === 'high'
@@ -109,7 +135,7 @@ export function BannerDetailModal({ banner, isOpen, onClose, onEdit, onDelete }:
                   ? 'bg-blue-100 text-blue-700'
                   : 'bg-gray-100 text-gray-700'
               }`}>
-                Priority: {banner.priority === 'high' ? 'High' : banner.priority === 'low' ? 'Low' : 'Normal'}
+                {ui.priority}: {banner.priority === 'high' ? ui.high : banner.priority === 'low' ? ui.low : ui.normal}
               </span>
             </div>
 
@@ -117,14 +143,14 @@ export function BannerDetailModal({ banner, isOpen, onClose, onEdit, onDelete }:
             {banner.priority === 'high' && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-3">
                 <p className="text-sm text-red-700">
-                  <strong>High Priority:</strong> This banner can bypass user cooldowns and will be shown even if the user recently interacted with another banner.
+                  <strong>{ui.highPriorityTitle}</strong> {ui.highPriorityBody}
                 </p>
               </div>
             )}
             {banner.priority === 'low' && (
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
                 <p className="text-sm text-blue-700">
-                  <strong>Low Priority:</strong> This banner will only be shown when no higher priority banners are active.
+                  <strong>{ui.lowPriorityTitle}</strong> {ui.lowPriorityBody}
                 </p>
               </div>
             )}
@@ -133,7 +159,7 @@ export function BannerDetailModal({ banner, isOpen, onClose, onEdit, onDelete }:
             {banner.type === 'survey' && banner.questions && (
               <div>
                 <h3 className="text-base font-semibold text-gray-900 mb-3">
-                  Questions ({banner.questions.length})
+                  {ui.questions} ({banner.questions.length})
                 </h3>
                 <div className="space-y-4">
                   {banner.questions.map((q, qIndex) => (
@@ -189,14 +215,14 @@ export function BannerDetailModal({ banner, isOpen, onClose, onEdit, onDelete }:
               className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-red-700 bg-white border border-red-300 rounded-lg hover:bg-red-50 transition-colors"
             >
               <Trash2 className="w-4 h-4" />
-              Delete
+              {ui.delete}
             </button>
             <button
               onClick={onEdit}
               className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-white bg-teal-600 rounded-lg hover:bg-teal-700 transition-colors"
             >
               <Edit2 className="w-4 h-4" />
-              Edit
+              {ui.edit}
             </button>
           </div>
         </Dialog.Content>

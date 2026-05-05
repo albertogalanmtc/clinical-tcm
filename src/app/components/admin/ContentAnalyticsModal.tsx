@@ -2,6 +2,7 @@ import { useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { X, Eye, Users, TrendingUp, BarChart3, ChevronDown, ChevronUp } from 'lucide-react';
 import { getContentStatistics, type ContentType } from '@/app/data/contentViews';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 interface ContentAnalyticsModalProps {
   isOpen: boolean;
@@ -20,15 +21,35 @@ export function ContentAnalyticsModal({
 }: ContentAnalyticsModalProps) {
   const [showViewedUsers, setShowViewedUsers] = useState(false);
   const [showNotViewedUsers, setShowNotViewedUsers] = useState(false);
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
 
   const stats = getContentStatistics(contentType, contentId);
 
   const contentTypeLabel = {
-    course: 'Course',
-    promo: 'Promotion',
-    news: 'News Article',
-    research: 'Research Article'
+    course: isSpanish ? 'Curso' : 'Course',
+    promo: isSpanish ? 'Promoción' : 'Promotion',
+    news: isSpanish ? 'Artículo de noticias' : 'News Article',
+    research: isSpanish ? 'Artículo de investigación' : 'Research Article'
   }[contentType];
+  const ui = {
+    description: isSpanish ? `Analíticas para ${contentTitle}` : `Analytics for ${contentTitle}`,
+    title: isSpanish ? `Analíticas: ${contentTitle}` : `Analytics: ${contentTitle}`,
+    totalViews: isSpanish ? 'Vistas totales' : 'Total Views',
+    uniqueUsers: isSpanish ? 'Usuarios únicos' : 'Unique Users',
+    reachRate: isSpanish ? 'Tasa de alcance' : 'Reach Rate',
+    totalUsers: isSpanish ? 'Usuarios totales' : 'Total Users',
+    viewsByPlan: isSpanish ? 'Vistas por plan' : 'Views by Plan',
+    freePlan: isSpanish ? 'Plan gratuito' : 'Free Plan',
+    professional: isSpanish ? 'Profesional' : 'Professional',
+    enterprise: isSpanish ? 'Empresa' : 'Enterprise',
+    viewedUsers: isSpanish ? 'Usuarios que lo han visto' : 'Users Who Viewed',
+    notViewedUsers: isSpanish ? 'Usuarios que no lo han visto' : "Users Who Haven't Viewed",
+    noViewsYet: isSpanish ? 'Aún no hay vistas' : 'No views yet',
+    allViewed: isSpanish ? '¡Todos los usuarios han visto este contenido!' : 'All users have viewed this content!',
+    close: isSpanish ? 'Cerrar' : 'Close',
+    noUsersYet: isSpanish ? 'Aún no hay usuarios' : 'No users yet',
+  };
 
   return (
     <Dialog.Root open={isOpen} onOpenChange={onClose}>
@@ -36,14 +57,14 @@ export function ContentAnalyticsModal({
         <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[70]" />
         <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:left-1/2 sm:top-1/2 sm:right-auto sm:bottom-auto sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-2xl sm:rounded-lg sm:max-w-4xl w-full sm:max-h-[90vh] overflow-hidden z-[80] flex flex-col">
           <Dialog.Description className="sr-only">
-            Analytics for {contentTitle}
+            {ui.description}
           </Dialog.Description>
 
           {/* Header */}
           <div className="flex-shrink-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
             <div className="flex-1 min-w-0 pr-4">
               <Dialog.Title className="text-xl font-bold text-gray-900 truncate">
-                Analytics: {contentTitle}
+                {ui.title}
               </Dialog.Title>
               <p className="text-sm text-gray-600 mt-1">{contentTypeLabel}</p>
             </div>
@@ -64,7 +85,7 @@ export function ContentAnalyticsModal({
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-blue-900">{stats.totalViews}</p>
-                    <p className="text-xs text-blue-700">Total Views</p>
+                    <p className="text-xs text-blue-700">{ui.totalViews}</p>
                   </div>
                 </div>
               </div>
@@ -77,7 +98,7 @@ export function ContentAnalyticsModal({
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-teal-900">{stats.uniqueViews}</p>
-                    <p className="text-xs text-teal-700">Unique Users</p>
+                    <p className="text-xs text-teal-700">{ui.uniqueUsers}</p>
                   </div>
                 </div>
               </div>
@@ -90,7 +111,7 @@ export function ContentAnalyticsModal({
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-purple-900">{stats.viewPercentage}%</p>
-                    <p className="text-xs text-purple-700">Reach Rate</p>
+                    <p className="text-xs text-purple-700">{ui.reachRate}</p>
                   </div>
                 </div>
               </div>
@@ -103,7 +124,7 @@ export function ContentAnalyticsModal({
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-gray-900">{stats.totalUsers}</p>
-                    <p className="text-xs text-gray-700">Total Users</p>
+                    <p className="text-xs text-gray-700">{ui.totalUsers}</p>
                   </div>
                 </div>
               </div>
@@ -113,20 +134,20 @@ export function ContentAnalyticsModal({
             <div className="bg-white border border-gray-200 rounded-lg p-4">
               <h3 className="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
                 <BarChart3 className="w-4 h-4" />
-                Views by Plan
+                {ui.viewsByPlan}
               </h3>
               <div className="grid grid-cols-3 gap-3">
                 <div className="text-center p-3 bg-gray-50 rounded-lg">
                   <p className="text-xl font-bold text-gray-900">{stats.byPlan.free}</p>
-                  <p className="text-xs text-gray-600">Free Plan</p>
+                  <p className="text-xs text-gray-600">{ui.freePlan}</p>
                 </div>
                 <div className="text-center p-3 bg-teal-50 rounded-lg">
                   <p className="text-xl font-bold text-teal-900">{stats.byPlan.professional}</p>
-                  <p className="text-xs text-teal-700">Professional</p>
+                  <p className="text-xs text-teal-700">{ui.professional}</p>
                 </div>
                 <div className="text-center p-3 bg-purple-50 rounded-lg">
                   <p className="text-xl font-bold text-purple-900">{stats.byPlan.enterprise}</p>
-                  <p className="text-xs text-purple-700">Enterprise</p>
+                  <p className="text-xs text-purple-700">{ui.enterprise}</p>
                 </div>
               </div>
             </div>
@@ -140,7 +161,7 @@ export function ContentAnalyticsModal({
                 <div className="flex items-center gap-2">
                   <Users className="w-4 h-4 text-teal-700" />
                   <h3 className="text-sm font-semibold text-teal-900">
-                    Users Who Viewed ({stats.viewedUsers.length})
+                    {ui.viewedUsers} ({stats.viewedUsers.length})
                   </h3>
                 </div>
                 {showViewedUsers ? (
@@ -179,7 +200,7 @@ export function ContentAnalyticsModal({
                   ) : (
                     <div className="px-4 py-8 text-center text-gray-500">
                       <Eye className="w-8 h-8 mx-auto mb-2 text-gray-400" />
-                      <p className="text-sm">No views yet</p>
+                      <p className="text-sm">{ui.noViewsYet}</p>
                     </div>
                   )}
                 </div>
@@ -195,7 +216,7 @@ export function ContentAnalyticsModal({
                 <div className="flex items-center gap-2">
                   <Users className="w-4 h-4 text-amber-700" />
                   <h3 className="text-sm font-semibold text-amber-900">
-                    Users Who Haven't Viewed ({stats.notViewedUsers.length})
+                    {ui.notViewedUsers} ({stats.notViewedUsers.length})
                   </h3>
                 </div>
                 {showNotViewedUsers ? (
@@ -229,7 +250,7 @@ export function ContentAnalyticsModal({
                   ) : (
                     <div className="px-4 py-8 text-center text-gray-500">
                       <Users className="w-8 h-8 mx-auto mb-2 text-gray-400" />
-                      <p className="text-sm">All users have viewed this content!</p>
+                      <p className="text-sm">{ui.allViewed}</p>
                     </div>
                   )}
                 </div>

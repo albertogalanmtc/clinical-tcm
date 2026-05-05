@@ -6,6 +6,7 @@ import { isValidVideoUrl } from '@/app/utils/videoUtils';
 import { ContentVisibilitySettings, type VisibilitySettings } from './ContentVisibilitySettings';
 import { compressImage } from '@/app/utils/imageCompression';
 import { toast } from 'sonner';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 interface HeroSlideModalProps {
   isOpen: boolean;
@@ -44,6 +45,54 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
     countries: slide?.countries || [],
     dateRange: slide?.dateRange
   });
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
+  const ui = {
+    description: isSpanish ? 'Editar o añadir diapositiva del carrusel principal' : 'Edit or add a hero slide',
+    title: slide ? (isSpanish ? 'Editar diapositiva principal' : 'Edit Hero Slide') : (isSpanish ? 'Añadir diapositiva principal' : 'Add Hero Slide'),
+    displaySlide: isSpanish ? 'Mostrar diapositiva' : 'Display Slide',
+    showOnDashboard: isSpanish ? 'Mostrar esta diapositiva en el panel' : 'Show this slide on dashboard',
+    slideImage: isSpanish ? 'Imagen de la diapositiva *' : 'Slide Image *',
+    dropImageHere: isSpanish ? 'Suelta la imagen aquí' : 'Drop image here',
+    clickToUpload: isSpanish ? 'Haz clic para subir o arrastra y suelta' : 'Click to upload or drag & drop',
+    currentImage: isSpanish ? 'Imagen actual' : 'Current Image',
+    change: isSpanish ? 'Cambiar' : 'Change',
+    remove: isSpanish ? 'Eliminar' : 'Remove',
+    previewDesktop: isSpanish ? 'Vista previa escritorio' : 'Preview desktop',
+    previewMobile: isSpanish ? 'Vista previa móvil' : 'Preview mobile',
+    desktop: isSpanish ? 'Escritorio' : 'Desktop',
+    mobile: isSpanish ? 'Móvil' : 'Mobile',
+    dragHelp: isSpanish ? 'Haz clic y arrastra para colocar el punto focal de la imagen' : 'Click and drag to position the image focus point',
+    desktopRatio: isSpanish ? 'Proporción de escritorio' : 'Desktop Ratio',
+    mobileRatio: isSpanish ? 'Proporción de móvil' : 'Mobile Ratio',
+    usePreviewHelp: isSpanish ? 'Usa el selector Escritorio/Móvil en la vista previa para ver cómo se ve la imagen en distintos dispositivos.' : 'Use the Desktop/Mobile toggle in the preview to see how your image looks on different devices.',
+    linkType: isSpanish ? 'Tipo de enlace' : 'Link Type',
+    none: isSpanish ? 'Ninguno' : 'None',
+    external: isSpanish ? 'Externo' : 'External',
+    video: isSpanish ? 'Vídeo' : 'Video',
+    modal: isSpanish ? 'Modal' : 'Modal',
+    externalUrl: isSpanish ? 'URL externa *' : 'External URL *',
+    videoUrl: isSpanish ? 'URL del vídeo (YouTube o Vimeo) *' : 'Video URL (YouTube or Vimeo) *',
+    pasteVideo: isSpanish ? 'Pega un enlace de YouTube o Vimeo' : 'Paste a YouTube or Vimeo link',
+    informationTitle: isSpanish ? 'Título informativo *' : 'Information Title *',
+    content: isSpanish ? 'Contenido *' : 'Content *',
+    nonClickable: isSpanish ? 'Esta diapositiva se mostrará como una imagen no clicable' : 'This slide will display as a non-clickable image',
+    carouselGroup: isSpanish ? 'Grupo del carrusel (opcional)' : 'Carousel Group (Optional)',
+    carouselGroupPlaceholder: isSpanish ? 'Déjalo vacío para una sola imagen' : 'Leave empty for single image',
+    carouselGroupHelp: isSpanish ? 'Las imágenes con el mismo nombre de grupo formarán un carrusel. Déjalo vacío para mostrar una sola imagen.' : 'Images with the same group name will form a carousel. Leave empty to display as a single image.',
+    visibilitySettings: isSpanish ? 'Ajustes de visibilidad' : 'Visibility Settings',
+    cancel: isSpanish ? 'Cancelar' : 'Cancel',
+    addSlide: isSpanish ? 'Añadir diapositiva' : 'Add Slide',
+    updateSlide: isSpanish ? 'Actualizar diapositiva' : 'Update Slide',
+    imageRequired: isSpanish ? 'Sube una imagen' : 'Please upload an image',
+    externalUrlRequired: isSpanish ? 'Introduce una URL externa' : 'Please enter an external URL',
+    videoUrlRequired: isSpanish ? 'Introduce una URL de vídeo' : 'Please enter a video URL',
+    invalidVideoUrl: isSpanish ? 'Introduce una URL válida de YouTube o Vimeo' : 'Please enter a valid YouTube or Vimeo video URL',
+    internalFieldsRequired: isSpanish ? 'Introduce tanto el título como el contenido de la información interna' : 'Please enter both title and content for internal information',
+    failedImage: isSpanish ? 'No se ha podido procesar la imagen. Prueba con otro archivo.' : 'Failed to process image. Please try another file.',
+    imageFileRequired: isSpanish ? 'Suelta un archivo de imagen (PNG, JPG, etc.)' : 'Please drop an image file (PNG, JPG, etc.)',
+    fileSizeTooLarge: isSpanish ? 'El archivo debe pesar menos de 10MB' : 'File size must be less than 10MB',
+  };
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
@@ -164,7 +213,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
         setImagePosition({ x: 50, y: 50 });
       } catch (error) {
         console.error('Image compression failed:', error);
-        toast.error('Failed to process image. Please try another file.');
+        toast.error(ui.failedImage);
       }
     }
   };
@@ -224,13 +273,13 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
       
       // Validate file type
       if (!file.type.startsWith('image/')) {
-        toast.error('Please drop an image file (PNG, JPG, etc.)');
+        toast.error(ui.imageFileRequired);
         return;
       }
 
       // Validate file size (10MB)
       if (file.size > 10 * 1024 * 1024) {
-        toast.error('File size must be less than 10MB');
+        toast.error(ui.fileSizeTooLarge);
         return;
       }
 
@@ -241,7 +290,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
         setImagePosition({ x: 50, y: 50 });
       } catch (error) {
         console.error('Image compression failed:', error);
-        toast.error('Failed to process image. Please try another file.');
+        toast.error(ui.failedImage);
       }
     }
   };
@@ -251,27 +300,27 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
     
     // Image is only required for non-video slides
     if (linkType !== 'video' && !imageUrl) {
-      toast.error('Please upload an image');
+      toast.error(ui.imageRequired);
       return;
     }
 
     if (linkType === 'external' && !externalUrl) {
-      toast.error('Please enter an external URL');
+      toast.error(ui.externalUrlRequired);
       return;
     }
 
     if (linkType === 'video' && !videoUrl) {
-      toast.error('Please enter a video URL');
+      toast.error(ui.videoUrlRequired);
       return;
     }
 
     if (linkType === 'video' && !isValidVideoUrl(videoUrl)) {
-      toast.error('Please enter a valid YouTube or Vimeo video URL');
+      toast.error(ui.invalidVideoUrl);
       return;
     }
 
     if (linkType === 'internal' && (!internalTitle || !internalContent)) {
-      toast.error('Please enter both title and content for internal information');
+      toast.error(ui.internalFieldsRequired);
       return;
     }
 
@@ -333,12 +382,12 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
         <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[70]" />
         <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:left-1/2 sm:top-1/2 sm:right-auto sm:bottom-auto sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-2xl sm:rounded-lg sm:max-w-4xl w-full sm:max-h-[90vh] overflow-hidden z-[80] flex flex-col">
           <Dialog.Description className="sr-only">
-            {slide ? 'Edit hero slide' : 'Add new hero slide'}
+            {ui.description}
           </Dialog.Description>
           {/* Header */}
           <div className="flex-shrink-0 flex items-center justify-between p-6 border-b border-gray-200">
             <Dialog.Title className="text-xl font-semibold text-gray-900">
-              {slide ? 'Edit Hero Slide' : 'Add Hero Slide'}
+              {ui.title}
             </Dialog.Title>
             <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg flex items-center justify-center">
               <X className="w-5 h-5" />
@@ -351,10 +400,8 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
             {/* Display Slide Toggle */}
             <div className="flex items-center justify-between pb-4 border-b border-gray-200">
               <div>
-                <p className="text-sm font-medium text-gray-700">Display Slide</p>
-                <p className="text-xs text-gray-500 mt-1">
-                  Show this slide on dashboard
-                </p>
+                <p className="text-sm font-medium text-gray-700">{ui.displaySlide}</p>
+                <p className="text-xs text-gray-500 mt-1">{ui.showOnDashboard}</p>
               </div>
               <button
                 type="button"
@@ -376,7 +423,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Slide Image *
+                    {ui.slideImage}
                   </label>
                   {!imageUrl ? (
                     <button
@@ -398,16 +445,16 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                       <span className={`text-sm font-medium ${
                         isDraggingFile ? 'text-teal-700' : 'text-gray-600'
                       }`}>
-                        {isDraggingFile ? 'Drop image here' : 'Click to upload or drag & drop'}
+                        {isDraggingFile ? ui.dropImageHere : ui.clickToUpload}
                       </span>
-                      <span className="text-xs text-gray-400 mt-1">PNG, JPG up to 10MB</span>
+                      <span className="text-xs text-gray-400 mt-1">{isSpanish ? 'PNG, JPG hasta 10MB' : 'PNG, JPG up to 10MB'}</span>
                     </button>
                   ) : (
                     <div className="space-y-3">
                       {/* Header with Change/Remove buttons */}
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-medium text-gray-700">
-                          Current Image
+                          {ui.currentImage}
                         </span>
                         <div className="flex items-center gap-2">
                           <button
@@ -416,7 +463,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-teal-600 hover:text-teal-700 hover:bg-teal-50 rounded-lg transition-colors"
                           >
                             <Upload className="w-3.5 h-3.5" />
-                            Change
+                            {ui.change}
                           </button>
                           <button
                             type="button"
@@ -427,7 +474,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
                           >
                             <X className="w-3.5 h-3.5" />
-                            Remove
+                            {ui.remove}
                           </button>
                         </div>
                       </div>
@@ -436,7 +483,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                       <div>
                         <div className="flex items-center justify-between mb-3">
                           <span className="text-xs font-medium text-gray-600">
-                            Preview: {previewMode === 'desktop' ? `Desktop (${desktopRatio})` : `Mobile (${mobileRatio})`}
+                            {previewMode === 'desktop' ? `${ui.previewDesktop} (${desktopRatio})` : `${ui.previewMobile} (${mobileRatio})`}
                           </span>
 
                           {/* Desktop/Mobile Toggle */}
@@ -450,7 +497,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                                   : 'text-gray-600 hover:text-gray-900'
                               }`}
                             >
-                              Desktop
+                              {ui.desktop}
                             </button>
                             <button
                               type="button"
@@ -461,7 +508,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                                   : 'text-gray-600 hover:text-gray-900'
                               }`}
                             >
-                              Mobile
+                              {ui.mobile}
                             </button>
                           </div>
                         </div>
@@ -504,7 +551,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                           </div>
                         <p className="text-xs text-gray-500 mt-2">
                           <Move className="w-3 h-3 inline mr-1" />
-                          Click and drag to position the image focus point
+                          {ui.dragHelp}
                         </p>
                       </div>
 
@@ -530,7 +577,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                   {/* Desktop Ratio */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Desktop Ratio
+                      {ui.desktopRatio}
                     </label>
                     <div className="grid grid-cols-2 gap-2">
                       {(['16:9', 'fullscreen'] as CarouselRatio[]).map((ratio) => (
@@ -547,7 +594,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                               : 'border-gray-200 text-gray-700 hover:border-gray-300'
                           }`}
                         >
-                          {ratio === 'fullscreen' ? 'Fullscreen' : ratio}
+                          {ratio === 'fullscreen' ? (isSpanish ? 'Pantalla completa' : 'Fullscreen') : ratio}
                         </button>
                       ))}
                     </div>
@@ -556,7 +603,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                   {/* Mobile Ratio */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Mobile Ratio
+                      {ui.mobileRatio}
                     </label>
                     <div className="grid grid-cols-2 gap-2">
                       {(['9:16', 'fullscreen'] as CarouselRatio[]).map((ratio) => (
@@ -573,12 +620,12 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                               : 'border-gray-200 text-gray-700 hover:border-gray-300'
                           }`}
                         >
-                          {ratio === 'fullscreen' ? 'Fullscreen' : ratio}
+                          {ratio === 'fullscreen' ? (isSpanish ? 'Pantalla completa' : 'Fullscreen') : ratio}
                         </button>
                       ))}
                     </div>
                     <p className="text-xs text-gray-500 mt-1">
-                      Use the Desktop/Mobile toggle in the preview to see how your image looks on different devices.
+                      {ui.usePreviewHelp}
                     </p>
                   </div>
                 </div>
@@ -587,7 +634,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
               {/* Link Type */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Link Type
+                  {ui.linkType}
                 </label>
                 <div className="grid grid-cols-2 gap-2">
                   <button
@@ -602,7 +649,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                     <ImageIcon className={`w-5 h-5 mx-auto mb-1 ${
                       linkType === 'none' ? 'text-teal-600' : 'text-gray-400'
                     }`} />
-                    <div className="text-xs font-medium text-gray-900">None</div>
+                    <div className="text-xs font-medium text-gray-900">{ui.none}</div>
                   </button>
                   <button
                     type="button"
@@ -616,7 +663,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                     <LinkIcon className={`w-5 h-5 mx-auto mb-1 ${
                       linkType === 'external' ? 'text-teal-600' : 'text-gray-400'
                     }`} />
-                    <div className="text-xs font-medium text-gray-900">External</div>
+                    <div className="text-xs font-medium text-gray-900">{ui.external}</div>
                   </button>
                   <button
                     type="button"
@@ -630,7 +677,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                     <Video className={`w-5 h-5 mx-auto mb-1 ${
                       linkType === 'video' ? 'text-teal-600' : 'text-gray-400'
                     }`} />
-                    <div className="text-xs font-medium text-gray-900">Video</div>
+                    <div className="text-xs font-medium text-gray-900">{ui.video}</div>
                   </button>
                   <button
                     type="button"
@@ -644,7 +691,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                     <FileText className={`w-5 h-5 mx-auto mb-1 ${
                       linkType === 'internal' ? 'text-teal-600' : 'text-gray-400'
                     }`} />
-                    <div className="text-xs font-medium text-gray-900">Modal</div>
+                    <div className="text-xs font-medium text-gray-900">{ui.modal}</div>
                   </button>
                 </div>
               </div>
@@ -653,7 +700,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
               {linkType === 'external' ? (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    External URL *
+                    {ui.externalUrl}
                   </label>
                   <input
                     type="url"
@@ -666,7 +713,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
               ) : linkType === 'video' ? (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Video URL (YouTube or Vimeo) *
+                    {ui.videoUrl}
                   </label>
                   <input
                     type="url"
@@ -676,31 +723,31 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
                   />
                   <p className="text-xs text-gray-500 mt-1">
-                    Paste a YouTube or Vimeo link
+                    {ui.pasteVideo}
                   </p>
                 </div>
               ) : linkType === 'internal' ? (
                 <>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Information Title *
+                      {ui.informationTitle}
                     </label>
                     <input
                       type="text"
                       value={internalTitle}
                       onChange={(e) => setInternalTitle(e.target.value)}
-                      placeholder="Enter title..."
+                      placeholder={isSpanish ? 'Introduce el título...' : 'Enter title...'}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Content *
+                      {ui.content}
                     </label>
                     <textarea
                       value={internalContent}
                       onChange={(e) => setInternalContent(e.target.value)}
-                      placeholder="Enter content..."
+                      placeholder={isSpanish ? 'Introduce el contenido...' : 'Enter content...'}
                       rows={8}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none text-sm"
                     />
@@ -710,7 +757,7 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                 <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                   <p className="text-sm text-gray-600 text-center">
                     <ImageIcon className="w-5 h-5 inline-block mr-2 text-gray-400" />
-                    This slide will display as a non-clickable image
+                    {ui.nonClickable}
                   </p>
                 </div>
               )}
@@ -718,23 +765,23 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
               {/* Carousel Group */}
               <div className="pb-4 border-b border-gray-200">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Carousel Group (Optional)
+                  {ui.carouselGroup}
                 </label>
                 <input
                   type="text"
                   value={carouselGroup}
                   onChange={(e) => setCarouselGroup(e.target.value)}
-                  placeholder="Leave empty for single image"
+                  placeholder={ui.carouselGroupPlaceholder}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
                 />
                 <p className="text-xs text-gray-500 mt-1">
-                  Images with the same group name will form a carousel. Leave empty to display as a single image.
+                  {ui.carouselGroupHelp}
                 </p>
               </div>
 
               {/* Visibility Settings */}
               <div>
-                <h4 className="text-sm font-medium text-gray-700 mb-3">Visibility Settings</h4>
+                <h4 className="text-sm font-medium text-gray-700 mb-3">{ui.visibilitySettings}</h4>
                 <ContentVisibilitySettings
                   settings={visibilitySettings}
                   onChange={setVisibilitySettings}
@@ -751,17 +798,17 @@ export function HeroSlideModal({ isOpen, onClose, slide, onSave }: HeroSlideModa
                 type="button"
                 className="px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
               >
-                Cancel
+                {ui.cancel}
               </button>
             </Dialog.Close>
             <button
               type="submit"
               form="hero-slide-form"
               className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-white bg-teal-600 rounded-lg hover:bg-teal-700 transition-colors"
-            >
-              <Save className="w-4 h-4" />
-              {slide ? 'Update Slide' : 'Add Slide'}
-            </button>
+              >
+                <Save className="w-4 h-4" />
+              {slide ? ui.updateSlide : ui.addSlide}
+              </button>
           </div>
         </Dialog.Content>
       </Dialog.Portal>

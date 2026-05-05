@@ -3,6 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { X, Save, Loader2 } from 'lucide-react';
 import { bannersService, type Banner } from '@/app/services/bannersService';
 import { toast } from 'sonner';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 interface BannerModalProps {
   isOpen: boolean;
@@ -21,6 +22,36 @@ export function BannerModal({ isOpen, onClose, banner, onSave }: BannerModalProp
   const [status, setStatus] = useState<'active' | 'inactive'>(banner?.status || 'active');
   const [dismissible, setDismissible] = useState(banner?.dismissible ?? true);
   const [saving, setSaving] = useState(false);
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
+  const ui = {
+    description: isSpanish ? 'Editar o crear un banner' : 'Edit or create a banner',
+    title: banner ? (isSpanish ? 'Editar banner' : 'Edit Banner') : (isSpanish ? 'Crear banner' : 'Create Banner'),
+    titleLabel: isSpanish ? 'Título' : 'Title',
+    titlePlaceholder: isSpanish ? 'Título del banner' : 'Banner title',
+    contentLabel: isSpanish ? 'Contenido (opcional)' : 'Content (Optional)',
+    contentPlaceholder: isSpanish ? 'Mensaje o descripción del banner' : 'Banner message or description',
+    linkUrlLabel: isSpanish ? 'URL del enlace (opcional)' : 'Link URL (Optional)',
+    linkUrlPlaceholder: 'https://example.com',
+    linkTextLabel: isSpanish ? 'Texto del enlace (opcional)' : 'Link Text (Optional)',
+    linkTextPlaceholder: isSpanish ? 'Más información' : 'Learn more',
+    startDateLabel: isSpanish ? 'Fecha de inicio (opcional)' : 'Start Date (Optional)',
+    startDateHelp: isSpanish ? 'Cuándo empezar a mostrar este banner' : 'When to start showing this banner',
+    endDateLabel: isSpanish ? 'Fecha de fin (opcional)' : 'End Date (Optional)',
+    endDateHelp: isSpanish ? 'Cuándo dejar de mostrar este banner' : 'When to stop showing this banner',
+    dismissible: isSpanish ? 'Descartable (los usuarios pueden cerrar este banner)' : 'Dismissible (users can close this banner)',
+    statusLabel: isSpanish ? 'Estado' : 'Status',
+    active: isSpanish ? 'Activo' : 'Active',
+    inactive: isSpanish ? 'Inactivo' : 'Inactive',
+    cancel: isSpanish ? 'Cancelar' : 'Cancel',
+    saving: isSpanish ? 'Guardando...' : 'Saving...',
+    update: isSpanish ? 'Actualizar banner' : 'Update Banner',
+    create: isSpanish ? 'Crear banner' : 'Create Banner',
+    titleRequired: isSpanish ? 'Por favor introduce un título' : 'Please enter a title',
+    updated: isSpanish ? 'Banner actualizado correctamente' : 'Banner updated successfully',
+    created: isSpanish ? 'Banner creado correctamente' : 'Banner created successfully',
+    failed: isSpanish ? 'No se pudo guardar el banner' : 'Failed to save banner',
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -58,7 +89,7 @@ export function BannerModal({ isOpen, onClose, banner, onSave }: BannerModalProp
 
     try {
       if (!title.trim()) {
-        toast.error('Please enter a title');
+        toast.error(ui.titleRequired);
         setSaving(false);
         return;
       }
@@ -77,16 +108,16 @@ export function BannerModal({ isOpen, onClose, banner, onSave }: BannerModalProp
 
       if (banner) {
         await bannersService.updateBanner(banner.id, bannerData);
-        toast.success('Banner updated successfully');
+        toast.success(ui.updated);
       } else {
         await bannersService.createBanner(bannerData);
-        toast.success('Banner created successfully');
+        toast.success(ui.created);
       }
 
       onSave();
       onClose();
     } catch (error) {
-      toast.error('Failed to save banner');
+      toast.error(ui.failed);
       console.error('Error saving banner:', error);
     } finally {
       setSaving(false);
@@ -99,13 +130,13 @@ export function BannerModal({ isOpen, onClose, banner, onSave }: BannerModalProp
         <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[70]" />
         <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:left-1/2 sm:top-1/2 sm:right-auto sm:bottom-auto sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-2xl sm:rounded-lg sm:max-w-2xl w-full sm:max-h-[90vh] overflow-hidden z-[80] flex flex-col">
           <Dialog.Description className="sr-only">
-            {banner ? 'Edit banner' : 'Create new banner'}
+            {ui.description}
           </Dialog.Description>
 
           {/* Header */}
           <div className="flex-shrink-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
             <Dialog.Title className="text-xl font-semibold text-gray-900">
-              {banner ? 'Edit Banner' : 'Create Banner'}
+              {ui.title}
             </Dialog.Title>
             <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg flex items-center justify-center">
               <X className="w-5 h-5" />
@@ -118,29 +149,29 @@ export function BannerModal({ isOpen, onClose, banner, onSave }: BannerModalProp
               {/* Status */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Status
+                  {ui.statusLabel}
                 </label>
                 <select
                   value={status}
                   onChange={(e) => setStatus(e.target.value as 'active' | 'inactive')}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                 >
-                  <option value="active">Active</option>
-                  <option value="inactive">Inactive</option>
+                  <option value="active">{ui.active}</option>
+                  <option value="inactive">{ui.inactive}</option>
                 </select>
               </div>
 
               {/* Title */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Title <span className="text-red-500">*</span>
+                  {ui.titleLabel} <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                  placeholder="Banner title"
+                  placeholder={ui.titlePlaceholder}
                   required
                 />
               </div>
@@ -148,14 +179,14 @@ export function BannerModal({ isOpen, onClose, banner, onSave }: BannerModalProp
               {/* Content */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Content (Optional)
+                  {ui.contentLabel}
                 </label>
                 <textarea
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   rows={3}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none"
-                  placeholder="Banner message or description"
+                  placeholder={ui.contentPlaceholder}
                 />
               </div>
 
@@ -163,26 +194,26 @@ export function BannerModal({ isOpen, onClose, banner, onSave }: BannerModalProp
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Link URL (Optional)
+                    {ui.linkUrlLabel}
                   </label>
                   <input
                     type="url"
                     value={linkUrl}
                     onChange={(e) => setLinkUrl(e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                    placeholder="https://example.com"
+                    placeholder={ui.linkUrlPlaceholder}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Link Text (Optional)
+                    {ui.linkTextLabel}
                   </label>
                   <input
                     type="text"
                     value={linkText}
                     onChange={(e) => setLinkText(e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                    placeholder="Learn more"
+                    placeholder={ui.linkTextPlaceholder}
                   />
                 </div>
               </div>
@@ -191,7 +222,7 @@ export function BannerModal({ isOpen, onClose, banner, onSave }: BannerModalProp
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Start Date (Optional)
+                    {ui.startDateLabel}
                   </label>
                   <input
                     type="date"
@@ -199,11 +230,11 @@ export function BannerModal({ isOpen, onClose, banner, onSave }: BannerModalProp
                     onChange={(e) => setStartDate(e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                   />
-                  <p className="text-xs text-gray-500 mt-1">When to start showing this banner</p>
+                  <p className="text-xs text-gray-500 mt-1">{ui.startDateHelp}</p>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    End Date (Optional)
+                    {ui.endDateLabel}
                   </label>
                   <input
                     type="date"
@@ -211,7 +242,7 @@ export function BannerModal({ isOpen, onClose, banner, onSave }: BannerModalProp
                     onChange={(e) => setEndDate(e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                   />
-                  <p className="text-xs text-gray-500 mt-1">When to stop showing this banner</p>
+                  <p className="text-xs text-gray-500 mt-1">{ui.endDateHelp}</p>
                 </div>
               </div>
 
@@ -225,7 +256,7 @@ export function BannerModal({ isOpen, onClose, banner, onSave }: BannerModalProp
                   className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
                 />
                 <label htmlFor="dismissible" className="text-sm font-medium text-gray-700">
-                  Dismissible (users can close this banner)
+                  {ui.dismissible}
                 </label>
               </div>
             </div>
@@ -237,7 +268,7 @@ export function BannerModal({ isOpen, onClose, banner, onSave }: BannerModalProp
                 onClick={onClose}
                 className="px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
               >
-                Cancel
+                {ui.cancel}
               </button>
               <button
                 type="submit"
@@ -245,7 +276,7 @@ export function BannerModal({ isOpen, onClose, banner, onSave }: BannerModalProp
                 className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-white bg-teal-600 rounded-lg hover:bg-teal-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
-                {saving ? 'Saving...' : (banner ? 'Update Banner' : 'Create Banner')}
+                {saving ? ui.saving : (banner ? ui.update : ui.create)}
               </button>
             </div>
           </form>

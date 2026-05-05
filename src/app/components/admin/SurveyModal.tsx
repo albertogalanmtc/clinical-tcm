@@ -3,6 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { X, Save, Loader2, Plus, Trash2 } from 'lucide-react';
 import { surveysService, type Survey, type SurveyQuestion } from '@/app/services/surveysService';
 import { toast } from 'sonner';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 interface SurveyModalProps {
   isOpen: boolean;
@@ -21,6 +22,44 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
   const [thankYouEmoji, setThankYouEmoji] = useState(survey?.thank_you_emoji || '🎉');
   const [showThankYouEmoji, setShowThankYouEmoji] = useState(survey?.show_thank_you_emoji ?? true);
   const [saving, setSaving] = useState(false);
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
+  const ui = {
+    description: isSpanish ? 'Editar o crear una encuesta' : 'Edit or create a survey',
+    title: survey ? (isSpanish ? 'Editar encuesta' : 'Edit Survey') : (isSpanish ? 'Crear encuesta' : 'Create Survey'),
+    addQuestion: isSpanish ? 'Añadir pregunta' : 'Add Question',
+    questions: isSpanish ? 'Preguntas' : 'Questions',
+    settings: isSpanish ? 'Ajustes' : 'Settings',
+    status: isSpanish ? 'Estado' : 'Status',
+    draft: isSpanish ? 'Borrador' : 'Draft',
+    active: isSpanish ? 'Activo' : 'Active',
+    inactive: isSpanish ? 'Inactivo' : 'Inactive',
+    questionLabel: (n: number) => (isSpanish ? `Pregunta ${n}` : `Question ${n}`),
+    questionPlaceholder: isSpanish ? 'Introduce tu pregunta' : 'Enter your question',
+    options: isSpanish ? 'Opciones' : 'Options',
+    addOption: isSpanish ? 'Añadir opción' : '+ Add Option',
+    allowFreeText: isSpanish ? 'Permitir respuesta de texto libre' : 'Allow free text response',
+    startDate: isSpanish ? 'Fecha de inicio (opcional)' : 'Start Date (Optional)',
+    endDate: isSpanish ? 'Fecha de fin (opcional)' : 'End Date (Optional)',
+    showResults: isSpanish ? 'Mostrar resultados a los usuarios después de enviar' : 'Show results to users after submission',
+    thankYouMessage: isSpanish ? 'Mensaje de agradecimiento (opcional)' : 'Thank You Message (Optional)',
+    thankYouPlaceholder: isSpanish ? '¡Gracias por completar esta encuesta!' : 'Thank you for completing this survey!',
+    showEmoji: isSpanish ? 'Mostrar emoji en el mensaje de agradecimiento' : 'Show emoji in thank you message',
+    emoji: isSpanish ? 'Emoji (pegar aquí)' : 'Emoji (paste here)',
+    cancel: isSpanish ? 'Cancelar' : 'Cancel',
+    saving: isSpanish ? 'Guardando...' : 'Saving...',
+    update: isSpanish ? 'Actualizar encuesta' : 'Update Survey',
+    create: isSpanish ? 'Crear encuesta' : 'Create Survey',
+    addAtLeastOne: isSpanish ? 'Por favor añade al menos una pregunta' : 'Please add at least one question',
+    ensureQuestions: isSpanish ? 'Asegúrate de que las preguntas tengan texto y al menos una opción' : 'Please ensure questions have text and at least one option',
+    updated: isSpanish ? 'Encuesta actualizada correctamente' : 'Survey updated successfully',
+    created: isSpanish ? 'Encuesta creada correctamente' : 'Survey created successfully',
+    failed: isSpanish ? 'No se pudo guardar la encuesta' : 'Failed to save survey',
+    minOne: isSpanish ? 'Mínimo 1 pregunta requerida' : 'Minimum 1 question required',
+    maxQuestions: isSpanish ? 'Máximo 10 preguntas permitidas' : 'Maximum 10 questions allowed',
+    maxOptions: isSpanish ? 'Máximo 6 opciones permitidas por pregunta' : 'Maximum 6 options allowed per question',
+    minOptions: isSpanish ? 'Mínimo 2 opciones requeridas por pregunta' : 'Minimum 2 options required per question',
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -90,7 +129,7 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
 
     try {
       if (questions.length === 0) {
-        toast.error('Please add at least one question');
+        toast.error(ui.addAtLeastOne);
         setSaving(false);
         return;
       }
@@ -100,7 +139,7 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
       );
 
       if (validQuestions.length === 0) {
-        toast.error('Please ensure questions have text and at least one option');
+        toast.error(ui.ensureQuestions);
         setSaving(false);
         return;
       }
@@ -132,17 +171,17 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
       if (survey) {
         const result = await surveysService.updateSurvey(survey.id, surveyData);
         console.log('SurveyModal: Update result:', result);
-        toast.success('Survey updated successfully');
+        toast.success(ui.updated);
       } else {
         const result = await surveysService.createSurvey(surveyData);
         console.log('SurveyModal: Create result:', result);
-        toast.success('Survey created successfully');
+        toast.success(ui.created);
       }
 
       onSave();
       onClose();
     } catch (error) {
-      toast.error('Failed to save survey');
+      toast.error(ui.failed);
       console.error('Error saving survey:', error);
     } finally {
       setSaving(false);
@@ -155,13 +194,13 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
         <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[70]" />
         <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:left-1/2 sm:top-1/2 sm:right-auto sm:bottom-auto sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-2xl sm:rounded-lg sm:max-w-3xl w-full sm:max-h-[90vh] overflow-hidden z-[80] flex flex-col">
           <Dialog.Description className="sr-only">
-            {survey ? 'Edit survey' : 'Create new survey'}
+            {ui.description}
           </Dialog.Description>
 
           {/* Header */}
           <div className="flex-shrink-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
             <Dialog.Title className="text-xl font-semibold text-gray-900">
-              {survey ? 'Edit Survey' : 'Create Survey'}
+              {ui.title}
             </Dialog.Title>
             <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg flex items-center justify-center">
               <X className="w-5 h-5" />
@@ -175,16 +214,16 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Status
+                    {ui.status}
                   </label>
                   <select
                     value={status}
                     onChange={(e) => setStatus(e.target.value as 'active' | 'inactive' | 'draft')}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                   >
-                    <option value="draft">Draft</option>
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
+                    <option value="draft">{ui.draft}</option>
+                    <option value="active">{ui.active}</option>
+                    <option value="inactive">{ui.inactive}</option>
                   </select>
                 </div>
               </div>
@@ -199,7 +238,7 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
                     className="inline-flex items-center gap-1 text-sm text-teal-600 hover:text-teal-700 font-medium"
                   >
                     <Plus className="w-4 h-4" />
-                    Add Question
+                    {ui.addQuestion}
                   </button>
                 </div>
 
@@ -208,14 +247,14 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
                     <div className="flex items-start gap-2">
                       <div className="flex-1">
                         <label className="block font-medium text-gray-900 mb-2">
-                          Question {qIndex + 1} <span className="text-red-500">*</span>
+                          {ui.questionLabel(qIndex + 1)} <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="text"
                           value={q.question}
                           onChange={(e) => updateQuestion(qIndex, 'question', e.target.value)}
                           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                          placeholder="Enter your question"
+                          placeholder={ui.questionPlaceholder}
                         />
                       </div>
                       {questions.length > 1 && (
@@ -232,7 +271,7 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
                     {/* Options */}
                     <div className="ml-4 space-y-2">
                       <label className="block text-sm font-medium text-gray-700">
-                        Options
+                        {ui.options}
                       </label>
                       {q.options.map((option, oIndex) => (
                         <div key={oIndex} className="flex items-center gap-2">
@@ -244,11 +283,11 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
                             placeholder={`Option ${oIndex + 1}`}
                           />
                           {q.options.length > 1 && (
-                            <button
-                              type="button"
-                              onClick={() => removeOption(qIndex, oIndex)}
-                              className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                            >
+                          <button
+                            type="button"
+                            onClick={() => removeOption(qIndex, oIndex)}
+                            className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                          >
                               <X className="w-4 h-4" />
                             </button>
                           )}
@@ -259,7 +298,7 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
                         onClick={() => addOption(qIndex)}
                         className="text-sm text-teal-600 hover:text-teal-700 font-medium"
                       >
-                        + Add Option
+                        {ui.addOption}
                       </button>
                     </div>
 
@@ -273,7 +312,7 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
                         className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
                       />
                       <label htmlFor={`freetext-${qIndex}`} className="text-sm text-gray-700">
-                        Allow free text response
+                        {ui.allowFreeText}
                       </label>
                     </div>
                   </div>
@@ -282,13 +321,13 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
 
               {/* Settings */}
               <div className="space-y-4">
-                <h3 className="font-medium text-gray-900">Settings</h3>
+                <h3 className="font-medium text-gray-900">{ui.settings}</h3>
 
                 {/* Dates */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Start Date (Optional)
+                      {ui.startDate}
                     </label>
                     <input
                       type="date"
@@ -299,7 +338,7 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      End Date (Optional)
+                      {ui.endDate}
                     </label>
                     <input
                       type="date"
@@ -320,21 +359,21 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
                     className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
                   />
                   <label htmlFor="showResults" className="text-sm font-medium text-gray-700">
-                    Show results to users after submission
+                    {ui.showResults}
                   </label>
                 </div>
 
                 {/* Thank You Message */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Thank You Message (Optional)
-                  </label>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    {ui.thankYouMessage}
+                    </label>
                   <textarea
                     value={thankYouMessage}
                     onChange={(e) => setThankYouMessage(e.target.value)}
                     rows={2}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none"
-                    placeholder="Thank you for completing this survey!"
+                    placeholder={ui.thankYouPlaceholder}
                   />
                 </div>
 
@@ -349,13 +388,13 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
                       className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
                     />
                     <label htmlFor="showEmoji" className="text-sm font-medium text-gray-700">
-                      Show emoji in thank you message
+                      {ui.showEmoji}
                     </label>
                   </div>
                   {showThankYouEmoji && (
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Emoji (paste here)
+                        {ui.emoji}
                       </label>
                       <input
                         type="text"
@@ -378,7 +417,7 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
                 onClick={onClose}
                 className="px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
               >
-                Cancel
+                {ui.cancel}
               </button>
               <button
                 type="submit"
@@ -386,7 +425,7 @@ export function SurveyModal({ isOpen, onClose, survey, onSave }: SurveyModalProp
                 className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-white bg-teal-600 rounded-lg hover:bg-teal-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
-                {saving ? 'Saving...' : (survey ? 'Update Survey' : 'Create Survey')}
+                {saving ? ui.saving : (survey ? ui.update : ui.create)}
               </button>
             </div>
           </form>

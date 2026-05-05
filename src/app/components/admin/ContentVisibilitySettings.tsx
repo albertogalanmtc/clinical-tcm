@@ -1,5 +1,6 @@
 import { CountryMultiSelect } from './CountryMultiSelect';
 import { Calendar } from 'lucide-react';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 export interface VisibilitySettings {
   countries: string[];
@@ -20,6 +21,9 @@ export function ContentVisibilitySettings({
   onChange,
   showDateRange = true,
 }: ContentVisibilitySettingsProps) {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
+
   const handleCountriesChange = (countries: string[]) => {
     onChange({ ...settings, countries });
   };
@@ -45,8 +49,8 @@ export function ContentVisibilitySettings({
       <CountryMultiSelect
         selectedCountries={settings.countries}
         onChange={handleCountriesChange}
-        label="Target Countries"
-        placeholder="Global (all countries)"
+        label={isSpanish ? 'Países objetivo' : 'Target Countries'}
+        placeholder={isSpanish ? 'Global (todos los países)' : 'Global (all countries)'}
       />
 
       {/* Date Range (Optional) */}
@@ -54,8 +58,10 @@ export function ContentVisibilitySettings({
         <div>
           <div className="flex items-center justify-between mb-2">
             <label className="block text-sm font-medium text-gray-700">
-              Publication Date Range
-              <span className="ml-2 text-xs text-gray-500">(Optional)</span>
+              {isSpanish ? 'Rango de fechas de publicación' : 'Publication Date Range'}
+              <span className="ml-2 text-xs text-gray-500">
+                {isSpanish ? '(Opcional)' : '(Optional)'}
+              </span>
             </label>
             {settings.dateRange && (
               <button
@@ -63,7 +69,7 @@ export function ContentVisibilitySettings({
                 onClick={clearDateRange}
                 className="text-xs text-teal-600 hover:text-teal-700"
               >
-                Clear
+                {isSpanish ? 'Borrar' : 'Clear'}
               </button>
             )}
           </div>
@@ -71,7 +77,9 @@ export function ContentVisibilitySettings({
           <div className="grid grid-cols-2 gap-4">
             {/* Start Date */}
             <div>
-              <label className="block text-xs text-gray-600 mb-1">Start Date</label>
+              <label className="block text-xs text-gray-600 mb-1">
+                {isSpanish ? 'Fecha de inicio' : 'Start Date'}
+              </label>
               <div className="relative">
                 <input
                   type="date"
@@ -85,7 +93,9 @@ export function ContentVisibilitySettings({
 
             {/* End Date */}
             <div>
-              <label className="block text-xs text-gray-600 mb-1">End Date</label>
+              <label className="block text-xs text-gray-600 mb-1">
+                {isSpanish ? 'Fecha de fin' : 'End Date'}
+              </label>
               <div className="relative">
                 <input
                   type="date"
@@ -103,10 +113,16 @@ export function ContentVisibilitySettings({
           {settings.dateRange?.start || settings.dateRange?.end ? (
             <p className="mt-2 text-xs text-gray-500">
               {settings.dateRange.start && settings.dateRange.end
-                ? `Visible from ${new Date(settings.dateRange.start).toLocaleDateString()} to ${new Date(settings.dateRange.end).toLocaleDateString()}`
+                ? (isSpanish
+                    ? `Visible desde ${new Date(settings.dateRange.start).toLocaleDateString()} hasta ${new Date(settings.dateRange.end).toLocaleDateString()}`
+                    : `Visible from ${new Date(settings.dateRange.start).toLocaleDateString()} to ${new Date(settings.dateRange.end).toLocaleDateString()}`)
                 : settings.dateRange.start
-                ? `Visible from ${new Date(settings.dateRange.start).toLocaleDateString()} onwards`
-                : `Visible until ${new Date(settings.dateRange.end).toLocaleDateString()}`}
+                ? (isSpanish
+                    ? `Visible desde ${new Date(settings.dateRange.start).toLocaleDateString()} en adelante`
+                    : `Visible from ${new Date(settings.dateRange.start).toLocaleDateString()} onwards`)
+                : (isSpanish
+                    ? `Visible hasta ${new Date(settings.dateRange.end).toLocaleDateString()}`
+                    : `Visible until ${new Date(settings.dateRange.end).toLocaleDateString()}`)}
             </p>
           ) : null}
         </div>
@@ -114,23 +130,25 @@ export function ContentVisibilitySettings({
 
       {/* Visibility Summary */}
       <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-        <h4 className="text-sm font-medium text-gray-700 mb-2">Visibility Summary</h4>
+        <h4 className="text-sm font-medium text-gray-700 mb-2">
+          {isSpanish ? 'Resumen de visibilidad' : 'Visibility Summary'}
+        </h4>
         <ul className="text-sm text-gray-600 space-y-1">
           <li>
-            <strong>Geographic:</strong>{' '}
+            <strong>{isSpanish ? 'Geográfico:' : 'Geographic:'}</strong>{' '}
             {settings.countries.length === 0
-              ? 'Global (all countries)'
-              : `${settings.countries.length} ${settings.countries.length === 1 ? 'country' : 'countries'}`}
+              ? (isSpanish ? 'Global (todos los países)' : 'Global (all countries)')
+              : `${settings.countries.length} ${settings.countries.length === 1 ? (isSpanish ? 'país' : 'country') : (isSpanish ? 'países' : 'countries')}`}
           </li>
           <li>
-            <strong>Temporal:</strong>{' '}
+            <strong>{isSpanish ? 'Temporal:' : 'Temporal:'}</strong>{' '}
             {!settings.dateRange || (!settings.dateRange.start && !settings.dateRange.end)
-              ? 'Always active'
+              ? (isSpanish ? 'Siempre activo' : 'Always active')
               : settings.dateRange.start && settings.dateRange.end
               ? `${new Date(settings.dateRange.start).toLocaleDateString()} - ${new Date(settings.dateRange.end).toLocaleDateString()}`
               : settings.dateRange.start
-              ? `From ${new Date(settings.dateRange.start).toLocaleDateString()}`
-              : `Until ${new Date(settings.dateRange.end).toLocaleDateString()}`}
+              ? (isSpanish ? `Desde ${new Date(settings.dateRange.start).toLocaleDateString()}` : `From ${new Date(settings.dateRange.start).toLocaleDateString()}`)
+              : (isSpanish ? `Hasta ${new Date(settings.dateRange.end).toLocaleDateString()}` : `Until ${new Date(settings.dateRange.end).toLocaleDateString()}`)}
           </li>
         </ul>
       </div>

@@ -6,6 +6,7 @@ import { useState, useMemo } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ChevronLeft, Search, Info } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
+import { useLanguage } from '../contexts/LanguageContext';
 import { useSwipeBack } from '../hooks/useSwipeBack';
 
 // Mock data - Extended list of all formulas
@@ -38,6 +39,8 @@ const allFormulas = [
 
 export default function AdminFormulasUsageList() {
   const navigate = useNavigate();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   
   // Enable swipe-to-go-back gesture on mobile
   useSwipeBack();
@@ -61,6 +64,24 @@ export default function AdminFormulasUsageList() {
       (filterType === 'custom' && formula.type === 'Custom');
     return matchesSearch && matchesType;
   });
+  const ui = {
+    backToUsage: isSpanish ? 'Volver a analíticas de uso' : 'Back to Usage Analytics',
+    title: isSpanish ? 'Uso de fórmulas' : 'All formulas usage',
+    description: isSpanish ? 'Lista completa de fórmulas con estadísticas de uso' : 'Complete list of formulas with usage statistics',
+    searchPlaceholder: isSpanish ? 'Buscar fórmulas...' : 'Search formulas...',
+    all: isSpanish ? 'Todas' : 'All',
+    standard: isSpanish ? 'Estándar' : 'Standard',
+    custom: isSpanish ? 'Personalizadas' : 'Custom',
+    showing: isSpanish ? 'Mostrando' : 'Showing',
+    of: isSpanish ? 'de' : 'of',
+    formulas: isSpanish ? 'fórmulas' : 'formulas',
+    close: isSpanish ? 'Cerrar' : 'Close',
+    formulaUsageDetails: isSpanish ? 'Detalles de uso de la fórmula' : 'Formula usage details',
+    formulaType: isSpanish ? 'Tipo de fórmula' : 'Formula type',
+    usageFrequency: isSpanish ? 'Frecuencia de uso' : 'Usage frequency',
+    usagePercentage: isSpanish ? 'Porcentaje de uso' : 'Usage percentage',
+    mostCommonHerbs: isSpanish ? 'Hierbas co-prescritas más comunes' : 'Most common herbs',
+  };
 
   return (
     <>
@@ -70,12 +91,12 @@ export default function AdminFormulasUsageList() {
           <Link
             to="/admin/usage"
             className="h-10 w-10 sm:w-11 sm:h-11 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-colors flex-shrink-0"
-            title="Back to Usage Analytics"
+            title={ui.backToUsage}
           >
             <ChevronLeft className="w-5 h-5" />
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">All formulas usage</h1>
-          <p className="hidden sm:block text-gray-600">Complete list of formulas with usage statistics</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">{ui.title}</h1>
+          <p className="hidden sm:block text-gray-600">{ui.description}</p>
         </div>
 
         {/* Search and Filters */}
@@ -85,7 +106,7 @@ export default function AdminFormulasUsageList() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search formulas..."
+                placeholder={ui.searchPlaceholder}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
@@ -100,7 +121,7 @@ export default function AdminFormulasUsageList() {
                     : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
                 }`}
               >
-                All
+                {ui.all}
               </button>
               <button
                 onClick={() => setFilterType('standard')}
@@ -110,7 +131,7 @@ export default function AdminFormulasUsageList() {
                     : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
                 }`}
               >
-                Standard
+                {ui.standard}
               </button>
               <button
                 onClick={() => setFilterType('custom')}
@@ -120,13 +141,13 @@ export default function AdminFormulasUsageList() {
                     : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
                 }`}
               >
-                Custom
+                {ui.custom}
               </button>
             </div>
           </div>
           <div className="text-sm text-gray-600">
-            Showing <span className="font-semibold text-gray-900">{filteredFormulas.length}</span> of{' '}
-            <span className="font-semibold text-gray-900">{allFormulas.length}</span> formulas
+            {ui.showing} <span className="font-semibold text-gray-900">{filteredFormulas.length}</span> {ui.of}{' '}
+            <span className="font-semibold text-gray-900">{allFormulas.length}</span> {ui.formulas}
           </div>
         </div>
 
@@ -197,7 +218,7 @@ export default function AdminFormulasUsageList() {
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
           <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-xl max-w-md w-full max-h-[80vh] overflow-y-auto z-50">
-            <Dialog.Description className="sr-only">Formula usage details</Dialog.Description>
+            <Dialog.Description className="sr-only">{ui.formulaUsageDetails}</Dialog.Description>
             <div className="p-6">
               <Dialog.Title className="text-xl font-semibold text-gray-900 mb-4">
                 {selectedFormula?.name}
@@ -205,7 +226,7 @@ export default function AdminFormulasUsageList() {
               
               <div className="space-y-4">
                 <div className="p-4 bg-gray-50 rounded-lg">
-                  <div className="text-sm text-gray-600 mb-1">Formula type</div>
+                  <div className="text-sm text-gray-600 mb-1">{ui.formulaType}</div>
                   <span
                     className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
                       selectedFormula?.type === 'Standard'
@@ -218,17 +239,17 @@ export default function AdminFormulasUsageList() {
                 </div>
 
                 <div className="p-4 bg-gray-50 rounded-lg">
-                  <div className="text-sm text-gray-600 mb-1">Usage frequency</div>
+                  <div className="text-sm text-gray-600 mb-1">{ui.usageFrequency}</div>
                   <div className="text-3xl font-bold text-gray-900">{selectedFormula?.usageCount}</div>
                 </div>
 
                 <div className="p-4 bg-gray-50 rounded-lg">
-                  <div className="text-sm text-gray-600 mb-1">Usage percentage</div>
+                  <div className="text-sm text-gray-600 mb-1">{ui.usagePercentage}</div>
                   <div className="text-3xl font-bold text-teal-600">{selectedFormula?.percentage}%</div>
                 </div>
 
                 <div className="p-4 bg-gray-50 rounded-lg">
-                  <div className="text-sm text-gray-600 mb-3">Most common herbs</div>
+                  <div className="text-sm text-gray-600 mb-3">{ui.mostCommonHerbs}</div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-gray-700">Ren Shen</span>
@@ -254,7 +275,7 @@ export default function AdminFormulasUsageList() {
                 onClick={() => setSelectedFormula(null)}
                 className="w-full mt-6 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors font-medium"
               >
-                Close
+                {ui.close}
               </button>
             </div>
           </Dialog.Content>

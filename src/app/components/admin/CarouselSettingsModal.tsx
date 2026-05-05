@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { X, Save } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { type CarouselRatio } from '@/app/data/dashboardContent';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 interface CarouselSettingsModalProps {
   isOpen: boolean;
@@ -23,6 +24,19 @@ export function CarouselSettingsModal({
   const [desktopRatio, setDesktopRatio] = useState<CarouselRatio>(currentDesktopRatio);
   const [mobileRatio, setMobileRatio] = useState<CarouselRatio>(currentMobileRatio);
   const [transitionInterval, setTransitionInterval] = useState(currentTransitionInterval);
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
+  const ui = {
+    description: isSpanish ? 'Configurar proporciones de carrusel y transiciones' : 'Configure carousel aspect ratios and transition settings',
+    title: isSpanish ? 'Ajustes del carrusel' : 'Carousel Settings',
+    desktopRatio: isSpanish ? 'Proporción de escritorio' : 'Desktop Ratio',
+    mobileRatio: isSpanish ? 'Proporción móvil' : 'Mobile Ratio',
+    transition: isSpanish ? 'Tiempo de transición de la diapositiva' : 'Slide Transition Time',
+    full: isSpanish ? 'Pantalla completa' : 'Fullscreen',
+    seconds: isSpanish ? 'segundos' : 'seconds',
+    cancel: isSpanish ? 'Cancelar' : 'Cancel',
+    save: isSpanish ? 'Guardar ajustes' : 'Save Settings',
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -53,13 +67,13 @@ export function CarouselSettingsModal({
         <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[70]" />
         <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:left-1/2 sm:top-1/2 sm:right-auto sm:bottom-auto sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-2xl sm:rounded-lg sm:max-w-2xl w-full sm:max-h-[90vh] overflow-hidden z-[80] flex flex-col">
           <Dialog.Description className="sr-only">
-            Configure carousel aspect ratios and transition settings
+            {ui.description}
           </Dialog.Description>
 
           {/* Header */}
           <div className="flex-shrink-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
             <Dialog.Title className="text-xl font-semibold text-gray-900">
-              Carousel Settings
+              {ui.title}
             </Dialog.Title>
             <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg flex items-center justify-center">
               <X className="w-5 h-5" />
@@ -71,7 +85,7 @@ export function CarouselSettingsModal({
             <div className="flex-1 overflow-y-auto p-6 space-y-6">
               {/* Desktop Ratio */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">Desktop Ratio</label>
+                <label className="block text-sm font-medium text-gray-700 mb-3">{ui.desktopRatio}</label>
                 <div className="grid grid-cols-2 gap-4">
                   {(['16:9', 'fullscreen'] as CarouselRatio[]).map((ratio) => (
                     <button
@@ -102,7 +116,7 @@ export function CarouselSettingsModal({
                       <span className={`text-sm font-medium ${
                         desktopRatio === ratio ? 'text-teal-700' : 'text-gray-700'
                       }`}>
-                        {ratio === 'fullscreen' ? 'Fullscreen' : ratio}
+                        {ratio === 'fullscreen' ? ui.full : ratio}
                       </span>
                     </button>
                   ))}
@@ -111,7 +125,7 @@ export function CarouselSettingsModal({
 
               {/* Mobile Ratio */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">Mobile Ratio</label>
+                <label className="block text-sm font-medium text-gray-700 mb-3">{ui.mobileRatio}</label>
                 <div className="grid grid-cols-2 gap-4">
                   {(['9:16', 'fullscreen'] as CarouselRatio[]).map((ratio) => (
                     <button
@@ -142,7 +156,7 @@ export function CarouselSettingsModal({
                       <span className={`text-sm font-medium ${
                         mobileRatio === ratio ? 'text-teal-700' : 'text-gray-700'
                       }`}>
-                        {ratio === 'fullscreen' ? 'Fullscreen' : ratio}
+                        {ratio === 'fullscreen' ? ui.full : ratio}
                       </span>
                     </button>
                   ))}
@@ -151,7 +165,7 @@ export function CarouselSettingsModal({
 
               {/* Transition Interval */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">Slide Transition Time</label>
+                <label className="block text-sm font-medium text-gray-700 mb-3">{ui.transition}</label>
                 <div className="grid grid-cols-4 gap-3">
                   {[3, 5, 7, 10].map((seconds) => (
                     <button
@@ -169,7 +183,7 @@ export function CarouselSettingsModal({
                       }`}>
                         {seconds}
                       </span>
-                      <span className="text-xs text-gray-500 mt-1">seconds</span>
+                      <span className="text-xs text-gray-500 mt-1">{ui.seconds}</span>
                     </button>
                   ))}
                 </div>
@@ -182,17 +196,17 @@ export function CarouselSettingsModal({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg bg-white hover:bg-gray-50 transition-colors font-medium"
-                >
-                  <X className="w-4 h-4" />
-                  Cancel
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg bg-white hover:bg-gray-50 transition-colors font-medium"
+              >
+                <X className="w-4 h-4" />
+                  {ui.cancel}
                 </button>
                 <button
                   type="submit"
                   className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium"
                 >
-                  <Save className="w-4 h-4" />
-                  Save Settings
+                <Save className="w-4 h-4" />
+                  {ui.save}
                 </button>
               </div>
             </div>

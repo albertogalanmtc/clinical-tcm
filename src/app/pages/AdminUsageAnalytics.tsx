@@ -950,10 +950,12 @@ export default function AdminUsageAnalytics() {
 
       {/* Drill-down Modal - Herb Detail */}
       <Dialog.Root open={!!selectedHerb} onOpenChange={(open) => !open && setSelectedHerb(null)}>
-        <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
-          <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-xl max-w-md w-full max-h-[80vh] overflow-y-auto z-50">
-            <Dialog.Description className="sr-only">Herb usage analytics details</Dialog.Description>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
+        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-xl max-w-md w-full max-h-[80vh] overflow-y-auto z-50">
+          <Dialog.Description className="sr-only">
+            {isSpanish ? 'Detalles de analíticas de la hierba' : 'Herb usage analytics details'}
+          </Dialog.Description>
             <div className="p-6">
               <Dialog.Title className="text-xl font-semibold text-gray-900 mb-4">
                 {selectedHerb?.name}
@@ -961,17 +963,17 @@ export default function AdminUsageAnalytics() {
 
               <div className="space-y-4">
                 <div className="p-4 bg-gray-50 rounded-lg">
-                  <div className="text-sm text-gray-600 mb-1">Total usage count</div>
+                  <div className="text-sm text-gray-600 mb-1">{isSpanish ? 'Conteo total de uso' : 'Total usage count'}</div>
                   <div className="text-3xl font-bold text-gray-900">{selectedHerb?.usageCount}</div>
                 </div>
 
                 <div className="p-4 bg-gray-50 rounded-lg">
-                  <div className="text-sm text-gray-600 mb-1">Usage percentage</div>
+                  <div className="text-sm text-gray-600 mb-1">{isSpanish ? 'Porcentaje de uso' : 'Usage percentage'}</div>
                   <div className="text-3xl font-bold text-teal-600">{selectedHerb?.percentage}%</div>
                 </div>
 
                 <div className="p-4 bg-gray-50 rounded-lg">
-                  <div className="text-sm text-gray-600 mb-1">Appears in prescriptions</div>
+                  <div className="text-sm text-gray-600 mb-1">{isSpanish ? 'Aparece en prescripciones' : 'Appears in prescriptions'}</div>
                   <div className="text-3xl font-bold text-gray-900">
                     {selectedHerb ? (() => {
                       const prescriptions = getPrescriptionsSync();
@@ -983,7 +985,7 @@ export default function AdminUsageAnalytics() {
                 </div>
 
                 <div className="p-4 bg-gray-50 rounded-lg">
-                  <div className="text-sm text-gray-600 mb-1">Used by practitioners</div>
+                  <div className="text-sm text-gray-600 mb-1">{isSpanish ? 'Usada por profesionales' : 'Used by practitioners'}</div>
                   <div className="text-3xl font-bold text-gray-900">
                     {selectedHerb ? (() => {
                       const prescriptions = getPrescriptionsSync();
@@ -1004,7 +1006,7 @@ export default function AdminUsageAnalytics() {
                 onClick={() => setSelectedHerb(null)}
                 className="w-full mt-6 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors font-medium"
               >
-                Close
+                {isSpanish ? 'Cerrar' : 'Close'}
               </button>
             </div>
           </Dialog.Content>
@@ -1016,7 +1018,9 @@ export default function AdminUsageAnalytics() {
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
           <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-xl max-w-md w-full max-h-[80vh] overflow-y-auto z-50">
-            <Dialog.Description className="sr-only">Formula usage analytics details</Dialog.Description>
+            <Dialog.Description className="sr-only">
+              {isSpanish ? 'Detalles de analíticas de la fórmula' : 'Formula usage analytics details'}
+            </Dialog.Description>
             <div className="p-6">
               <Dialog.Title className="text-xl font-semibold text-gray-900 mb-4">
                 {selectedFormula?.name}
@@ -1024,17 +1028,17 @@ export default function AdminUsageAnalytics() {
 
               <div className="space-y-4">
                 <div className="p-4 bg-gray-50 rounded-lg">
-                  <div className="text-sm text-gray-600 mb-1">Usage frequency</div>
+                  <div className="text-sm text-gray-600 mb-1">{isSpanish ? 'Frecuencia de uso' : 'Usage frequency'}</div>
                   <div className="text-3xl font-bold text-gray-900">{selectedFormula?.usageCount}</div>
                 </div>
 
                 <div className="p-4 bg-gray-50 rounded-lg">
-                  <div className="text-sm text-gray-600 mb-1">Usage percentage</div>
+                  <div className="text-sm text-gray-600 mb-1">{isSpanish ? 'Porcentaje de uso' : 'Usage percentage'}</div>
                   <div className="text-3xl font-bold text-teal-600">{selectedFormula?.percentage}%</div>
                 </div>
 
                 <div className="p-4 bg-gray-50 rounded-lg">
-                  <div className="text-sm text-gray-600 mb-1">Used by practitioners</div>
+                  <div className="text-sm text-gray-600 mb-1">{isSpanish ? 'Usada por profesionales' : 'Used by practitioners'}</div>
                   <div className="text-3xl font-bold text-gray-900">
                     {selectedFormula ? (() => {
                       const prescriptions = getPrescriptionsSync();
@@ -1051,7 +1055,7 @@ export default function AdminUsageAnalytics() {
                 </div>
 
                 <div className="p-4 bg-gray-50 rounded-lg">
-                  <div className="text-sm text-gray-600 mb-3">Most common co-prescribed herbs</div>
+                  <div className="text-sm text-gray-600 mb-3">{isSpanish ? 'Hierbas co-prescritas más comunes' : 'Most common co-prescribed herbs'}</div>
                   <div className="space-y-2">
                     {selectedFormula ? (() => {
                       const prescriptions = getPrescriptionsSync();
@@ -1081,7 +1085,7 @@ export default function AdminUsageAnalytics() {
                         .slice(0, 4);
 
                       if (topCoHerbs.length === 0) {
-                        return <div className="text-sm text-gray-500">No herbs co-prescribed</div>;
+                        return <div className="text-sm text-gray-500">{isSpanish ? 'No hay hierbas co-prescritas' : 'No herbs co-prescribed'}</div>;
                       }
 
                       return topCoHerbs.map(herb => (
@@ -1099,7 +1103,7 @@ export default function AdminUsageAnalytics() {
                 onClick={() => setSelectedFormula(null)}
                 className="w-full mt-6 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors font-medium"
               >
-                Close
+                {isSpanish ? 'Cerrar' : 'Close'}
               </button>
             </div>
           </Dialog.Content>

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { ChevronDown, X, Check } from 'lucide-react';
 import { normalizeForSearch } from '@/app/utils/searchUtils';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 // ISO-2 country codes with names
 export const COUNTRIES = [
@@ -79,6 +80,16 @@ export function CountryMultiSelect({
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
+
+  const ui = {
+    label: isSpanish ? 'Países objetivo' : 'Target Countries',
+    globalPlaceholder: isSpanish ? 'Global (todos los países)' : 'Global (all countries)',
+    leaveEmpty: isSpanish ? 'Déjalo vacío para visibilidad global' : 'Leave empty for global visibility',
+    searchPlaceholder: isSpanish ? 'Buscar países...' : 'Search countries...',
+    noCountries: isSpanish ? 'No se han encontrado países' : 'No countries found',
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -117,9 +128,9 @@ export function CountryMultiSelect({
   return (
     <div ref={dropdownRef} className="relative">
       <label className="block text-sm font-medium text-gray-700 mb-2">
-        {label}
+        {label === 'Target Countries' ? ui.label : label}
         <span className="ml-2 text-xs text-gray-500">
-          (Leave empty for global visibility)
+          ({ui.leaveEmpty})
         </span>
       </label>
 
@@ -152,8 +163,10 @@ export function CountryMultiSelect({
       >
         <span className="text-sm text-gray-700">
           {selectedCountries.length === 0
-            ? placeholder
-            : `${selectedCountries.length} ${selectedCountries.length === 1 ? 'country' : 'countries'} selected`}
+            ? (placeholder === 'Global (all countries)' ? ui.globalPlaceholder : placeholder)
+            : isSpanish
+            ? `${selectedCountries.length} ${selectedCountries.length === 1 ? 'país seleccionado' : 'países seleccionados'}`
+            : `${selectedCountries.length} ${selectedCountries.length === 1 ? 'country selected' : 'countries selected'}`}
         </span>
         <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
@@ -167,7 +180,7 @@ export function CountryMultiSelect({
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search countries..."
+              placeholder={ui.searchPlaceholder}
               className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
               autoFocus
             />
@@ -176,7 +189,7 @@ export function CountryMultiSelect({
           {/* Countries List */}
           <div className="max-h-64 overflow-y-auto">
             {filteredCountries.length === 0 ? (
-              <div className="px-4 py-3 text-sm text-gray-500">No countries found</div>
+              <div className="px-4 py-3 text-sm text-gray-500">{ui.noCountries}</div>
             ) : (
               filteredCountries.map((country) => {
                 const isSelected = selectedCountries.includes(country.code);

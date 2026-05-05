@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { X, Save } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { getQuickActions, updateQuickActions, publishQuickActions, type QuickActionItem } from '@/app/data/dashboardContent';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 interface QuickActionsModalProps {
   isOpen: boolean;
@@ -11,6 +12,17 @@ interface QuickActionsModalProps {
 
 export function QuickActionsModal({ isOpen, onClose, onSave }: QuickActionsModalProps) {
   const [actions, setActions] = useState<QuickActionItem[]>([]);
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
+  const ui = {
+    description: isSpanish
+      ? 'Activa o desactiva las tarjetas de acciones rápidas que aparecen en el panel'
+      : 'Enable or disable quick action cards that appear on the dashboard',
+    title: isSpanish ? 'Configurar acciones rápidas' : 'Configure Quick Actions',
+    cancel: isSpanish ? 'Cancelar' : 'Cancel',
+    save: isSpanish ? 'Guardar cambios' : 'Save Changes',
+    route: isSpanish ? 'Ruta' : 'Route',
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -61,13 +73,13 @@ export function QuickActionsModal({ isOpen, onClose, onSave }: QuickActionsModal
         <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[70]" />
         <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:left-1/2 sm:top-1/2 sm:right-auto sm:bottom-auto sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-2xl sm:rounded-lg sm:max-w-2xl w-full sm:max-h-[90vh] overflow-hidden z-[80] flex flex-col">
           <Dialog.Description className="sr-only">
-            Configure quick actions visibility
+            {ui.description}
           </Dialog.Description>
 
           {/* Header */}
           <div className="flex-shrink-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
             <Dialog.Title className="text-xl font-semibold text-gray-900">
-              Configure Quick Actions
+              {ui.title}
             </Dialog.Title>
             <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg flex items-center justify-center">
               <X className="w-5 h-5" />
@@ -78,7 +90,7 @@ export function QuickActionsModal({ isOpen, onClose, onSave }: QuickActionsModal
           <form onSubmit={handleSubmit} className="flex-1 flex flex-col overflow-hidden">
             <div className="flex-1 overflow-y-auto p-6">
               <p className="text-sm text-gray-600 mb-4">
-                Enable or disable quick action cards that appear on the dashboard
+                {ui.description}
               </p>
 
               <div className="space-y-3">
@@ -90,7 +102,7 @@ export function QuickActionsModal({ isOpen, onClose, onSave }: QuickActionsModal
                     <div className="flex-1">
                       <h4 className="text-sm font-medium text-gray-900">{action.title}</h4>
                       <p className="text-xs text-gray-500 mt-1">{action.description}</p>
-                      <p className="text-xs text-gray-400 mt-1">Route: {action.to}</p>
+                      <p className="text-xs text-gray-400 mt-1">{ui.route}: {action.to}</p>
                     </div>
                     <button
                       type="button"
@@ -119,14 +131,14 @@ export function QuickActionsModal({ isOpen, onClose, onSave }: QuickActionsModal
                   className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg bg-white hover:bg-gray-50 transition-colors font-medium"
                 >
                   <X className="w-4 h-4" />
-                  Cancel
+                  {ui.cancel}
                 </button>
                 <button
                   type="submit"
                   className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium"
                 >
                   <Save className="w-4 h-4" />
-                  Save Changes
+                  {ui.save}
                 </button>
               </div>
             </div>

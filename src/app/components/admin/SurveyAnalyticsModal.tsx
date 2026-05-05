@@ -6,6 +6,7 @@ import { fetchAdminUserIdentities } from '@/app/services/adminUserLookupService'
 import { fetchAllAdminUsers } from '@/app/services/adminUsersService';
 import { getUserDisplayName } from '@/app/services/adminUsersService';
 import type { Survey } from '@/app/services/surveysService';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 interface SurveyAnalyticsModalProps {
   survey: Survey;
@@ -25,6 +26,20 @@ export function SurveyAnalyticsModal({ survey, isOpen, onClose }: SurveyAnalytic
   const [responses, setResponses] = useState<SurveyResponseData[]>([]);
   const [loading, setLoading] = useState(true);
   const [expandedQuestion, setExpandedQuestion] = useState<number | null>(null);
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
+  const ui = {
+    description: isSpanish ? 'Analíticas y estadísticas de la encuesta' : 'Survey analytics and statistics',
+    title: isSpanish ? 'Analíticas de la encuesta' : 'Survey Analytics',
+    totalResponses: isSpanish ? 'Respuestas totales' : 'Total Responses',
+    questions: isSpanish ? 'Preguntas' : 'Questions',
+    status: isSpanish ? 'Estado' : 'Status',
+    analysis: isSpanish ? 'Análisis de preguntas' : 'Question Analysis',
+    noResponses: isSpanish ? 'Aún no hay respuestas' : 'No responses yet',
+    noAnswers: isSpanish ? 'No hay respuestas para esta pregunta' : 'No answers for this question',
+    individualResponses: isSpanish ? 'Respuestas individuales' : 'Individual Responses',
+    close: isSpanish ? 'Cerrar' : 'Close',
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -100,13 +115,13 @@ export function SurveyAnalyticsModal({ survey, isOpen, onClose }: SurveyAnalytic
         <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[100]" />
         <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:left-1/2 sm:top-1/2 sm:right-auto sm:bottom-auto sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-2xl sm:rounded-lg sm:max-w-4xl w-full sm:max-h-[90vh] overflow-hidden z-[110] flex flex-col">
           <Dialog.Description className="sr-only">
-            Survey analytics and statistics
+            {ui.description}
           </Dialog.Description>
 
           {/* Header */}
           <div className="flex-shrink-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
             <Dialog.Title className="text-xl font-semibold text-gray-900">
-              Survey Analytics
+              {ui.title}
             </Dialog.Title>
             <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg">
               <X className="w-5 h-5" />
@@ -126,15 +141,15 @@ export function SurveyAnalyticsModal({ survey, isOpen, onClose }: SurveyAnalytic
             {/* Stats Summary */}
             <div className="grid grid-cols-3 gap-4">
               <div className="bg-teal-50 rounded-lg p-4 border border-teal-200">
-                <p className="text-sm text-teal-700 font-medium mb-1">Total Responses</p>
+                <p className="text-sm text-teal-700 font-medium mb-1">{ui.totalResponses}</p>
                 <p className="text-2xl font-bold text-teal-900">{responses.length}</p>
               </div>
               <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                <p className="text-sm text-blue-700 font-medium mb-1">Questions</p>
+                <p className="text-sm text-blue-700 font-medium mb-1">{ui.questions}</p>
                 <p className="text-2xl font-bold text-blue-900">{survey.questions.length}</p>
               </div>
               <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
-                <p className="text-sm text-purple-700 font-medium mb-1">Status</p>
+                <p className="text-sm text-purple-700 font-medium mb-1">{ui.status}</p>
                 <p className="text-2xl font-bold text-purple-900 capitalize">{survey.status}</p>
               </div>
             </div>
@@ -142,7 +157,7 @@ export function SurveyAnalyticsModal({ survey, isOpen, onClose }: SurveyAnalytic
             {/* Questions and Answers */}
             <div>
               <h3 className="text-base font-semibold text-gray-900 mb-3">
-                Question Analysis
+                {ui.analysis}
               </h3>
 
               {loading ? (
@@ -151,7 +166,7 @@ export function SurveyAnalyticsModal({ survey, isOpen, onClose }: SurveyAnalytic
                 </div>
               ) : responses.length === 0 ? (
                 <div className="bg-gray-50 rounded-lg p-8 text-center border border-gray-200">
-                  <p className="text-gray-500">No responses yet</p>
+                  <p className="text-gray-500">{ui.noResponses}</p>
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -181,7 +196,7 @@ export function SurveyAnalyticsModal({ survey, isOpen, onClose }: SurveyAnalytic
                         {isExpanded && (
                           <div className="px-4 pb-4 space-y-2">
                             {distribution.length === 0 ? (
-                              <p className="text-sm text-gray-500 py-2">No answers for this question</p>
+                              <p className="text-sm text-gray-500 py-2">{ui.noAnswers}</p>
                             ) : (
                               distribution.map((item, idx) => (
                                 <div key={idx} className="flex items-center gap-3">
@@ -214,8 +229,8 @@ export function SurveyAnalyticsModal({ survey, isOpen, onClose }: SurveyAnalytic
             {/* Individual Responses */}
             {responses.length > 0 && (
               <div>
-                <h3 className="text-base font-semibold text-gray-900 mb-3">
-                  Individual Responses ({responses.length})
+                  <h3 className="text-base font-semibold text-gray-900 mb-3">
+                  {ui.individualResponses} ({responses.length})
                 </h3>
                 <div className="space-y-2 max-h-96 overflow-y-auto">
                   {responses.map((response, index) => (
@@ -256,7 +271,7 @@ export function SurveyAnalyticsModal({ survey, isOpen, onClose }: SurveyAnalytic
               onClick={onClose}
               className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
             >
-              Close
+              {ui.close}
             </button>
           </div>
         </Dialog.Content>

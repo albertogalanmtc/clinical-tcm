@@ -56,6 +56,7 @@ export default function Account() {
     permanentAndIrreversible: isSpanish ? 'permanente e irreversible' : 'permanent and irreversible',
     cancel: isSpanish ? 'Cancelar' : 'Cancel',
     deleteForever: isSpanish ? 'Eliminar mi cuenta definitivamente' : 'Delete my account permanently',
+    deletingAccount: isSpanish ? 'Eliminando cuenta...' : 'Deleting account...',
     somethingWentWrong: isSpanish ? 'Algo salió mal. Inténtalo de nuevo.' : 'Something went wrong. Please try again.',
   };
 
@@ -295,10 +296,10 @@ export default function Account() {
                   disabled={!isDeleteEnabled}
                   className="px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  {isDeleting ? (
+                    {isDeleting ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
-                      {isSpanish ? 'Eliminando cuenta...' : 'Deleting account...'}
+                      {ui.deletingAccount}
                     </>
                   ) : (
                     <>

@@ -6,6 +6,7 @@ import { fetchAdminUserIdentities } from '@/app/services/adminUserLookupService'
 import { fetchAllAdminUsers } from '@/app/services/adminUsersService';
 import { getUserDisplayName } from '@/app/services/adminUsersService';
 import type { Banner } from '@/app/services/bannersService';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 interface BannerAnalyticsModalProps {
   banner: Banner;
@@ -23,6 +24,17 @@ interface DismissalData {
 export function BannerAnalyticsModal({ banner, isOpen, onClose }: BannerAnalyticsModalProps) {
   const [dismissals, setDismissals] = useState<DismissalData[]>([]);
   const [loading, setLoading] = useState(true);
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
+  const ui = {
+    description: isSpanish ? 'Analíticas y estadísticas del banner' : 'Banner analytics and statistics',
+    title: isSpanish ? 'Analíticas del banner' : 'Banner Analytics',
+    totalDismissals: isSpanish ? 'Descartes totales' : 'Total Dismissals',
+    status: isSpanish ? 'Estado' : 'Status',
+    dismissalHistory: isSpanish ? 'Historial de descartes' : 'Dismissal History',
+    noDismissals: isSpanish ? 'Aún no hay descartes' : 'No dismissals yet',
+    close: isSpanish ? 'Cerrar' : 'Close',
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -77,13 +89,13 @@ export function BannerAnalyticsModal({ banner, isOpen, onClose }: BannerAnalytic
         <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[100]" />
         <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:left-1/2 sm:top-1/2 sm:right-auto sm:bottom-auto sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-2xl sm:rounded-lg sm:max-w-3xl w-full sm:max-h-[90vh] overflow-hidden z-[110] flex flex-col">
           <Dialog.Description className="sr-only">
-            Banner analytics and statistics
+            {ui.description}
           </Dialog.Description>
 
           {/* Header */}
           <div className="flex-shrink-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
             <Dialog.Title className="text-xl font-semibold text-gray-900">
-              Banner Analytics
+              {ui.title}
             </Dialog.Title>
             <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg">
               <X className="w-5 h-5" />
@@ -103,11 +115,11 @@ export function BannerAnalyticsModal({ banner, isOpen, onClose }: BannerAnalytic
             {/* Stats Summary */}
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-teal-50 rounded-lg p-4 border border-teal-200">
-                <p className="text-sm text-teal-700 font-medium mb-1">Total Dismissals</p>
+                <p className="text-sm text-teal-700 font-medium mb-1">{ui.totalDismissals}</p>
                 <p className="text-2xl font-bold text-teal-900">{dismissals.length}</p>
               </div>
               <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                <p className="text-sm text-blue-700 font-medium mb-1">Status</p>
+                <p className="text-sm text-blue-700 font-medium mb-1">{ui.status}</p>
                 <p className="text-2xl font-bold text-blue-900 capitalize">{banner.status}</p>
               </div>
             </div>
@@ -115,7 +127,7 @@ export function BannerAnalyticsModal({ banner, isOpen, onClose }: BannerAnalytic
             {/* Dismissals List */}
             <div>
               <h3 className="text-base font-semibold text-gray-900 mb-3">
-                Dismissal History ({dismissals.length})
+                {ui.dismissalHistory} ({dismissals.length})
               </h3>
 
               {loading ? (
@@ -124,7 +136,7 @@ export function BannerAnalyticsModal({ banner, isOpen, onClose }: BannerAnalytic
                 </div>
               ) : dismissals.length === 0 ? (
                 <div className="bg-gray-50 rounded-lg p-8 text-center border border-gray-200">
-                  <p className="text-gray-500">No dismissals yet</p>
+                  <p className="text-gray-500">{ui.noDismissals}</p>
                 </div>
               ) : (
                 <div className="space-y-2 max-h-96 overflow-y-auto">
@@ -164,7 +176,7 @@ export function BannerAnalyticsModal({ banner, isOpen, onClose }: BannerAnalytic
               onClick={onClose}
               className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
             >
-              Close
+              {ui.close}
             </button>
           </div>
         </Dialog.Content>

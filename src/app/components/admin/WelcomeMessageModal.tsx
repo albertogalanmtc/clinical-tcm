@@ -4,6 +4,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { addWelcomeMessage, updateWelcomeMessage, type WelcomeMessage } from '@/app/data/dashboardContent';
 import { ContentVisibilitySettings, type VisibilitySettings } from './ContentVisibilitySettings';
 import { toast } from 'sonner';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 interface WelcomeMessageModalProps {
   isOpen: boolean;
@@ -28,6 +29,41 @@ export function WelcomeMessageModal({ isOpen, onClose, message, onSave }: Welcom
     countries: message?.countries || [],
     dateRange: message?.dateRange
   });
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
+  const ui = {
+    description: isSpanish ? 'Editar o crear un mensaje de bienvenida' : 'Edit or create a welcome message',
+    title: message ? (isSpanish ? 'Editar mensaje de bienvenida' : 'Edit Welcome Message') : (isSpanish ? 'Añadir mensaje de bienvenida' : 'Add Welcome Message'),
+    displayMessage: isSpanish ? 'Mostrar mensaje' : 'Display Message',
+    displayHelp: isSpanish ? 'Mostrar este mensaje en el panel' : 'Show this message on dashboard',
+    highlightMessage: isSpanish ? 'Destacar mensaje' : 'Highlight Message',
+    highlightHelp: isSpanish ? 'Mostrar con fondo degradado verde' : 'Show with green gradient background',
+    allowClose: isSpanish ? 'Permitir a los usuarios cerrarlo' : 'Allow Users to Close',
+    allowCloseHelp: isSpanish ? 'Mostrar botón de cierre - los usuarios pueden descartar este mensaje' : 'Show close button - users can dismiss this message',
+    titleLabel: isSpanish ? 'Título' : 'Title',
+    titlePlaceholder: isSpanish ? 'Bienvenido a Clinical TCM' : 'Welcome to Clinical TCM',
+    contentLabel: isSpanish ? 'Contenido' : 'Content',
+    contentPlaceholder: isSpanish ? 'Tu plataforma completa para la práctica clínica de Medicina Tradicional China...' : 'Your comprehensive platform for Traditional Chinese Medicine clinical practice...',
+    clickAction: isSpanish ? 'Acción al hacer clic' : 'Click Action',
+    none: isSpanish ? 'Ninguna' : 'None',
+    link: isSpanish ? 'Enlace' : 'Link',
+    modal: isSpanish ? 'Modal' : 'Modal',
+    linkLabel: isSpanish ? 'Enlace externo *' : 'External Link *',
+    linkPlaceholder: 'https://example.com',
+    linkHelp: isSpanish ? 'Al hacer clic en el mensaje se abrirá este enlace' : 'Clicking the message will open this link',
+    modalTitleLabel: isSpanish ? 'Título del modal *' : 'Modal Title *',
+    modalTitlePlaceholder: isSpanish ? 'Introduce el título del modal...' : 'Enter modal title...',
+    modalContentLabel: isSpanish ? 'Contenido del modal *' : 'Modal Content *',
+    modalContentPlaceholder: isSpanish ? 'Introduce el contenido del modal...' : 'Enter modal content...',
+    visibilitySettings: isSpanish ? 'Ajustes de visibilidad' : 'Visibility Settings',
+    cancel: isSpanish ? 'Cancelar' : 'Cancel',
+    save: isSpanish ? 'Guardar' : 'Save',
+    saveChanges: isSpanish ? 'Guardar cambios' : 'Save Changes',
+    addMessage: isSpanish ? 'Añadir mensaje' : 'Add Message',
+    titleOrContent: isSpanish ? 'Introduce al menos un título o contenido' : 'Please enter at least a title or content',
+    linkUrl: isSpanish ? 'Introduce una URL de enlace' : 'Please enter a link URL',
+    modalFields: isSpanish ? 'Introduce el título y el contenido del modal' : 'Please enter both modal title and content',
+  };
 
   // Emit events for modal state changes (for hiding layout footers)
   useEffect(() => {
@@ -71,17 +107,17 @@ export function WelcomeMessageModal({ isOpen, onClose, message, onSave }: Welcom
     e.preventDefault();
 
     if (!title.trim() && !content.trim()) {
-      toast.error('Please enter at least a title or content');
+      toast.error(ui.titleOrContent);
       return;
     }
 
     if (actionType === 'link' && !link.trim()) {
-      toast.error('Please enter a link URL');
+      toast.error(ui.linkUrl);
       return;
     }
 
     if (actionType === 'modal' && (!modalTitle.trim() || !modalContent.trim())) {
-      toast.error('Please enter both modal title and content');
+      toast.error(ui.modalFields);
       return;
     }
 
@@ -116,12 +152,12 @@ export function WelcomeMessageModal({ isOpen, onClose, message, onSave }: Welcom
         <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[70]" />
         <Dialog.Content className="fixed inset-x-0 bottom-0 top-[10vh] sm:left-1/2 sm:top-1/2 sm:right-auto sm:bottom-auto sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-2xl sm:rounded-lg sm:max-w-2xl w-full sm:max-h-[90vh] overflow-hidden z-[80] flex flex-col">
           <Dialog.Description className="sr-only">
-            {message ? 'Edit welcome message' : 'Add new welcome message'}
+            {ui.description}
           </Dialog.Description>
           {/* Header */}
           <div className="flex-shrink-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
             <Dialog.Title className="text-xl font-semibold text-gray-900">
-              {message ? 'Edit Welcome Message' : 'Add Welcome Message'}
+              {ui.title}
             </Dialog.Title>
             <Dialog.Close className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg flex items-center justify-center">
               <X className="w-5 h-5" />
@@ -134,10 +170,8 @@ export function WelcomeMessageModal({ isOpen, onClose, message, onSave }: Welcom
             {/* Enabled Toggle */}
             <div className="flex items-center justify-between pb-4 border-b border-gray-200">
               <div>
-                <p className="text-sm font-medium text-gray-700">Display Message</p>
-                <p className="text-xs text-gray-500 mt-1">
-                  Show this message on dashboard
-                </p>
+                <p className="text-sm font-medium text-gray-700">{ui.displayMessage}</p>
+                <p className="text-xs text-gray-500 mt-1">{ui.displayHelp}</p>
               </div>
               <button
                 type="button"
@@ -157,10 +191,8 @@ export function WelcomeMessageModal({ isOpen, onClose, message, onSave }: Welcom
             {/* Highlighted Toggle */}
             <div className="flex items-center justify-between pb-4 border-b border-gray-200">
               <div>
-                <p className="text-sm font-medium text-gray-700">Highlight Message</p>
-                <p className="text-xs text-gray-500 mt-1">
-                  Show with green gradient background
-                </p>
+                <p className="text-sm font-medium text-gray-700">{ui.highlightMessage}</p>
+                <p className="text-xs text-gray-500 mt-1">{ui.highlightHelp}</p>
               </div>
               <button
                 type="button"
@@ -180,10 +212,8 @@ export function WelcomeMessageModal({ isOpen, onClose, message, onSave }: Welcom
             {/* Dismissible Toggle */}
             <div className="flex items-center justify-between pb-4 border-b border-gray-200">
               <div>
-                <p className="text-sm font-medium text-gray-700">Allow Users to Close</p>
-                <p className="text-xs text-gray-500 mt-1">
-                  Show close button - users can dismiss this message
-                </p>
+                <p className="text-sm font-medium text-gray-700">{ui.allowClose}</p>
+                <p className="text-xs text-gray-500 mt-1">{ui.allowCloseHelp}</p>
               </div>
               <button
                 type="button"
@@ -201,38 +231,38 @@ export function WelcomeMessageModal({ isOpen, onClose, message, onSave }: Welcom
             </div>
 
             {/* Title */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Title
-              </label>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                {ui.titleLabel}
+                </label>
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                placeholder="Welcome to Clinical TCM"
+                placeholder={ui.titlePlaceholder}
               />
             </div>
 
             {/* Content */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Content
-              </label>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                {ui.contentLabel}
+                </label>
               <textarea
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 rows={5}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none"
-                placeholder="Your comprehensive platform for Traditional Chinese Medicine clinical practice..."
+                placeholder={ui.contentPlaceholder}
               />
             </div>
 
             {/* Action Type */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Click Action
-              </label>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                {ui.clickAction}
+                </label>
               <div className="grid grid-cols-3 gap-2">
                 <button
                   type="button"
@@ -246,7 +276,7 @@ export function WelcomeMessageModal({ isOpen, onClose, message, onSave }: Welcom
                   <X className={`w-5 h-5 mx-auto mb-1 ${
                     actionType === 'none' ? 'text-teal-600' : 'text-gray-400'
                   }`} />
-                  <div className="text-xs font-medium text-gray-900">None</div>
+                  <div className="text-xs font-medium text-gray-900">{ui.none}</div>
                 </button>
                 <button
                   type="button"
@@ -260,7 +290,7 @@ export function WelcomeMessageModal({ isOpen, onClose, message, onSave }: Welcom
                   <ExternalLink className={`w-5 h-5 mx-auto mb-1 ${
                     actionType === 'link' ? 'text-teal-600' : 'text-gray-400'
                   }`} />
-                  <div className="text-xs font-medium text-gray-900">Link</div>
+                  <div className="text-xs font-medium text-gray-900">{ui.link}</div>
                 </button>
                 <button
                   type="button"
@@ -274,7 +304,7 @@ export function WelcomeMessageModal({ isOpen, onClose, message, onSave }: Welcom
                   <FileText className={`w-5 h-5 mx-auto mb-1 ${
                     actionType === 'modal' ? 'text-teal-600' : 'text-gray-400'
                   }`} />
-                  <div className="text-xs font-medium text-gray-900">Modal</div>
+                  <div className="text-xs font-medium text-gray-900">{ui.modal}</div>
                 </button>
               </div>
             </div>
@@ -283,17 +313,17 @@ export function WelcomeMessageModal({ isOpen, onClose, message, onSave }: Welcom
             {actionType === 'link' && (
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  External Link *
+                  {ui.linkLabel}
                 </label>
                 <input
                   type="url"
                   value={link}
                   onChange={(e) => setLink(e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                  placeholder="https://example.com"
+                  placeholder={ui.linkPlaceholder}
                 />
                 <p className="text-xs text-gray-500 mt-1">
-                  Clicking the message will open this link
+                  {ui.linkHelp}
                 </p>
               </div>
             )}
@@ -302,24 +332,24 @@ export function WelcomeMessageModal({ isOpen, onClose, message, onSave }: Welcom
               <>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Modal Title *
+                    {ui.modalTitleLabel}
                   </label>
                   <input
                     type="text"
                     value={modalTitle}
                     onChange={(e) => setModalTitle(e.target.value)}
-                    placeholder="Enter modal title..."
+                    placeholder={ui.modalTitlePlaceholder}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Modal Content *
+                    {ui.modalContentLabel}
                   </label>
                   <textarea
                     value={modalContent}
                     onChange={(e) => setModalContent(e.target.value)}
-                    placeholder="Enter modal content..."
+                    placeholder={ui.modalContentPlaceholder}
                     rows={8}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none"
                   />
@@ -329,7 +359,7 @@ export function WelcomeMessageModal({ isOpen, onClose, message, onSave }: Welcom
 
             {/* Visibility Settings */}
             <div className="pt-4 border-t border-gray-200">
-              <h3 className="text-sm font-medium text-gray-700 mb-4">Visibility Settings</h3>
+              <h3 className="text-sm font-medium text-gray-700 mb-4">{ui.visibilitySettings}</h3>
               <ContentVisibilitySettings
                 settings={visibilitySettings}
                 onChange={setVisibilitySettings}
@@ -344,14 +374,14 @@ export function WelcomeMessageModal({ isOpen, onClose, message, onSave }: Welcom
                 onClick={onClose}
                 className="px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
               >
-                Cancel
+                {ui.cancel}
               </button>
               <button
                 type="submit"
                 className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-white bg-teal-600 rounded-lg hover:bg-teal-700 transition-colors"
               >
                 <Save className="w-4 h-4" />
-                {message ? 'Save Changes' : 'Add Message'}
+                {message ? ui.saveChanges : ui.addMessage}
               </button>
             </div>
           </form>
