@@ -35,6 +35,8 @@ import AdminUserDetail from "./pages/AdminUserDetail";
 import AdminUserFormulas from "./pages/AdminUserFormulas";
 import AdminUserHerbs from "./pages/AdminUserHerbs";
 import AdminUserCompounds from "./pages/AdminUserCompounds";
+import AdminPatients from "./pages/AdminPatients";
+import AdminPatientDetail from "./pages/AdminPatientDetail";
 import AdminTotalUsers from "./pages/AdminTotalUsers";
 import AdminActiveSubscriptions from "./pages/AdminActiveSubscriptions";
 import AdminNewUsers from "./pages/AdminNewUsers";
@@ -647,6 +649,8 @@ export default function App() {
                 path="users/:userId/compounds"
                 element={<AdminUserCompounds />}
               />
+              <Route path="patients" element={<AdminPatients />} />
+              <Route path="patients/:patientId" element={<AdminPatientDetail />} />
               <Route
                 path="community"
                 element={<AdminCommunity />}

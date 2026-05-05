@@ -29,6 +29,7 @@ type TranslationTree = {
     dashboard: string;
     content: string;
     users: string;
+    patients: string;
     community: string;
     planManagement: string;
     safetyCategories: string;
@@ -166,6 +167,7 @@ const TRANSLATIONS: Record<AppLanguage, TranslationTree> = {
       dashboard: 'Admin Dashboard',
       content: 'Content',
       users: 'Users',
+      patients: 'Patients',
       community: 'Community',
       planManagement: 'Plan Management',
       safetyCategories: 'Safety Categories',
@@ -301,6 +303,7 @@ const TRANSLATIONS: Record<AppLanguage, TranslationTree> = {
       dashboard: 'Panel de admin',
       content: 'Contenido',
       users: 'Usuarios',
+      patients: 'Pacientes',
       community: 'Comunidad',
       planManagement: 'Gestión de planes',
       safetyCategories: 'Categorías de seguridad',

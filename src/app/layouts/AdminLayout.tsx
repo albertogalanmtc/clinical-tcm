@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
-import { Database, Users, DollarSign, Filter, Type, BarChart3, Layout, Settings, X, Menu, LogOut, LayoutDashboard, ChevronLeft, MessageCircle } from 'lucide-react';
+import { Database, Users, DollarSign, Filter, Type, BarChart3, Layout, Settings, X, Menu, LogOut, LayoutDashboard, ChevronLeft, MessageCircle, HeartPulse } from 'lucide-react';
 import { checkUnsavedChanges } from '@/app/hooks/useUnsavedChanges';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 
@@ -18,6 +18,10 @@ export default function AdminLayout() {
 
   // Get current page title based on route
   const getCurrentPageTitle = () => {
+    if (location.pathname.startsWith('/admin/patients')) {
+      return t('adminMenu.patients');
+    }
+
     const titles: Record<string, string> = {
       '/admin/dashboard': t('adminMenu.dashboard'),
       '/admin/content': t('adminMenu.content'),
@@ -170,6 +174,7 @@ export default function AdminLayout() {
                   { path: '/admin/dashboard', label: t('adminMenu.dashboard'), icon: LayoutDashboard },
                   { path: '/admin/content', label: t('adminMenu.content'), icon: Database },
                   { path: '/admin/users', label: t('adminMenu.users'), icon: Users },
+                  { path: '/admin/patients', label: t('adminMenu.patients'), icon: HeartPulse },
                   { path: '/admin/community', label: t('adminMenu.community'), icon: MessageCircle },
                   { path: '/admin/plan-management', label: t('adminMenu.planManagement'), icon: DollarSign },
                   { path: '/admin/advanced-filters', label: t('adminMenu.safetyCategories'), icon: Filter },

@@ -1,4 +1,4 @@
-import { Users, CreditCard, Beaker, AlertTriangle, Database, BarChart3, ChevronRight, Layout, Settings, DollarSign, Filter, Type, FileText, UserPlus, X, ClipboardList, MessageSquare } from 'lucide-react';
+import { Users, CreditCard, Beaker, AlertTriangle, Database, BarChart3, ChevronRight, Layout, Settings, DollarSign, Filter, Type, FileText, UserPlus, X, ClipboardList, MessageSquare, HeartPulse } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -172,6 +172,19 @@ export default function AdminDashboard() {
     },
   ];
 
+  const quickAccessCards = [
+    {
+      title: isSpanish ? 'Pacientes y evaluaciones' : 'Patients & evaluations',
+      description: isSpanish
+        ? 'Abre la nueva ficha clínica con anamnesis, evolución y agenda'
+        : 'Open the new clinical file with anamnesis, evolution, and schedule',
+      href: '/admin/patients',
+      icon: HeartPulse,
+      color: 'bg-teal-50 text-teal-600',
+      button: isSpanish ? 'Abrir módulo' : 'Open module',
+    },
+  ];
+
   return (
     <>
       {/* Page Header */}
@@ -197,6 +210,41 @@ export default function AdminDashboard() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Quick Access */}
+      <div className="mb-8">
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-semibold text-gray-900">
+            {isSpanish ? 'Acceso rápido' : 'Quick access'}
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          {quickAccessCards.map((card) => {
+            const Icon = card.icon;
+            return (
+              <Link
+                key={card.title}
+                to={card.href}
+                className="group rounded-lg border border-gray-200 bg-white p-5 transition-all hover:-translate-y-0.5 hover:border-teal-200 hover:shadow-sm"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${card.color} transition-colors group-hover:bg-teal-100 group-hover:text-teal-700`}>
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <ChevronRight className="h-4 w-4 text-gray-400 transition-transform group-hover:translate-x-1 group-hover:text-teal-600" />
+                </div>
+                <div className="mt-4">
+                  <h3 className="text-base font-semibold text-gray-900">{card.title}</h3>
+                  <p className="mt-1 text-sm text-gray-500">{card.description}</p>
+                </div>
+                <div className="mt-4 text-sm font-medium text-teal-700">
+                  {card.button}
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </div>
 
       {/* Recent Activity */}
