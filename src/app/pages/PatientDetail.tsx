@@ -30,7 +30,6 @@ import {
 } from 'recharts';
 import { Avatar } from '../components/Avatar';
 import { Badge } from '../components/ui/Badge';
-import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Progress } from '../components/ui/progress';
 import { Separator } from '../components/ui/separator';
@@ -147,7 +146,7 @@ export default function PatientDetail() {
     <div className="flex h-full flex-col overflow-hidden">
       <div className="flex-1 min-h-0 overflow-hidden p-4 pb-[86px] sm:pb-4 lg:p-6 lg:pb-6">
         <div className="grid gap-6 xl:grid-cols-[360px_minmax(0,1fr)] xl:items-stretch">
-          <Card className="h-full rounded-lg overflow-hidden border-gray-200 shadow-sm">
+          <Card className="h-full overflow-hidden rounded-lg border border-gray-200 shadow-sm">
             <CardContent className="flex h-full flex-col p-0">
               <div className="border-b border-gray-200 px-6 py-6">
                 <div className="flex items-center gap-4">
@@ -165,7 +164,7 @@ export default function PatientDetail() {
                 </div>
               </div>
 
-              <nav className="flex-1 overflow-y-auto overscroll-none px-4 py-4">
+              <nav className="flex-1 overflow-y-auto overscroll-none px-4 pt-4 lg:py-2">
                 {sectionTabs.map((tab) => {
                   const Icon = tab.icon;
                   const isActive = activeTab === tab.id;
@@ -187,13 +186,14 @@ export default function PatientDetail() {
                 })}
               </nav>
 
-              <div className="hidden lg:block px-2 py-2 lg:p-4 border-t border-gray-200">
-                <Button asChild variant="outline" className="w-full justify-start gap-3 rounded-lg border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50">
-                  <Link to={basePath}>
-                    <ChevronLeft className="w-5 h-5 text-gray-500 flex-shrink-0" />
-                    <span>{isSpanish ? 'Atrás' : 'Back'}</span>
-                  </Link>
-                </Button>
+              <div className="hidden lg:block border-t border-gray-200 px-2 py-2 lg:p-4">
+                <Link
+                  to={basePath}
+                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 lg:px-4 lg:py-3"
+                >
+                  <ChevronLeft className="h-5 w-5 flex-shrink-0 text-gray-400" />
+                  <span>{isSpanish ? 'Atrás' : 'Back'}</span>
+                </Link>
               </div>
             </CardContent>
           </Card>
