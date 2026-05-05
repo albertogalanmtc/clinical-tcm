@@ -18,7 +18,6 @@ import {
   UserRound,
   UtensilsCrossed,
   Pencil,
-  ChevronLeft,
 } from 'lucide-react';
 import {
   CartesianGrid,
@@ -191,19 +190,18 @@ export default function PatientDetail() {
                 })}
               </nav>
 
-              <div className="hidden border-t border-gray-200 px-2 py-2 lg:block lg:px-3 lg:py-3">
+              <div className="border-t border-gray-200 px-4 py-4">
                 <Link
                   to={basePath}
-                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 lg:px-4 lg:py-3"
+                  className="flex w-full items-center justify-center rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-100"
                 >
-                  <ChevronLeft className="h-5 w-5 flex-shrink-0 text-gray-400" />
                   <span>{isSpanish ? 'Atrás' : 'Back'}</span>
                 </Link>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="h-full rounded-lg border-gray-200 shadow-sm">
+          <Card className="flex h-full min-h-0 flex-col overflow-hidden rounded-lg border-gray-200 shadow-sm">
             <CardHeader className="border-b border-gray-100 pb-4">
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
@@ -222,7 +220,7 @@ export default function PatientDetail() {
               </div>
             </CardHeader>
 
-            <CardContent className="space-y-5 p-5">
+            <CardContent className="min-h-0 flex-1 space-y-5 overflow-y-auto p-5">
               {activeTab === 'overview' && (
                 <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
                   <div className="rounded-3xl border border-teal-100 bg-gradient-to-br from-teal-50 to-cyan-50 p-5">
