@@ -1,5 +1,5 @@
 import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
-import { Leaf, Pill, FileText, Beaker, StickyNote, LogOut, ShieldCheck, HelpCircle, Settings, User, Eye } from 'lucide-react';
+import { Leaf, Pill, FileText, Beaker, StickyNote, LogOut, ShieldCheck, HelpCircle, Settings, User, Eye, HeartPulse } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { cn } from "@/lib/utils";
 import { Avatar } from './Avatar';
@@ -47,6 +47,7 @@ export function Navigation({ onToggleNotes, isNotesVisible, onOpenGlobalSettings
     if (path.startsWith('/herbs')) return 'herbs';
     if (path.startsWith('/formulas')) return 'formulas';
     if (path.startsWith('/prescriptions')) return 'prescriptions';
+    if (path.startsWith('/patients')) return 'prescriptions';
     if (path.startsWith('/builder')) return 'builder';
     return 'herbs'; // default fallback
   };
@@ -76,6 +77,7 @@ export function Navigation({ onToggleNotes, isNotesVisible, onOpenGlobalSettings
     { to: '/formulas', label: t('nav.formulas'), icon: getIconComponent(designSettings.navigationIcons.formulas), customSvg: designSettings.customSvgs?.formulas },
     { to: '/prescriptions', label: t('nav.prescriptions'), icon: getIconComponent(designSettings.navigationIcons.prescriptions), customSvg: designSettings.customSvgs?.prescriptions },
     { to: '/builder', label: t('nav.builder'), icon: getIconComponent(designSettings.navigationIcons.builder), customSvg: designSettings.customSvgs?.builder },
+    ...(isAdmin ? [{ to: '/patients', label: t('nav.patients'), icon: HeartPulse, customSvg: undefined }] : []),
   ];
 
   // Default logo URL

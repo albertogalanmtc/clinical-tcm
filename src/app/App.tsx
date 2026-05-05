@@ -23,6 +23,8 @@ import FormulaDetail from "./pages/FormulaDetail";
 import EditFormula from "./pages/EditFormula";
 import Prescriptions from "./pages/Prescriptions";
 import PrescriptionDetail from "./pages/PrescriptionDetail";
+import Patients from "./pages/Patients";
+import PatientDetail from "./pages/PatientDetail";
 import Builder from "./pages/Builder";
 import News from "./pages/News";
 import Community from "./pages/Community";
@@ -35,8 +37,6 @@ import AdminUserDetail from "./pages/AdminUserDetail";
 import AdminUserFormulas from "./pages/AdminUserFormulas";
 import AdminUserHerbs from "./pages/AdminUserHerbs";
 import AdminUserCompounds from "./pages/AdminUserCompounds";
-import AdminPatients from "./pages/AdminPatients";
-import AdminPatientDetail from "./pages/AdminPatientDetail";
 import AdminTotalUsers from "./pages/AdminTotalUsers";
 import AdminActiveSubscriptions from "./pages/AdminActiveSubscriptions";
 import AdminNewUsers from "./pages/AdminNewUsers";
@@ -590,6 +590,11 @@ export default function App() {
               path="prescriptions/:id"
               element={<PrescriptionDetail />}
             />
+            <Route path="patients" element={<Patients />} />
+            <Route
+              path="patients/:patientId"
+              element={<PatientDetail />}
+            />
             <Route path="builder" element={<Builder />} />
             <Route path="news" element={<News />} />
             <Route path="community" element={<Community />} />
@@ -649,8 +654,8 @@ export default function App() {
                 path="users/:userId/compounds"
                 element={<AdminUserCompounds />}
               />
-              <Route path="patients" element={<AdminPatients />} />
-              <Route path="patients/:patientId" element={<AdminPatientDetail />} />
+              <Route path="patients" element={<Patients />} />
+              <Route path="patients/:patientId" element={<PatientDetail />} />
               <Route
                 path="community"
                 element={<AdminCommunity />}

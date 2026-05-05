@@ -7,6 +7,7 @@ type TranslationTree = {
     herbs: string;
     formulas: string;
     prescriptions: string;
+    patients: string;
     builder: string;
     notes: string;
   };
@@ -145,6 +146,7 @@ const TRANSLATIONS: Record<AppLanguage, TranslationTree> = {
       herbs: 'Herbs',
       formulas: 'Formulas',
       prescriptions: 'Prescriptions',
+      patients: 'Patients',
       builder: 'Builder',
       notes: 'Notes',
     },
@@ -281,6 +283,7 @@ const TRANSLATIONS: Record<AppLanguage, TranslationTree> = {
       herbs: 'Hierbas',
       formulas: 'Fórmulas',
       prescriptions: 'Prescripciones',
+      patients: 'Pacientes',
       builder: 'Builder',
       notes: 'Notas',
     },
