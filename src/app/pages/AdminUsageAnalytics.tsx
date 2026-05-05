@@ -11,6 +11,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { getPrescriptionsSync } from '../data/prescriptions';
 import { getAllFormulas } from '../data/formulasManager';
 import { DEMO_USERS } from '../data/usersManager';
+import { useLanguage } from '../contexts/LanguageContext';
 
 type TimeRange = 'week' | 'month' | 'year' | 'all' | 'custom';
 
@@ -715,6 +716,8 @@ const COLORS = {
 
 export default function AdminUsageAnalytics() {
   const navigate = useNavigate();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
 
   const isMobile = useIsMobile();
 
@@ -749,35 +752,35 @@ export default function AdminUsageAnalytics() {
     <>
       <>
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Usage Analytics</h1>
-          <p className="hidden sm:block text-gray-600">Comprehensive usage patterns and trends analysis</p>
+      <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">{isSpanish ? 'Analíticas de uso' : 'Usage Analytics'}</h1>
+          <p className="hidden sm:block text-gray-600">{isSpanish ? 'Análisis completo de patrones de uso y tendencias' : 'Comprehensive usage patterns and trends analysis'}</p>
         </div>
 
         {/* 1. Global Usage Overview - KPI Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
           <KPICard
-            label="Total prescriptions"
+            label={isSpanish ? 'Total de prescripciones' : 'Total prescriptions'}
             value={kpiData.totalPrescriptions.current}
             change={kpiData.totalPrescriptions.change}
           />
           <KPICard
-            label="Herbs used"
+            label={isSpanish ? 'Hierbas utilizadas' : 'Herbs used'}
             value={kpiData.herbsUsed.current}
             change={kpiData.herbsUsed.change}
           />
           <KPICard
-            label="Formulas used"
+            label={isSpanish ? 'Fórmulas utilizadas' : 'Formulas used'}
             value={kpiData.formulasUsed.current}
             change={kpiData.formulasUsed.change}
           />
           <KPICard
-            label="Standard formulas"
+            label={isSpanish ? 'Fórmulas estándar' : 'Standard formulas'}
             value={`${kpiData.standardFormulas}%`}
-            subtitle={`${kpiData.customFormulas}% custom`}
+            subtitle={`${kpiData.customFormulas}% ${isSpanish ? 'personalizadas' : 'custom'}`}
           />
           <KPICard
-            label="Active users"
+            label={isSpanish ? 'Usuarios activos' : 'Active users'}
             value={kpiData.activeUsers.current}
             change={kpiData.activeUsers.change}
           />
@@ -785,11 +788,11 @@ export default function AdminUsageAnalytics() {
 
         {/* 2. Time-based Analytics - Line Charts with Individual Selectors */}
         <div className="space-y-6 mb-8">
-          <ChartCard key="prescriptions-chart" title="Prescriptions generated over time" dataGenerator={generatePrescriptionsData} color={COLORS.primary} isMobile={isMobile} />
-          <ChartCard key="herbs-chart" title="Herbs used over time" dataGenerator={generateHerbsData} color={COLORS.secondary} isMobile={isMobile} />
-          <ChartCard key="formulas-chart" title="Formulas used over time" dataGenerator={generateFormulasData} color={COLORS.tertiary} isMobile={isMobile} />
-          <ChartCard key="active-users-chart" title="Active users over time" dataGenerator={generateActiveUsersData} color={COLORS.primary} isMobile={isMobile} />
-          <ChartCard key="new-users-chart" title="New users over time" dataGenerator={generateNewUsersData} color={COLORS.secondary} isMobile={isMobile} />
+          <ChartCard key="prescriptions-chart" title={isSpanish ? 'Prescripciones generadas a lo largo del tiempo' : 'Prescriptions generated over time'} dataGenerator={generatePrescriptionsData} color={COLORS.primary} isMobile={isMobile} />
+          <ChartCard key="herbs-chart" title={isSpanish ? 'Hierbas utilizadas a lo largo del tiempo' : 'Herbs used over time'} dataGenerator={generateHerbsData} color={COLORS.secondary} isMobile={isMobile} />
+          <ChartCard key="formulas-chart" title={isSpanish ? 'Fórmulas utilizadas a lo largo del tiempo' : 'Formulas used over time'} dataGenerator={generateFormulasData} color={COLORS.tertiary} isMobile={isMobile} />
+          <ChartCard key="active-users-chart" title={isSpanish ? 'Usuarios activos a lo largo del tiempo' : 'Active users over time'} dataGenerator={generateActiveUsersData} color={COLORS.primary} isMobile={isMobile} />
+          <ChartCard key="new-users-chart" title={isSpanish ? 'Usuarios nuevos a lo largo del tiempo' : 'New users over time'} dataGenerator={generateNewUsersData} color={COLORS.secondary} isMobile={isMobile} />
         </div>
 
         {/* 3. Content Usage Analytics */}
@@ -797,12 +800,12 @@ export default function AdminUsageAnalytics() {
           {/* Top Herbs */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold text-gray-900">Top herbs used</h2>
+              <h2 className="text-lg font-semibold text-gray-900">{isSpanish ? 'Hierbas más utilizadas' : 'Top herbs used'}</h2>
               <Link
                 to="/admin/usage-analytics/herbs"
                 className="inline-flex items-center gap-1 text-sm text-teal-600 hover:text-teal-700 font-medium transition-colors"
               >
-                View all
+                {isSpanish ? 'Ver todo' : 'View all'}
                 <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
@@ -829,12 +832,12 @@ export default function AdminUsageAnalytics() {
           {/* Top Formulas */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold text-gray-900">Top formulas used</h2>
+              <h2 className="text-lg font-semibold text-gray-900">{isSpanish ? 'Fórmulas más utilizadas' : 'Top formulas used'}</h2>
               <Link
                 to="/admin/usage-analytics/formulas"
                 className="inline-flex items-center gap-1 text-sm text-teal-600 hover:text-teal-700 font-medium transition-colors"
               >
-                View all
+                {isSpanish ? 'Ver todo' : 'View all'}
                 <ChevronRight className="w-4 h-4" />
               </Link>
             </div>

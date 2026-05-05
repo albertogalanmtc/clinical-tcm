@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import { initializeDefaultCategories, type SafetyCategory } from '@/app/data/safetyCategoriesManager';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const STORAGE_KEY = 'tcm_safety_categories';
 
 export default function AdvancedFiltersManager() {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [categories, setCategories] = useState<SafetyCategory[]>([]);
   const [addingGroup, setAddingGroup] = useState<'conditions' | 'medications' | 'allergies' | 'tcm_risk_patterns' | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -35,7 +38,7 @@ export default function AdvancedFiltersManager() {
       }
     } catch (error) {
       console.error('Error loading safety categories:', error);
-      toast.error('Error loading categories');
+      toast.error(isSpanish ? 'Error al cargar categorías' : 'Error loading categories');
     }
   };
 
@@ -43,16 +46,16 @@ export default function AdvancedFiltersManager() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(cats));
       setCategories(cats);
-      toast.success('Categories saved successfully');
+      toast.success(isSpanish ? 'Categorías guardadas correctamente' : 'Categories saved successfully');
     } catch (error) {
       console.error('Error saving categories:', error);
-      toast.error('Error saving categories');
+      toast.error(isSpanish ? 'Error al guardar categorías' : 'Error saving categories');
     }
   };
 
   const addCategory = (group: 'conditions' | 'medications' | 'allergies' | 'tcm_risk_patterns') => {
     if (!newCategoryName.trim()) {
-      toast.error('Display Name is required');
+      toast.error(isSpanish ? 'El nombre visible es obligatorio' : 'Display Name is required');
       return;
     }
 
@@ -78,7 +81,7 @@ export default function AdvancedFiltersManager() {
   };
 
   const deleteCategory = (id: string) => {
-    if (!confirm('Are you sure you want to delete this category?')) return;
+    if (!confirm(isSpanish ? '¿Seguro que quieres eliminar esta categoría?' : 'Are you sure you want to delete this category?')) return;
     saveCategories(categories.filter(c => c.id !== id));
   };
 
@@ -143,8 +146,8 @@ export default function AdvancedFiltersManager() {
 
   const getGroupTitle = (group: string) => {
     switch(group) {
-      case 'conditions': return 'General Conditions';
-      case 'tcm_risk_patterns': return 'TCM Risk Patterns';
+      case 'conditions': return isSpanish ? 'Condiciones generales' : 'General Conditions';
+      case 'tcm_risk_patterns': return isSpanish ? 'Patrones de riesgo TCM' : 'TCM Risk Patterns';
       default: return group.charAt(0).toUpperCase() + group.slice(1);
     }
   };
@@ -153,9 +156,11 @@ export default function AdvancedFiltersManager() {
     <>
       {/* Page Header */}
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Safety Categories</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">{isSpanish ? 'Categorías de seguridad' : 'Safety Categories'}</h1>
         <p className="text-gray-600">
-          Manage patient safety profile categories for the prescription builder
+          {isSpanish
+            ? 'Gestiona las categorías del perfil de seguridad del paciente para el constructor de prescripciones'
+            : 'Manage patient safety profile categories for the prescription builder'}
         </p>
       </div>
 
@@ -174,7 +179,7 @@ export default function AdvancedFiltersManager() {
               className="flex items-center gap-2 px-4 py-2 text-sm bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
             >
               <Plus className="w-4 h-4" />
-              Add
+              {isSpanish ? 'Añadir' : 'Add'}
             </button>
           </div>
 
@@ -194,7 +199,7 @@ export default function AdvancedFiltersManager() {
                       setNewCategoryName('');
                     }
                   }}
-                  placeholder={`Add new ${getGroupTitle(group).toLowerCase()}...`}
+                  placeholder={isSpanish ? `Añadir nueva ${getGroupTitle(group).toLowerCase()}...` : `Add new ${getGroupTitle(group).toLowerCase()}...`}
                   className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
                   autoFocus
                 />
@@ -203,7 +208,7 @@ export default function AdvancedFiltersManager() {
                   className="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors flex items-center gap-2"
                 >
                   <Save className="w-4 h-4" />
-                  <span className="hidden sm:inline">Save</span>
+                  <span className="hidden sm:inline">{isSpanish ? 'Guardar' : 'Save'}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -213,7 +218,7 @@ export default function AdvancedFiltersManager() {
                   className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors flex items-center gap-2"
                 >
                   <X className="w-4 h-4" />
-                  <span className="hidden sm:inline">Cancel</span>
+                  <span className="hidden sm:inline">{isSpanish ? 'Cancelar' : 'Cancel'}</span>
                 </button>
               </div>
             </div>
@@ -222,7 +227,7 @@ export default function AdvancedFiltersManager() {
           <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
             {groupedCategories[group].length === 0 ? (
               <div className="p-8 text-center text-gray-500">
-                No categories in this group
+                {isSpanish ? 'No hay categorías en este grupo' : 'No categories in this group'}
               </div>
             ) : (
               <div className="divide-y divide-gray-200 max-h-[400px] overflow-y-auto">
@@ -268,7 +273,7 @@ export default function AdvancedFiltersManager() {
                                         <button
                                           onClick={() => removeRelatedTerm(category.id, term)}
                                           className="hover:bg-teal-100 rounded-full p-0.5"
-                                          title="Remove term"
+                                          title={isSpanish ? 'Eliminar término' : 'Remove term'}
                                         >
                                           <X className="w-3 h-3" />
                                         </button>
@@ -293,10 +298,13 @@ export default function AdvancedFiltersManager() {
                                         }
                                       }}
                                       placeholder={
-                                        category.group === 'medications' ? 'Add related term (e.g., losartan, valsartan)...' :
-                                        category.group === 'conditions' ? 'Add related term (e.g., high blood pressure, HTN)...' :
-                                        category.group === 'allergies' ? 'Add related term (e.g., shellfish, peanuts)...' :
-                                        'Add related term (e.g., Qi Deficiency, Yin Xu)...'
+                                        category.group === 'medications'
+                                          ? (isSpanish ? 'Añadir término relacionado (p. ej., losartan, valsartan)...' : 'Add related term (e.g., losartan, valsartan)...')
+                                          : category.group === 'conditions'
+                                            ? (isSpanish ? 'Añadir término relacionado (p. ej., hipertensión, HTA)...' : 'Add related term (e.g., high blood pressure, HTN)...')
+                                            : category.group === 'allergies'
+                                              ? (isSpanish ? 'Añadir término relacionado (p. ej., marisco, cacahuetes)...' : 'Add related term (e.g., shellfish, peanuts)...')
+                                              : (isSpanish ? 'Añadir término relacionado (p. ej., Qi Deficiency, Yin Xu)...' : 'Add related term (e.g., Qi Deficiency, Yin Xu)...')
                                       }
                                       className="flex-1 px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
                                       autoFocus
@@ -305,7 +313,7 @@ export default function AdvancedFiltersManager() {
                                       onClick={() => addRelatedTerm(category.id, newTerm)}
                                       className="px-3 py-1 text-sm bg-teal-600 text-white rounded hover:bg-teal-700 transition-colors"
                                     >
-                                      Add
+                                      {isSpanish ? 'Añadir' : 'Add'}
                                     </button>
                                     <button
                                       onClick={() => {
@@ -314,7 +322,7 @@ export default function AdvancedFiltersManager() {
                                       }}
                                       className="px-3 py-1 text-sm bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors"
                                     >
-                                      Cancel
+                                      {isSpanish ? 'Cancelar' : 'Cancel'}
                                     </button>
                                   </div>
                                 ) : (
@@ -322,7 +330,7 @@ export default function AdvancedFiltersManager() {
                                     onClick={() => setEditingTermsId(category.id)}
                                     className="text-xs text-teal-600 hover:text-teal-700 font-medium"
                                   >
-                                    + Add related term
+                                    {isSpanish ? '+ Añadir término relacionado' : '+ Add related term'}
                                   </button>
                                 )}
                               </div>
@@ -334,7 +342,7 @@ export default function AdvancedFiltersManager() {
                         <button
                           onClick={() => setEditingId(editingId === category.id ? null : category.id)}
                           className="p-2 text-gray-600 hover:bg-gray-200 rounded transition-colors"
-                          title="Edit"
+                          title={isSpanish ? 'Editar' : 'Edit'}
                         >
                           {editingId === category.id ? (
                             <X className="w-4 h-4" />

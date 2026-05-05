@@ -409,6 +409,8 @@ function HelpSupportSection({
   saved?: boolean;
   onRegisterSaveHandler: (handler: () => void) => void;
 }) {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [helpText, setHelpText] = useState(helpSupport.helpCenterText);
   const [supportEmail, setSupportEmail] = useState(helpSupport.supportEmail);
   const [docsUrl, setDocsUrl] = useState(helpSupport.documentationUrl || '');
@@ -416,6 +418,9 @@ function HelpSupportSection({
   const [editingFAQ, setEditingFAQ] = useState<FAQType | null>(null);
   const [newQuestion, setNewQuestion] = useState('');
   const [newAnswer, setNewAnswer] = useState('');
+  const helpSectionText = isSpanish
+    ? 'Gestiona el contenido del centro de ayuda y la información de contacto visible para los usuarios.'
+    : 'Manage help center content and support contact information visible to users.';
 
   const handleSave = () => {
     updateHelpSupport({
@@ -454,7 +459,7 @@ function HelpSupportSection({
   };
 
   const handleDeleteFAQ = (faqId: string) => {
-    if (confirm('Delete this FAQ?')) {
+    if (confirm(isSpanish ? '¿Eliminar esta pregunta frecuente?' : 'Delete this FAQ?')) {
       deleteFAQ(faqId);
       onRefresh();
     }
@@ -469,16 +474,18 @@ function HelpSupportSection({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Help & Support Configuration</h2>
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          {isSpanish ? 'Configuración de ayuda y soporte' : 'Help & Support Configuration'}
+        </h2>
         <p className="text-sm text-gray-600 mb-6">
-          Manage help center content and support contact information visible to users.
+          {helpSectionText}
         </p>
       </div>
 
       {/* Help Center Text */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Help Center Main Text
+          {isSpanish ? 'Texto principal del centro de ayuda' : 'Help Center Main Text'}
         </label>
         <textarea
           value={helpText}
@@ -492,7 +499,7 @@ function HelpSupportSection({
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Support Email
+            {isSpanish ? 'Email de soporte' : 'Support Email'}
           </label>
           <input
             type="email"
@@ -503,7 +510,7 @@ function HelpSupportSection({
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Documentation URL
+            {isSpanish ? 'URL de documentación' : 'Documentation URL'}
           </label>
           <input
             type="url"
@@ -517,7 +524,7 @@ function HelpSupportSection({
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Contact URL
+          {isSpanish ? 'URL de contacto' : 'Contact URL'}
         </label>
         <input
           type="url"
@@ -530,7 +537,9 @@ function HelpSupportSection({
 
       {/* FAQs */}
       <div>
-        <h3 className="text-md font-semibold text-gray-900 mb-3">Frequently Asked Questions</h3>
+        <h3 className="text-md font-semibold text-gray-900 mb-3">
+          {isSpanish ? 'Preguntas frecuentes' : 'Frequently Asked Questions'}
+        </h3>
         <div className="space-y-3 mb-4">
           {helpSupport.faqs.map((faq: FAQType) => (
             <div key={faq.id} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
@@ -544,13 +553,13 @@ function HelpSupportSection({
                     onClick={() => handleEditFAQ(faq)}
                     className="text-sm text-teal-600 hover:text-teal-700"
                   >
-                    Edit
+                    {isSpanish ? 'Editar' : 'Edit'}
                   </button>
                   <button
                     onClick={() => handleDeleteFAQ(faq.id)}
                     className="text-sm text-red-600 hover:text-red-700"
                   >
-                    Delete
+                    {isSpanish ? 'Eliminar' : 'Delete'}
                   </button>
                 </div>
               </div>
@@ -561,7 +570,9 @@ function HelpSupportSection({
         {/* Add/Edit FAQ Form */}
         <div className="bg-white border-2 border-dashed border-gray-300 rounded-lg p-4">
           <h4 className="text-sm font-medium text-gray-700 mb-3">
-            {editingFAQ ? 'Edit FAQ' : 'Add New FAQ'}
+            {editingFAQ
+              ? (isSpanish ? 'Editar pregunta frecuente' : 'Edit FAQ')
+              : (isSpanish ? 'Añadir pregunta frecuente' : 'Add New FAQ')}
           </h4>
           <div className="space-y-3">
             <input

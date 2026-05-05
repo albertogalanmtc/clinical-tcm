@@ -16,6 +16,10 @@ export default function HelpSupportPage() {
   }, []);
 
   const { helpSupport } = settings;
+  const defaultHelpCenterText = 'Welcome to Clinical TCM Help Center. Find answers to common questions and learn how to use the platform effectively.';
+  const helpCenterText = isSpanish && helpSupport.helpCenterText === defaultHelpCenterText
+    ? 'Bienvenido al Centro de ayuda de Clinical TCM. Encuentra respuestas a preguntas frecuentes y aprende a usar la plataforma de forma eficaz.'
+    : helpSupport.helpCenterText;
 
   const toggleFAQ = (faqId: string) => {
     setExpandedFAQ(expandedFAQ === faqId ? null : faqId);
@@ -29,7 +33,7 @@ export default function HelpSupportPage() {
           {isSpanish ? 'Ayuda y soporte' : 'Help & Support'}
         </h1>
         <p className="text-gray-600">
-          {helpSupport.helpCenterText}
+          {helpCenterText}
         </p>
       </div>
 
@@ -160,7 +164,7 @@ export default function HelpSupportPage() {
               </div>
             ) : (
               <div className="text-center py-8 text-gray-500">
-                <p>No FAQs available at this time.</p>
+                <p>{isSpanish ? 'No hay preguntas frecuentes disponibles en este momento.' : 'No FAQs available at this time.'}</p>
               </div>
             )}
           </div>

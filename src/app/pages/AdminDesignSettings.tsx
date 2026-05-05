@@ -8,6 +8,7 @@ import {
 } from '../data/platformSettings';
 import * as LucideIcons from 'lucide-react';
 import { AlertIconEditor } from '../components/AlertIconEditor';
+import { useLanguage } from '../contexts/LanguageContext';
 
 // Lista de iconos comunes de Lucide para selección
 const ICON_OPTIONS = [
@@ -62,6 +63,8 @@ const ICON_OPTIONS = [
 ];
 
 export default function AdminDesignSettings() {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [designSettings, setDesignSettings] = useState<DesignSettings>(() => 
     getPlatformSettings().designSettings
   );
@@ -290,8 +293,12 @@ export default function AdminDesignSettings() {
     <>
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Design Settings</h1>
-        <p className="hidden sm:block text-gray-600">Customize icons and visual elements</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          {isSpanish ? 'Ajustes de diseño' : 'Design Settings'}
+        </h1>
+        <p className="hidden sm:block text-gray-600">
+          {isSpanish ? 'Personaliza iconos y elementos visuales' : 'Customize icons and visual elements'}
+        </p>
       </div>
 
       {/* Save Button Section */}
@@ -302,7 +309,7 @@ export default function AdminDesignSettings() {
             className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
           >
             <RefreshCw className="w-4 h-4" />
-            <span className="hidden sm:inline">Reset to Defaults</span>
+            <span className="hidden sm:inline">{isSpanish ? 'Restablecer valores predeterminados' : 'Reset to Defaults'}</span>
           </button>
           <button
             onClick={handleSave}
@@ -312,12 +319,12 @@ export default function AdminDesignSettings() {
             {saveStatus === 'saved' ? (
               <>
                 <Check className="w-4 h-4" />
-                <span>Saved</span>
+                <span>{isSpanish ? 'Guardado' : 'Saved'}</span>
               </>
             ) : (
               <>
                 <Save className="w-4 h-4" />
-                <span>Save Changes</span>
+                <span>{isSpanish ? 'Guardar cambios' : 'Save Changes'}</span>
               </>
             )}
           </button>
@@ -336,7 +343,7 @@ export default function AdminDesignSettings() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Navigation Icons
+              {isSpanish ? 'Iconos de navegación' : 'Navigation Icons'}
             </button>
             <button
               onClick={() => setActiveTab('alerts')}
@@ -346,7 +353,7 @@ export default function AdminDesignSettings() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Alert Icons & Colors
+              {isSpanish ? 'Iconos y colores de alertas' : 'Alert Icons & Colors'}
             </button>
             <button
               onClick={() => setActiveTab('typography')}
@@ -356,7 +363,7 @@ export default function AdminDesignSettings() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Typography
+              {isSpanish ? 'Tipografía' : 'Typography'}
             </button>
           </div>
 
@@ -364,7 +371,7 @@ export default function AdminDesignSettings() {
         {activeTab === 'navigation' && (
         <>
           <div>
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Navigation Icons</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">{isSpanish ? 'Iconos de navegación' : 'Navigation Icons'}</h2>
             <p className="text-sm text-gray-600 mb-6">
               Customize the icons displayed in the main navigation header
             </p>
@@ -927,7 +934,7 @@ export default function AdminDesignSettings() {
         {activeTab === 'alerts' && (
         <>
           <div>
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Alert Icons & Colors</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">{isSpanish ? 'Iconos y colores de alertas' : 'Alert Icons & Colors'}</h2>
             <p className="text-sm text-gray-600 mb-6">
               Customize icons and colors for safety alerts
             </p>
@@ -1066,7 +1073,7 @@ export default function AdminDesignSettings() {
         {activeTab === 'typography' && (
         <>
           <div>
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Typography</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">{isSpanish ? 'Tipografía' : 'Typography'}</h2>
             <p className="text-sm text-gray-600 mb-6">
               Choose font families for different language contexts
             </p>

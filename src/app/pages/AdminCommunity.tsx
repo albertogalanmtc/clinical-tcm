@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Users, MessageCircle, ThumbsUp, TrendingUp, Award, Search } from 'lucide-react';
 import { getCommunityPosts, getCommunityComments, type CommunityPost, type CommunityComment } from '../data/communityPosts';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface UserStats {
   userId: string;
@@ -51,6 +52,8 @@ function calculatePoints(stats: Pick<UserStats, 'commentsCreated' | 'likesReceiv
 }
 
 export default function AdminCommunity() {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [userStats, setUserStats] = useState<UserStats[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<'points' | 'posts' | 'comments' | 'likes'>('points');
@@ -181,36 +184,40 @@ export default function AdminCommunity() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-semibold text-gray-900 mb-2">Community Statistics</h1>
-        <p className="text-gray-600">Monitor user participation and engagement in the community</p>
+        <h1 className="text-2xl font-semibold text-gray-900 mb-2">
+          {isSpanish ? 'Estadísticas de la comunidad' : 'Community Statistics'}
+        </h1>
+        <p className="text-gray-600">
+          {isSpanish ? 'Monitoriza la participación y la interacción de los usuarios en la comunidad' : 'Monitor user participation and engagement in the community'}
+        </p>
       </div>
 
       {/* Overview Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
           icon={Users}
-          label="Active Users"
+          label={isSpanish ? 'Usuarios activos' : 'Active Users'}
           value={totalUsers}
           color="text-blue-600"
           bgColor="bg-blue-50"
         />
         <StatCard
           icon={MessageCircle}
-          label="Total Posts"
+          label={isSpanish ? 'Total de publicaciones' : 'Total Posts'}
           value={totalPosts}
           color="text-purple-600"
           bgColor="bg-purple-50"
         />
         <StatCard
           icon={MessageCircle}
-          label="Total Comments"
+          label={isSpanish ? 'Total de comentarios' : 'Total Comments'}
           value={totalComments}
           color="text-green-600"
           bgColor="bg-green-50"
         />
         <StatCard
           icon={ThumbsUp}
-          label="Total Likes"
+          label={isSpanish ? 'Total de me gusta' : 'Total Likes'}
           value={totalLikes}
           color="text-yellow-600"
           bgColor="bg-yellow-50"
@@ -221,7 +228,9 @@ export default function AdminCommunity() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Level Distribution */}
         <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Level Distribution</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+            {isSpanish ? 'Distribución por nivel' : 'Level Distribution'}
+          </h2>
           {totalUsers > 0 ? (
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
@@ -251,7 +260,9 @@ export default function AdminCommunity() {
 
         {/* Top Contributors */}
         <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Top 10 Contributors</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+            {isSpanish ? 'Top 10 colaboradores' : 'Top 10 Contributors'}
+          </h2>
           {topContributors.length > 0 ? (
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={topContributors} layout="horizontal">

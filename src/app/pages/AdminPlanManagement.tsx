@@ -21,8 +21,11 @@ import {
 import { planService, Plan } from '../services/planService';
 import { updatePlan as updateSupabasePlan } from '../services/plansService';
 import type { PlanType, PlanFeatures, HerbDetailPermissions, FormulaDetailPermissions } from '../data/usersManager';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function AdminPlanManagement() {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [plans, setPlans] = useState<Plan[]>([]);
   const [editingPlan, setEditingPlan] = useState<Plan | null>(null);
   const [editingPlanDisplay, setEditingPlanDisplay] = useState<Plan | null>(null);
@@ -381,8 +384,12 @@ export default function AdminPlanManagement() {
     <>
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Plan Management</h1>
-        <p className="hidden sm:block text-gray-600">Configure features, limits, and Stripe integration</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          {isSpanish ? 'Gestión de planes' : 'Plan Management'}
+        </h1>
+        <p className="hidden sm:block text-gray-600">
+          {isSpanish ? 'Configura funciones, límites e integración con Stripe' : 'Configure features, limits, and Stripe integration'}
+        </p>
       </div>
 
       {/* Info Banner */}
@@ -390,8 +397,16 @@ export default function AdminPlanManagement() {
         <div className="flex items-start gap-3">
           <Info className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
           <div className="text-sm text-blue-900">
-            <p className="mb-2">Configure pricing, Stripe integration, feature access, and usage limits for each plan.</p>
-            <p className="text-xs text-blue-700">💡 Set both monthly and yearly prices to enable billing period toggle for users.</p>
+            <p className="mb-2">
+              {isSpanish
+                ? 'Configura precios, integración con Stripe, acceso a funciones y límites de uso para cada plan.'
+                : 'Configure pricing, Stripe integration, feature access, and usage limits for each plan.'}
+            </p>
+            <p className="text-xs text-blue-700">
+              {isSpanish
+                ? '💡 Establece precios mensuales y anuales para habilitar el selector de periodo de facturación.'
+                : '💡 Set both monthly and yearly prices to enable billing period toggle for users.'}
+            </p>
           </div>
         </div>
       </div>
@@ -401,7 +416,9 @@ export default function AdminPlanManagement() {
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <Eye className="w-5 h-5 text-gray-600" />
-            <h2 className="text-lg font-semibold text-gray-900">User View Preview</h2>
+            <h2 className="text-lg font-semibold text-gray-900">
+              {isSpanish ? 'Vista previa del usuario' : 'User View Preview'}
+            </h2>
           </div>
 
           {/* Billing Period Toggle */}
@@ -414,7 +431,7 @@ export default function AdminPlanManagement() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Monthly
+              {isSpanish ? 'Mensual' : 'Monthly'}
             </button>
             <button
               onClick={() => setBillingPeriod('yearly')}
@@ -425,10 +442,10 @@ export default function AdminPlanManagement() {
               }`}
             >
               <div className="flex items-center gap-2">
-                Yearly
+                {isSpanish ? 'Anual' : 'Yearly'}
                 {avgYearlySavings > 0 && (
                   <span className="px-2 py-0.5 bg-teal-100 text-teal-700 text-xs font-semibold rounded">
-                    Save {avgYearlySavings}%
+                    {isSpanish ? `Ahorra ${avgYearlySavings}%` : `Save ${avgYearlySavings}%`}
                   </span>
                 )}
               </div>

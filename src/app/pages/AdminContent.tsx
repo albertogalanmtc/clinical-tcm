@@ -17,6 +17,7 @@ import { ContentImportExport } from '../components/ContentImportExport';
 import { HerbJsonEditorModal } from '../components/HerbJsonEditorModal';
 import { FormulaJsonEditorModal } from '../components/FormulaJsonEditorModal';
 import { PrescriptionPreviewModal } from '../components/PrescriptionPreviewModal';
+import { useLanguage } from '../contexts/LanguageContext';
 import type { Prescription } from '../data/prescriptions';
 
 type MainTab = 'herbs' | 'formulas' | 'prescriptions';
@@ -49,6 +50,8 @@ const getHerbBiologicalMechanisms = (herbName: string) => {
 
 export default function AdminContent() {
   const navigate = useNavigate();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   
   const [mainTab, setMainTab] = useState<MainTab>('herbs');
   const [subTab, setSubTab] = useState<SubTab>('system');
@@ -73,6 +76,11 @@ export default function AdminContent() {
   const [systemFormulas, setSystemFormulas] = useState<Formula[]>([]);
   const [userFormulas, setUserFormulas] = useState<Formula[]>([]);
   const [prescriptions, setPrescriptions] = useState<Prescription[]>([]);
+  const getMainTabLabel = (tab: MainTab) => {
+    if (tab === 'herbs') return isSpanish ? 'Hierbas' : 'Herbs';
+    if (tab === 'formulas') return isSpanish ? 'Fórmulas' : 'Formulas';
+    return isSpanish ? 'Prescripciones' : 'Prescriptions';
+  };
 
   // Load real data on mount and listen for updates
   useEffect(() => {
@@ -169,24 +177,30 @@ export default function AdminContent() {
       <>
         {/* Page Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Content management</h1>
-          <p className="hidden sm:block text-gray-600">Manage herbs and formulas library</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            {isSpanish ? 'Gestión de contenido' : 'Content management'}
+          </h1>
+          <p className="hidden sm:block text-gray-600">
+            {isSpanish ? 'Gestiona la biblioteca de hierbas y fórmulas' : 'Manage herbs and formulas library'}
+          </p>
         </div>
 
         {/* Action Buttons */}
         <div className="mb-8 flex gap-3">
           <button
             onClick={() => {
-              if (window.confirm('Are you sure you want to delete ALL herbs (custom and system overrides)? This cannot be undone.')) {
+              if (window.confirm(isSpanish
+                ? '¿Seguro que quieres eliminar TODAS las hierbas (personalizadas y sobrescrituras del sistema)? Esto no se puede deshacer.'
+                : 'Are you sure you want to delete ALL herbs (custom and system overrides)? This cannot be undone.')) {
                 localStorage.removeItem('tcm_custom_herbs');
                 localStorage.removeItem('tcm_system_herbs_overrides');
-                alert('All herbs cleared! Reloading page...');
+                alert(isSpanish ? '¡Todas las hierbas se han eliminado! Recargando la página...' : 'All herbs cleared! Reloading page...');
                 window.location.reload();
               }
             }}
             className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-medium transition-colors"
           >
-            Clear All Herbs
+            {isSpanish ? 'Borrar todas las hierbas' : 'Clear All Herbs'}
           </button>
           <ContentImportExport 
             onImportComplete={(items, type) => {
@@ -237,7 +251,7 @@ export default function AdminContent() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Herbs
+              {isSpanish ? 'Hierbas' : 'Herbs'}
             </button>
             <button
               onClick={() => {
@@ -250,7 +264,7 @@ export default function AdminContent() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Formulas
+              {isSpanish ? 'Fórmulas' : 'Formulas'}
             </button>
             <button
               onClick={() => {
@@ -263,7 +277,7 @@ export default function AdminContent() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Prescriptions
+              {isSpanish ? 'Prescripciones' : 'Prescriptions'}
             </button>
           </div>
         </div>
@@ -296,7 +310,7 @@ export default function AdminContent() {
                       : 'border-transparent text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  System {mainTab}
+                  {isSpanish ? `Sistema ${getMainTabLabel(mainTab)}` : `System ${getMainTabLabel(mainTab)}`}
                 </button>
                 <button
                   onClick={() => setSubTab('user-added')}
@@ -306,14 +320,14 @@ export default function AdminContent() {
                       : 'border-transparent text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  User-added {mainTab}
+                  {isSpanish ? `Añadidas por usuarios ${getMainTabLabel(mainTab)}` : `User-added ${getMainTabLabel(mainTab)}`}
                 </button>
               </>
             ) : (
               <button
                 className="px-6 py-4 border-b-2 border-gray-900 font-medium text-sm text-gray-900 whitespace-nowrap"
               >
-                All Prescriptions
+                {isSpanish ? 'Todas las prescripciones' : 'All Prescriptions'}
               </button>
             )}
           </nav>
@@ -398,23 +412,25 @@ export default function AdminContent() {
             <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[100]" />
             <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-xl max-w-md w-full p-6 z-[110]">
               <Dialog.Title className="text-lg font-semibold text-gray-900 mb-2">
-                Confirm Deletion
+                {isSpanish ? 'Confirmar eliminación' : 'Confirm Deletion'}
               </Dialog.Title>
               <Dialog.Description className="text-gray-600 mb-6">
-                Are you sure you want to delete {itemToDelete?.name}? This action cannot be undone.
+                {isSpanish
+                  ? `¿Seguro que quieres eliminar ${itemToDelete?.name}? Esta acción no se puede deshacer.`
+                  : `Are you sure you want to delete ${itemToDelete?.name}? This action cannot be undone.`}
               </Dialog.Description>
               <div className="flex gap-3 justify-end">
                 <button
                   onClick={() => setDeleteConfirmOpen(false)}
                   className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
                 >
-                  Cancel
+                  {isSpanish ? 'Cancelar' : 'Cancel'}
                 </button>
                 <button
                   onClick={confirmDelete}
                   className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors"
                 >
-                  Delete
+                  {isSpanish ? 'Eliminar' : 'Delete'}
                 </button>
               </div>
             </Dialog.Content>
@@ -440,6 +456,8 @@ function SystemHerbsTable({
   onDelete: (id: string, type: 'herb' | 'formula' | 'prescription', name: string) => void;
 }) {
   const navigate = useNavigate();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [selectedHerb, setSelectedHerb] = useState<Herb | null>(null);
   
   const filteredHerbs = herbs.filter(
@@ -456,19 +474,19 @@ function SystemHerbsTable({
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Pinyin name
+                {isSpanish ? 'Nombre pinyin' : 'Pinyin name'}
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Pharmaceutical name
+                {isSpanish ? 'Nombre farmacéutico' : 'Pharmaceutical name'}
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Herb ID
+                {isSpanish ? 'ID de hierba' : 'Herb ID'}
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Category
+                {isSpanish ? 'Categoría' : 'Category'}
               </th>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Actions
+                {isSpanish ? 'Acciones' : 'Actions'}
               </th>
             </tr>
           </thead>
@@ -489,14 +507,14 @@ function SystemHerbsTable({
                     <button
                       onClick={() => onEdit(herb)}
                       className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors"
-                      title="Edit"
+                      title={isSpanish ? 'Editar' : 'Edit'}
                     >
                       <Pencil className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => onDelete(herb.herb_id, 'herb', herb.pinyin_name)}
                       className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
-                      title="Delete"
+                      title={isSpanish ? 'Eliminar' : 'Delete'}
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -508,7 +526,7 @@ function SystemHerbsTable({
         </table>
         {filteredHerbs.length === 0 && (
           <div className="px-6 py-12 text-center text-sm text-gray-500">
-            No herbs found matching your search.
+            {isSpanish ? 'No se encontraron hierbas que coincidan con tu búsqueda.' : 'No herbs found matching your search.'}
           </div>
         )}
       </div>
@@ -545,6 +563,8 @@ function UserHerbsTable({
   onDelete: (id: string, type: 'herb' | 'formula' | 'prescription', name: string) => void;
 }) {
   const navigate = useNavigate();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const filteredHerbs = herbs.filter(
     (herb) =>
       (herb.pinyin_name?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
@@ -558,22 +578,22 @@ function UserHerbsTable({
         <thead className="bg-gray-50 border-b border-gray-200">
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Pinyin name
+              {isSpanish ? 'Nombre pinyin' : 'Pinyin name'}
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Pharmaceutical name
+              {isSpanish ? 'Nombre farmacéutico' : 'Pharmaceutical name'}
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Herb ID
+              {isSpanish ? 'ID de hierba' : 'Herb ID'}
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Created by
+              {isSpanish ? 'Creado por' : 'Created by'}
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Date created
+              {isSpanish ? 'Fecha de creación' : 'Date created'}
             </th>
             <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Actions
+              {isSpanish ? 'Acciones' : 'Actions'}
             </th>
           </tr>
         </thead>
@@ -596,14 +616,14 @@ function UserHerbsTable({
                   <button
                     onClick={() => onEdit(herb)}
                     className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors"
-                    title="Edit"
+                    title={isSpanish ? 'Editar' : 'Edit'}
                   >
                     <Pencil className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => onDelete(herb.herb_id, 'herb', herb.pinyin_name)}
                     className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
-                    title="Delete"
+                    title={isSpanish ? 'Eliminar' : 'Delete'}
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -615,7 +635,7 @@ function UserHerbsTable({
       </table>
       {filteredHerbs.length === 0 && (
         <div className="px-6 py-12 text-center text-sm text-gray-500">
-          No herbs found matching your search.
+          {isSpanish ? 'No se encontraron hierbas que coincidan con tu búsqueda.' : 'No herbs found matching your search.'}
         </div>
       )}
     </div>
@@ -637,6 +657,8 @@ function SystemFormulasTable({
   onDelete: (id: string, type: 'herb' | 'formula' | 'prescription', name: string) => void;
 }) {
   const navigate = useNavigate();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [selectedFormula, setSelectedFormula] = useState<Formula | null>(null);
   
   const filteredFormulas = formulas.filter(
@@ -653,19 +675,19 @@ function SystemFormulasTable({
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Pinyin name
+                {isSpanish ? 'Nombre pinyin' : 'Pinyin name'}
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Pharmaceutical name
+                {isSpanish ? 'Nombre farmacéutico' : 'Pharmaceutical name'}
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Formula ID
+                {isSpanish ? 'ID de fórmula' : 'Formula ID'}
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Category
+                {isSpanish ? 'Categoría' : 'Category'}
               </th>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Actions
+                {isSpanish ? 'Acciones' : 'Actions'}
               </th>
             </tr>
           </thead>
@@ -686,14 +708,14 @@ function SystemFormulasTable({
                     <button
                       onClick={() => onEdit(formula)}
                       className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors"
-                      title="Edit"
+                      title={isSpanish ? 'Editar' : 'Edit'}
                     >
                       <Pencil className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => onDelete(formula.formula_id, 'formula', formula.pinyin_name)}
                       className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
-                      title="Delete"
+                      title={isSpanish ? 'Eliminar' : 'Delete'}
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -705,7 +727,7 @@ function SystemFormulasTable({
         </table>
         {filteredFormulas.length === 0 && (
           <div className="px-6 py-12 text-center text-sm text-gray-500">
-            No formulas found matching your search.
+            {isSpanish ? 'No se encontraron fórmulas que coincidan con tu búsqueda.' : 'No formulas found matching your search.'}
           </div>
         )}
       </div>
@@ -742,6 +764,8 @@ function UserFormulasTable({
   onDelete: (id: string, type: 'herb' | 'formula' | 'prescription', name: string) => void;
 }) {
   const navigate = useNavigate();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [selectedFormula, setSelectedFormula] = useState<Formula | null>(null);
   
   const filteredFormulas = formulas.filter(
@@ -758,22 +782,22 @@ function UserFormulasTable({
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Pinyin name
+                {isSpanish ? 'Nombre pinyin' : 'Pinyin name'}
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Pharmaceutical name
+                {isSpanish ? 'Nombre farmacéutico' : 'Pharmaceutical name'}
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Formula ID
+                {isSpanish ? 'ID de fórmula' : 'Formula ID'}
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Created by
+                {isSpanish ? 'Creado por' : 'Created by'}
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Date created
+                {isSpanish ? 'Fecha de creación' : 'Date created'}
               </th>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Actions
+                {isSpanish ? 'Acciones' : 'Actions'}
               </th>
             </tr>
           </thead>
@@ -801,14 +825,14 @@ function UserFormulasTable({
                     <button
                       onClick={() => onEdit(formula)}
                       className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors"
-                      title="Edit"
+                      title={isSpanish ? 'Editar' : 'Edit'}
                     >
                       <Pencil className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => onDelete(formula.formula_id, 'formula', formula.pinyin_name)}
                       className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
-                      title="Delete"
+                      title={isSpanish ? 'Eliminar' : 'Delete'}
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -820,9 +844,9 @@ function UserFormulasTable({
         </table>
         {filteredFormulas.length === 0 && (
           <div className="px-6 py-12 text-center text-sm text-gray-500">
-            No formulas found matching your search.
-          </div>
-        )}
+          {isSpanish ? 'No se encontraron fórmulas que coincidan con tu búsqueda.' : 'No formulas found matching your search.'}
+        </div>
+      )}
       </div>
       
       {/* Formula Preview Modal */}
@@ -855,6 +879,8 @@ function PrescriptionsTable({
   onDelete: (id: string, type: 'herb' | 'formula' | 'prescription', name: string) => void;
 }) {
   const navigate = useNavigate();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [selectedPrescription, setSelectedPrescription] = useState<Prescription | null>(null);
   
   const filteredPrescriptions = prescriptions.filter(
@@ -870,19 +896,19 @@ function PrescriptionsTable({
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Prescription Name
+                {isSpanish ? 'Nombre de prescripción' : 'Prescription Name'}
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Created By
+                {isSpanish ? 'Creado por' : 'Created By'}
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Prescription ID
+                {isSpanish ? 'ID de prescripción' : 'Prescription ID'}
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Date created
+                {isSpanish ? 'Fecha de creación' : 'Date created'}
               </th>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Actions
+                {isSpanish ? 'Acciones' : 'Actions'}
               </th>
             </tr>
           </thead>
@@ -911,14 +937,14 @@ function PrescriptionsTable({
                     <button
                       onClick={() => navigate(`/prescriptions`)}
                       className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors"
-                      title="View"
+                      title={isSpanish ? 'Ver' : 'View'}
                     >
                       <Eye className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => onDelete(prescription.id, 'prescription', `prescription for ${prescription.name}`)}
                       className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
-                      title="Delete"
+                      title={isSpanish ? 'Eliminar' : 'Delete'}
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -930,7 +956,7 @@ function PrescriptionsTable({
         </table>
         {filteredPrescriptions.length === 0 && (
           <div className="px-6 py-12 text-center text-sm text-gray-500">
-            No prescriptions found matching your search.
+            {isSpanish ? 'No se encontraron prescripciones que coincidan con tu búsqueda.' : 'No prescriptions found matching your search.'}
           </div>
         )}
       </div>
