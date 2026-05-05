@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Lock, ArrowRight } from 'lucide-react';
 import { UpgradePlanModal } from './UpgradePlanModal';
 import { useUser } from '../contexts/UserContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface UpgradePromptProps {
   feature: string;
@@ -19,6 +20,8 @@ export function UpgradePrompt({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [autoSelectPlan, setAutoSelectPlan] = useState(true);
   const { planType } = useUser();
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
 
   // Map old plan codes to new display names
   const getPlanDisplayName = (plan: string): string => {
@@ -44,13 +47,14 @@ export function UpgradePrompt({
         <div className="inline-flex items-center gap-2 px-3 py-2 bg-amber-50 border border-amber-200 rounded-lg text-sm">
           <Lock className="w-4 h-4 text-amber-600" />
           <span className="text-amber-900">
-            <span className="font-medium">{getPlanDisplayName(requiredPlan)}</span> plan required
+            <span className="font-medium">{getPlanDisplayName(requiredPlan)}</span>{' '}
+            {isSpanish ? 'plan requerido' : 'plan required'}
           </span>
           <button
             onClick={handleUpgradeClick}
             className="text-teal-600 hover:text-teal-700 font-medium inline-flex items-center gap-1"
           >
-            Upgrade
+            {isSpanish ? 'Actualizar' : 'Upgrade'}
             <ArrowRight className="w-3 h-3" />
           </button>
         </div>
@@ -76,7 +80,7 @@ export function UpgradePrompt({
         </div>
 
         <h3 className="text-xl font-semibold text-gray-900 mb-2">
-          {feature} {getPlanDisplayName(requiredPlan)} Feature
+          {feature} {getPlanDisplayName(requiredPlan)} {isSpanish ? 'función' : 'Feature'}
         </h3>
 
         {description && (
@@ -90,7 +94,7 @@ export function UpgradePrompt({
             onClick={handleUpgradeClick}
             className="inline-flex items-center gap-2 px-6 py-3 bg-teal-600 text-white font-medium rounded-lg hover:bg-teal-700 transition-colors"
           >
-            Upgrade to {getPlanDisplayName(requiredPlan)}
+            {isSpanish ? `Actualizar a ${getPlanDisplayName(requiredPlan)}` : `Upgrade to ${getPlanDisplayName(requiredPlan)}`}
             <ArrowRight className="w-4 h-4" />
           </button>
 
@@ -98,7 +102,7 @@ export function UpgradePrompt({
             onClick={handleViewAllPlansClick}
             className="text-sm text-teal-600 hover:text-teal-700 font-medium"
           >
-            View all plans
+            {isSpanish ? 'Ver todos los planes' : 'View all plans'}
           </button>
         </div>
       </div>

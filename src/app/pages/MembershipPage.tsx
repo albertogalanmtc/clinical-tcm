@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { planService, Plan } from '../services/planService';
 import { createStripeBillingPortal, createStripeCheckout, fetchStripeInvoices, fetchStripeSubscription, getStripePriceId } from '@/lib/stripe';
 import { supabase } from '@/app/lib/supabase';
+import { useLanguage } from '../contexts/LanguageContext';
 import {
   Dialog as BillingDialog,
   DialogClose as BillingDialogClose,
@@ -43,73 +44,74 @@ interface Invoice {
   invoiceUrl?: string;
 }
 
-function transformPlanToDisplay(plan: Plan): DisplayPlan {
+function transformPlanToDisplay(plan: Plan, language: 'en' | 'es'): DisplayPlan {
+  const isSpanish = language === 'es';
   // Build feature list based on plan configuration
   const features: string[] = [];
   
   // Access level features
   if (plan.features.herbLibraryAccess === 'full') {
-    features.push('Full access to herb library');
+    features.push(isSpanish ? 'Acceso completo a la biblioteca de hierbas' : 'Full access to herb library');
   } else if (plan.features.herbLibraryAccess === 'sample') {
-    features.push('Sample access to herb library');
+    features.push(isSpanish ? 'Acceso de muestra a la biblioteca de hierbas' : 'Sample access to herb library');
   }
   
   if (plan.features.formulaLibraryAccess === 'full') {
-    features.push('Full access to formula library');
+    features.push(isSpanish ? 'Acceso completo a la biblioteca de fórmulas' : 'Full access to formula library');
   } else if (plan.features.formulaLibraryAccess === 'sample') {
-    features.push('Sample access to formula library');
+    features.push(isSpanish ? 'Acceso de muestra a la biblioteca de fórmulas' : 'Sample access to formula library');
   }
   
   // Builder and prescription features
   if (plan.features.builder) {
-    features.push('Prescription builder');
+    features.push(isSpanish ? 'Constructor de prescripciones' : 'Prescription builder');
   }
   
   if (plan.features.prescriptionLibrary) {
-    features.push('Prescription library');
+    features.push(isSpanish ? 'Biblioteca de prescripciones' : 'Prescription library');
   }
   
   // Filters and advanced features
   if (plan.features.herbPropertyFilters) {
-    features.push('Herb property filters');
+    features.push(isSpanish ? 'Filtros de propiedades de hierbas' : 'Herb property filters');
   }
   
   if (plan.features.formulaPropertyFilters) {
-    features.push('Formula property filters');
+    features.push(isSpanish ? 'Filtros de propiedades de fórmulas' : 'Formula property filters');
   }
   
   if (plan.features.clinicalUseFilters) {
-    features.push('Clinical use filters');
+    features.push(isSpanish ? 'Filtros de uso clínico' : 'Clinical use filters');
   }
   
   if (plan.features.patientSafetyProfile) {
-    features.push('Patient safety profiles');
+    features.push(isSpanish ? 'Perfiles de seguridad del paciente' : 'Patient safety profiles');
   }
   
   if (plan.features.pharmacologicalEffectsFilter || plan.features.biologicalMechanismsFilter) {
-    features.push('Advanced search filters');
+    features.push(isSpanish ? 'Filtros de búsqueda avanzados' : 'Advanced search filters');
   }
   
   if (plan.features.statistics) {
-    features.push('Usage analytics');
+    features.push(isSpanish ? 'Analíticas de uso' : 'Usage analytics');
   }
   
   if (plan.features.customContent) {
-    features.push('Custom content');
+    features.push(isSpanish ? 'Contenido personalizado' : 'Custom content');
   }
   
   // Limits
   if (plan.limits.monthlyFormulas === null) {
-    features.push('Unlimited prescriptions');
+    features.push(isSpanish ? 'Prescripciones ilimitadas' : 'Unlimited prescriptions');
   } else if (plan.limits.monthlyFormulas > 0) {
-    features.push(`Up to ${plan.limits.monthlyFormulas} prescriptions/month`);
+    features.push(isSpanish ? `Hasta ${plan.limits.monthlyFormulas} prescripciones/mes` : `Up to ${plan.limits.monthlyFormulas} prescriptions/month`);
   }
   
   // Calculate price display
   const hasActiveOffer = plan.offer?.enabled;
   const displayPrice = hasActiveOffer ? plan.offer!.discountedPrice : plan.offer?.originalPrice || 0;
   const priceString = plan.code === 'free' ? '$0' : `$${displayPrice}`;
-  const period = plan.code === 'free' ? 'forever' : 'per month';
+  const period = plan.code === 'free' ? (isSpanish ? 'siempre' : 'forever') : (isSpanish ? 'al mes' : 'per month');
   
   return {
     id: plan.code,
@@ -137,6 +139,8 @@ function inferPlanCodeFromInvoiceDescription(description: string): 'practitioner
 }
 
 export default function MembershipPage() {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const { planType, billingPeriod: userBillingPeriod } = useUser();
   const [plans, setPlans] = useState<DisplayPlan[]>([]);
   const [originalPlans, setOriginalPlans] = useState<Plan[]>([]);
@@ -158,7 +162,7 @@ export default function MembershipPage() {
       setOriginalPlans(loadedPlans); // Save original plans
       const displayPlans = loadedPlans
         .filter(p => p.status === 'active')
-        .map(transformPlanToDisplay);
+        .map(plan => transformPlanToDisplay(plan, language));
       setPlans(displayPlans);
     };
 
@@ -173,7 +177,7 @@ export default function MembershipPage() {
       window.removeEventListener('plansUpdated', loadPlans);
       window.removeEventListener('storage', loadPlans);
     };
-  }, []);
+  }, [language]);
 
   // Load invoices from service
   useEffect(() => {
@@ -242,7 +246,7 @@ export default function MembershipPage() {
 
         if (!cancelled) {
           if (subscription?.currentPeriodEnd) {
-            const formatted = new Date(subscription.currentPeriodEnd).toLocaleDateString('en-US', {
+            const formatted = new Date(subscription.currentPeriodEnd).toLocaleDateString(isSpanish ? 'es-ES' : 'en-US', {
               month: 'short',
               day: 'numeric',
               year: 'numeric',
@@ -269,7 +273,7 @@ export default function MembershipPage() {
     return () => {
       cancelled = true;
     };
-  }, [planType]);
+  }, [planType, isSpanish]);
 
   // Use actual user plan
   const currentPlan = planType;
@@ -286,10 +290,10 @@ export default function MembershipPage() {
           : (currentPlanData?.monthlyPrice ?? 0)
       );
   const currentPlanPeriod = inferredCurrentPlan === 'free'
-    ? 'forever'
+    ? (isSpanish ? 'siempre' : 'forever')
     : (userBillingPeriod === 'yearly' || /year|annual/i.test(latestPaidInvoice?.description || ''))
-      ? 'per year'
-      : 'per month';
+      ? (isSpanish ? 'al año' : 'per year')
+      : (isSpanish ? 'al mes' : 'per month');
 
   const handleManageBilling = () => {
     setBillingModalMode('manage');
@@ -304,7 +308,7 @@ export default function MembershipPage() {
       const { data: { session } } = await supabase.auth.getSession();
 
       if (!session?.user) {
-        throw new Error('You must be logged in to manage billing');
+        throw new Error(isSpanish ? 'Debes iniciar sesión para gestionar la facturación' : 'You must be logged in to manage billing');
       }
 
       await createStripeBillingPortal({
@@ -313,7 +317,7 @@ export default function MembershipPage() {
       });
     } catch (error: any) {
       console.error('Error opening billing portal:', error);
-      toast.error(error.message || 'There was an error opening the billing portal.');
+      toast.error(error.message || (isSpanish ? 'Hubo un error al abrir el portal de facturación.' : 'There was an error opening the billing portal.'));
       setBillingModalLoading(false);
     }
   };
@@ -327,14 +331,14 @@ export default function MembershipPage() {
       const { data: { session } } = await supabase.auth.getSession();
 
       if (!session?.user) {
-        toast.error('You must be logged in to upgrade');
+        toast.error(isSpanish ? 'Debes iniciar sesión para actualizar el plan' : 'You must be logged in to upgrade');
         setLoadingPlanId(null);
         return;
       }
 
       // planId is actually the plan code: 'free', 'practitioner', 'advanced'
       if (planId === 'free') {
-        toast.error('You are already on the free plan');
+        toast.error(isSpanish ? 'Ya estás en el plan gratuito' : 'You are already on the free plan');
         setLoadingPlanId(null);
         return;
       }
@@ -359,7 +363,7 @@ export default function MembershipPage() {
       // The function will redirect to Stripe, so we don't need to reset loading
     } catch (error: any) {
       console.error('Error processing upgrade:', error);
-      toast.error(error.message || 'There was an error processing your upgrade. Please try again.');
+      toast.error(error.message || (isSpanish ? 'Hubo un error al procesar tu actualización. Inténtalo de nuevo.' : 'There was an error processing your upgrade. Please try again.'));
       setLoadingPlanId(null);
     }
   };
@@ -368,7 +372,7 @@ export default function MembershipPage() {
     const selectedPlan = originalPlans.find(p => p.code === planId);
 
     if (!selectedPlan) {
-      toast.error('Plan not found');
+      toast.error(isSpanish ? 'No se encontró el plan' : 'Plan not found');
       return;
     }
 
@@ -378,26 +382,32 @@ export default function MembershipPage() {
   };
 
   const billingModalTitle = billingModalMode === 'manage'
-    ? 'Open billing portal?'
-    : `Change to ${billingModalPlan?.name || 'this plan'}?`;
+    ? (isSpanish ? '¿Abrir el portal de facturación?' : 'Open billing portal?')
+    : isSpanish
+      ? `¿Cambiar a ${billingModalPlan?.name || 'este plan'}?`
+      : `Change to ${billingModalPlan?.name || 'this plan'}?`;
 
   const billingModalDescription = billingModalMode === 'manage'
-    ? 'You will be sent to Stripe, where you can update your payment method, view invoices, cancel your subscription, or switch between available paid plans.'
-    : 'You will be sent to Stripe Billing Portal to update your subscription. Depending on your portal settings, you will be able to change plan, cancel, or update your payment method.';
+    ? (isSpanish
+      ? 'Serás enviado a Stripe, donde podrás actualizar tu método de pago, ver facturas, cancelar tu suscripción o cambiar entre los planes de pago disponibles.'
+      : 'You will be sent to Stripe, where you can update your payment method, view invoices, cancel your subscription, or switch between available paid plans.')
+    : (isSpanish
+      ? 'Serás enviado al portal de facturación de Stripe para actualizar tu suscripción. Según la configuración del portal, podrás cambiar de plan, cancelar o actualizar tu método de pago.'
+      : 'You will be sent to Stripe Billing Portal to update your subscription. Depending on your portal settings, you will be able to change plan, cancel, or update your payment method.');
 
   return (
     <>
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Membership & Billing</h1>
-        <p className="text-gray-600">Manage your subscription and billing</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">{isSpanish ? 'Membresía y facturación' : 'Membership & Billing'}</h1>
+        <p className="text-gray-600">{isSpanish ? 'Gestiona tu suscripción y facturación' : 'Manage your subscription and billing'}</p>
       </div>
 
       {/* Current Plan Card */}
       <div className="max-w-2xl mb-8">
         <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
           <div className="px-6 py-6">
-            <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-4">Current Plan</h2>
+            <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-4">{isSpanish ? 'Plan actual' : 'Current Plan'}</h2>
             
             <div className="flex items-start justify-between mb-6">
               <div>
@@ -407,11 +417,11 @@ export default function MembershipPage() {
                     inferredCurrentPlan === 'practitioner' ? 'bg-purple-100 text-purple-700' :
                     'bg-teal-100 text-teal-800'
                   }`}>
-                    {currentPlanData?.name || 'Free'}
+                    {currentPlanData?.name || (isSpanish ? 'Gratis' : 'Free')}
                   </span>
                 </div>
                 <p className="text-sm text-gray-600">
-                  Next renewal: <span className="font-medium text-gray-900">{isRenewalLoading ? 'Loading...' : renewalDate}</span>
+                  {isSpanish ? 'Próxima renovación' : 'Next renewal'}: <span className="font-medium text-gray-900">{isRenewalLoading ? (isSpanish ? 'Cargando...' : 'Loading...') : renewalDate}</span>
                 </p>
               </div>
               <div className="text-right">
@@ -430,10 +440,12 @@ export default function MembershipPage() {
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-teal-600 text-white text-sm font-medium rounded-lg hover:bg-teal-700 transition-colors"
             >
               <CreditCard className="w-4 h-4" />
-              Manage billing
+              {isSpanish ? 'Gestionar facturación' : 'Manage billing'}
             </button>
             <p className="text-xs text-gray-500 mt-3">
-              Manage your payment method, view invoices, and update billing information securely through Stripe.
+              {isSpanish
+                ? 'Gestiona tu método de pago, consulta facturas y actualiza tu información de facturación de forma segura a través de Stripe.'
+                : 'Manage your payment method, view invoices, and update billing information securely through Stripe.'}
             </p>
           </div>
         </div>
@@ -441,11 +453,11 @@ export default function MembershipPage() {
 
       {/* Invoice History */}
       <div className="mb-8">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">Invoice History</h2>
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">{isSpanish ? 'Historial de facturas' : 'Invoice History'}</h2>
         
         {isInvoicesLoading ? (
           <div className="bg-white rounded-lg border border-gray-200 p-8 text-center">
-            <p className="text-sm text-gray-500">Loading invoices...</p>
+            <p className="text-sm text-gray-500">{isSpanish ? 'Cargando facturas...' : 'Loading invoices...'}</p>
           </div>
         ) : invoices.length > 0 ? (
           <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
@@ -455,22 +467,22 @@ export default function MembershipPage() {
                 <thead className="bg-gray-50 border-b border-gray-200">
                   <tr>
                     <th className="w-[20%] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Invoice
+                      {isSpanish ? 'Factura' : 'Invoice'}
                     </th>
                     <th className="w-[30%] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Description
+                      {isSpanish ? 'Descripción' : 'Description'}
                     </th>
                     <th className="w-[15%] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Date
+                      {isSpanish ? 'Fecha' : 'Date'}
                     </th>
                     <th className="w-[12%] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Amount
+                      {isSpanish ? 'Importe' : 'Amount'}
                     </th>
                     <th className="w-[12%] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Status
+                      {isSpanish ? 'Estado' : 'Status'}
                     </th>
                     <th className="w-[11%] px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Action
+                      {isSpanish ? 'Acción' : 'Action'}
                     </th>
                   </tr>
                 </thead>
@@ -496,7 +508,9 @@ export default function MembershipPage() {
                           'bg-red-100 text-red-700'
                         }`}>
                           {invoice.status === 'paid' && <CheckCircle className="w-3 h-3" />}
-                          {invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1)}
+                          {isSpanish
+                            ? (invoice.status === 'paid' ? 'Pagada' : invoice.status === 'pending' ? 'Pendiente' : 'Fallida')
+                            : invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1)}
                         </span>
                       </td>
                       <td className="px-6 py-4 text-right">
@@ -506,7 +520,7 @@ export default function MembershipPage() {
                             className="inline-flex items-center gap-1.5 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors"
                           >
                             <Download className="w-4 h-4" />
-                            PDF
+                            {isSpanish ? 'PDF' : 'PDF'}
                           </button>
                         )}
                       </td>
@@ -536,7 +550,9 @@ export default function MembershipPage() {
                         'bg-red-100 text-red-700'
                       }`}>
                         {invoice.status === 'paid' && <CheckCircle className="w-3 h-3" />}
-                        {invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1)}
+                        {isSpanish
+                          ? (invoice.status === 'paid' ? 'Pagada' : invoice.status === 'pending' ? 'Pendiente' : 'Fallida')
+                          : invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1)}
                       </span>
                     </div>
                   </div>
@@ -546,7 +562,7 @@ export default function MembershipPage() {
                       className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 bg-gray-50 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-100 transition-colors"
                     >
                       <Download className="w-4 h-4" />
-                      Download PDF
+                      {isSpanish ? 'Descargar PDF' : 'Download PDF'}
                     </button>
                   )}
                 </div>
@@ -555,7 +571,7 @@ export default function MembershipPage() {
           </div>
         ) : (
           <div className="bg-white rounded-lg border border-gray-200 p-8 text-center">
-            <p className="text-sm text-gray-500">No invoices found for this account yet.</p>
+            <p className="text-sm text-gray-500">{isSpanish ? 'Todavía no se han encontrado facturas para esta cuenta.' : 'No invoices found for this account yet.'}</p>
           </div>
         )}
       </div>
@@ -563,7 +579,7 @@ export default function MembershipPage() {
       {/* Available Plans */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-semibold text-gray-900">Available Plans</h2>
+          <h2 className="text-xl font-semibold text-gray-900">{isSpanish ? 'Planes disponibles' : 'Available Plans'}</h2>
 
           {/* Billing Period Toggle */}
           <div className="inline-flex items-center bg-gray-100 rounded-lg p-1">
@@ -575,7 +591,7 @@ export default function MembershipPage() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Monthly
+              {isSpanish ? 'Mensual' : 'Monthly'}
             </button>
             <button
               onClick={() => setBillingPeriod('yearly')}
@@ -585,9 +601,9 @@ export default function MembershipPage() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Yearly
+              {isSpanish ? 'Anual' : 'Yearly'}
               <span className="ml-2 text-xs font-semibold px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full">
-                Save 17%
+                {isSpanish ? 'Ahorra 17%' : 'Save 17%'}
               </span>
             </button>
           </div>
@@ -609,10 +625,10 @@ export default function MembershipPage() {
                 ? (plan.offer?.enabled ? `$${plan.offer.discountedPrice}` : `$${originalPlan?.monthlyPrice}`)
                 : `$${originalPlan?.yearlyPrice}`;
             const displayPeriod = plan.id === 'free'
-              ? 'forever'
+              ? (isSpanish ? 'siempre' : 'forever')
               : billingPeriod === 'monthly'
-                ? 'month'
-                : 'year';
+                ? (isSpanish ? 'mes' : 'month')
+                : (isSpanish ? 'año' : 'year');
             const yearlySavings = originalPlan && originalPlan.monthlyPrice && originalPlan.yearlyPrice
               ? (originalPlan.monthlyPrice * 12) - originalPlan.yearlyPrice
               : 0;
@@ -639,7 +655,7 @@ export default function MembershipPage() {
                 {isCurrent && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                     <span className="inline-flex items-center px-3 py-1 rounded-full bg-teal-600 text-white text-xs font-semibold">
-                      Current Plan
+                      {isSpanish ? 'Plan actual' : 'Current Plan'}
                     </span>
                   </div>
                 )}
@@ -670,11 +686,11 @@ export default function MembershipPage() {
                           <span className="text-3xl font-bold text-gray-900">
                             ${plan.offer.discountedPrice}
                           </span>
-                          <span className="text-sm text-gray-500 ml-1">/ {displayPeriod}</span>
+                      <span className="text-sm text-gray-500 ml-1">/ {displayPeriod}</span>
                         </div>
                         {/* Expiration Note */}
                         {plan.offer.expirationNote && (
-                          <p className="text-xs text-gray-500 mt-1">{plan.offer.expirationNote}</p>
+                            <p className="text-xs text-gray-500 mt-1">{plan.offer.expirationNote}</p>
                         )}
                       </>
                     ) : (
@@ -687,7 +703,7 @@ export default function MembershipPage() {
                         {/* Yearly Savings */}
                         {billingPeriod === 'yearly' && yearlySavings > 0 && (
                           <div className="mt-1 text-sm text-teal-600 font-medium">
-                            Save ${yearlySavings}/year
+                            {isSpanish ? `Ahorra $${yearlySavings}/año` : `Save $${yearlySavings}/year`}
                           </div>
                         )}
                       </>
@@ -708,7 +724,7 @@ export default function MembershipPage() {
                       disabled
                       className="w-full px-4 py-2.5 bg-gray-100 text-gray-400 text-sm font-medium rounded-lg cursor-not-allowed"
                     >
-                      Current plan
+                      {isSpanish ? 'Plan actual' : 'Current plan'}
                     </button>
                   ) : canUpgrade ? (
                     <button
@@ -722,11 +738,11 @@ export default function MembershipPage() {
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                           </svg>
-                          <span>Processing...</span>
+                          <span>{isSpanish ? 'Procesando...' : 'Processing...'}</span>
                         </>
                       ) : (
                         <>
-                          <span>Upgrade to {plan.name}</span>
+                          <span>{isSpanish ? `Actualizar a ${plan.name}` : `Upgrade to ${plan.name}`}</span>
                           <ArrowUpRight className="w-4 h-4" />
                         </>
                       )}
@@ -743,10 +759,10 @@ export default function MembershipPage() {
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                           </svg>
-                          <span>Processing...</span>
+                          <span>{isSpanish ? 'Procesando...' : 'Processing...'}</span>
                         </>
                       ) : (
-                        <span>Switch to {plan.name}</span>
+                        <span>{isSpanish ? `Cambiar a ${plan.name}` : `Switch to ${plan.name}`}</span>
                       )}
                     </button>
                   ) : null}
@@ -760,12 +776,12 @@ export default function MembershipPage() {
       {/* Billing Information */}
       <div className="max-w-2xl">
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <h3 className="text-sm font-semibold text-blue-900 mb-2">Billing Information</h3>
+          <h3 className="text-sm font-semibold text-blue-900 mb-2">{isSpanish ? 'Información de facturación' : 'Billing Information'}</h3>
           <ul className="text-xs text-blue-800 space-y-1">
-            <li>• All billing is processed securely through Stripe</li>
-            <li>• You can cancel or change your plan at any time</li>
-            <li>• Downgrades take effect at the end of your current billing period</li>
-            <li>• Upgrades are applied immediately with prorated charges</li>
+            <li>• {isSpanish ? 'Toda la facturación se procesa de forma segura a través de Stripe' : 'All billing is processed securely through Stripe'}</li>
+            <li>• {isSpanish ? 'Puedes cancelar o cambiar tu plan en cualquier momento' : 'You can cancel or change your plan at any time'}</li>
+            <li>• {isSpanish ? 'Las bajadas de plan se aplican al final de tu periodo de facturación actual' : 'Downgrades take effect at the end of your current billing period'}</li>
+            <li>• {isSpanish ? 'Las mejoras se aplican de inmediato con cargos prorrateados' : 'Upgrades are applied immediately with prorated charges'}</li>
           </ul>
         </div>
       </div>
@@ -793,10 +809,10 @@ export default function MembershipPage() {
             {billingModalMode === 'switch' && billingModalPlan && (
               <div className="mt-4 rounded-xl border border-teal-100 bg-teal-50 p-4">
                 <p className="text-sm font-medium text-teal-900">
-                  Selected plan: {billingModalPlan.name}
+                  {isSpanish ? 'Plan seleccionado' : 'Selected plan'}: {billingModalPlan.name}
                 </p>
                 <p className="mt-1 text-sm text-teal-800">
-                  Your current subscription will be managed through Stripe.
+                  {isSpanish ? 'Tu suscripción actual se gestionará a través de Stripe.' : 'Your current subscription will be managed through Stripe.'}
                 </p>
               </div>
             )}
@@ -808,7 +824,7 @@ export default function MembershipPage() {
                   className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50"
                   disabled={billingModalLoading}
                 >
-                  Cancel
+                  {isSpanish ? 'Cancelar' : 'Cancel'}
                 </button>
               </BillingDialogClose>
               <button
@@ -818,7 +834,9 @@ export default function MembershipPage() {
                 className="inline-flex items-center justify-center gap-2 rounded-lg bg-teal-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-teal-700 transition-colors disabled:opacity-50"
               >
                 {billingModalLoading && <Loader2 className="w-4 h-4 animate-spin" />}
-                {billingModalMode === 'manage' ? 'Open portal' : 'Continue to portal'}
+                {billingModalMode === 'manage'
+                  ? (isSpanish ? 'Abrir portal' : 'Open portal')
+                  : (isSpanish ? 'Continuar al portal' : 'Continue to portal')}
               </button>
             </div>
           </BillingDialogContent>

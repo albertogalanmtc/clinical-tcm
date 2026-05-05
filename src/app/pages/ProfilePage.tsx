@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Upload, X, Check, AlertCircle } from 'lucide-react';
 import { Avatar } from '../components/Avatar';
 import { useUser } from '../contexts/UserContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import { supabase } from '../lib/supabase';
 
 // ISO-2 Country codes with full names
@@ -68,6 +69,8 @@ const AVATAR_COLORS = [
 ];
 
 export default function ProfilePage() {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const { 
     firstName,
     lastName,
@@ -173,8 +176,10 @@ export default function ProfilePage() {
     <>
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Profile</h1>
-        <p className="text-gray-600">Manage your personal information and preferences</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">{isSpanish ? 'Perfil' : 'Profile'}</h1>
+        <p className="text-gray-600">
+          {isSpanish ? 'Gestiona tu información personal y preferencias' : 'Manage your personal information and preferences'}
+        </p>
       </div>
 
       {/* Content */}
@@ -185,7 +190,9 @@ export default function ProfilePage() {
             <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
               {/* Left Column - Avatar */}
               <div className="lg:border-r lg:border-gray-200 lg:pr-8">
-                <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-4">Avatar</h2>
+                <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-4">
+                  {isSpanish ? 'Avatar' : 'Avatar'}
+                </h2>
                 
                 <div className="space-y-4">
                   <div className="flex justify-center">
@@ -195,7 +202,7 @@ export default function ProfilePage() {
                   {/* Color Selection */}
                   {!avatarImage && (
                     <div>
-                      <p className="text-sm font-medium text-gray-700 mb-2">Color</p>
+                      <p className="text-sm font-medium text-gray-700 mb-2">{isSpanish ? 'Color' : 'Color'}</p>
                       <div className="flex flex-wrap gap-2">
                         {AVATAR_COLORS.map((color) => (
                           <button
@@ -217,9 +224,11 @@ export default function ProfilePage() {
 
                   {/* Upload Image */}
                   <div>
-                    <p className="text-sm font-medium text-gray-700 mb-2">Custom image</p>
+                    <p className="text-sm font-medium text-gray-700 mb-2">{isSpanish ? 'Imagen personalizada' : 'Custom image'}</p>
                     <p className="text-xs text-gray-500 mb-3">
-                      Upload a custom image for your avatar (logo, symbol, photo)
+                      {isSpanish
+                        ? 'Sube una imagen personalizada para tu avatar (logo, símbolo, foto)'
+                        : 'Upload a custom image for your avatar (logo, symbol, photo)'}
                     </p>
                     
                     {avatarImage ? (
@@ -228,12 +237,12 @@ export default function ProfilePage() {
                         className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors"
                       >
                         <X className="w-4 h-4" />
-                        Remove image
+                        {isSpanish ? 'Eliminar imagen' : 'Remove image'}
                       </button>
                     ) : (
                       <label className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
                         <Upload className="w-4 h-4" />
-                        Upload image
+                        {isSpanish ? 'Subir imagen' : 'Upload image'}
                         <input
                           type="file"
                           accept="image/*"
@@ -248,7 +257,9 @@ export default function ProfilePage() {
 
               {/* Right Column - Personal Information */}
               <div>
-                <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-4">Personal Information</h2>
+                <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-4">
+                  {isSpanish ? 'Información personal' : 'Personal Information'}
+                </h2>
                 
                 <div className="space-y-5">
                   {/* Row 1: Title + First Name + Last Name */}
@@ -256,47 +267,47 @@ export default function ProfilePage() {
                     {/* Title Field */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Title
+                        {isSpanish ? 'Título' : 'Title'}
                       </label>
                       <select
                         value={localTitle || ''}
                         onChange={(e) => setLocalTitle(e.target.value)}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                       >
-                        <option value="">Title</option>
-                        <option value="Mr.">Mr.</option>
-                        <option value="Mrs.">Mrs.</option>
-                        <option value="Ms.">Ms.</option>
+                        <option value="">{isSpanish ? 'Título' : 'Title'}</option>
+                        <option value="Mr.">{isSpanish ? 'Sr.' : 'Mr.'}</option>
+                        <option value="Mrs.">{isSpanish ? 'Sra.' : 'Mrs.'}</option>
+                        <option value="Ms.">{isSpanish ? 'Sra.' : 'Ms.'}</option>
                         <option value="Dr.">Dr.</option>
-                        <option value="Prof.">Prof.</option>
+                        <option value="Prof.">{isSpanish ? 'Prof.' : 'Prof.'}</option>
                       </select>
                     </div>
 
                     {/* First Name Field */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        First name <span className="text-red-500">*</span>
+                        {isSpanish ? 'Nombre' : 'First name'} <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
                         value={localFirstName || ''}
                         onChange={(e) => setLocalFirstName(e.target.value)}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                        placeholder="Enter your first name"
+                        placeholder={isSpanish ? 'Introduce tu nombre' : 'Enter your first name'}
                       />
                     </div>
 
                     {/* Last Name Field */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Last name <span className="text-red-500">*</span>
+                        {isSpanish ? 'Apellidos' : 'Last name'} <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
                         value={localLastName || ''}
                         onChange={(e) => setLocalLastName(e.target.value)}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                        placeholder="Enter your last name"
+                        placeholder={isSpanish ? 'Introduce tus apellidos' : 'Enter your last name'}
                       />
                     </div>
                   </div>
@@ -306,14 +317,14 @@ export default function ProfilePage() {
                     {/* Country Field */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Country <span className="text-red-500">*</span>
+                        {isSpanish ? 'País' : 'Country'} <span className="text-red-500">*</span>
                       </label>
                       <select
                         value={localCountry || ''}
                         onChange={(e) => setLocalCountry(e.target.value)}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                       >
-                        <option value="">Select your country</option>
+                        <option value="">{isSpanish ? 'Selecciona tu país' : 'Select your country'}</option>
                         {COUNTRIES.map(country => (
                           <option key={country.code} value={country.code}>
                             {country.name}
@@ -323,7 +334,7 @@ export default function ProfilePage() {
                       {!localCountry && (
                         <div className="flex items-center gap-1.5 mt-2 text-amber-600 text-xs">
                           <AlertCircle className="w-4 h-4" />
-                          <span>Country is required</span>
+                          <span>{isSpanish ? 'El país es obligatorio' : 'Country is required'}</span>
                         </div>
                       )}
                     </div>
@@ -332,7 +343,10 @@ export default function ProfilePage() {
                   {/* Country Note */}
                   <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
                     <p className="text-xs text-blue-800">
-                      <strong>Note:</strong> Your country determines which herbs may be restricted in your region due to local regulations.
+                      <strong>{isSpanish ? 'Nota:' : 'Note:'}</strong>{' '}
+                      {isSpanish
+                        ? 'Tu país determina qué hierbas pueden estar restringidas en tu región debido a la normativa local.'
+                        : 'Your country determines which herbs may be restricted in your region due to local regulations.'}
                     </p>
                   </div>
                 </div>
@@ -349,7 +363,7 @@ export default function ProfilePage() {
                 className="flex items-center gap-2 px-5 py-2.5 bg-teal-600 text-white text-sm font-medium rounded-lg hover:bg-teal-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Check className="w-4 h-4" />
-                Save changes
+                {isSpanish ? 'Guardar cambios' : 'Save changes'}
               </button>
             </div>
           )}

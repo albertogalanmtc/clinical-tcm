@@ -4,8 +4,10 @@ import { getPrescriptionsSync, Prescription } from '../data/prescriptions';
 import { Link } from 'react-router-dom';
 import { usePlanFeatures } from '../hooks/usePlanFeatures';
 import { UpgradePrompt } from '../components/UpgradePrompt';
+import { useLanguage } from '../contexts/LanguageContext';
 
 type Period = 'week' | 'month' | 'year' | 'all';
+type AppLanguage = 'en' | 'es';
 
 interface ChartDataPoint {
   period: string;
@@ -40,14 +42,15 @@ function useIsMobile() {
 }
 
 // Calculate chart data based on prescriptions and selected period
-function calculateChartData(prescriptions: Prescription[], period: Period): ChartDataPoint[] {
+function calculateChartData(prescriptions: Prescription[], period: Period, language: AppLanguage): ChartDataPoint[] {
+  const isSpanish = language === 'es';
   const now = new Date();
   const currentYear = now.getFullYear();
   const currentMonth = now.getMonth();
 
   if (period === 'week') {
     // This week: show days
-    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    const days = isSpanish ? ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'] : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     const data: ChartDataPoint[] = days.map(day => ({ period: day, count: 0 }));
 
     // Get start of current week (Monday)
@@ -70,7 +73,7 @@ function calculateChartData(prescriptions: Prescription[], period: Period): Char
     return data;
   } else if (period === 'month') {
     // This month: show weeks
-    const weeks = ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
+    const weeks = isSpanish ? ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'] : ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
     const data: ChartDataPoint[] = weeks.map(week => ({ period: week, count: 0 }));
 
     prescriptions.forEach(prescription => {
@@ -84,7 +87,7 @@ function calculateChartData(prescriptions: Prescription[], period: Period): Char
     return data;
   } else if (period === 'year') {
     // This year: show months
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const months = isSpanish ? ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'] : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const data: ChartDataPoint[] = months.map(month => ({ period: month, count: 0 }));
 
     prescriptions.forEach(prescription => {
@@ -208,6 +211,8 @@ function calculateFormulaUsage(prescriptions: Prescription[], period: Period): F
 }
 
 export default function Usage() {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const { hasFeature } = usePlanFeatures();
   
   // Check if user has access to Statistics
@@ -215,8 +220,10 @@ export default function Usage() {
     return (
       <div className="flex-1 p-6 overflow-y-auto">
         <UpgradePrompt
-          feature="Usage Analytics"
-          description="Track your herb and formula usage over time. Gain insights into your prescribing patterns and optimize your practice."
+          feature={isSpanish ? 'Analíticas de uso' : 'Usage Analytics'}
+          description={isSpanish
+            ? 'Haz seguimiento del uso de tus hierbas y fórmulas a lo largo del tiempo. Obtén información sobre tus patrones de prescripción y optimiza tu práctica.'
+            : 'Track your herb and formula usage over time. Gain insights into your prescribing patterns and optimize your practice.'}
           requiredPlan="practitioner"
         />
       </div>
@@ -247,7 +254,7 @@ export default function Usage() {
 
   const herbsData = calculateHerbUsage(prescriptions, selectedPeriodHerbs);
   const formulasData = calculateFormulaUsage(prescriptions, selectedPeriodFormulas);
-  const chartData = calculateChartData(prescriptions, selectedPeriodChart);
+  const chartData = calculateChartData(prescriptions, selectedPeriodChart, language);
   const hasData = prescriptions.length > 0;
 
   // Calculate max value for bar scaling
@@ -257,15 +264,15 @@ export default function Usage() {
     <>
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Usage & Analytics</h1>
-        <p className="text-gray-600">Detailed breakdown of your formula and herb usage</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">{isSpanish ? 'Uso y analíticas' : 'Usage & Analytics'}</h1>
+        <p className="text-gray-600">{isSpanish ? 'Desglose detallado del uso de tus fórmulas y hierbas' : 'Detailed breakdown of your formula and herb usage'}</p>
       </div>
 
       <div className="space-y-6">
         {/* Formulas Generated Chart - First Section */}
         <div className="bg-white rounded-lg border border-gray-200 p-6">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-lg font-semibold text-gray-900">Formulas generated</h2>
+            <h2 className="text-lg font-semibold text-gray-900">{isSpanish ? 'Fórmulas generadas' : 'Formulas generated'}</h2>
             
             {/* Period Selector for Chart */}
             {hasData && (
@@ -278,7 +285,7 @@ export default function Usage() {
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  Week
+                  {isSpanish ? 'Semana' : 'Week'}
                 </button>
                 <button
                   onClick={() => setSelectedPeriodChart('month')}
@@ -288,7 +295,7 @@ export default function Usage() {
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  Month
+                  {isSpanish ? 'Mes' : 'Month'}
                 </button>
                 <button
                   onClick={() => setSelectedPeriodChart('year')}
@@ -298,7 +305,7 @@ export default function Usage() {
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  Year
+                  {isSpanish ? 'Año' : 'Year'}
                 </button>
                 <button
                   onClick={() => setSelectedPeriodChart('all')}
@@ -308,7 +315,7 @@ export default function Usage() {
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  All time
+                  {isSpanish ? 'Todo' : 'All time'}
                 </button>
               </div>
             )}
@@ -353,19 +360,19 @@ export default function Usage() {
                     strokeWidth={2.5}
                     dot={{ fill: '#0d9488', r: 4 }}
                     activeDot={{ r: 6 }}
-                    name="Formulas"
+                    name={isSpanish ? 'Fórmulas' : 'Formulas'}
                   />
                 </LineChart>
               </ResponsiveContainer>
             </div>
           ) : (
             <div className="py-20 text-center">
-              <p className="text-sm text-gray-600 mb-3">No formulas created yet</p>
+              <p className="text-sm text-gray-600 mb-3">{isSpanish ? 'Todavía no se han creado fórmulas' : 'No formulas created yet'}</p>
               <Link 
                 to="/builder"
                 className="text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors"
               >
-                Create your first formula
+                {isSpanish ? 'Crea tu primera fórmula' : 'Create your first formula'}
               </Link>
             </div>
           )}
@@ -374,7 +381,7 @@ export default function Usage() {
         {/* Top Herbs Used Section */}
         <div className="bg-white rounded-lg border border-gray-200">
           <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-gray-900">Herbs used</h2>
+            <h2 className="text-lg font-semibold text-gray-900">{isSpanish ? 'Hierbas usadas' : 'Herbs used'}</h2>
             
             {/* Period Selector for Herbs */}
             {hasData && (
@@ -387,7 +394,7 @@ export default function Usage() {
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  Week
+                  {isSpanish ? 'Semana' : 'Week'}
                 </button>
                 <button
                   onClick={() => setSelectedPeriodHerbs('month')}
@@ -397,7 +404,7 @@ export default function Usage() {
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  Month
+                  {isSpanish ? 'Mes' : 'Month'}
                 </button>
                 <button
                   onClick={() => setSelectedPeriodHerbs('year')}
@@ -407,7 +414,7 @@ export default function Usage() {
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  Year
+                  {isSpanish ? 'Año' : 'Year'}
                 </button>
                 <button
                   onClick={() => setSelectedPeriodHerbs('all')}
@@ -417,7 +424,7 @@ export default function Usage() {
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  All time
+                  {isSpanish ? 'Todo' : 'All time'}
                 </button>
               </div>
             )}
@@ -448,7 +455,7 @@ export default function Usage() {
             </div>
           ) : (
             <div className="px-6 py-12 text-center">
-              <p className="text-sm text-gray-500">No herbs used yet</p>
+              <p className="text-sm text-gray-500">{isSpanish ? 'Todavía no se han usado hierbas' : 'No herbs used yet'}</p>
             </div>
           )}
         </div>
@@ -456,7 +463,7 @@ export default function Usage() {
         {/* Formulas Used Section */}
         <div className="bg-white rounded-lg border border-gray-200">
           <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-gray-900">Formulas used</h2>
+            <h2 className="text-lg font-semibold text-gray-900">{isSpanish ? 'Fórmulas usadas' : 'Formulas used'}</h2>
             
             {/* Period Selector for Formulas */}
             {hasData && (
@@ -469,7 +476,7 @@ export default function Usage() {
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  Week
+                  {isSpanish ? 'Semana' : 'Week'}
                 </button>
                 <button
                   onClick={() => setSelectedPeriodFormulas('month')}
@@ -479,7 +486,7 @@ export default function Usage() {
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  Month
+                  {isSpanish ? 'Mes' : 'Month'}
                 </button>
                 <button
                   onClick={() => setSelectedPeriodFormulas('year')}
@@ -489,7 +496,7 @@ export default function Usage() {
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  Year
+                  {isSpanish ? 'Año' : 'Year'}
                 </button>
                 <button
                   onClick={() => setSelectedPeriodFormulas('all')}
@@ -499,7 +506,7 @@ export default function Usage() {
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  All time
+                  {isSpanish ? 'Todo' : 'All time'}
                 </button>
               </div>
             )}
@@ -522,7 +529,7 @@ export default function Usage() {
             </div>
           ) : (
             <div className="px-6 py-12 text-center">
-              <p className="text-sm text-gray-500">No formulas used yet</p>
+              <p className="text-sm text-gray-500">{isSpanish ? 'Todavía no se han usado fórmulas' : 'No formulas used yet'}</p>
             </div>
           )}
         </div>

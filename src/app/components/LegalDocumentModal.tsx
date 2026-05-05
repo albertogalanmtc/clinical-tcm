@@ -2,6 +2,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { X, FileText } from 'lucide-react';
 import { useEffect } from 'react';
 import type { LegalDocument } from '../data/platformSettings';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface LegalDocumentModalProps {
   isOpen: boolean;
@@ -10,6 +11,9 @@ interface LegalDocumentModalProps {
 }
 
 export function LegalDocumentModal({ isOpen, onClose, document }: LegalDocumentModalProps) {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
+
   // Emit events for modal state changes (for hiding layout footers)
   useEffect(() => {
     if (isOpen) {
@@ -35,7 +39,7 @@ export function LegalDocumentModal({ isOpen, onClose, document }: LegalDocumentM
                 {document.title}
               </Dialog.Title>
               <p className="text-sm text-gray-500">
-                Last updated: {new Date(document.lastUpdated).toLocaleDateString('en-US', {
+                {isSpanish ? 'Última actualización' : 'Last updated'}: {new Date(document.lastUpdated).toLocaleDateString(isSpanish ? 'es-ES' : 'en-US', {
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric'
@@ -59,7 +63,7 @@ export function LegalDocumentModal({ isOpen, onClose, document }: LegalDocumentM
           {/* Footer - Close button on mobile */}
           <div className="flex-shrink-0 px-6 py-4 border-t border-gray-200 bg-gray-50 sm:hidden">
             <Dialog.Close className="w-full px-4 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium">
-              Close
+              {isSpanish ? 'Cerrar' : 'Close'}
             </Dialog.Close>
           </div>
         </Dialog.Content>

@@ -3,8 +3,11 @@ import { useState, useEffect } from 'react';
 import { getPlatformSettings } from '../data/platformSettings';
 import type { LegalDocument } from '../data/platformSettings';
 import { LegalDocumentModal } from '../components/LegalDocumentModal';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function LegalPoliciesPage() {
+  const { language } = useLanguage();
+  const isSpanish = language === 'es';
   const [settings, setSettings] = useState(() => getPlatformSettings());
   const [selectedDocument, setSelectedDocument] = useState<LegalDocument | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,11 +21,21 @@ export default function LegalPoliciesPage() {
     .filter(doc => doc.status === 'published')
     .map(doc => {
       const descriptionMap: Record<string, string> = {
-        terms: 'Terms and conditions for using our Traditional Chinese Medicine platform',
-        privacy: 'How we collect, use, and protect your personal information',
-        cookies: 'Information about cookies and tracking technologies we use',
-        refund: 'Our policy regarding refunds, cancellations, and billing disputes',
-        disclaimer: 'Important information about the clinical use of this platform and professional responsibility'
+        terms: isSpanish
+          ? 'Términos y condiciones para usar nuestra plataforma de Medicina Tradicional China'
+          : 'Terms and conditions for using our Traditional Chinese Medicine platform',
+        privacy: isSpanish
+          ? 'Cómo recopilamos, usamos y protegemos tu información personal'
+          : 'How we collect, use, and protect your personal information',
+        cookies: isSpanish
+          ? 'Información sobre las cookies y tecnologías de seguimiento que utilizamos'
+          : 'Information about cookies and tracking technologies we use',
+        refund: isSpanish
+          ? 'Nuestra política sobre reembolsos, cancelaciones y disputas de facturación'
+          : 'Our policy regarding refunds, cancellations, and billing disputes',
+        disclaimer: isSpanish
+          ? 'Información importante sobre el uso clínico de esta plataforma y la responsabilidad profesional'
+          : 'Important information about the clinical use of this platform and professional responsibility'
       };
 
       return {
@@ -47,9 +60,11 @@ export default function LegalPoliciesPage() {
     <>
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Legal & Policies</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">{isSpanish ? 'Legal y políticas' : 'Legal & Policies'}</h1>
         <p className="text-gray-600">
-          Important legal information and policies for using our platform
+          {isSpanish
+            ? 'Información legal importante y políticas para usar nuestra plataforma'
+            : 'Important legal information and policies for using our platform'}
         </p>
       </div>
 
@@ -62,8 +77,8 @@ export default function LegalPoliciesPage() {
                 <FileText className="w-5 h-5 text-teal-600" />
               </div>
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">Legal Documents</h2>
-                <p className="text-sm text-gray-500">View our terms, policies, and agreements</p>
+                <h2 className="text-lg font-semibold text-gray-900">{isSpanish ? 'Documentos legales' : 'Legal Documents'}</h2>
+                <p className="text-sm text-gray-500">{isSpanish ? 'Consulta nuestros términos, políticas y acuerdos' : 'View our terms, policies, and agreements'}</p>
               </div>
             </div>
           </div>
@@ -89,7 +104,7 @@ export default function LegalPoliciesPage() {
                         </h3>
                         {doc.status === 'draft' && (
                           <span className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs font-medium rounded">
-                            Draft
+                            {isSpanish ? 'Borrador' : 'Draft'}
                           </span>
                         )}
                       </div>
@@ -98,7 +113,7 @@ export default function LegalPoliciesPage() {
                       </p>
                       {doc.lastUpdated && doc.status === 'published' && (
                         <p className="text-xs text-gray-500">
-                          Last updated: {new Date(doc.lastUpdated).toLocaleDateString('en-US', {
+                          {isSpanish ? 'Última actualización' : 'Last updated'}: {new Date(doc.lastUpdated).toLocaleDateString(isSpanish ? 'es-ES' : 'en-US', {
                             year: 'numeric',
                             month: 'short',
                             day: 'numeric'
@@ -112,7 +127,7 @@ export default function LegalPoliciesPage() {
               ))
             ) : (
               <div className="px-6 py-8 text-center text-gray-500">
-                <p>No legal documents available at this time.</p>
+                <p>{isSpanish ? 'No hay documentos legales disponibles en este momento.' : 'No legal documents available at this time.'}</p>
               </div>
             )}
           </div>
@@ -126,8 +141,8 @@ export default function LegalPoliciesPage() {
                 <Shield className="w-5 h-5 text-blue-600" />
               </div>
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">Important Information</h2>
-                <p className="text-sm text-gray-500">What you need to know</p>
+                <h2 className="text-lg font-semibold text-gray-900">{isSpanish ? 'Información importante' : 'Important Information'}</h2>
+                <p className="text-sm text-gray-500">{isSpanish ? 'Lo que necesitas saber' : 'What you need to know'}</p>
               </div>
             </div>
           </div>
@@ -135,16 +150,24 @@ export default function LegalPoliciesPage() {
           <div className="px-6 py-5">
             <div className="text-sm text-gray-600 space-y-2">
               <p>
-                • These documents govern your use of our Traditional Chinese Medicine platform
+                • {isSpanish
+                  ? 'Estos documentos regulan tu uso de nuestra plataforma de Medicina Tradicional China'
+                  : 'These documents govern your use of our Traditional Chinese Medicine platform'}
               </p>
               <p>
-                • By using our services, you agree to comply with these terms and policies
+                • {isSpanish
+                  ? 'Al usar nuestros servicios, aceptas cumplir estos términos y políticas'
+                  : 'By using our services, you agree to comply with these terms and policies'}
               </p>
               <p>
-                • We may update these documents from time to time. Check the "Last updated" date for changes
+                • {isSpanish
+                  ? 'Podemos actualizar estos documentos de vez en cuando. Revisa la fecha de “Última actualización” para ver cambios'
+                  : 'We may update these documents from time to time. Check the "Last updated" date for changes'}
               </p>
               <p>
-                • For questions about our legal policies, please contact our support team
+                • {isSpanish
+                  ? 'Si tienes preguntas sobre nuestras políticas legales, contacta con nuestro equipo de soporte'
+                  : 'For questions about our legal policies, please contact our support team'}
               </p>
             </div>
           </div>
