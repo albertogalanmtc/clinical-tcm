@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
-import { CalendarDays, Plus, Users } from 'lucide-react';
+import { CalendarDays, Plus } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { SearchBar } from '../components/ui/SearchBar';
@@ -57,18 +57,6 @@ export default function Patients() {
   return (
     <div className="flex h-full flex-col overflow-hidden">
       <div className="flex-1 min-h-0 overflow-hidden p-4 pb-[86px] sm:pb-4 lg:p-6 lg:pb-6">
-        <div className="mb-6 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-medium text-teal-700">
-              <Users className="h-3.5 w-3.5" />
-              {isSpanish ? 'Pacientes' : 'Patients'}
-            </div>
-            <h1 className="text-3xl font-bold text-gray-900">
-              {isSpanish ? 'Lista de pacientes' : 'Patient list'}
-            </h1>
-          </div>
-        </div>
-
         <div className="mb-5 flex flex-col gap-3 lg:flex-row lg:items-center">
           <SearchBar
             value={query}
@@ -76,7 +64,7 @@ export default function Patients() {
             placeholder={isSpanish ? 'Buscar paciente...' : 'Search patient...'}
             className="w-full lg:flex-1"
           />
-          <Button className="w-full bg-teal-600 text-white hover:bg-teal-700 lg:w-auto">
+          <Button className="h-10 w-full rounded-lg bg-teal-600 px-4 text-white hover:bg-teal-700 lg:w-auto">
             <Plus className="h-4 w-4" />
             {isSpanish ? 'Nuevo paciente' : 'New patient'}
           </Button>
@@ -92,25 +80,6 @@ export default function Patients() {
             {visiblePatients.length > 0 ? (
               <div className="overflow-x-auto">
                 <table className="min-w-full table-fixed divide-y divide-gray-200">
-                  <thead className="bg-gray-50/80">
-                    <tr className="text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
-                      <th className="w-[31%] px-6 py-4">
-                        {isSpanish ? 'Nombre' : 'Name'}
-                      </th>
-                      <th className="w-[13%] px-6 py-4">
-                        {isSpanish ? 'Edad' : 'Age'}
-                      </th>
-                      <th className="w-[24%] px-6 py-4">
-                        {isSpanish ? 'Teléfono' : 'Phone'}
-                      </th>
-                      <th className="w-[16%] px-6 py-4">
-                        {isSpanish ? 'Última cita' : 'Last appointment'}
-                      </th>
-                      <th className="w-[16%] px-6 py-4">
-                        {isSpanish ? 'Próxima cita' : 'Next appointment'}
-                      </th>
-                    </tr>
-                  </thead>
                   <tbody className="divide-y divide-gray-200 bg-white">
                     {visiblePatients.map((patient) => (
                       <tr
@@ -142,6 +111,10 @@ export default function Patients() {
                         <td className="whitespace-nowrap px-6 py-5 text-sm text-gray-700">
                           <span className="inline-flex items-center gap-2">
                             <CalendarDays className="h-4 w-4 text-slate-500" />
+                            <span className="font-medium text-gray-500">
+                              {isSpanish ? 'Última:' : 'Last:'}
+                            </span>
+                            {' '}
                             {formatDate(patient.lastVisit, isSpanish)}
                           </span>
                         </td>
@@ -149,7 +122,15 @@ export default function Patients() {
                           <span className={`inline-flex items-center gap-2 ${patient.nextAppointment ? 'text-emerald-600' : 'text-gray-400'}`}>
                             <CalendarDays className="h-4 w-4" />
                             {patient.nextAppointment
-                              ? formatDate(patient.nextAppointment, isSpanish)
+                              ? (
+                                <>
+                                  <span className="font-medium text-gray-500">
+                                    {isSpanish ? 'Próxima:' : 'Next:'}
+                                  </span>
+                                  {' '}
+                                  {formatDate(patient.nextAppointment, isSpanish)}
+                                </>
+                              )
                               : (isSpanish ? 'Sin cita programada' : 'No appointment scheduled')}
                           </span>
                         </td>
