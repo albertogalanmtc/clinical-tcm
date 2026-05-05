@@ -11,6 +11,8 @@ import {
   Mail,
   MapPin,
   Phone,
+  Mars,
+  Venus,
   Stethoscope,
   TrendingUp,
   UserRound,
@@ -28,7 +30,6 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { Avatar } from '../components/Avatar';
 import { Badge } from '../components/ui/Badge';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Progress } from '../components/ui/progress';
@@ -115,6 +116,12 @@ export default function PatientDetail() {
   ];
 
   const activeSection = sectionTabs.find((tab) => tab.id === activeTab) ?? sectionTabs[0];
+  const PatientAvatarIcon =
+    patient.sex === 'female'
+      ? Venus
+      : patient.sex === 'male'
+        ? Mars
+        : UserRound;
 
   const sectionActionLabel = (() => {
     if (activeTab === 'overview') return isSpanish ? 'Editar' : 'Edit';
@@ -145,16 +152,14 @@ export default function PatientDetail() {
   return (
     <div className="flex h-full flex-col overflow-hidden">
       <div className="flex-1 min-h-0 overflow-hidden p-4 pb-[86px] sm:pb-4 lg:p-6 lg:pb-6">
-        <div className="grid gap-6 xl:grid-cols-[360px_minmax(0,1fr)] xl:items-stretch">
+        <div className="grid gap-6 xl:min-h-[calc(100vh-12rem)] xl:grid-cols-[360px_minmax(0,1fr)] xl:items-stretch">
           <Card className="h-full overflow-hidden rounded-lg border border-gray-200 shadow-sm">
             <CardContent className="flex h-full flex-col p-0">
               <div className="border-b border-gray-200 px-6 py-6">
                 <div className="flex items-center gap-4">
-                  <Avatar
-                    name={patient.name}
-                    size="lg"
-                    color={patient.sex === 'female' ? '#0f766e' : '#2563eb'}
-                  />
+                  <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600">
+                    <PatientAvatarIcon className="h-8 w-8" />
+                  </div>
                   <div className="min-w-0">
                     <h2 className="truncate text-2xl font-semibold text-gray-900">{patient.name}</h2>
                     <p className="mt-1 text-sm text-gray-500">
@@ -186,7 +191,7 @@ export default function PatientDetail() {
                 })}
               </nav>
 
-              <div className="hidden lg:block border-t border-gray-200 px-2 py-2 lg:p-4">
+              <div className="hidden border-t border-gray-200 px-2 py-2 lg:block lg:px-3 lg:py-3">
                 <Link
                   to={basePath}
                   className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 lg:px-4 lg:py-3"
