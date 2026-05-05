@@ -146,8 +146,25 @@ export default function PatientDetail() {
   return (
     <div className="flex h-full flex-col overflow-hidden">
       <div className="flex-1 min-h-0 overflow-hidden p-4 pb-[86px] sm:pb-4 lg:p-6 lg:pb-6">
+        <div className="mb-6">
+          <Button asChild variant="ghost" className="h-10 w-10 rounded-lg border border-gray-200 bg-white p-0 text-gray-600 hover:bg-gray-100 hover:text-gray-900">
+            <Link to={basePath}>
+              <ArrowLeft className="h-5 w-5" />
+            </Link>
+          </Button>
+        </div>
+
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">{patient.name}</h1>
+          <p className="text-gray-600">
+            {isSpanish
+              ? 'Ficha clínica visual con anamnesis, evaluaciones, gráficas y agenda.'
+              : 'Visual clinical file with anamnesis, evaluations, charts, and appointments.'}
+          </p>
+        </div>
+
         <div className="grid gap-6 xl:grid-cols-[360px_minmax(0,1fr)] xl:items-stretch">
-          <Card className="h-full overflow-hidden border-gray-200 shadow-sm">
+          <Card className="h-full rounded-lg overflow-hidden border-gray-200 shadow-sm">
             <CardContent className="flex h-full flex-col p-0">
               <div className="border-b border-gray-200 p-6">
                 <h2 className="text-2xl font-semibold text-gray-900">{patient.name}</h2>
@@ -177,19 +194,10 @@ export default function PatientDetail() {
                   );
                 })}
               </div>
-
-              <div className="mt-auto border-t border-gray-200 p-5">
-                <Button asChild variant="outline" className="w-full justify-center rounded-2xl border-gray-200 bg-gray-50 px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-gray-900">
-                  <Link to={basePath}>
-                    <ArrowLeft className="h-4 w-4" />
-                    {isSpanish ? 'Atrás' : 'Back'}
-                  </Link>
-                </Button>
-              </div>
             </CardContent>
           </Card>
 
-          <Card className="h-full border-gray-200 shadow-sm">
+          <Card className="h-full rounded-lg border-gray-200 shadow-sm">
             <CardHeader className="border-b border-gray-100 pb-4">
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
@@ -201,7 +209,7 @@ export default function PatientDetail() {
                     <p className="mt-1 text-sm text-gray-500">{sectionDescriptions[activeTab]}</p>
                   </div>
                 </div>
-                <div className="hidden items-center gap-2 rounded-xl border border-teal-100 bg-teal-50 px-4 py-3 text-sm font-medium text-teal-700 sm:flex">
+                <div className="hidden items-center gap-2 rounded-lg border border-teal-100 bg-teal-50 px-4 py-3 text-sm font-medium text-teal-700 sm:flex">
                   <Pencil className="h-4 w-4" />
                   {sectionActionLabel}
                 </div>

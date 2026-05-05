@@ -4,8 +4,8 @@ import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { CalendarDays, Plus } from 'lucide-react';
 import { Button } from '../components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { SearchBar } from '../components/ui/SearchBar';
+import { ScrollableListCard } from '../components/ui/ScrollableListCard';
 import { useLanguage } from '../contexts/LanguageContext';
 import { normalizeForSearch } from '../utils/searchUtils';
 import { patientCases } from '../data/patientCases';
@@ -70,91 +70,63 @@ export default function Patients() {
           </Button>
         </div>
 
-        <Card className="overflow-hidden border-gray-200 shadow-sm">
-          <CardHeader className="border-b border-gray-100 px-6 py-4">
-            <CardTitle className="text-sm font-semibold uppercase tracking-wide text-gray-500">
-              {isSpanish ? 'Pacientes recientes' : 'Recent patients'}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="p-0">
-            {visiblePatients.length > 0 ? (
-              <div className="overflow-x-auto">
-                <table className="min-w-full table-fixed divide-y divide-gray-200">
-                  <tbody className="divide-y divide-gray-200 bg-white">
-                    {visiblePatients.map((patient) => (
-                      <tr
-                        key={patient.id}
-                        onClick={() => navigate(`${basePath}/${patient.id}`)}
-                        onKeyDown={(event) => {
-                          if (event.key === 'Enter' || event.key === ' ') {
-                            event.preventDefault();
-                            navigate(`${basePath}/${patient.id}`);
-                          }
-                        }}
-                        tabIndex={0}
-                        role="link"
-                        className="cursor-pointer transition-colors hover:bg-gray-50 focus:bg-gray-50 focus:outline-none"
-                      >
-                        <td className="px-6 py-5">
-                          <div className="min-w-0">
-                            <h3 className="truncate text-lg font-semibold text-gray-900">
-                              {patient.name}
-                            </h3>
-                          </div>
-                        </td>
-                        <td className="whitespace-nowrap px-6 py-5 text-sm text-gray-700">
-                          {patient.age} {isSpanish ? 'años' : 'years'}
-                        </td>
-                        <td className="whitespace-nowrap px-6 py-5 text-sm text-gray-700">
-                          {patient.phone}
-                        </td>
-                        <td className="whitespace-nowrap px-6 py-5 text-sm text-gray-700">
-                          <span className="inline-flex items-center gap-2">
-                            <CalendarDays className="h-4 w-4 text-slate-500" />
-                            <span className="font-medium text-gray-500">
-                              {isSpanish ? 'Última:' : 'Last:'}
-                            </span>
-                            {' '}
-                            {formatDate(patient.lastVisit, isSpanish)}
-                          </span>
-                        </td>
-                        <td className="whitespace-nowrap px-6 py-5 text-sm">
-                          <span className={`inline-flex items-center gap-2 ${patient.nextAppointment ? 'text-emerald-600' : 'text-gray-400'}`}>
-                            <CalendarDays className="h-4 w-4" />
-                            {patient.nextAppointment
-                              ? (
-                                <>
-                                  <span className="font-medium text-gray-500">
-                                    {isSpanish ? 'Próxima:' : 'Next:'}
-                                  </span>
-                                  {' '}
-                                  {formatDate(patient.nextAppointment, isSpanish)}
-                                </>
-                              )
-                              : (isSpanish ? 'Sin cita programada' : 'No appointment scheduled')}
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            ) : (
-              <div className="px-6 py-12 text-center">
-                <p className="text-sm font-medium text-gray-900">
-                  {isSpanish
-                    ? 'No hay pacientes que coincidan con la búsqueda'
-                    : 'No patients match the current search'}
-                </p>
-                <p className="mt-2 text-sm text-gray-500">
-                  {isSpanish
-                    ? 'Prueba con otro nombre, ciudad o diagnóstico.'
-                    : 'Try another name, city, or diagnosis.'}
-                </p>
-              </div>
-            )}
-          </CardContent>
-        </Card>
+        {visiblePatients.length > 0 ? (
+          <ScrollableListCard className="flex-1 min-h-0 overflow-hidden">
+            <div className="divide-y divide-gray-200 border-b border-gray-200">
+              {visiblePatients.map((patient) => (
+                <button
+                  key={patient.id}
+                  type="button"
+                  onClick={() => navigate(`${basePath}/${patient.id}`)}
+                  className="group block w-full bg-white px-4 py-3 text-left transition-colors hover:bg-gray-50 sm:px-4 sm:py-4 lg:px-6"
+                >
+                  <div className="grid grid-cols-1 gap-2 text-sm text-gray-700 sm:grid-cols-[minmax(0,2.2fr)_minmax(0,0.7fr)_minmax(0,1.5fr)_minmax(0,1.6fr)_minmax(0,1.6fr)] sm:items-center">
+                    <div className="min-w-0">
+                      <h3 className="truncate text-lg font-semibold text-gray-900">
+                        {patient.name}
+                      </h3>
+                    </div>
+                    <div className="whitespace-nowrap text-gray-600">
+                      {patient.age} {isSpanish ? 'años' : 'years'}
+                    </div>
+                    <div className="whitespace-nowrap text-gray-600">
+                      {patient.phone}
+                    </div>
+                    <div className="inline-flex items-center gap-2 whitespace-nowrap text-gray-700">
+                      <CalendarDays className="h-4 w-4 text-slate-500" />
+                      <span className="font-medium text-gray-500">
+                        {isSpanish ? 'Última:' : 'Last:'}
+                      </span>
+                      {formatDate(patient.lastVisit, isSpanish)}
+                    </div>
+                    <div className={`inline-flex items-center gap-2 whitespace-nowrap ${patient.nextAppointment ? 'text-emerald-600' : 'text-gray-400'}`}>
+                      <CalendarDays className="h-4 w-4" />
+                      <span className="font-medium text-gray-500">
+                        {isSpanish ? 'Próxima:' : 'Next:'}
+                      </span>
+                      {patient.nextAppointment
+                        ? formatDate(patient.nextAppointment, isSpanish)
+                        : (isSpanish ? 'Sin cita programada' : 'No appointment scheduled')}
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </ScrollableListCard>
+        ) : (
+          <div className="rounded-lg border border-gray-200 bg-white px-6 py-12 text-center shadow-sm">
+            <p className="text-sm font-medium text-gray-900">
+              {isSpanish
+                ? 'No hay pacientes que coincidan con la búsqueda'
+                : 'No patients match the current search'}
+            </p>
+            <p className="mt-2 text-sm text-gray-500">
+              {isSpanish
+                ? 'Prueba con otro nombre, ciudad o diagnóstico.'
+                : 'Try another name, city, or diagnosis.'}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
