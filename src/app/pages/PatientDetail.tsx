@@ -6,7 +6,6 @@ import {
   Activity,
   ArrowLeft,
   BarChart3,
-  CalendarCheck,
   CalendarClock,
   ClipboardList,
   FileText,
@@ -17,6 +16,7 @@ import {
   TrendingUp,
   UserRound,
   UtensilsCrossed,
+  Pencil,
 } from 'lucide-react';
 import {
   CartesianGrid,
@@ -40,7 +40,6 @@ import {
   appointmentKindLabels,
   appointmentStatusLabels,
   patientCases,
-  patientStatusLabels,
   type PatientCase,
   type PatientEvaluationEntry,
 } from '../data/patientCases';
@@ -55,12 +54,6 @@ function formatDate(value: string, isSpanish: boolean) {
   return format(new Date(value), isSpanish ? 'd MMM yyyy' : 'MMM d, yyyy', {
     locale: isSpanish ? es : undefined,
   });
-}
-
-function getPatientStatusTone(status: PatientCase['status']) {
-  if (status === 'active') return 'success';
-  if (status === 'reevaluation') return 'warning';
-  return 'info';
 }
 
 function getTimelineTone(kind: PatientEvaluationEntry['kind']) {
@@ -124,6 +117,14 @@ export default function PatientDetail() {
 
   const activeSection = sectionTabs.find((tab) => tab.id === activeTab) ?? sectionTabs[0];
 
+  const sectionActionLabel = (() => {
+    if (activeTab === 'overview') return isSpanish ? 'Editar' : 'Edit';
+    if (activeTab === 'history') return isSpanish ? 'Añadir' : 'Add';
+    if (activeTab === 'evaluation') return isSpanish ? 'Nueva evaluación' : 'New evaluation';
+    if (activeTab === 'charts') return isSpanish ? 'Exportar' : 'Export';
+    return isSpanish ? 'Nueva cita' : 'New appointment';
+  })();
+
   const sectionDescriptions: Record<PatientDetailTab, string> = {
     overview: isSpanish
       ? 'Resumen rápido con datos de contacto, estado clínico y objetivo terapéutico.'
@@ -145,78 +146,17 @@ export default function PatientDetail() {
   return (
     <div className="flex h-full flex-col overflow-hidden">
       <div className="flex-1 min-h-0 overflow-hidden p-4 pb-[86px] sm:pb-4 lg:p-6 lg:pb-6">
-        <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-          <div className="space-y-3">
-            <Button asChild variant="ghost" className="w-fit px-0 text-gray-500 hover:bg-transparent hover:text-gray-900">
-              <Link to={basePath}>
-                <ArrowLeft className="h-4 w-4" />
-                {isSpanish ? 'Volver a pacientes' : 'Back to patients'}
-              </Link>
-            </Button>
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">{patient.name}</h1>
-              <p className="mt-2 max-w-2xl text-sm text-gray-600">
-                {isSpanish
-                  ? 'Ficha clínica visual con anamnesis, evaluaciones, gráficas y agenda.'
-                  : 'Visual clinical file with anamnesis, evaluations, charts, and appointments.'}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid gap-6 xl:grid-cols-[320px_minmax(0,1fr)]">
-          <Card className="border-gray-200 shadow-sm xl:sticky xl:top-6 xl:self-start">
-            <CardContent className="space-y-5 p-5">
-              <div className="flex items-center gap-4">
-                <Avatar
-                  name={patient.name}
-                  size="lg"
-                  color={patient.sex === 'female' ? '#0f766e' : '#2563eb'}
-                />
-                <div className="min-w-0">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h2 className="truncate text-xl font-semibold text-gray-900">{patient.name}</h2>
-                    <Badge variant={getPatientStatusTone(patient.status)}>
-                      {patientStatusLabels[patient.status][isSpanish ? 'es' : 'en']}
-                    </Badge>
-                  </div>
-                  <p className="mt-1 text-sm text-gray-500">
-                    {patient.age} · {patient.city}
-                  </p>
-                </div>
-              </div>
-
-              <div className="rounded-2xl bg-gray-50 p-4">
-                <p className="text-xs uppercase tracking-wide text-gray-500">
-                  {isSpanish ? 'Progreso clínico' : 'Clinical progress'}
+        <div className="grid gap-6 xl:grid-cols-[340px_minmax(0,1fr)]">
+          <Card className="overflow-hidden border-gray-200 shadow-sm xl:sticky xl:top-6 xl:self-start">
+            <CardContent className="flex h-full flex-col p-0">
+              <div className="border-b border-gray-200 p-6">
+                <h2 className="text-2xl font-semibold text-gray-900">{patient.name}</h2>
+                <p className="mt-2 text-sm text-gray-500">
+                  {patient.age} · {patient.sex === 'female' ? (isSpanish ? 'Mujer' : 'Female') : (isSpanish ? 'Hombre' : 'Male')}
                 </p>
-                <div className="mt-2 flex items-end justify-between">
-                  <p className="text-2xl font-bold text-gray-900">{patient.progress}%</p>
-                  <p className="text-sm text-gray-500">
-                    {isSpanish ? 'Evolución acumulada' : 'Cumulative evolution'}
-                  </p>
-                </div>
-                <Progress value={patient.progress} className="mt-3 h-2" />
               </div>
 
-              <div className="space-y-2">
-                <div className="flex items-center gap-3 text-sm text-gray-600">
-                  <Phone className="h-4 w-4 text-gray-400" />
-                  <span>{patient.phone}</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-gray-600">
-                  <Mail className="h-4 w-4 text-gray-400" />
-                  <span>{patient.email}</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-gray-600">
-                  <MapPin className="h-4 w-4 text-gray-400" />
-                  <span>{patient.city}</span>
-                </div>
-              </div>
-
-              <Separator />
-
-              <div className="space-y-2">
+              <div className="space-y-2 border-b border-gray-200 p-5">
                 {sectionTabs.map((tab) => {
                   const Icon = tab.icon;
                   const isActive = activeTab === tab.id;
@@ -225,30 +165,26 @@ export default function PatientDetail() {
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`flex w-full items-center gap-3 rounded-2xl border px-4 py-3 text-left text-sm font-medium transition-colors ${
+                      className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm font-medium transition-colors ${
                         isActive
-                          ? 'border-teal-200 bg-teal-50 text-teal-700'
-                          : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50'
+                          ? 'bg-indigo-100 text-indigo-700'
+                          : 'text-gray-700 hover:bg-gray-50'
                       }`}
                     >
-                      <Icon className={`h-4 w-4 ${isActive ? 'text-teal-600' : 'text-gray-400'}`} />
+                      <Icon className={`h-4 w-4 ${isActive ? 'text-indigo-600' : 'text-gray-400'}`} />
                       <span className="flex-1">{tab.label}</span>
                     </button>
                   );
                 })}
               </div>
 
-              <div className="rounded-2xl border border-gray-200 bg-white p-4">
-                <p className="text-xs uppercase tracking-wide text-gray-500">
-                  {isSpanish ? 'Próxima cita' : 'Next appointment'}
-                </p>
-                <div className="mt-2 flex items-center justify-between gap-3">
-                  <div>
-                    <p className="font-medium text-gray-900">{formatDate(patient.nextAppointment, isSpanish)}</p>
-                    <p className="text-sm text-gray-500">{patient.chiefComplaint}</p>
-                  </div>
-                  <CalendarCheck className="h-5 w-5 text-teal-600" />
-                </div>
+              <div className="mt-auto border-t border-gray-200 p-5">
+                <Button asChild variant="ghost" className="w-full justify-center rounded-2xl bg-gray-50 px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+                  <Link to={basePath}>
+                    <ArrowLeft className="h-4 w-4" />
+                    {isSpanish ? 'Atrás' : 'Back'}
+                  </Link>
+                </Button>
               </div>
             </CardContent>
           </Card>
@@ -256,13 +192,18 @@ export default function PatientDetail() {
           <Card className="border-gray-200 shadow-sm">
             <CardHeader className="border-b border-gray-100 pb-4">
               <div className="flex items-center justify-between gap-4">
-                <div>
-                  <CardTitle className="text-xl">{activeSection.label}</CardTitle>
-                  <p className="mt-1 text-sm text-gray-500">{sectionDescriptions[activeTab]}</p>
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
+                    <activeSection.icon className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-2xl">{activeSection.label}</CardTitle>
+                    <p className="mt-1 text-sm text-gray-500">{sectionDescriptions[activeTab]}</p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-500">
-                  <TrendingUp className="h-4 w-4 text-teal-600" />
-                  {isSpanish ? 'Panel clínico' : 'Clinical panel'}
+                <div className="hidden items-center gap-2 rounded-xl bg-gray-100 px-4 py-3 text-sm font-medium text-gray-700 sm:flex">
+                  <Pencil className="h-4 w-4" />
+                  {sectionActionLabel}
                 </div>
               </div>
             </CardHeader>

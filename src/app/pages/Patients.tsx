@@ -2,26 +2,19 @@ import { useMemo, useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
-import { ChevronRight, Users } from 'lucide-react';
-import { Avatar } from '../components/Avatar';
-import { Badge } from '../components/ui/Badge';
+import { CalendarDays, Plus, Users } from 'lucide-react';
+import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { SearchBar } from '../components/ui/SearchBar';
 import { useLanguage } from '../contexts/LanguageContext';
 import { normalizeForSearch } from '../utils/searchUtils';
-import { patientCases, patientStatusLabels, type PatientCase } from '../data/patientCases';
+import { patientCases } from '../data/patientCases';
 import { useUser } from '../contexts/UserContext';
 
 function formatDate(value: string, isSpanish: boolean) {
   return format(new Date(value), isSpanish ? 'd MMM yyyy' : 'MMM d, yyyy', {
     locale: isSpanish ? es : undefined,
   });
-}
-
-function getPatientStatusTone(status: PatientCase['status']) {
-  if (status === 'active') return 'success';
-  if (status === 'reevaluation') return 'warning';
-  return 'info';
 }
 
 export default function Patients() {
@@ -64,79 +57,61 @@ export default function Patients() {
   return (
     <div className="flex h-full flex-col overflow-hidden">
       <div className="flex-1 min-h-0 overflow-hidden p-4 pb-[86px] sm:pb-4 lg:p-6 lg:pb-6">
-        <div className="mb-6 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mb-6 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-medium text-teal-700">
               <Users className="h-3.5 w-3.5" />
-              {isSpanish ? 'Vista clínica' : 'Clinical board'}
+              {isSpanish ? 'Pacientes' : 'Patients'}
             </div>
             <h1 className="text-3xl font-bold text-gray-900">
-              {isSpanish ? 'Pacientes' : 'Patients'}
+              {isSpanish ? 'Lista de pacientes' : 'Patient list'}
             </h1>
-            <p className="max-w-2xl text-sm text-gray-600">
-              {isSpanish
-                ? 'Consulta la lista de pacientes y abre su ficha clínica con un clic.'
-                : 'Browse the patient list and open each clinical file with one click.'}
-            </p>
           </div>
         </div>
 
-        <Card className="border-gray-200 shadow-sm">
-          <CardHeader className="space-y-4 border-b border-gray-100 pb-5">
-            <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-              <div>
-                <CardTitle className="text-xl">
-                  {isSpanish ? 'Listado de pacientes' : 'Patient roster'}
-                </CardTitle>
-                <p className="mt-1 text-sm text-gray-500">
-                  {isSpanish
-                    ? 'Busca por nombre, edad, teléfono, última visita o próxima cita.'
-                    : 'Search by name, age, phone, last appointment, or next appointment.'}
-                </p>
-              </div>
+        <div className="mb-5 flex flex-col gap-3 lg:flex-row lg:items-center">
+          <SearchBar
+            value={query}
+            onChange={setQuery}
+            placeholder={isSpanish ? 'Buscar paciente...' : 'Search patient...'}
+            className="w-full lg:flex-1"
+          />
+          <Button className="w-full bg-teal-600 text-white hover:bg-teal-700 lg:w-auto">
+            <Plus className="h-4 w-4" />
+            {isSpanish ? 'Nuevo paciente' : 'New patient'}
+          </Button>
+        </div>
 
-              <div className="w-full lg:max-w-md">
-                <SearchBar
-                  value={query}
-                  onChange={setQuery}
-                  placeholder={
-                    isSpanish
-                      ? 'Buscar paciente, ciudad, diagnóstico...'
-                      : 'Search patient, city, diagnosis...'
-                  }
-                  className="w-full"
-                />
-              </div>
-            </div>
+        <Card className="overflow-hidden border-gray-200 shadow-sm">
+          <CardHeader className="border-b border-gray-100 px-6 py-4">
+            <CardTitle className="text-sm font-semibold uppercase tracking-wide text-gray-500">
+              {isSpanish ? 'Pacientes recientes' : 'Recent patients'}
+            </CardTitle>
           </CardHeader>
-
           <CardContent className="p-0">
             {visiblePatients.length > 0 ? (
               <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-100">
-                  <thead className="bg-gray-50/70">
+                <table className="min-w-full table-fixed divide-y divide-gray-200">
+                  <thead className="bg-gray-50/80">
                     <tr className="text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
-                      <th className="px-5 py-3">
+                      <th className="w-[31%] px-6 py-4">
                         {isSpanish ? 'Nombre' : 'Name'}
                       </th>
-                      <th className="px-5 py-3">
+                      <th className="w-[13%] px-6 py-4">
                         {isSpanish ? 'Edad' : 'Age'}
                       </th>
-                      <th className="px-5 py-3">
+                      <th className="w-[24%] px-6 py-4">
                         {isSpanish ? 'Teléfono' : 'Phone'}
                       </th>
-                      <th className="px-5 py-3">
+                      <th className="w-[16%] px-6 py-4">
                         {isSpanish ? 'Última cita' : 'Last appointment'}
                       </th>
-                      <th className="px-5 py-3">
+                      <th className="w-[16%] px-6 py-4">
                         {isSpanish ? 'Próxima cita' : 'Next appointment'}
-                      </th>
-                      <th className="px-5 py-3 text-right">
-                        <span className="sr-only">{isSpanish ? 'Abrir' : 'Open'}</span>
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-100 bg-white">
+                  <tbody className="divide-y divide-gray-200 bg-white">
                     {visiblePatients.map((patient) => (
                       <tr
                         key={patient.id}
@@ -149,44 +124,34 @@ export default function Patients() {
                         }}
                         tabIndex={0}
                         role="link"
-                        className="group cursor-pointer transition-colors hover:bg-gray-50 focus:bg-gray-50 focus:outline-none"
+                        className="cursor-pointer transition-colors hover:bg-gray-50 focus:bg-gray-50 focus:outline-none"
                       >
-                        <td className="px-5 py-4">
-                          <div className="flex items-center gap-4">
-                            <Avatar
-                              name={patient.name}
-                              size="lg"
-                              color={patient.sex === 'female' ? '#0f766e' : '#2563eb'}
-                            />
-                            <div className="min-w-0">
-                              <div className="flex flex-wrap items-center gap-2">
-                                <h3 className="truncate text-base font-semibold text-gray-900">
-                                  {patient.name}
-                                </h3>
-                                <Badge variant={getPatientStatusTone(patient.status)}>
-                                  {patientStatusLabels[patient.status][isSpanish ? 'es' : 'en']}
-                                </Badge>
-                              </div>
-                              <p className="mt-1 text-sm text-gray-500">
-                                {patient.city} · {patient.chiefComplaint}
-                              </p>
-                            </div>
+                        <td className="px-6 py-5">
+                          <div className="min-w-0">
+                            <h3 className="truncate text-lg font-semibold text-gray-900">
+                              {patient.name}
+                            </h3>
                           </div>
                         </td>
-                        <td className="whitespace-nowrap px-5 py-4 text-sm text-gray-700">
-                          {patient.age}
+                        <td className="whitespace-nowrap px-6 py-5 text-sm text-gray-700">
+                          {patient.age} {isSpanish ? 'años' : 'years'}
                         </td>
-                        <td className="whitespace-nowrap px-5 py-4 text-sm text-gray-700">
+                        <td className="whitespace-nowrap px-6 py-5 text-sm text-gray-700">
                           {patient.phone}
                         </td>
-                        <td className="whitespace-nowrap px-5 py-4 text-sm text-gray-700">
-                          {formatDate(patient.lastVisit, isSpanish)}
+                        <td className="whitespace-nowrap px-6 py-5 text-sm text-gray-700">
+                          <span className="inline-flex items-center gap-2">
+                            <CalendarDays className="h-4 w-4 text-slate-500" />
+                            {formatDate(patient.lastVisit, isSpanish)}
+                          </span>
                         </td>
-                        <td className="whitespace-nowrap px-5 py-4 text-sm text-gray-700">
-                          {formatDate(patient.nextAppointment, isSpanish)}
-                        </td>
-                        <td className="whitespace-nowrap px-5 py-4 text-right">
-                          <ChevronRight className="ml-auto h-4 w-4 text-gray-400 transition-transform group-hover:translate-x-1" />
+                        <td className="whitespace-nowrap px-6 py-5 text-sm">
+                          <span className={`inline-flex items-center gap-2 ${patient.nextAppointment ? 'text-emerald-600' : 'text-gray-400'}`}>
+                            <CalendarDays className="h-4 w-4" />
+                            {patient.nextAppointment
+                              ? formatDate(patient.nextAppointment, isSpanish)
+                              : (isSpanish ? 'Sin cita programada' : 'No appointment scheduled')}
+                          </span>
                         </td>
                       </tr>
                     ))}
