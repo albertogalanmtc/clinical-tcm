@@ -30,7 +30,7 @@ import {
   YAxis,
 } from 'recharts';
 import { Avatar } from '../components/Avatar';
-import { Badge } from '../components/ui/badge';
+import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Progress } from '../components/ui/progress';
