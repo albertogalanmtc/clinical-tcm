@@ -147,7 +147,7 @@ export default function PatientDetail() {
       ? 'Consulta las citas programadas y su estado.'
       : 'Review scheduled appointments and their status.',
   };
-  const sectionShellClass = 'min-h-[calc(100vh-22rem)] max-h-[calc(100vh-22rem)]';
+  const sectionShellClass = 'h-full min-h-full max-h-full';
 
   return (
     <div className="flex h-full flex-col overflow-hidden">
@@ -191,10 +191,10 @@ export default function PatientDetail() {
                 })}
               </nav>
 
-              <div className="border-t border-gray-200 px-4 py-2">
+              <div className="border-t border-gray-200 px-4 pt-2 pb-2">
                 <Link
                   to={basePath}
-                  className="flex w-full items-center justify-center rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-100"
+                  className="flex w-full items-center justify-center rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-100"
                 >
                   <span>{isSpanish ? 'Atrás' : 'Back'}</span>
                 </Link>
