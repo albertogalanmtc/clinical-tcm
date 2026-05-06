@@ -147,7 +147,7 @@ export default function PatientDetail() {
       ? 'Consulta las citas programadas y su estado.'
       : 'Review scheduled appointments and their status.',
   };
-  const sectionShellClass = 'min-h-[calc(100vh-22rem)]';
+  const sectionShellClass = 'min-h-[calc(100vh-22rem)] max-h-[calc(100vh-22rem)]';
 
   return (
     <div className="flex h-full flex-col overflow-hidden">
@@ -191,7 +191,7 @@ export default function PatientDetail() {
                 })}
               </nav>
 
-              <div className="border-t border-gray-200 px-4 pt-3 pb-3">
+              <div className="border-t border-gray-200 px-4 py-2">
                 <Link
                   to={basePath}
                   className="flex w-full items-center justify-center rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-100"
@@ -300,7 +300,7 @@ export default function PatientDetail() {
               )}
 
               {activeTab === 'history' && (
-                <div className={`${sectionShellClass} space-y-4`}>
+                <div className={`${sectionShellClass} h-full space-y-4 overflow-hidden`}>
                   {patient.anamnesisGroups.map((group) => (
                     <div key={group.title} className="rounded-3xl border border-gray-200 bg-gray-50 p-5">
                       <div>
@@ -322,7 +322,7 @@ export default function PatientDetail() {
               )}
 
               {activeTab === 'evaluation' && (
-                <div className={`${sectionShellClass} space-y-4`}>
+                <div className={`${sectionShellClass} h-full space-y-4 overflow-hidden`}>
                   {combinedTimeline.map((entry) => (
                     <div key={entry.id} className="rounded-3xl border border-gray-200 bg-white p-5">
                       <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
@@ -394,7 +394,7 @@ export default function PatientDetail() {
               )}
 
               {activeTab === 'charts' && (
-                <div className={`${sectionShellClass} space-y-5`}>
+                <div className={`${sectionShellClass} h-full space-y-5 overflow-hidden`}>
                   <div className="rounded-3xl border border-gray-200 bg-white p-5">
                     <div className="mb-4 flex items-center gap-2 text-sm font-medium text-gray-700">
                       <BarChart3 className="h-4 w-4 text-teal-600" />
@@ -446,7 +446,7 @@ export default function PatientDetail() {
               )}
 
               {activeTab === 'appointments' && (
-                <div className={`${sectionShellClass} space-y-3`}>
+                <div className={`${sectionShellClass} h-full space-y-3 overflow-hidden`}>
                   {patient.appointments.map((appointment) => (
                     <div key={appointment.id} className="rounded-3xl border border-gray-200 bg-white p-5">
                       <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
